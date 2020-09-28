@@ -1,6 +1,6 @@
 # LAIG 2020/2021
 
-## Group T0xG0y
+## Group T03G06
 | Name             | Number    | E-Mail               |
 | ---------------- | --------- | -------------------- |
 | Davide Castro    | 201806512 | up201806512@fe.up.pt |
