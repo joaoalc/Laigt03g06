@@ -371,8 +371,35 @@ class MySceneGraph {
      */
     parseTextures(texturesNode) {
 
+        //this.onXMLMinorError("To do: Parse textures.");
+
         //For each texture in textures block, check ID and file URL
-        this.onXMLMinorError("To do: Parse textures.");
+        this.textures = [];
+
+        var children = texturesNode.children;
+      
+        for(var i = 0; i < children.length; i++) {
+
+            if (children[i].nodeName != "texture") {
+                this.onXMLMinorError("unknown tag <" + children[i].nodeName + ">");
+                continue;
+            }
+
+            var textureID = this.reader.getString(children[i],'id');
+            if(textureID == null) 
+                return "no ID defined for texture";
+
+            if(this.textures[textureID] != null)
+                return "ID must be unique for each texture (conflict: ID = " + textureID + ")";
+
+            var texturePath = this.reader.getString(children[i],'path');
+            if(texturePath == null)
+                return "no path defined for texture (ID = " + textureID + ")";
+
+            this.textures[textureID] = texturePath;
+        }
+
+        this.log("Parsed textures");
         return null;
     }
 
@@ -391,9 +418,16 @@ class MySceneGraph {
         // Any number of materials.
         for (var i = 0; i < children.length; i++) {
 
+            var attributeNames = [];
+            var attributeTypes = [];
+            var global = [];
+
             if (children[i].nodeName != "material") {
                 this.onXMLMinorError("unknown tag <" + children[i].nodeName + ">");
                 continue;
+            } else {
+                attributeNames.push(...["shininess", "specular", "diffuse", "ambient", "emissive"]);
+                attributeTypes.push(...["float","", "color", "color", "color", "color"]);
             }
 
             // Get id of the current material.
@@ -403,13 +437,39 @@ class MySceneGraph {
 
             // Checks for repeated IDs.
             if (this.materials[materialID] != null)
-                return "ID must be unique for each light (conflict: ID = " + materialID + ")";
+                return "ID must be unique for each material (conflict: ID = " + materialID + ")";
 
             //Continue here
-            this.onXMLMinorError("To do: Parse materials.");
+            //this.onXMLMinorError("To do: Parse materials.");
+            grandChildren = children[i].children;
+            // Specifications for the current material.
+
+            nodeNames = [];
+            for (var j = 0; j < grandChildren.length; j++) {
+                nodeNames.push(grandChildren[j].nodeName);
+            }
+
+            for (var j = 0; j < attributeNames.length; j++) {
+                var attributeIndex = nodeNames.indexOf(attributeNames[j]);
+
+                if (attributeIndex != -1) {
+                    if (attributeTypes[j] == "float")
+                        var aux = this.reader.getFloat(grandChildren[attributeIndex], "value", "shininess value for material ID " + materialID);
+                    else if (attributeTypes[j] == "color")
+                        var aux = this.parseColor(grandChildren[attributeIndex], attributeNames[j] + " component for material ID" + lightId);
+
+                    if (typeof aux === 'string')
+                        return aux;
+
+                    global.push(aux);
+                }
+                else
+                    return "material " + attributeNames[i] + " undefined for ID = " + materialID;
+            }
+            this.materials[materialID] = global;
         }
 
-        //this.log("Parsed materials");
+        this.log("Parsed materials");
         return null;
     }
 
