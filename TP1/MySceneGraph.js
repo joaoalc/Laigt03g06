@@ -245,7 +245,83 @@ class MySceneGraph {
      * @param {view block element} viewsNode
      */
     parseViews(viewsNode) {
-        this.onXMLMinorError("To do: Parse views and create cameras.");
+        //this.onXMLMinorError("To do: Parse views and create cameras.");
+
+        var defaultView = this.reader.getString(viewsNode, "default");
+        if(defaultView == null) {
+            return "no default view defined";
+        }
+        this.defaultView = defaultView;
+
+        var children = viewsNode.children;
+
+        this.views = [];
+        var numViews = 0;
+
+        var grandChildren = [];
+        var nodeNames = [];
+
+        for(var i = 0; i < children.length; i++) {
+
+            var global = [];
+            var attributeNames = [];
+
+            var up = [0,1,0];
+
+            //Get view ID
+            var viewID = this.reader.getString(children[i], 'id');
+            if(viewID == null)
+                return "no ID defined for view";
+
+            //Check for repeated IDs
+            if(this.views[viewID] != null) {
+                return "ID must be unique for each view (conflict: ID = " + viewID + ")";
+            }
+
+            if(children[i].nodeName == "perspective") {
+                attributeNames.push(...["from", "to"]);
+    
+            } else if(children[i].nodeName == "ortho") {
+                attributeNames.push(...["from", "to", "up"]);
+
+            } else {
+                this.onXMLMinorError("unknown tag <" + children[i].nodeName + ">");
+                continue;
+            }
+
+            global.push(this.parseView(children[i]));
+
+            grandChildren = children[i].children;
+            nodeNames = [];
+
+            for(var j = 0; j < grandChildren.length; j++) {
+                nodeNames.push(grandChildren[i].nodeName);
+            }
+
+            for(var k = 0; k < attributeNames.length; k++) {
+                var attributeIndex = nodeNames.indexOf(attributeNames[k]);
+
+                if(attributeIndex != -1) {
+                    global.push(this.parseCoordinates3D(grandChildren[attributeIndex]), attributeNames[k] + " component for view ID " + viewID);
+                } 
+                else if(attributeNames[k] == "up") {
+                    global.push(up);
+                } 
+                else
+                    return "view " + attributeNames[k] + " undefined for ID = " + viewID;
+            }
+
+            this.views[viewID] = global;
+            numViews++;
+        }
+
+        if(this.views[defaultView] == null) {
+            return "default view ID = " + defaultView + "is not defined";
+        }
+
+        if(numViews == 0) 
+            return "at least one view must be defined";
+
         return null;
     }
 
@@ -619,6 +695,58 @@ class MySceneGraph {
         color.push(...[r, g, b, a]);
 
         return color;
+    }
+
+    /**
+     * Parse the components of a view
+     * @param {block element} node
+     * @param {message to be displayed in case of error} messageError
+     */
+    parseView(node, messageError) {
+        var values = [];
+
+        if(node.nodeName == "perspective") {
+            var near = this.reader.getFloat(node, 'near');
+            if (!(near != null && !isNaN(near)))
+                return "unable to parse 'near' component of the " + messageError;
+            
+            var far = this.reader.getFloat(node, 'far');
+            if (!(far != null && !isNaN(far)))
+                return "unable to parse 'far' component of the " + messageError;
+            
+            var angle = this.reader.getFloat(node, 'angle');
+            if (!(angle != null && !isNaN(angle)))
+                return "unable to parse 'angle' component of the " + messageError;
+
+            values = [near, far, angle];
+
+        } else if(node.nodeName == "ortho") {
+            var near = this.reader.getFloat(node, 'near');
+            if (!(near != null && !isNaN(near)))
+                return "unable to parse 'near' component of the " + messageError;
+            
+            var far = this.reader.getFloat(node, 'far');
+            if (!(far != null && !isNaN(far)))
+                return "unable to parse 'far' component of the " + messageError;
+            
+            var left = this.reader.getFloat(node, 'left');
+            if (!(left != null && !isNaN(left)))
+                return "unable to parse 'left' component of the " + messageError;
+
+            var right = this.reader.getFloat(node, 'right');
+            if (!(right != null && !isNaN(right)))
+                return "unable to parse 'lrighteft' component of the " + messageError;
+
+            var bottom = this.reader.getFloat(node, 'bottom');
+            if (!(bottom != null && !isNaN(bottom)))
+                return "unable to parse 'bottom' component of the " + messageError;
+
+            values = [near, far, left, right, bottom];
+        }
+        else 
+            return null;
+
+        return values;
     }
 
     /**
