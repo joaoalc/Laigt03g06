@@ -207,33 +207,22 @@
             </descendants>
         </node>
         <node id="train_bottom">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
                 <translation x="-0.5" y= "0.0" z = "-1.57"/>
             </transformations>
             <descendants>
-                <noderef id="train_middle_platform"/>
-                <noderef id="train_bottom_platform"/>
-                <noderef id="train_front_axle"/>
-                <noderef id="train_middle_axle"/>
-                <noderef id="train_back_axle"/>
-                <noderef id="train_main_axle"/>
-                <noderef id="train_front_left_wheel"/>
-                <noderef id="train_middle_left_wheel"/>
-                <noderef id="train_back_left_wheel"/>
-                <noderef id="train_front_right_wheel"/>
-                <noderef id="train_middle_right_wheel"/>
-                <noderef id="train_back_right_wheel"/>
-                <noderef id="train_bottom_left_coupling_rod"/>
-                <noderef id="train_top_left_coupling_rod"/>
-                <noderef id="train_bottom_right_coupling_rod"/>
-                <noderef id="train_top_right_coupling_rod"/>
+                <noderef id="axels"/>
+                <noderef id="wheels"/>
+                <noderef id="middle_platforms"/>              
+                <noderef id="coupling_rods"/>
+               
             </descendants>
         </node>
         <node id="train_front">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -250,7 +239,7 @@
             </descendants>
         </node>
         <node id="train_cab_window_front">
-            <material id="glass">
+            <material id="glass"/>
             <texture id="window_tex">
             </texture>
             <transformations>
@@ -258,11 +247,11 @@
                 <scale x="0.05" y="1.9" z="0.5"/>
             </transformations>
             <descendants>
-                <noderef id="cube"> <!--Point where brain melted-->
+                <noderef id="cube"/> 
             </descendants>
         </node>
         <node id="train_cab_top">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -270,14 +259,70 @@
                 <scale x="2.47" y="2.47" z="0.13"/>
             </transformations>
             <descendants>
-                <noderef id="cube">
+                <noderef id="cube"/>
             </descendants>
         </node>
         
 
         <!--Train bottom-->
+        <node id="axels">
+        <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train_front_axle"/>
+                <noderef id="train_middle_axle"/>
+                <noderef id="train_back_axle"/>
+                <noderef id="train_main_axle"/>
+            </descendants>
+        </node>
+
+        <node id="wheels">
+        <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train_front_left_wheel"/>
+                <noderef id="train_middle_left_wheel"/>
+                <noderef id="train_back_left_wheel"/>
+                <noderef id="train_front_right_wheel"/>
+                <noderef id="train_middle_right_wheel"/>
+                <noderef id="train_back_right_wheel"/>
+            </descendants>
+        </node>
+
+        <node id="coupling_rods">
+        <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train_bottom_left_coupling_rod"/>
+                <noderef id="train_top_left_coupling_rod"/>
+                <noderef id="train_bottom_right_coupling_rod"/>
+                <noderef id="train_top_right_coupling_rod"/>
+            </descendants>
+        </node>
+
+        <node id="middle_platform">
+        <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train_middle_platform"/>
+                <noderef id="train_bottom_platform"/> 
+            </descendants>
+        </node>
+
         <node id="train_middle_platform">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -289,7 +334,7 @@
             </descendants>
         </node>
         <node id="train_bottom_platform">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -302,7 +347,7 @@
             </descendants>
         </node>
         <node id="train_front_axle">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -315,7 +360,7 @@
             </descendants>
         </node>
         <node id="train_middle_axle">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -328,7 +373,7 @@
             </descendants>
         </node>
         <node id="train_back_axle">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -341,7 +386,7 @@
             </descendants>
         </node>
         <node id="train_main_axle">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -355,73 +400,73 @@
         </node>
         <!--Wheels-->
         <node id="train_back_right_wheel">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
                 <translation x="-2" y="-0.625" z="0.0"/>
             </transformations>
             <descendants>
-                <noderef id="wheel">
+                <noderef id="wheel"/>
             </descendants>
         </node>
         <node id="train_back_left_wheel">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
                 <translation x="-2" y="0.625" z="0.0"/>
             </transformations>
             <descendants>
-                <noderef id="wheel">
+                <noderef id="wheel"/>
             </descendants>
         </node>
         <node id="train_middle_right_wheel">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
                 <translation x="0" y="-0.625" z="0.0"/>
             </transformations>
             <descendants>
-                <noderef id="wheel">
+                <noderef id="wheel"/>
             </descendants>
         </node>
         <node id="train_middle_left_wheel">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
                 <translation x="0" y="0.625" z="0.0"/>
             </transformations>
             <descendants>
-                <noderef id="wheel">
+                <noderef id="wheel"/>
             </descendants>
         </node>
         <node id="train_front_right_wheel">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
                 <translation x="2" y="-0.625" z="0.0"/>
             </transformations>
             <descendants>
-                <noderef id="wheel">
+                <noderef id="wheel"/>
             </descendants>
         </node>
         <node id="train_front_left_wheel">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
                 <translation x="2" y="0.625" z="0.0"/>
             </transformations>
             <descendants>
-                <noderef id="wheel">
+                <noderef id="wheel"/>
             </descendants>
         </node>
         <node id="train_bottom_left_coupling_rod">
-            <material id="metal">
+            <material id="metal"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -433,7 +478,7 @@
             </descendants>
         </node>
         <node id="train_top_left_coupling_rod">
-            <material id="metal">
+            <material id="metal"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -445,7 +490,7 @@
             </descendants>
         </node>
         <node id="train_bottom_right_coupling_rod">
-            <material id="metal">
+            <material id="metal"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -457,7 +502,7 @@
             </descendants>
         </node>
         <node id="train_top_right_coupling_rod">
-            <material id="metal">
+            <material id="metal"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -470,21 +515,22 @@
         </node>
         <!-- NAO TROCAR Y E Z-->
         <node id="wheel">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
+            </texture>
             <transformations>
             </transformations>
             <descendants>
-                <noderef id="wheel_torus_0">
-                <noderef id="wheel_torus_1">
-                <noderef id="wheel_spoke_0">
-                <noderef id="wheel_spoke_1">
-                <noderef id="wheel_spoke_2">
-                <noderef id="wheel_spoke_2">
+                <noderef id="wheel_torus_0"/>
+                <noderef id="wheel_torus_1"/>
+                <noderef id="wheel_spoke_0"/>
+                <noderef id="wheel_spoke_1"/>
+                <noderef id="wheel_spoke_2"/>
+                <noderef id="wheel_spoke_2"/>
             </descendants>
         </node>
         <node id="wheel_torus_0">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -496,7 +542,7 @@
             </descendants>
         </node>
         <node id="wheel_torus_1">
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             <transformations>
                 <translation x="0" y="0" z="-0.4"/>
@@ -507,7 +553,7 @@
             </descendants>
         </node>
         <node id="wheel_spoke_0"> <!--em pé-->
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -519,7 +565,7 @@
             </descendants>
         </node>
         <node id="wheel_spoke_1"> <!--deitada-->
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             <transformations>
                 <rotation x="0.0" y="90.0" z="0.0"/>   
@@ -530,7 +576,7 @@
             </descendants>
         </node>
         <node id="wheel_spoke_1"> <!--inclinada esquerda-->
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             <transformations>
                 <rotation x="0.0" y="90.0" z="-45.0"/>   
@@ -541,7 +587,7 @@
             </descendants>
         </node>
         <node id="wheel_spoke_1"> <!--inclinada direita-->
-            <material id="null">
+            <material id="null"/>
             <texture id="null">
             <transformations>
                 <rotation x="0.0" y="90.0" z="45.0"/>   
@@ -553,7 +599,7 @@
         </node>
         <!-- trocar y e z-->
         <node id="train_main_cylinder">
-            <material id="metal">
+            <material id="metal"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -566,7 +612,7 @@
             </descendants>
         </node>
         <node id="train_main_sphere">
-            <material id="metal">
+            <material id="metal"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -579,7 +625,7 @@
             </descendants>
         </node>
         <node id="train_front_sphere">
-            <material id="metal">
+            <material id="metal"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -591,7 +637,7 @@
             </descendants>
         </node>
         <node id="train_headlight">
-            <material id="metal">
+            <material id="metal"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -604,7 +650,7 @@
             </descendants>
         </node>
         <node id="train_smoke_cylinder">
-            <material id="metal">
+            <material id="metal"/>
             <texture id="null">
             </texture>
             <transformations>
