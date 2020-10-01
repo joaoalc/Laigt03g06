@@ -49,7 +49,6 @@ class NodeObject {
     * @param {string} material
     */
 
-
     constructor(id, texture, material, transformations, descendants, leaves) {
         this.id = id;
         this.texture = texture;
@@ -57,6 +56,10 @@ class NodeObject {
         this.transformations = transformations;
         this.descendants = descendants;
         this.leaves = leaves;
+    }
+
+    display() {
+
     }
 }
 
@@ -614,6 +617,9 @@ class MySceneGraph {
         var grandgrandChildren = [];
         var nodeNames = [];
 
+        var nodeChilds = [];
+        var nodeIDs = [];
+
         // Any number of nodes.
         for (var i = 0; i < children.length; i++) {
 
@@ -757,13 +763,69 @@ class MySceneGraph {
 
 
             // Descendants
+            grandgrandChildren = [];
             if (descendantsIndex == -1)
                 return "no <descendants> tag for node ID " + nodeID;
+            
+            grandgrandChildren = grandChildren[descendantsIndex].children;
+
+            var descendants = [];
+            var leaves = [];
+
+            for(var n = 0; n < grandgrandChildren.length; n++) {
+                if(grandgrandChildren[n].nodeName == "noderef") {
+                    var descendantID = this.reader.getString(grandgrandChildren[n], 'id');
+                    if(descendantID == null) 
+                        return "no id defined for descendant on node ID " + nodeID;
+                    descendants.push(descendantID);
+
+                } else if(grandgrandChildren[n].nodeName == "leaf") {
+                    
+
+                } else {
+                    this.onXMLMinorError("unknown tag <" + grandgrandChildren[n].nodeName + ">");
+                }
+            }
 
             this.nodes[nodeID] = new NodeObject(nodeID, textureID, materialID, transformations, null);
+            nodeChilds[nodeID] = descendants;
+            nodeIDs.push(nodeID);
+        }
+
+        for(var j = 0; j < nodeIDs.length; j++) {
+            var childs = nodeChilds[nodeIDs[j]];
+            var desc = []; 
+
+            for(var n = 0; n < childs.length; n++) {
+                if(this.nodes[childs[n]] == null)
+                    return "invalid descendant ID on node ID " + nodeIDs[j];
+
+                desc.push(this.nodes)
+            }
+
+            this.nodes[nodeIDs[j]].descendants = desc;
         }
 
         this.log("Parsed nodes");
+    }
+
+    parseLeaf(node, messageError) {
+        var type = this.reader.getString(node, 'type');
+
+        if(type == "rectangle") {
+            
+        } else if(type == "triangle") {
+
+        } else if(type == "cylinder") {
+
+        } else if(type == "sphere") {
+
+        } else if(type == "torus") {
+
+        } else 
+            return "invalid leaf type";
+
+        return null;
     }
 
 
