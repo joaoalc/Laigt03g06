@@ -25,10 +25,20 @@ class XMLscene extends CGFscene {
 
         this.enableTextures(true);
 
+
+
+
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
+
+
+        this.initTextures();
+        this.initMaterials();
+        this.initObjects();
+        this.testCylinder.setTexture
+
 
         this.axis = new CGFaxis(this);
         this.setUpdatePeriod(100);
@@ -38,6 +48,25 @@ class XMLscene extends CGFscene {
 
         this.defaultAppearance=new CGFappearance(this);
 
+    }
+
+    initMaterials(){
+        this.testMat = new CGFappearance(this);
+        this.testMat.setAmbient(1, 1, 1, 1);
+        this.testMat.setDiffuse(0.1, 0.1, 0.1, 1);
+        this.testMat.setSpecular(0.1, 0.1, 0.1, 1);
+        this.testMat.setShininess(100.0);
+        this.testMat.setTexture(this.testTexture);
+        this.testMat.setTextureWrap('REPEAT', 'REPEAT');
+    }
+
+    initTextures(){
+        this.testTexture = new CGFtexture(this, 'scenes/images/bank.jpg');
+    }
+
+    /*Initializes the objects in the scene*/
+    initObjects() {
+        this.testCylinder = new MyCylinder(this, 2, 2, 4, 16, 8);
     }
 
     /**
@@ -118,17 +147,21 @@ class XMLscene extends CGFscene {
             this.lights[i].enable();
         }
 
+        
         if (this.sceneInited) {
             // Draw axis
             this.axis.display();
  
+            this.testMat.apply();
+            this.testCylinder.display();
             this.defaultAppearance.apply();
-
+            
             // Displays the scene (MySceneGraph function).
             this.graph.displayScene();
         }
         else
         {
+            
             // Show some "loading" visuals
             this.defaultAppearance.apply();
 
