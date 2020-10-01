@@ -112,57 +112,57 @@
         </node>
         <node id="cube">
             <material id="null"/>
-            <texture id="null"/>
+            <texture id="null">
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-0.5"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" bottomRadius="0.5" topRadius="0.5" height="1" slices="4" stacks="1">
+                <leaf type="cylinder" bottomRadius="0.5" topRadius="0.5" height="1" slices="4" stacks="1"/>
             </descendants>
         </node>
         <node id="cylinder_high_detail">
             <material id="null"/>
-            <texture id="null"/>
+            <texture id="null">
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-0.5"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" bottomRadius="0.5" topRadius="0.5" height="1" slices="32" stacks="1">
+                <leaf type="cylinder" bottomRadius="0.5" topRadius="0.5" height="1" slices="32" stacks="1"/>
             </descendants>
         </node>
         <node id="cylinder_low_detail">
             <material id="null"/>
-            <texture id="null"/>
+            <texture id="null">
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-0.5"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" bottomRadius="0.5" topRadius="0.5" height="1" slices="12" stacks="1">
+                <leaf type="cylinder" bottomRadius="0.5" topRadius="0.5" height="1" slices="12" stacks="1"/>
             </descendants>
         </node>
         <node id="sphere_low_detail">
             <material id="null"/>
-            <texture id="null"/>
+            <texture id="null">
             </texture>
             <transformations>
                 <translation x="0" y="0" z="0"/>
             </transformations>
             <descendants>
-                <leaf type="sphere" radius="0.5"  height="1" slices="12" stacks="12">
+                <leaf type="sphere" radius="0.5"  height="1" slices="12" stacks="12"/>
             </descendants>
         </node>
         <node id="sphere_high_detail">
             <material id="null"/>
-            <texture id="null"/>
+            <texture id="null">
             </texture>
             <transformations>
                 <translation x="0" y="0" z="0"/>
             </transformations>
             <descendants>
-                <leaf type="sphere" radius="0.5" height="1" slices="32" stacks="32">
+                <leaf type="sphere" radius="0.5" height="1" slices="32" stacks="32"/>
             </descendants>
         </node>
 
@@ -193,7 +193,7 @@
         </node>
         <node id="train_cab">
             <material id="null"/>
-            <texture id="train_body_tex"/>
+            <texture id="train_body_tex">
             </texture>
             <transformations>
                 <translation x="-2.0" y="0.0" z="0.5"/>
@@ -311,7 +311,7 @@
                 <translation x="0.0" y="-1.5" z="0.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30">
+                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
             </descendants>
         </node>
         <node id="train_middle_axle">
@@ -324,7 +324,7 @@
                 <translation x="0.0" y="-1.5" z="0.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30">
+                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
             </descendants>
         </node>
         <node id="train_back_axle">
@@ -337,7 +337,7 @@
                 <translation x="0.0" y="-1.5" z="0.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30">
+                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
             </descendants>
         </node>
         <node id="train_main_axle">
@@ -350,7 +350,7 @@
                 <translation x="0.0" y="-1.5" z="0.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30">
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
             </descendants>
         </node>
         <!--Wheels-->
@@ -429,7 +429,7 @@
                 <rotation x="90.0" y="0.0" z= "0.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30">
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
             </descendants>
         </node>
         <node id="train_top_left_coupling_rod">
@@ -441,7 +441,7 @@
                 <rotation x="90.0" y="0.0" z= "0.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30">
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
             </descendants>
         </node>
         <node id="train_bottom_right_coupling_rod">
@@ -453,7 +453,7 @@
                 <rotation x="90.0" y="0.0" z= "0.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30">
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
             </descendants>
         </node>
         <node id="train_top_right_coupling_rod">
@@ -465,7 +465,7 @@
                 <rotation x="90.0" y="0.0" z= "0.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30">
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
             </descendants>
         </node>
         <!-- NAO TROCAR Y E Z-->
@@ -486,12 +486,13 @@
         <node id="wheel_torus_0">
             <material id="null">
             <texture id="null">
+            </texture>
             <transformations>
                 <translation x="0" y="0" z="0.4"/>
                 <rotation x="90.0" y="0.0" z="0.0"/>
             </transformations>
             <descendants>
-                <leaf type="torus" inner="0.05" outer="0.5" slices="30" loops="30">
+                <leaf type="torus" inner="0.05" outer="0.5" slices="30" loops="30"/>
             </descendants>
         </node>
         <node id="wheel_torus_1">
@@ -502,18 +503,19 @@
                 <rotation x="90.0" y="0.0" z="0.0"/>
             </transformations>
             <descendants>
-                <leaf type="torus" inner="0.05" outer="0.5" slices="30" loops="30">
+                <leaf type="torus" inner="0.05" outer="0.5" slices="30" loops="30"/>
             </descendants>
         </node>
         <node id="wheel_spoke_0"> <!--em pé-->
             <material id="null">
             <texture id="null">
+            </texture>
             <transformations>
                 <rotation x="90.0" y="0.0" z="0.0"/>   
                 <translation x="0" y="0" z="-0.5"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30">
+                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
             </descendants>
         </node>
         <node id="wheel_spoke_1"> <!--deitada-->
@@ -524,7 +526,7 @@
                 <translation x="0" y="0" z="-0.5"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30">
+                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
             </descendants>
         </node>
         <node id="wheel_spoke_1"> <!--inclinada esquerda-->
@@ -535,7 +537,7 @@
                 <translation x="0" y="0" z="-0.5"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30">
+                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
             </descendants>
         </node>
         <node id="wheel_spoke_1"> <!--inclinada direita-->
@@ -546,7 +548,7 @@
                 <translation x="0" y="0" z="-0.5"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30">
+                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
             </descendants>
         </node>
         <!-- trocar y e z-->
@@ -560,7 +562,7 @@
                 <translation x="0.0" y="-1.5" z="0.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="3.0" topRadius="1.0" bottomRadius="1.0" stacks="1" slices="60">
+                <leaf type="cylinder" height="3.0" topRadius="1.0" bottomRadius="1.0" stacks="1" slices="60"/>
             </descendants>
         </node>
         <node id="train_main_sphere">
@@ -573,7 +575,7 @@
                 <rotation x="0.0" y="0.0" z= "0.0"/>
             </transformations>
             <descendants>
-                <leaf type="sphere" radius="1.0" slices="50" stacks="50">
+                <leaf type="sphere" radius="1.0" slices="50" stacks="50"/>
             </descendants>
         </node>
         <node id="train_front_sphere">
@@ -585,7 +587,7 @@
                 <rotation x="0.0" y="0.0" z= "0.0"/>
             </transformations>
             <descendants>
-                <leaf type="sphere" radius="0.1" slices="20" stacks="20">
+                <leaf type="sphere" radius="0.1" slices="20" stacks="20"/>
             </descendants>
         </node>
         <node id="train_headlight">
@@ -598,7 +600,7 @@
                 <translation x="0.0" y="-1.5" z="0.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="3.0" topRadius="0.16" bottomRadius="0.16" stacks="1" slices="40">
+                <leaf type="cylinder" height="3.0" topRadius="0.16" bottomRadius="0.16" stacks="1" slices="40"/>
             </descendants>
         </node>
         <node id="train_smoke_cylinder">
@@ -610,7 +612,7 @@
                 <rotation x="0.0" y="0.0" z= "0.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="0.9" topRadius="0.4" bottomRadius="0.3" stacks="50" slices="50">
+                <leaf type="cylinder" height="0.9" topRadius="0.4" bottomRadius="0.3" stacks="50" slices="50"/>
             </descendants>
         </node>
         <!--Train Front-->
