@@ -9,6 +9,77 @@ var TEXTURES_INDEX = 4;
 var MATERIALS_INDEX = 5;
 var NODES_INDEX = 6;
 
+
+class Coordinate{
+    x;
+    y;
+    z;
+    constructor(x, y, z){
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    GetX(){
+        return this.x;
+    }
+
+    GetY(){
+        return this.y;
+    }
+    
+    GetZ(){
+        return this.z;
+    }
+    
+}
+
+class Texture{
+
+    texture_path = "";
+    amplification_coordinates = new Coordinate(1.0, 1.0, 1.0);
+
+    constructor(texture_path, amplification_coordinates){
+        this.texture_path = texture_path;
+        this.amplification_coordinates = amplification_coordinates;
+    }
+}
+
+class Transformation{
+    coords = new Coordinate(0, 0, 0);
+    type = "";
+
+    constructor(coords, type){
+        this.coords = coords;
+        this.type = type;
+    }
+}
+
+class NodeObject{
+    /*
+    * @param {string} id
+    * @param {string} texture_path
+    * @param {string} material
+    */
+
+    id = "";
+    texture;
+    material = "";
+
+    transformationsArray = null;
+
+    descendantsArray = null;
+
+    constructor(id, texture, material, transformationsArray, descendantsArray){
+        this.id = id;
+        this.texture = texture;
+        this.material = material;
+        this.transformationsArray = transformationsArray.slice(0);
+        this.descendantsArray = descendantsArray.slice(0);
+    }
+}
+
+
 /**
  * MySceneGraph class, representing the scene graph.
  */
@@ -558,6 +629,10 @@ class MySceneGraph {
 
         this.nodes = [];
 
+        var node = null; //Currently a NodeObject
+        var transformation = null;
+
+
         var grandChildren = [];
         var grandgrandChildren = [];
         var nodeNames = [];
@@ -586,7 +661,21 @@ class MySceneGraph {
                 nodeNames.push(grandChildren[j].nodeName);
             }
 
+            var transformationsArray = [];
+
             var transformationsIndex = nodeNames.indexOf("transformations");
+            grandgrandChildren = grandchildren[transformationsIndex].children;
+            for(var k = 0; k < grandgrandChildren.length; k++){
+                transformationsArray.add(grandgrandChildren[k]);
+            }
+            for(var k = 0; k < transformationsArray.length; k++){
+                var x = this.reader.getString(transformationsArray, 'x');
+                var y = this.reader.getString(transformationsArray, 'y');
+                var z = this.reader.getString(transformationsArray, 'z');
+                var name = this.name;
+                transformation = new Transformation(new Coordinate(x, y, z), name);
+            }
+
             var materialIndex = nodeNames.indexOf("material");
             var textureIndex = nodeNames.indexOf("texture");
             var descendantsIndex = nodeNames.indexOf("descendants");
