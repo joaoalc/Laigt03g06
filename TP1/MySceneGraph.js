@@ -34,6 +34,16 @@ class Coordinate{
     
 }
 
+class Amplification{
+
+    afs = 1.0;
+    aft = 1.0;
+    constructor(afs, aft){
+        afs = this.afs;
+        aft = this.aft;
+    }
+}
+
 class Texture{
 
     texture_path = "";
@@ -640,6 +650,11 @@ class MySceneGraph {
         // Any number of nodes.
         for (var i = 0; i < children.length; i++) {
 
+            var material_ID = null;
+            var texture_ID = null;
+            Texture tex;
+
+
             if (children[i].nodeName != "node") {
                 this.onXMLMinorError("unknown tag <" + children[i].nodeName + ">");
                 continue;
@@ -669,16 +684,65 @@ class MySceneGraph {
                 transformationsArray.add(grandgrandChildren[k]);
             }
             for(var k = 0; k < transformationsArray.length; k++){
-                var x = this.reader.getString(transformationsArray, 'x');
-                var y = this.reader.getString(transformationsArray, 'y');
-                var z = this.reader.getString(transformationsArray, 'z');
-                var name = this.name;
+                var x = this.reader.getString(transformationsArray[k], 'x');
+                var y = this.reader.getString(transformationsArray[k], 'y');
+                var z = this.reader.getString(transformationsArray[k], 'z');
+                //var name = this.name;
+                var name = this.reader.getString(transformationsArray[k], 'translation');
+                if(name == null){
+                    var name = this.reader.getString(transformationsArray[k], 'rotation');
+                }
+                if(name == null){
+                    var name = this.reader.getString(transformationsArray[k], 'scale');
+                }
+                if(name == null){
+                    this.onXMLMinorError("Transformation type missing (translation, rotation or scale) on node " + children.name + ".");
+                }
                 transformation = new Transformation(new Coordinate(x, y, z), name);
             }
 
             var materialIndex = nodeNames.indexOf("material");
+
+            material_ID = this.reader.getString(grandChildren[materialIndex], 'id');
+            /*grandgrandChildren = grandchildren[materialIndex].children;
+            
+            for(var k = 0; k < grandgrandChildren.length; k++){
+                material_ID = this.reader.getString(grandgrandChildren[k], 'id');
+                if(material_ID == null){
+                    this.onXMLMinorError("Material ID missing on node " + children.name + ".");
+                }
+            }*/
+
             var textureIndex = nodeNames.indexOf("texture");
+
+            material_ID = this.reader.getString(grandChildren[materialIndex], 'id');
+
+            var amplificationArray = [];
+
+            amplificationArray = grandchildren[textureIndex].children;
+
+            Amplification amp;
+
+            for(var k = 0; k < amplificationArray.length; k++){
+                if(k > 0){
+
+                }
+                var afs = this.reader.getString(amplificationArray[k], 'afs');
+                var aft = this.reader.getString(amplificationArray[k], 'aft');
+                amp = new Amplification(afs, aft);
+                if(texture_ID == null){
+                    this.onXMLMinorError("Material ID missing on node " + children.name + ".");
+                }
+                if(texture_ID == "null"){
+                    this.onXMLMinorError("Texture id = \"null\" still not implemented.");
+                }
+                tex = new Texture(texture_ID, amp);
+            }
+            
+
             var descendantsIndex = nodeNames.indexOf("descendants");
+
+            
 
             this.onXMLMinorError("To do: Parse nodes.");
             // Transformations
