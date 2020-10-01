@@ -176,7 +176,6 @@
                 <leaf type="sphere" innerRadius="0.75" outerRadius="1.25" slices="24" stacks="24">
             </descendants>
         </node>
-
         <node id="train">
             <!--  defines one intermediate node; may be repeated as necessary  -->
             <!--  next two lines are mandatory  -->
@@ -196,7 +195,6 @@
             <descendants>
                 <!--<leaf type="triangle" x1="ff" y1="ff" x2="ff" y2="ff" x3="ff" y3="ff" z3="ff"/> -->
                 <!--  x y z coordinates of each vertex  -->
-
                 <noderef id="train_cab"/>
                 <noderef id="train_bottom"/>
                 <noderef id="train_front"/>
@@ -231,9 +229,9 @@
                 <noderef id="train_middle_axle"/>
                 <noderef id="train_back_axle"/>
                 <noderef id="train_main_axle"/>
-                <noderef id="train_front_front_wheel"/>
-                <noderef id="train_middle_middle_wheel"/>
-                <noderef id="train_back_back_wheel"/>
+                <noderef id="train_front_left_wheel"/>
+                <noderef id="train_middle_left_wheel"/>
+                <noderef id="train_back_left_wheel"/>
                 <noderef id="train_front_right_wheel"/>
                 <noderef id="train_middle_right_wheel"/>
                 <noderef id="train_back_right_wheel"/>
@@ -429,7 +427,7 @@
                 <noderef id="cylinder_low_detail">
             </descendants>
         </node>
-        <node id="train_front_left_wheel">
+        <node id="train_front_right_wheel">
             <material id="null">
             <texture id="null">
             </texture>
