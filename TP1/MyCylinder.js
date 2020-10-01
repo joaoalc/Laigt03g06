@@ -35,15 +35,21 @@ class MyCylinder extends CGFobject {
 
         var vertex = 0;
         var xCoord = 0.0;
+        
         for(let st = 0; st <= this.stacks; st++) {
             for (let sl = 0; sl < this.slices; sl++) {
                 var sinPhi = Math.sin(phi);
                 var cosPhi = Math.cos(phi);
-                var x = cosPhi * (this.bottomRadius - st * sideIncrement);
-                var y = sinPhi * (this.bottomRadius - st * sideIncrement);
+                var x = cosPhi * (this.bottomRadius - st * sideIncrement); //x começa fazer o circulo inferior (com raio bottom radius) e depois começa a subir a cada stack (até ter raio top radius).
+                var y = sinPhi * (this.bottomRadius - st * sideIncrement); //O mesmo para o y
 
                 this.vertices.push(x, y, (this.height/this.stacks)*st);
-
+                if(st == 0 || st == this.stacks){
+                    this.texCoords.push(cosPhi * 0.5 + 0.5, sinPhi * 0.5 + 0.5);
+                }
+                else{
+                    this.texCoords.push(sl / this.slices, st / this.stacks);
+                }
                 //this.texCoords.push(xCoord, 1);
                 //this.texCoords.push(xCoord, 0);
 
@@ -73,6 +79,8 @@ class MyCylinder extends CGFobject {
 
         this.vertices.push(0,0,0);
         this.vertices.push(0,0,this.height);
+        this.texCoords.push(0.5, 0.5);
+        this.texCoords.push(0.5, 0.5);
         this.normals.push(0,0,-1);
         this.normals.push(0,0,1);
         vertex += 2;

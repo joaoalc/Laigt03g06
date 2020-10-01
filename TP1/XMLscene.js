@@ -61,7 +61,7 @@ class XMLscene extends CGFscene {
     }
 
     initTextures(){
-        this.testTexture = new CGFtexture(this, 'scenes/images/bank.jpg');
+        this.testTexture = new CGFtexture(this, 'scenes/images/Archer_96x96_upscaled_8x.png');
     }
 
     /*Initializes the objects in the scene*/
