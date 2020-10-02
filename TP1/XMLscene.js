@@ -74,6 +74,16 @@ class XMLscene extends CGFscene {
     }
 
     initTextures(){
+        this.textures = [];
+
+        
+        for(var key in this.graph.textures){
+            var info = this.graph.textures[key];
+            console.log(info);
+            var tex = new CGFtexture(this, info);
+            this.textures[key] = tex;
+        }
+
         //this.testTexture = new CGFtexture(this, 'scenes/images/Archer_96x96_upscaled_8x.png');
     }
 

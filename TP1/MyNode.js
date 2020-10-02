@@ -1,5 +1,6 @@
 
 var materialStack = [];
+var textureStack = [];
 
 
 class MyNode {
@@ -36,19 +37,50 @@ class MyNode {
 
     display() {
         this.scene.pushMatrix();
-        this.scene.multMatrix(this.transfMatrix);
+        this.scene.multMatrix(this.transfMatrix); //Adicionar a nova transformação à matriz de transformações para este objeto e todos os seus descendants
 
-        if(this.material != "null") {
+        if(this.material != "null") { //Adicionar o material se não for "null"
             materialStack.push(this.material);
         }
-        this.scene.materials[materialStack[materialStack.length - 1]].apply();
 
+        //Texture stuffs
+        if(this.texture != "null" && this.texture != "clear") //Texture id being "null" means it inherits it's parent's texture
+        {
+            //console.log(textureStack.length);
+            textureStack.push(this.texture);
+            //console.log(textureStack.length);
+        }
+        this.scene.materials[materialStack[materialStack.length - 1]].apply();
+        if(this.texture != "clear"){
+            //this.scene.materials[materialStack[materialStack.length - 1]].setTexture(this.scene.textures[materialStack[materialStack.length - 1]]);
+            this.scene.textures[textureStack[textureStack.length - 1]].bind();
+        }
+        else{
+            this.scene.textures[textureStack[textureStack.length - 1]].unbind();
+        }
+
+
+        //Display leaves if they exist
         for(var i = 0; i < this.leaves.length; i++) {
             this.leaves[i].display();
         }
 
+        //console.log(this.scene.textures[textureStack[textureStack.length - 1]]);
+
+        /*if(this.texture == "clear"){
+            this.scene.textures[textureStack[textureStack.length - 1]].bind();
+        }*/
+
+        //Recursively run this code for all the children nodes
         for(var j = 0; j < this.descendants.length; j++) {
             this.descendants[j].display();
+        }
+        
+        
+        //this.scene.textures[textureStack[textureStack.length - 1]].bind();
+
+        if(this.texture != "null" || this.texture != "clear"){
+            textureStack.pop();
         }
 
         if(this.material != "null")
