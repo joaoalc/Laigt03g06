@@ -51,9 +51,12 @@ class MyNode {
             //console.log(textureStack.length);
         }
         this.scene.materials[materialStack[materialStack.length - 1]].apply();
+        
         if(this.texture != "clear"){
             //this.scene.materials[materialStack[materialStack.length - 1]].setTexture(this.scene.textures[materialStack[materialStack.length - 1]]);
-            this.scene.textures[textureStack[textureStack.length - 1]].bind();
+            
+            if(textureStack[textureStack.length - 1] != null)
+                this.scene.textures[textureStack[textureStack.length - 1]].bind();
         }
         else{
             this.scene.textures[textureStack[textureStack.length - 1]].unbind();
@@ -62,7 +65,8 @@ class MyNode {
 
         //Display leaves if they exist
         for(var i = 0; i < this.leaves.length; i++) {
-            this.leaves[i].display();
+            if(this.leaves[i] != null)
+                this.leaves[i].display();
         }
 
         //console.log(this.scene.textures[textureStack[textureStack.length - 1]]);
@@ -79,7 +83,7 @@ class MyNode {
         
         //this.scene.textures[textureStack[textureStack.length - 1]].bind();
 
-        if(this.texture != "null" || this.texture != "clear"){
+        if(this.texture != "null") {
             textureStack.pop();
         }
 

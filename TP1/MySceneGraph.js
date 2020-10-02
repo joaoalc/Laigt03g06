@@ -659,6 +659,9 @@ class MySceneGraph {
             if (materialID != "null") {
                 if (this.materials[materialID] == null && materialID != "null")
                     return "invalid material ID on node " + nodeID;
+            } else {
+                if(nodeID == this.idRoot)
+                    return "root node must have a material";
             }
 
 

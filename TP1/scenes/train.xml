@@ -49,18 +49,18 @@
     <textures>
         <!--  NOTE: this block "TEXTURE" must be repeated as necessary with different "id"  -->
         <texture id="temp" path="./scenes/images/temp.png"/>
-        <texture id="ground_tex" path="./scenes/images/ground.png"/>
-        <texture id="wheel_tex" path="./scenes/images/wheel.png"/>
-        <texture id="wooden_rail_tex" path="./scenes/images/wood_rail.png"/>
-        <texture id="metal_rail_tex" path="./scenes/images/metal_rail.png"/>
-        <texture id="headlight_tex" path="./scenes/images/headlight.png"/>
-        <texture id="conductors_window_tex" path="./scenes/images/conductors_window.png"/>
-        <texture id="window_tex" path="./scenes/images/window.png"/>
-        <texture id="train_wall_tex" path="./scenes/images/train_wall.png"/>
-        <texture id="train_body_tex" path="./scenes/images/train_body.png"/>
-        <texture id="train_main_cylinder_tex" path="./scenes/images/train_main_cylinder.png"/>
-        <texture id="train_top_torus_tex" path="./scenes/images/train_top_torus.png"/>
-        <texture id="train_front_tex" path="./scenes/images/train_front.png"/>
+        <!--<texture id="ground_tex" path="./scenes/images/ground.png"/>-->
+        <!--<texture id="wheel_tex" path="./scenes/images/wheel.png"/>-->
+        <!--<texture id="wooden_rail_tex" path="./scenes/images/wood_rail.png"/>-->
+        <!--<texture id="metal_rail_tex" path="./scenes/images/metal_rail.png"/>-->
+        <!--<texture id="headlight_tex" path="./scenes/images/headlight.png"/>-->
+        <!--<texture id="conductors_window_tex" path="./scenes/images/conductors_window.png"/>-->
+        <!--<texture id="window_tex" path="./scenes/images/window.png"/>-->
+        <!--<texture id="train_wall_tex" path="./scenes/images/train_wall.png"/>-->
+        <!--<texture id="train_body_tex" path="./scenes/images/train_body.png"/>-->
+        <!--<texture id="train_main_cylinder_tex" path="./scenes/images/train_main_cylinder.png"/>-->
+        <!--<texture id="train_top_torus_tex" path="./scenes/images/train_top_torus.png"/>-->
+        <!--<texture id="train_front_tex" path="./scenes/images/train_front.png"/>-->
         <!-- Etc -->
     </textures>
     <materials>
@@ -93,7 +93,7 @@
             <!--  next two lines are mandatory  -->
             <material id="Generic"/>
                 <!--  this superimposes the material received from parent node id="null" maintains material from parent node  -->
-            <texture id="ground_tex">
+            <texture id="temp">
                 <!--  declared texture superimposes the texture received from parent node id="null" maintains texture from parent node id="clear" clears texture declaration received from parent node  -->
                 <amplification afs="2.0" aft="2.0"/>
                 <!--  for primitives = dx/afs, dy/aft  -->
@@ -173,7 +173,7 @@
         </node>
         <node id="train_cab">
             <material id="null"/>
-            <texture id="train_body_tex">
+            <texture id="temp">
             </texture>
             <transformations>
                 <translation x="-2.0" y="0.5" z="0"/>
@@ -187,7 +187,7 @@
 
         <node id="train_cab_main">
             <material id="null"/>
-            <texture id="train_body_tex">
+            <texture id="temp">
             </texture>
             <transformations>
                 <scale sx="2.25" sy="2.6" sz="2.25"/>
@@ -199,7 +199,7 @@
 
         <node id="train_cab_window_front">
             <material id="null"/>
-            <texture id="window_tex">
+            <texture id="temp">
             </texture>
             <transformations>
                 <translation x="1.125" y="0.8" z="0"/>
