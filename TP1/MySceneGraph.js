@@ -10,89 +10,6 @@ var MATERIALS_INDEX = 5;
 var NODES_INDEX = 6;
 
 
-
-// class Amplification{
-
-//     afs = 1.0;
-//     aft = 1.0;
-//     constructor(afs, aft){
-//         this.afs = afs;
-//         this.aft = aft;
-//     }
-// }
-
-// class Texture{
-
-//     texture_path = "";
-//     amplification_coordinates = new Coordinate(1.0, 1.0, 1.0);
-
-//     constructor(texture_path, amplification_coordinates){
-//         this.texture_path = texture_path;
-//         this.amplification_coordinates = amplification_coordinates;
-//     }
-// }
-
-// class Transformation{
-//     coords = new Coordinate(0, 0, 0);
-//     type = "";
-
-//     constructor(coords, type){
-//         this.coords = coords;
-//         this.type = type;
-//     }
-// }
-
-class NodeObject {
-    /*
-    * @param {string} id
-    * @param {string} texture_path
-    * @param {string} material
-    */
-
-    constructor(scene, texture, material, transformations, descendants, leaves) {
-        this.scene = scene;
-        this.texture = texture;
-        this.material = material;
-        this.transformations = transformations;
-        this.transfMatrix = mat4.create();
-        this.descendants = descendants;
-        this.leaves = leaves;
-
-        for(var i = 0; i < transformations.length; i++) {
-            if(transformations[i][0] == "t") {
-                console.log(transformations[i]);
-                mat4.translate(this.transfMatrix, this.transfMatrix, [transformations[i][1],transformations[i][2],transformations[i][3]]);
-            } else if(transformations[i][0] == "r") {
-                console.log(transformations[i]);
-                if(transformations[i][1] == "x")
-                    mat4.rotate(this.transfMatrix, this.transfMatrix, DEGREE_TO_RAD * transformations[i][2], [1,0,0]);
-                else if(transformations[i][1] == "y")
-                    mat4.rotate(this.transfMatrix, this.transfMatrix, DEGREE_TO_RAD * transformations[i][2], [0,1,0]);
-                else if(transformations[i][1] == "z")
-                    mat4.rotate(this.transfMatrix, this.transfMatrix, DEGREE_TO_RAD * transformations[i][2], [0,0,1]);
-            } else if(transformations[i][0] == "s") {
-                console.log(transformations[i]);
-                mat4.scale(this.transfMatrix, this.transfMatrix, [transformations[i][1],transformations[i][2],transformations[i][3]])
-            }
-        }
-    }
-
-    display() {
-        this.scene.pushMatrix();
-        this.scene.multMatrix(this.transfMatrix);
-        for(var i = 0; i < this.leaves.length; i++) {
-            this.leaves[i].display();
-        }
-
-        for(var j = 0; j < this.descendants.length; j++) {
-            this.descendants[j].display();
-        }
-        this.scene.popMatrix();
-        
-    }
-}
-
-
 /**
  * MySceneGraph class, representing the scene graph.
  */
@@ -614,7 +531,7 @@ class MySceneGraph {
 
                 if (attributeIndex != -1) {
                     if (attributeTypes[j] == "float")
-                        var aux = this.reader.getFloat(grandChildren[attributeIndex], "value", "shininess value for material ID " + materialID);
+                        var aux = this.reader.getFloat(grandChildren[attributeIndex], 'value');
                     else if (attributeTypes[j] == "color")
                         var aux = this.parseColor(grandChildren[attributeIndex], attributeNames[j] + " component for material ID" + materialID);
 
@@ -740,10 +657,9 @@ class MySceneGraph {
             }
 
             if (materialID != "null") {
-                if (this.materials[materialID] == null)
+                if (this.materials[materialID] == null && materialID != "null")
                     return "invalid material ID on node " + nodeID;
             }
-
 
 
             // Texture
@@ -820,7 +736,7 @@ class MySceneGraph {
                 }
             }
 
-            this.nodes[nodeID] = new NodeObject(this.scene, textureID, materialID, transformations, [], leaves);
+            this.nodes[nodeID] = new MyNode(this.scene, textureID, materialID, transformations, [], leaves);
             nodeChilds[nodeID] = descendants;
         }
 

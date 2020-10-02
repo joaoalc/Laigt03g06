@@ -23,9 +23,8 @@ class XMLscene extends CGFscene {
 
         this.initCameras();
 
+
         this.enableTextures(true);
-
-
 
 
         this.gl.clearDepth(100.0);
@@ -34,8 +33,7 @@ class XMLscene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
 
 
-        this.initTextures();
-        this.initMaterials();
+        
         this.initObjects();
         //this.testCylinder.setTexture
 
@@ -51,13 +49,28 @@ class XMLscene extends CGFscene {
     }
 
     initMaterials(){
-        this.testMat = new CGFappearance(this);
-        this.testMat.setAmbient(1, 1, 1, 1);
-        this.testMat.setDiffuse(0.1, 0.1, 0.1, 1);
-        this.testMat.setSpecular(0.1, 0.1, 0.1, 1);
-        this.testMat.setShininess(100.0);
-        this.testMat.setTexture(this.testTexture);
-        this.testMat.setTextureWrap('REPEAT', 'REPEAT');
+        // this.testMat = new CGFappearance(this);
+        // this.testMat.setAmbient(1, 1, 1, 1);
+        // this.testMat.setDiffuse(0.1, 0.1, 0.1, 1);
+        // this.testMat.setSpecular(0.1, 0.1, 0.1, 1);
+        // this.testMat.setShininess(100.0);
+        // this.testMat.setTexture(this.testTexture);
+        // this.testMat.setTextureWrap('REPEAT', 'REPEAT');
+        this.materials = [];
+
+        for(var key in this.graph.materials) {
+            var info = this.graph.materials[key];
+        
+            var mat = new CGFappearance(this);
+            mat.setShininess(info[0]);
+            mat.setSpecular(info[1][0], info[1][1], info[1][2]);
+            mat.setDiffuse(info[2][0], info[2][1], info[2][2]);
+            mat.setAmbient(info[3][0], info[3][1], info[3][2]);
+            mat.setEmission(info[4][0], info[4][1], info[4][2]);
+
+            this.materials[key] = mat;
+        }
+
     }
 
     initTextures(){
@@ -119,6 +132,8 @@ class XMLscene extends CGFscene {
         this.setGlobalAmbientLight(...this.graph.ambient);
 
         this.initLights();
+        this.initMaterials();
+        this.initTextures();
 
         this.sceneInited = true;
     }
@@ -152,7 +167,7 @@ class XMLscene extends CGFscene {
             // Draw axis
             this.axis.display();
  
-            this.testMat.apply();
+            // this.testMat.apply();
             this.defaultAppearance.apply();
             
             // Displays the scene (MySceneGraph function).

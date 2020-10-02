@@ -11,7 +11,8 @@ function getUrlVars() {
     return vars;
 }	 
 //Include additional files here
-serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js', 'MyInterface.js', 'MyRectangle.js', 'MyTriangle.js', 'MySphere.js', 'MyCylinder.js',
+serialInclude(['../lib/CGF.js', 'XMLscene.js', 'MySceneGraph.js', 'MyInterface.js', 'MyRectangle.js',
+                 'MyTriangle.js', 'MySphere.js', 'MyCylinder.js', 'MyNode.js',
 
 main=function()
 {
@@ -30,7 +31,7 @@ main=function()
 	// get file name provided in URL, e.g. http://localhost/myproj/?file=myfile.xml 
 	// or use "demo.xml" as default (assumes files in subfolder "scenes", check MySceneGraph constructor) 
 	
-    var filename=getUrlVars()['file'] || "TP1_Ficheiro_XSF.xml";
+    var filename=getUrlVars()['file'] || "demo.xml";
 
 	// create and load graph, and associate it to scene. 
 	// Check console for loading errors
