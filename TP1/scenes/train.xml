@@ -137,12 +137,96 @@
             <texture id="null">
             </texture>
             <transformations>
-                <rotation axis="y" angle="45"/>
-                <rotation axis="x" angle="90"/>
-                <translation x="0" y="0" z="-0.5"/>
+                <!--<rotation axis="y" angle="90"/>-->
+                <!--<rotation axis="x" angle="90"/>-->
+                <!--<translation x="0" y="0" z="0.5"/>-->
             </transformations>
             <descendants>
-                <leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>
+                <noderef id="rect1"></noderef>
+                <noderef id="rect2"></noderef>
+                <noderef id="rect3"></noderef>
+                <noderef id="rect4"></noderef>
+                <noderef id="rect5"></noderef>
+                <noderef id="rect6"></noderef>
+                <!--<leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> -->
+                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
+            </descendants>
+        </node>
+        <node id="rect1">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
+            </descendants>
+        </node>
+        <node id="rect2">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="90"/>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
+            </descendants>
+        </node>
+        <node id="rect3">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="180"/>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
+            </descendants>
+        </node>
+        <node id="rect4">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="270"/>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
+            </descendants>
+        </node>
+        <node id="rect5">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <rotation axis="x" angle="90"/>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
+            </descendants>
+        </node>
+        <node id="rect6">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <rotation axis="x" angle="270"/>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
             </descendants>
         </node>
 

@@ -83,7 +83,7 @@ class MyNode {
         
         //this.scene.textures[textureStack[textureStack.length - 1]].bind();
 
-        if(this.texture != "null") {
+        if(this.texture != "null" && this.texture != "clear"){
             textureStack.pop();
         }
 
