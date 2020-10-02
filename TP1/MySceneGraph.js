@@ -49,17 +49,37 @@ class NodeObject {
     * @param {string} material
     */
 
-    constructor(id, texture, material, transformations, descendants, leaves) {
-        this.id = id;
+    constructor(scene, texture, material, transformations, descendants, leaves) {
+        this.scene = scene;
         this.texture = texture;
         this.material = material;
         this.transformations = transformations;
         this.transfMatrix = mat4.create();
         this.descendants = descendants;
         this.leaves = leaves;
+
+        for(var i = 0; i < transformations.length; i++) {
+            if(transformations[i][0] == "t") {
+                console.log(transformations[i]);
+                mat4.translate(this.transfMatrix, this.transfMatrix, [transformations[i][1],transformations[i][2],transformations[i][3]]);
+            } else if(transformations[i][0] == "r") {
+                console.log(transformations[i]);
+                if(transformations[i][1] == "x")
+                    mat4.rotate(this.transfMatrix, this.transfMatrix, DEGREE_TO_RAD * transformations[i][2], [1,0,0]);
+                else if(transformations[i][1] == "y")
+                    mat4.rotate(this.transfMatrix, this.transfMatrix, DEGREE_TO_RAD * transformations[i][2], [0,1,0]);
+                else if(transformations[i][1] == "z")
+                    mat4.rotate(this.transfMatrix, this.transfMatrix, DEGREE_TO_RAD * transformations[i][2], [0,0,1]);
+            } else if(transformations[i][0] == "s") {
+                console.log(transformations[i]);
+                mat4.scale(this.transfMatrix, this.transfMatrix, [transformations[i][1],transformations[i][2],transformations[i][3]])
+            }
+        }
     }
 
     display() {
+        this.scene.pushMatrix();
+        this.scene.multMatrix(this.transfMatrix);
         for(var i = 0; i < this.leaves.length; i++) {
             this.leaves[i].display();
         }
@@ -67,6 +87,7 @@ class NodeObject {
         for(var j = 0; j < this.descendants.length; j++) {
             this.descendants[j].display();
         }
+        this.scene.popMatrix();
         
     }
 }
@@ -692,7 +713,7 @@ class MySceneGraph {
                     var angle = null;
 
                     axis = this.reader.getString(grandgrandChildren[k], 'axis');
-                    if(axis == null || (axis != "x" && axis != "y" && axis != "z" && axis != "xx" && axis != "yy" && axis != "zz"))
+                    if(axis == null || (axis != "x" && axis != "y" && axis != "z"))
                         return "unable to parse 'axis' component of rotation on node ID" + nodeID;
 
                     if((angle = this.reader.getFloat(grandgrandChildren[k], 'angle')) == null)
@@ -787,7 +808,6 @@ class MySceneGraph {
                     descendants.push(descendantID);
 
                 } else if(grandgrandChildren[n].nodeName == "leaf") {
-                    console.log(nodeID);
                     var leaf = this.parseLeaf(grandgrandChildren[n], " on node ID " + nodeID);
                     if(typeof leaf == 'string') {
                         //console.log(nodeID);
@@ -800,23 +820,22 @@ class MySceneGraph {
                 }
             }
 
-            this.nodes[nodeID] = new NodeObject(nodeID, textureID, materialID, transformations, [], leaves);
+            this.nodes[nodeID] = new NodeObject(this.scene, textureID, materialID, transformations, [], leaves);
             nodeChilds[nodeID] = descendants;
         }
 
-        for(var key of this.nodes.keys()) {
+
+        for(var key in this.nodes) {
             var childs = nodeChilds[key];
             var desc = []; 
-
             if(childs != null) {
                 for(var n = 0; n < childs.length; n++) {
                     if(this.nodes[childs[n]] == null)
                         return "invalid descendant ID on node ID " + nodeIDs[j];
     
-                    desc.push(this.nodes);
+                    desc.push(this.nodes[childs[n]]);
                 }
             }
-            console.log(desc);
             this.nodes[key].descendants = desc;
         }
 
@@ -829,7 +848,6 @@ class MySceneGraph {
         var attributeNames = [];
         var attributeTypes = [];
         var info = [];
-        console.log(type);
 
         if(type == "rectangle") {
             attributeNames = ["x1", "y1", "x2", "y2"];
@@ -853,9 +871,10 @@ class MySceneGraph {
                 info.push(attribute);
             }
             console.log("made triangle");
+            return new MyTriangle(this.scene, info[0], info[1], info[2], info[3], info[4], info[5]);
 
         } else if(type == "cylinder") {
-            attributeNames = ["height", "topRadius", "bottomRadius", "stacks", "slices"];
+            attributeNames = ["height", "bottomRadius", "topRadius", "slices", "stacks"];
             attributeTypes = ["float", "float", "float", "integer", "integer"];
 
             for(var i = 0; i < attributeNames.length; i++) {
@@ -869,8 +888,9 @@ class MySceneGraph {
                         return "unable to identify '" + attributeNames[i] + "' attribute on cylinder" + messageError;
                 }
                 info.push(attribute);
-
             }
+            console.log("made cylinder");
+            return new MyCylinder(this.scene, info[0], info[1], info[2], info[3], info[4], info[5]);
 
         } else if(type == "sphere") {
 

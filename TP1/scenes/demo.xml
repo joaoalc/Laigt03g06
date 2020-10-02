@@ -67,9 +67,9 @@
 
             <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
             <transformations>
-                <translation x="0" y="1.0" z="1.0" />
+                <translation x="1" y="0.0" z="0.0" />
                 <rotation axis="yy" angle="45" />
-                <scale sx="2" sy="1" sz="1" />
+                <scale sx="2" sy="1.0" sz="1.0" />
             </transformations>
 
             <!-- declaring descendants, at least one node or one leaf must be present
@@ -101,6 +101,7 @@
              descendants may be mixed, nodes and leafs -->
             <descendants>
                 <leaf type="triangle" x1="4" y1="1" x2="2" y2="3" x3="3" y3="5"/>
+                <leaf type="cylinder" height="2" topRadius="1" bottomRadius="3" stacks="10" slices="20"/>
                 <!-- x y z coordinates of each vertex -->
             </descendants>
         </node>

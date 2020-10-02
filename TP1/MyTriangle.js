@@ -11,7 +11,7 @@
  * @param z3 - z 
  */
 class MyTriangle extends CGFobject {
-	constructor(scene, x1, y1, x2, y2, x3, y3, z3) {
+	constructor(scene, x1, y1, x2, y2, x3, y3) {
 		super(scene);
 		this.x1 = x1;
         this.x2 = x2;
@@ -19,16 +19,15 @@ class MyTriangle extends CGFobject {
 		this.y1 = y1;
         this.y2 = y2;
         this.y3 = y3;
-        this.z3 = z3;
 
 		this.initBuffers();
 	}
 	
 	initBuffers() {
 		this.vertices = [
-			this.x1, this.y1, this.z3,	//0
-			this.x2, this.y2, this.z3,	//1
-			this.x3, this.y3, this.z3	//2
+			this.x1, this.y1, 0,	//0
+			this.x2, this.y2, 0,	//1
+			this.x3, this.y3, 0	//2
 		];
 
 		//Counter-clockwise reference of vertices
@@ -53,9 +52,9 @@ class MyTriangle extends CGFobject {
         t
         */
 
-        var a = Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2));
-        var b = Math.sqrt(Math.pow(x3-x2, 2) + Math.pow(y3-y2, 2));
-        var c = Math.sqrt(Math.pow(x1-x3, 2) + Math.pow(y1-y3, 2));
+        var a = Math.sqrt(Math.pow(this.x2-this.x1, 2) + Math.pow(this.y2-this.y1, 2));
+        var b = Math.sqrt(Math.pow(this.x3-this.x2, 2) + Math.pow(this.y3-this.y2, 2));
+        var c = Math.sqrt(Math.pow(this.x1-this.x3, 2) + Math.pow(this.y1-this.y3, 2));
 
         var cosA = (a*a - b*b + c*c)/(2.0*a*c);
 

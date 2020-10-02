@@ -37,7 +37,7 @@ class XMLscene extends CGFscene {
         this.initTextures();
         this.initMaterials();
         this.initObjects();
-        this.testCylinder.setTexture
+        //this.testCylinder.setTexture
 
 
         this.axis = new CGFaxis(this);
@@ -61,12 +61,12 @@ class XMLscene extends CGFscene {
     }
 
     initTextures(){
-        this.testTexture = new CGFtexture(this, 'scenes/images/Archer_96x96_upscaled_8x.png');
+        //this.testTexture = new CGFtexture(this, 'scenes/images/Archer_96x96_upscaled_8x.png');
     }
 
     /*Initializes the objects in the scene*/
     initObjects() {
-        this.testCylinder = new MyCylinder(this, 2, 2, 4, 16, 8);
+        //this.testCylinder = new MyCylinder(this, 2, 2, 4, 16, 8);
     }
 
     /**
@@ -153,11 +153,13 @@ class XMLscene extends CGFscene {
             this.axis.display();
  
             this.testMat.apply();
-            this.testCylinder.display();
             this.defaultAppearance.apply();
             
             // Displays the scene (MySceneGraph function).
             this.graph.displayScene();
+
+            //this.testCylinder.display();
+
         }
         else
         {
