@@ -290,7 +290,7 @@ class MySceneGraph {
                 continue;
             }
 
-            global.push(this.parseView(children[i]));
+            global.push(...this.parseView(children[i]));
 
             grandChildren = children[i].children;
             nodeNames = [];
@@ -303,7 +303,7 @@ class MySceneGraph {
                 var attributeIndex = nodeNames.indexOf(attributeNames[k]);
 
                 if (attributeIndex != -1) {
-                    global.push(this.parseCoordinates3D(grandChildren[attributeIndex]), attributeNames[k] + " component for view ID " + viewID);
+                    global.push(this.parseCoordinates3D(grandChildren[attributeIndex], attributeNames[k] + " component for view ID " + viewID));
                 }
                 else if (attributeNames[k] == "up") {
                     global.push(up);
@@ -952,7 +952,7 @@ class MySceneGraph {
             if (!(angle != null && !isNaN(angle)))
                 return "unable to parse 'angle' component of the " + messageError;
 
-            values = [near, far, angle];
+            values = ["p", near, far, angle];
 
         } else if (node.nodeName == "ortho") {
             var near = this.reader.getFloat(node, 'near');
@@ -962,6 +962,10 @@ class MySceneGraph {
             var far = this.reader.getFloat(node, 'far');
             if (!(far != null && !isNaN(far)))
                 return "unable to parse 'far' component of the " + messageError;
+
+            var top = this.reader.getFloat(node, 'top');
+            if (!(top != null && !isNaN(far)))
+                    return "unable to parse 'top' component of the " + messageError;
 
             var left = this.reader.getFloat(node, 'left');
             if (!(left != null && !isNaN(left)))
@@ -975,7 +979,7 @@ class MySceneGraph {
             if (!(bottom != null && !isNaN(bottom)))
                 return "unable to parse 'bottom' component of the " + messageError;
 
-            values = [near, far, left, right, bottom];
+            values = ["o", left, right, bottom, top, near, far];
         }
         else
             return null;
