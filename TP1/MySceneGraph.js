@@ -809,9 +809,26 @@ class MySceneGraph {
             return new MyCylinder(this.scene, info[0], info[1], info[2], info[3], info[4], info[5]);
 
         } else if(type == "sphere") {
+            attributeNames = ["radius", "slices", "stacks"];
+            attributeTypes = ["float", "integer", "integer"];
+
+            for(var i = 0; i < attributeNames.length; i++) {
+                if(attributeTypes[i] == "float") {
+                    var attribute = this.reader.getFloat(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on sphere " + messageError;
+                } else {
+                    var attribute = this.reader.getInteger(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on sphere " + messageError;
+                }
+                info.push(attribute);
+            }
+            console.log("made sphere");
+            return new MySphere(this.scene, info[0], info[1], info[2]);
 
         } else if(type == "torus") {
-
+            return null;
         } else 
             return "invalid leaf type";
     }
