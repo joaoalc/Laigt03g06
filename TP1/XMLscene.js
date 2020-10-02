@@ -53,8 +53,8 @@ class XMLscene extends CGFscene {
     initMaterials(){
         this.testMat = new CGFappearance(this);
         this.testMat.setAmbient(1, 1, 1, 1);
-        this.testMat.setDiffuse(0.1, 0.1, 0.1, 1);
-        this.testMat.setSpecular(0.1, 0.1, 0.1, 1);
+        this.testMat.setDiffuse(0.5, 0.5, 0.5, 1);
+        this.testMat.setSpecular(0.5, 0.5, 0.5, 1);
         this.testMat.setShininess(100.0);
         this.testMat.setTexture(this.testTexture);
         this.testMat.setTextureWrap('REPEAT', 'REPEAT');
@@ -66,7 +66,7 @@ class XMLscene extends CGFscene {
 
     /*Initializes the objects in the scene*/
     initObjects() {
-        this.testCylinder = new MyCylinder(this, 2, 2, 4, 16, 8);
+        this.testCylinder = new MyCylinder(this, 2, 4, 2, 12, 10);
     }
 
     /**
@@ -147,6 +147,7 @@ class XMLscene extends CGFscene {
             this.lights[i].enable();
         }
 
+        this.testCylinder.enableNormalViz();
         
         if (this.sceneInited) {
             // Draw axis
