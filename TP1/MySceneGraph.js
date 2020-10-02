@@ -54,12 +54,20 @@ class NodeObject {
         this.texture = texture;
         this.material = material;
         this.transformations = transformations;
+        this.transfMatrix = mat4.create();
         this.descendants = descendants;
         this.leaves = leaves;
     }
 
     display() {
+        for(var i = 0; i < this.leaves.length; i++) {
+            this.leaves[i].display();
+        }
 
+        for(var j = 0; j < this.descendants.length; j++) {
+            this.descendants[j].display();
+        }
+        
     }
 }
 
@@ -618,7 +626,6 @@ class MySceneGraph {
         var nodeNames = [];
 
         var nodeChilds = [];
-        var nodeIDs = [];
 
         // Any number of nodes.
         for (var i = 0; i < children.length; i++) {
@@ -780,30 +787,37 @@ class MySceneGraph {
                     descendants.push(descendantID);
 
                 } else if(grandgrandChildren[n].nodeName == "leaf") {
-                    
+                    console.log(nodeID);
+                    var leaf = this.parseLeaf(grandgrandChildren[n], " on node ID " + nodeID);
+                    if(typeof leaf == 'string') {
+                        //console.log(nodeID);
+                        return leaf;
+                    }
+                    leaves.push(leaf);
 
                 } else {
                     this.onXMLMinorError("unknown tag <" + grandgrandChildren[n].nodeName + ">");
                 }
             }
 
-            this.nodes[nodeID] = new NodeObject(nodeID, textureID, materialID, transformations, null);
+            this.nodes[nodeID] = new NodeObject(nodeID, textureID, materialID, transformations, [], leaves);
             nodeChilds[nodeID] = descendants;
-            nodeIDs.push(nodeID);
         }
 
-        for(var j = 0; j < nodeIDs.length; j++) {
-            var childs = nodeChilds[nodeIDs[j]];
+        for(var key of this.nodes.keys()) {
+            var childs = nodeChilds[key];
             var desc = []; 
 
-            for(var n = 0; n < childs.length; n++) {
-                if(this.nodes[childs[n]] == null)
-                    return "invalid descendant ID on node ID " + nodeIDs[j];
-
-                desc.push(this.nodes)
+            if(childs != null) {
+                for(var n = 0; n < childs.length; n++) {
+                    if(this.nodes[childs[n]] == null)
+                        return "invalid descendant ID on node ID " + nodeIDs[j];
+    
+                    desc.push(this.nodes);
+                }
             }
-
-            this.nodes[nodeIDs[j]].descendants = desc;
+            console.log(desc);
+            this.nodes[key].descendants = desc;
         }
 
         this.log("Parsed nodes");
@@ -811,12 +825,52 @@ class MySceneGraph {
 
     parseLeaf(node, messageError) {
         var type = this.reader.getString(node, 'type');
+        var attributeIndex = -1;
+        var attributeNames = [];
+        var attributeTypes = [];
+        var info = [];
+        console.log(type);
 
         if(type == "rectangle") {
+            attributeNames = ["x1", "y1", "x2", "y2"];
+
+            for(var i = 0; i < attributeNames.length; i++) {
+                var attribute = this.reader.getFloat(node, attributeNames[i]);
+                if (!(attribute != null && !isNaN(attribute)))
+                    return "unable to identify '" + attributeNames[i] + "' attribute on rectangle" + messageError;
+                info.push(attribute);
+            }
+            console.log("made rectangle");
+            return new MyRectangle(this.scene, info[0], info[1], info[2], info[3]);
             
         } else if(type == "triangle") {
+            attributeNames = ["x1", "y1", "x2", "y2", "x3", "y3"];
+
+            for(var i = 0; i < attributeNames.length; i++) {
+                var attribute = this.reader.getFloat(node, attributeNames[i]);
+                if (!(attribute != null && !isNaN(attribute)))
+                    return "unable to identify '" + attributeNames[i] + "' attribute on triangle" + messageError;
+                info.push(attribute);
+            }
+            console.log("made triangle");
 
         } else if(type == "cylinder") {
+            attributeNames = ["height", "topRadius", "bottomRadius", "stacks", "slices"];
+            attributeTypes = ["float", "float", "float", "integer", "integer"];
+
+            for(var i = 0; i < attributeNames.length; i++) {
+                if(attributeTypes[i] == "float") {
+                    var attribute = this.reader.getFloat(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on cylinder" + messageError;
+                } else {
+                    var attribute = this.reader.getInteger(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on cylinder" + messageError;
+                }
+                info.push(attribute);
+
+            }
 
         } else if(type == "sphere") {
 
@@ -824,8 +878,6 @@ class MySceneGraph {
 
         } else 
             return "invalid leaf type";
-
-        return null;
     }
 
 
@@ -982,6 +1034,6 @@ class MySceneGraph {
 
         //To do: Create display loop for transversing the scene graph, calling the root node's display function
 
-        //this.nodes[this.idRoot].display()
+        this.nodes[this.idRoot].display();
     }
 }
