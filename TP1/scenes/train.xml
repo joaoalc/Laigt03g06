@@ -49,6 +49,15 @@
     <textures>
         <!--  NOTE: this block "TEXTURE" must be repeated as necessary with different "id"  -->
         <texture id="temp" path="./scenes/images/temp.png"/>
+        <texture id="vidral" path="./scenes/images/vidral.jpg"/>
+        <texture id="skybox_left" path="./scenes/images/skybox/skybox_left.png"/>
+        <texture id="skybox_right" path="./scenes/images/skybox/skybox_right.png"/>
+        <texture id="skybox_front" path="./scenes/images/skybox/skybox_front.png"/>
+        <texture id="skybox_top" path="./scenes/images/skybox/skybox_top.png"/>
+        <texture id="skybox_back" path="./scenes/images/skybox/skybox_back.png"/>
+        <texture id="skybox_bottom" path="./scenes/images/skybox/skybox_bottom.png"/>
+        <texture id="tree_trunk" path="./scenes/images/trunk-image.jpg"/>
+        <texture id="tree_leaves" path="./scenes/images/leaves.jpg"/>
         <!--<texture id="ground_tex" path="./scenes/images/ground.png"/>-->
         <!--<texture id="wheel_tex" path="./scenes/images/wheel.png"/>-->
         <!--<texture id="wooden_rail_tex" path="./scenes/images/wood_rail.png"/>-->
@@ -69,6 +78,13 @@
             <shininess value="10.0"/>
             <ambient r="0.5" g="0.5" b="0.5" a="1.0"/>
             <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
+            <specular r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="sky">
+            <shininess value="10.0"/>
+            <ambient r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <diffuse r="0.2" g="0.2" b="0.2" a="1.0"/>
             <specular r="0.2" g="0.2" b="0.2" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
@@ -110,11 +126,12 @@
             <descendants>
                 <noderef id="train"/>
                 <noderef id="skybox"/>
+                <noderef id="trees"/>
                 <!--  "ss" is the identifier of a node or of leaf;  -->
                 <!--  may be repeated as necessary. It can refer an  -->
                 <!--  identifier of another node, before or later defined in the file.  -->
                 <!--  next lines define nodes of type leaf; may be repeated, in any order, as necessary  -->
-                <noderef id="ground_base"/>
+                <noderef id="ground"/>
                 
                 <!--  2D coordinates on the XY plane for left-top and right-bottom vertices.  -->
             </descendants>
@@ -122,26 +139,112 @@
 
         <!-- Skybox -->
         <node id="skybox">
-            <material id="null"/>
+            <material id="sky"/>
             <texture id="null">
             </texture>
             <transformations>
-                <translation x="0" y="2.7163" z="0"/>
+                <!--<translation x="0" y="7.7163" z="0"/>-->
             </transformations>
             <descendants>
                 <noderef id="skybox_top"/>    
+                <noderef id="skybox_front"/>  
+                <noderef id="skybox_right"/>  
+                <noderef id="skybox_left"/> 
+                <noderef id="skybox_back"/> 
+                <noderef id="skybox_bottom"/> 
             </descendants>
         </node>
 
         <node id="skybox_top">
             <material id="null"/>
-            <texture id="null">
+            <texture id="skybox_top">
             </texture>
             <transformations>
-                <translation x="0" y="7.7163" z="0"/>
+                <translation x="0" y="10" z="0"/>
+                <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_front">
+            <material id="null"/>
+            <texture id="skybox_front">
+            </texture>
+            <transformations>
+                <translation x="-10" y="0" z="0"/>
+                <rotation axis="y" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_right">
+            <material id="null"/>
+            <texture id="skybox_right">
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-10"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_left">
+            <material id="null"/>
+            <texture id="skybox_left">
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="10"/>
+                <rotation axis="y" angle="180"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_back">
+            <material id="null"/>
+            <texture id="skybox_back">
+            </texture>
+            <transformations>
+                <translation x="10" y="0" z="0"/>
+                <rotation axis="y" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_bottom">
+            <material id="null"/>
+            <texture id="skybox_bottom">
+            </texture>
+            <transformations>
+                <translation x="0" y="-10" z="0"/>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+            </descendants>
+        </node>
+
+
+        <!--ground-->
+
+        <node id="ground">
+            <material id="null"/>
+            <texture id="skybox_bottom">
+            </texture>
+            <transformations>
+                <translation x="0" y="-2.3" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="rails"/>
+                <noderef id="ground_base"/>
             </descendants>
         </node>
 
@@ -150,7 +253,6 @@
             <texture id="null">
             </texture>
             <transformations>
-                <translation x="0" y="-2.3" z="0"/>
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
@@ -794,6 +896,519 @@
             </transformations>
             <descendants>
                 <leaf type="torus" inner="0.05" outer="0.4" slices="40" loops="40"/>
+            </descendants>
+        </node>
+
+        <!-- Trees -->
+        <node id="trees">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="0" y="-2.3" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_1"/>
+                <noderef id="tree_2"/>
+                <noderef id="tree_3"/>
+                <noderef id="tree_4"/>
+                <noderef id="tree_5"/>
+            </descendants>
+        </node>
+
+        <node id="tree_1">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="-6" y="0" z="8"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_2">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="-8" y="0" z="3.5"/>
+                <scale sx="1.3" sy="1.75" sz="1.3"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_3">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="-3" y="0" z="-5"/>
+                <scale sx="1.3" sy="0.7" sz="1.3"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_4">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="-7" y="0" z="-7"/>
+                <scale sx="1.6" sy="2" sz="1.6"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_5">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="-6.5" y="0" z="-3"/>
+                <scale sx="1" sy="1.3" sz="1"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+        
+        <node id="tree">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_trunk"/>
+                <noderef id="tree_leaves"/>
+            </descendants>
+        </node>
+
+        <node id="tree_trunk">
+            <material id="null"/>
+            <texture id="tree_trunk">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="5.5" topRadius="0" bottomRadius="0.520" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves">
+            <material id="null"/>
+            <texture id="tree_leaves">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_1"/>
+                <noderef id="tree_leaves_2"/>
+                <noderef id="tree_leaves_3"/>
+                <noderef id="tree_leaves_4"/>
+                <noderef id="tree_leaves_5"/>
+                <noderef id="tree_leaves_6"/>
+                <noderef id="tree_leaves_7"/>
+                <noderef id="tree_leaves_8"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="45"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_3">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="90"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_4">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="135"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_5">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="180"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_6">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="225"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_7">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="270"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_8">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="315"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_base">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="1"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="1.7" y2="0" x3="0" y3="4.5"/>
+                <leaf type="triangle" x1="0" y1="0" x2="0" y2="4.5" x3="1.7" y3="0"/>
+            </descendants>
+        </node>
+
+
+        <!-- Rails -->
+        <node id="rails">
+        <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0.07" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="rails_planks"/>
+                <noderef id="rails_bars"/>
+            </descendants>
+        </node>
+
+        <node id="rails_bars">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="rails_bar_1"/>
+                <noderef id="rails_bar_2"/>
+            </descendants>
+        </node>
+
+        <node id="rails_bar_2">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.654"/>
+                <scale sx="20" sy="0.16" sz="0.16"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_bar_1">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.654"/>
+                <scale sx="20" sy="0.16" sz="0.16"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_planks">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.07" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="rails_plank_1"/>
+                <noderef id="rails_plank_2"/>
+                <noderef id="rails_plank_3"/>
+                <noderef id="rails_plank_4"/>
+                <noderef id="rails_plank_5"/>
+                <noderef id="rails_plank_6"/>
+                <noderef id="rails_plank_7"/>
+                <noderef id="rails_plank_8"/>
+                <noderef id="rails_plank_9"/>
+                <noderef id="rails_plank_10"/>
+                <noderef id="rails_plank_11"/>
+                <noderef id="rails_plank_12"/>
+                <noderef id="rails_plank_13"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_1">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="-9" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_2">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="-7.5" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_3">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="-6" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_4">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="-4.5" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_5">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="-3" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_6">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="-1.5" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_7">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_8">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="1.5" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_9">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="3" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_10">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="4.5" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_11">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="6" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_12">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="7.5" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_13">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="9" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
             </descendants>
         </node>
     </nodes>

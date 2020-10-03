@@ -750,7 +750,7 @@ class MySceneGraph {
             if(childs != null) {
                 for(var n = 0; n < childs.length; n++) {
                     if(this.nodes[childs[n]] == null)
-                        return "invalid descendant ID on node ID " + nodeIDs[j];
+                        return "invalid descendant ID " + childs[n] + " on node ID " + key;
     
                     desc.push(this.nodes[childs[n]]);
                 }
