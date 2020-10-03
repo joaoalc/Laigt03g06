@@ -61,6 +61,8 @@
         <texture id="wood" path="./scenes/images/wood.jpg"/>
         <texture id="grass" path="./scenes/images/grass.jpg"/>
         <texture id="train_furnace" path="./scenes/images/furnace.jpg"/>
+        <texture id="glass" path="./scenes/images/glass.jpg"/>
+        <texture id="main_cylinder" path="./scenes/images/main_cylinder.png"/>
         <!--<texture id="ground_tex" path="./scenes/images/ground.png"/>-->
         <!--<texture id="wheel_tex" path="./scenes/images/wheel.png"/>-->
         <!--<texture id="wooden_rail_tex" path="./scenes/images/wood_rail.png"/>-->
@@ -105,7 +107,7 @@
             <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
-        <material id="Glass">
+        <material id="glass">
             <shininess value="10.0"/>
             <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
             <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
@@ -513,8 +515,8 @@
         
 
         <node id="train_cab_window_front">
-            <material id="null"/>
-            <texture id="null">
+            <material id="glass"/>
+            <texture id="glass">
             </texture>
             <transformations>
                 <translation x="1.125" y="0.8" z="0"/>
@@ -922,10 +924,11 @@
         <!-- Train front -->
         <node id="train_main_cylinder">
             <material id="metal"/>
-            <texture id="null">
+            <texture id="main_cylinder">
             </texture>
             <transformations>
                 <translation x="0.5554" y="0.0" z="0.0"/>
+                <rotation axis="x" angle="90.0"/>
                 <rotation axis="y" angle="90.0"/>
                 <translation x="0.0" y="0" z="-1.5"/>
             </transformations>
