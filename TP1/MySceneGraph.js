@@ -599,8 +599,10 @@ class MySceneGraph {
             // Transformations
             var transformations = [];
 
-            if (transformationsIndex == -1)
-                return "no <transformations> tag for node ID " + nodeID;
+            //if (transformationsIndex == -1)
+            //    return "no <transformations> tag for node ID " + nodeID;
+
+            if (transformationsIndex != -1) {
 
             grandgrandChildren = grandChildren[transformationsIndex].children;
             for (var k = 0; k < grandgrandChildren.length; k++) {
@@ -646,7 +648,7 @@ class MySceneGraph {
                 transformations.push(transf);
             }
 
-
+            }
             // Material
             if (materialIndex == -1)
                 return "no <material> tag for node ID " + nodeID;

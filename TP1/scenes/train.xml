@@ -18,7 +18,7 @@
         </ortho>
     </views>
     <illumination>
-        <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
+        <ambient r="0.5" g="0.5" b="0.5" a="1.0"/>
         <!--  global ambient  -->
         <background r="0.1" g="0.7" b="1.0" a="1.0"/>
         <!--  background color  -->
@@ -57,7 +57,10 @@
         <texture id="skybox_back" path="./scenes/images/skybox/skybox_back.png"/>
         <texture id="skybox_bottom" path="./scenes/images/skybox/skybox_bottom.png"/>
         <texture id="tree_trunk" path="./scenes/images/trunk-image.jpg"/>
-        <texture id="tree_leaves" path="./scenes/images/leaves.jpg"/>
+        <texture id="tree_leaves" path="./scenes/images/tree_leaves.jpg"/>
+        <texture id="wood" path="./scenes/images/wood.jpg"/>
+        <texture id="grass" path="./scenes/images/grass.jpg"/>
+        <texture id="train_furnace" path="./scenes/images/furnace.jpg"/>
         <!--<texture id="ground_tex" path="./scenes/images/ground.png"/>-->
         <!--<texture id="wheel_tex" path="./scenes/images/wheel.png"/>-->
         <!--<texture id="wooden_rail_tex" path="./scenes/images/wood_rail.png"/>-->
@@ -83,9 +86,16 @@
         </material>
         <material id="sky">
             <shininess value="10.0"/>
-            <ambient r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <ambient r="0.9" g="0.9" b="0.9" a="1.0"/>
             <diffuse r="0.2" g="0.2" b="0.2" a="1.0"/>
             <specular r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <emissive r="0.6" g="0.6" b="0.6" a="1.0"/>
+        </material>
+        <material id="ground">
+            <shininess value="10.0"/>
+            <ambient r="0.7" g="0.7" b="0.7" a="1.0"/>
+            <diffuse r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <specular r="0.1" g="0.1" b="0.1" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
         <material id="metal">
@@ -237,7 +247,7 @@
 
         <node id="ground">
             <material id="null"/>
-            <texture id="skybox_bottom">
+            <texture id="grass">
             </texture>
             <transformations>
                 <translation x="0" y="-2.3" z="0"/>
@@ -399,23 +409,116 @@
 
         <node id="train_cab_main">
             <material id="null"/>
-            <texture id="temp">
+            <texture id="null">
             </texture>
             <transformations>
-                <scale sx="2.25" sy="2.6" sz="2.25"/>
+                <!--<scale sx="2.25" sy="2.6" sz="2.25"/>-->
+            </transformations>
+            <descendants>
+                <!--<noderef id="cube"/>-->
+                <noderef id="train_cab_front"/>
+                <noderef id="train_cab_left"/>
+                <noderef id="train_cab_right"/>
+                <noderef id="train_cab_furnace"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_front">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <translation x="1.05" y="0" z="0"/>
+                <scale sx="0.164" sy="2.7" sz="2"/>
             </transformations>
             <descendants>
                 <noderef id="cube"/>
             </descendants>
         </node>
 
+        <node id="train_cab_left">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.895"/>     
+            </transformations>
+            <descendants>
+                <noderef id="train_cab_side"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_right">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.895"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_cab_side"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train_cab_side_1"/>
+                <noderef id="train_cab_side_2"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_1">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <translation x="0.1" y="0.528" z="0"/>
+                <scale sx="1.88" sy="1.56" sz="0.2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_2">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <translation x="-0.2" y="-0.8" z="0"/>
+                <scale sx="2.4" sy="1.1" sz="0.2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_furnace">
+            <material id="null"/>
+            <texture id="train_furnace">
+            </texture>
+            <transformations>
+                <translation x="1.05" y="-0.9" z="0"/>
+                <scale sx="0.2" sy="0.86" sz="0.86"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+        
+
         <node id="train_cab_window_front">
             <material id="null"/>
-            <texture id="temp">
+            <texture id="null">
             </texture>
             <transformations>
                 <translation x="1.125" y="0.8" z="0"/>
-                <scale sx="0.05" sy="0.5" sz="1.9"/>
+                <scale sx="0.05" sy="0.5" sz="1.61"/>
             </transformations>
             <descendants>
                 <noderef id="cube"/> 
@@ -428,7 +531,7 @@
             </texture>
             <transformations>
                 <translation x="0" y="1.365" z="0"/>
-                <scale sx="2.47" sy="0.13" sz="2.47"/>
+                <scale sx="2.58" sy="0.13" sz="2.3"/>
             </transformations>
             <descendants>
                 <noderef id="cube"/>
@@ -1008,7 +1111,7 @@
             <transformations>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="5.5" topRadius="0" bottomRadius="0.520" stacks="30" slices="30"/>
+                <leaf type="cylinder" height="5.5" topRadius="0" bottomRadius="0.420" stacks="30" slices="30"/>
             </descendants>
         </node>
 
@@ -1166,7 +1269,7 @@
         </node>
 
         <node id="rails_bars">
-            <material id="null"/>
+            <material id="metal"/>
             <texture id="clear">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
@@ -1208,7 +1311,7 @@
 
         <node id="rails_planks">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="wood">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1233,7 +1336,7 @@
 
         <node id="rails_plank_1">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1247,7 +1350,7 @@
 
         <node id="rails_plank_2">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1261,7 +1364,7 @@
 
         <node id="rails_plank_3">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1275,7 +1378,7 @@
 
         <node id="rails_plank_4">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1289,7 +1392,7 @@
 
         <node id="rails_plank_5">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1303,7 +1406,7 @@
 
         <node id="rails_plank_6">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1317,7 +1420,7 @@
 
         <node id="rails_plank_7">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1330,7 +1433,7 @@
 
         <node id="rails_plank_8">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1344,7 +1447,7 @@
 
         <node id="rails_plank_9">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1358,7 +1461,7 @@
 
         <node id="rails_plank_10">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1372,7 +1475,7 @@
 
         <node id="rails_plank_11">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1386,7 +1489,7 @@
 
         <node id="rails_plank_12">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>
@@ -1400,7 +1503,7 @@
 
         <node id="rails_plank_13">
             <material id="null"/>
-            <texture id="clear">
+            <texture id="null">
                 <amplification afs="2.0" aft="2.0" />
             </texture>
             <transformations>

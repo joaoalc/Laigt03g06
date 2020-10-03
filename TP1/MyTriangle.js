@@ -61,8 +61,15 @@ class MyTriangle extends CGFobject {
 		this.texCoords = [
 			0, 0,
             a, 0,
-            c*cosA, c*(Math.sqrt(1.0-c*c)),
+            c*cosA, c*(Math.sqrt(1.0-cosA*cosA))
 		]
+
+		// this.texCoords = [
+		// 	0, 0,
+        //     1, 0,
+        //     1,1
+		// ]
+
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();
 	}
