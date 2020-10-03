@@ -59,7 +59,8 @@ class MyNode {
                 this.scene.textures[textureStack[textureStack.length - 1]].bind();
         }
         else{
-            this.scene.textures[textureStack[textureStack.length - 1]].unbind();
+            if(this.scene.textures[textureStack[textureStack.length - 1]] != null)
+                this.scene.textures[textureStack[textureStack.length - 1]].unbind();
         }
 
 

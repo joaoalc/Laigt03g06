@@ -101,8 +101,8 @@
         <material id="metal">
             <shininess value="10.0"/>
             <ambient r="0.3" g="0.3" b="0.3" a="1.0"/>
-            <diffuse r="0.9" g="0.9" b="0.9" a="1.0"/>
-            <specular r="0.4" g="0.5" b="0.55" a="1.0"/>
+            <diffuse r="0.7" g="0.7" b="0.7" a="1.0"/>
+            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
         <material id="Glass">
@@ -119,7 +119,7 @@
             <!--  next two lines are mandatory  -->
             <material id="Generic"/>
                 <!--  this superimposes the material received from parent node id="null" maintains material from parent node  -->
-            <texture id="temp">
+            <texture id="null">
                 <!--  declared texture superimposes the texture received from parent node id="null" maintains texture from parent node id="clear" clears texture declaration received from parent node  -->
                 <amplification afs="2.0" aft="2.0"/>
                 <!--  for primitives = dx/afs, dy/aft  -->
@@ -247,7 +247,7 @@
 
         <node id="ground">
             <material id="null"/>
-            <texture id="grass">
+            <texture id="null">
             </texture>
             <transformations>
                 <translation x="0" y="-2.3" z="0"/>
@@ -260,7 +260,7 @@
 
         <node id="ground_base">
             <material id="null"/>
-            <texture id="null">
+            <texture id="grass">
             </texture>
             <transformations>
                 <rotation axis="x" angle="90"/>
@@ -395,7 +395,7 @@
         </node>
         <node id="train_cab">
             <material id="null"/>
-            <texture id="temp">
+            <texture id="null">
             </texture>
             <transformations>
                 <translation x="-2.0" y="0.5" z="0"/>
