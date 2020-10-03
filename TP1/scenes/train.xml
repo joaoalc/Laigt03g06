@@ -109,6 +109,7 @@
                         descendants may be mixed, nodes and leafs  -->
             <descendants>
                 <noderef id="train"/>
+                <noderef id="skybox"/>
                 <!--  "ss" is the identifier of a node or of leaf;  -->
                 <!--  may be repeated as necessary. It can refer an  -->
                 <!--  identifier of another node, before or later defined in the file.  -->
@@ -116,6 +117,31 @@
                 <noderef id="ground_base"/>
                 
                 <!--  2D coordinates on the XY plane for left-top and right-bottom vertices.  -->
+            </descendants>
+        </node>
+
+        <!-- Skybox -->
+        <node id="skybox">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <translation x="0" y="2.7163" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="skybox_top"/>    
+            </descendants>
+        </node>
+
+        <node id="skybox_top">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <translation x="0" y="7.7163" z="0"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
             </descendants>
         </node>
 
