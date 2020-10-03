@@ -47,16 +47,27 @@ class MyTorus extends CGFobject { //This torus starts to be drawn in the inner l
                     phiSli = 0; //To make 125% sure floating point errors with phiSli don't affect the texture placement
                 }
                 xPos = (this.outerRadius - (this.innerRadius * Math.cos(phiLoop))) * Math.cos(phiSli);
-                yPos = (this.outerRadius + (this.innerRadius * Math.sin(phiLoop))) * Math.sin(phiLoop);
-                    
+                yPos = (this.outerRadius - (this.innerRadius * Math.cos(phiLoop))) * Math.sin(phiSli);
+                zPos = -Math.sin(phiLoop) * this.innerRadius;
+
                 this.vertices.push(xPos, yPos, zPos);
-                this.normals.push(0, 0.1, 0);
+                var normalLength = Math.sqrt((-Math.cos(phiLoop) * Math.cos(phiSli)) * (-Math.cos(phiLoop) * Math.cos(phiSli)) + (-Math.cos(phiLoop) * Math.sin(phiSli)) * (-Math.cos(phiLoop) * Math.sin(phiSli)) +  (-Math.sin(phiLoop)) * (-Math.sin(phiLoop)));
+                this.normals.push(-Math.cos(phiLoop) * Math.cos(phiSli) / normalLength, -Math.cos(phiLoop) * Math.sin(phiSli) / normalLength, -Math.sin(phiLoop) / normalLength);
+                this.texCoords.push(sl / this.slices, lo / this.loops);
                 phiSli += phiSliInc;
             }
+            phiSli = 0;
             phiLoop += phiLoopInc;
         }
+        phiLoop = 0;
 
-        
+
+        for(let lo = 0; lo < this.loops; lo++){
+            for(let sl = 0; sl < this.slices; sl++){
+                this.indices.push(lo * (this.slices + 1) + sl, lo * (this.slices + 1) +  sl + 1, lo * (this.slices + 1) +  sl + this.slices + 1);
+                this.indices.push(lo * (this.slices + 1) + sl + 1, lo * (this.slices + 1) +  sl + this.slices + 2, lo * (this.slices + 1) +  sl + this.slices + 1);
+            }
+        }   
 
 
         /* //Código de cilindro

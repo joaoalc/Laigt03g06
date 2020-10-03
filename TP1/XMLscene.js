@@ -66,7 +66,7 @@ class XMLscene extends CGFscene {
 
     /*Initializes the objects in the scene*/
     initObjects() {
-        this.testCylinder = new MyTorus(this, 0.5, 1, 11, 4);
+        this.testCylinder = new MyTorus(this, 0.5, 3, 11, 11);
     }
 
     /**
