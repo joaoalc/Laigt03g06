@@ -8,36 +8,31 @@
     </initials>
     <views default="defaultCamera"> <!-- Ver depois :O -->
         <perspective id="defaultCamera" near="0.1" far="500" angle="45">
-            <from x="30" y="15" z="30"/>
-            <to x="0" y="-2" z="0"/>
+            <from x="20" y="10" z="20"/>
+            <to x="0" y="0" z="0"/>
         </perspective>
-        <ortho id="demoOrtho" near="0.2" far="100" left="-0.2" right="0.2" top="0.2" bottom="-0.2">
+        <perspective id="perspective1" near="0.1" far="500" angle="45">
+            <from x="15" y="15" z="15"/>
+            <to x="0" y="0" z="0"/>
+        </perspective>
+        <perspective id="perspective2" near="0.1" far="500" angle="45">
+            <from x="-25" y="5" z="-3"/>
+            <to x="0" y="0" z="0"/>
+        </perspective>
+        <perspective id="perspective3" near="0.1" far="500" angle="45">
+            <from x="20" y="10" z="-20"/>
+            <to x="0" y="0" z="0"/>
+        </perspective>
+        <ortho id="ortho1" near="0.2" far="100" left="-0.2" right="0.2" top="0.2" bottom="-0.2">
             <from x="5" y="0" z="10"/>
             <to x="5" y="0" z="0"/>
-            <!-- up is optional, default 0,1,0  -->
         </ortho>
     </views>
     <illumination>
         <ambient r="0.5" g="0.5" b="0.5" a="1.0"/>
-        <!--  global ambient  -->
         <background r="0.1" g="0.7" b="1.0" a="1.0"/>
-        <!--  background color  -->
     </illumination>
     <lights>
-        <!-- MAXIMO DE OITO LUZES N INVENTEM SMH -->
-        <!--    <light id="Train_Headlight"> -->
-            <!--  light identifier  -->
-        <!--    <enable value="1"/> -->
-            <!--  enable/disable  -->
-        <!--    <position x="2" y="0" z="1.08" w="1.0"/> --> <!-- Alterar posicao da luz quando se alterar a posicao do comboio -->
-            <!--  light position; w=1: point light; w=0: directional light  -->
-        <!--    <ambient r="0" g="0" b="0" a="1.0"/>-->
-            <!--  ambient component  -->
-        <!--    <diffuse r="1.0" g="1.0" b="1.0" a="1.0"/>-->
-            <!--  diffuse component  -->
-        <!--    <specular r="1.0" g="1.0" b="1.0" a="1.0"/>-->
-            <!--  specular component  -->
-        <!-- </light> -->
         <light id="headlight">
             <enable value="1"/>
             <position x="2.4127" y="1.086" z="0" w="1.0" />
@@ -72,24 +67,9 @@
         <texture id="train_front_1" path="./scenes/images/train_front_1.png"/>
         <texture id="pebbles" path="./scenes/images/pebbles2.jpg"/>
         <texture id="headlight" path="./scenes/images/headlight1.jpg"/>
-        <texture id="earth" path="./scenes/images/earth.jpg"/>
         <texture id="main_sphere" path="./scenes/images/main_sphere.png"/>
-        <!--<texture id="ground_tex" path="./scenes/images/ground.png"/>-->
-        <!--<texture id="wheel_tex" path="./scenes/images/wheel.png"/>-->
-        <!--<texture id="wooden_rail_tex" path="./scenes/images/wood_rail.png"/>-->
-        <!--<texture id="metal_rail_tex" path="./scenes/images/metal_rail.png"/>-->
-        <!--<texture id="headlight_tex" path="./scenes/images/headlight.png"/>-->
-        <!--<texture id="conductors_window_tex" path="./scenes/images/conductors_window.png"/>-->
-        <!--<texture id="window_tex" path="./scenes/images/window.png"/>-->
-        <!--<texture id="train_wall_tex" path="./scenes/images/train_wall.png"/>-->
-        <!--<texture id="train_body_tex" path="./scenes/images/train_body.png"/>-->
-        <!--<texture id="train_main_cylinder_tex" path="./scenes/images/train_main_cylinder.png"/>-->
-        <!--<texture id="train_top_torus_tex" path="./scenes/images/train_top_torus.png"/>-->
-        <!--<texture id="train_front_tex" path="./scenes/images/train_front.png"/>-->
-        <!-- Etc -->
     </textures>
     <materials>
-    <!--  NOTE: the "MATERIAL" block may be repeated as required. Each defined material requires a distinct "id". At least one material should be present.  -->
         <material id="Generic">
             <shininess value="10.0"/>
             <ambient r="0.5" g="0.5" b="0.5" a="1.0"/>
@@ -133,10 +113,10 @@
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
         <material id="glass">
-            <shininess value="10.0"/>
+            <shininess value="20.0"/>
             <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
-            <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
-            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <diffuse r="0.7" g="0.7" b="0.7" a="1.0"/>
+            <specular r="0.9" g="0.9" b="0.9" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
         <material id="black_metal">
@@ -170,35 +150,17 @@
     </materials>
     <nodes>
         <node id="RootNode">
-            <!--  defines one intermediate node; may be repeated as necessary  -->
-            <!--  next two lines are mandatory  -->
             <material id="Generic"/>
-                <!--  this superimposes the material received from parent node id="null" maintains material from parent node  -->
             <texture id="null">
-                <!--  declared texture superimposes the texture received from parent node id="null" maintains texture from parent node id="clear" clears texture declaration received from parent node  -->
                 <amplification afs="1.0" aft="1.0"/>
-                <!--  for primitives = dx/afs, dy/aft  -->
             </texture>
-            <!--  geom. transf. are optional and may be repeated, in any order, as necessary:  -->
             <transformations>
-            <!--
-                <translation x="0" y="1.0" z="1.0"/>
-                <rotation axis="yy" angle="45"/>
-                <scale sx="2" sy="1" sz="1"/>-->
             </transformations>
-            <!--  declaring descendants, at least one node or one leaf must be present
-                        descendants may be mixed, nodes and leafs  -->
             <descendants>
                 <noderef id="train"/>
                 <noderef id="skybox"/>
                 <noderef id="trees"/>
-                <!--  "ss" is the identifier of a node or of leaf;  -->
-                <!--  may be repeated as necessary. It can refer an  -->
-                <!--  identifier of another node, before or later defined in the file.  -->
-                <!--  next lines define nodes of type leaf; may be repeated, in any order, as necessary  -->
                 <noderef id="ground"/>
-                
-                <!--  2D coordinates on the XY plane for left-top and right-bottom vertices.  -->
             </descendants>
         </node>
 
@@ -208,7 +170,6 @@
             <texture id="null">
             </texture>
             <transformations>
-                <!--<translation x="0" y="7.7163" z="0"/>-->
             </transformations>
             <descendants>
                 <noderef id="skybox_top"/>    
@@ -298,7 +259,7 @@
         </node>
 
 
-        <!--ground-->
+        <!--Ground-->
 
         <node id="ground">
             <material id="groundMat"/>
@@ -340,14 +301,12 @@
             </descendants>
         </node>
 
+        <!-- Generic cube node -->
         <node id="cube">
             <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
-                <!--<rotation axis="y" angle="90"/>-->
-                <!--<rotation axis="x" angle="90"/>-->
-                <!--<translation x="0" y="0" z="0.5"/>-->
             </transformations>
             <descendants>
                 <noderef id="rect1"></noderef>
@@ -356,8 +315,6 @@
                 <noderef id="rect4"></noderef>
                 <noderef id="rect5"></noderef>
                 <noderef id="rect6"></noderef>
-                <!--<leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> -->
-                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
             </descendants>
         </node>
         <node id="rect1">
@@ -369,7 +326,6 @@
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
-                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
             </descendants>
         </node>
         <node id="rect2">
@@ -382,7 +338,6 @@
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
-                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
             </descendants>
         </node>
         <node id="rect3">
@@ -395,7 +350,6 @@
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
-                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
             </descendants>
         </node>
         <node id="rect4">
@@ -408,7 +362,6 @@
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
-                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
             </descendants>
         </node>
         <node id="rect5">
@@ -421,7 +374,6 @@
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
-                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
             </descendants>
         </node>
         <node id="rect6">
@@ -434,30 +386,18 @@
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
-                <!--<leaf type="cylinder" bottomRadius="0.71" topRadius="0.71" height="1" slices="4" stacks="1"/>-->
             </descendants>
         </node>
 
+        <!--Train-->
         <node id="train">
-            <!--  defines one intermediate node; may be repeated as necessary  -->
-            <!--  next two lines are mandatory  -->
             <material id="metal"/>
-                <!--  this superimposes the material received from parent node id="null" maintains material from parent node  -->
             <texture id="null">
-                <!--  declared texture superimposes the texture received from parent node id="null" maintains texture from parent node id="clear" clears texture declaration received from parent node  -->
-                <!--<amplification afs="2.0" aft="2.0"/> -->
-                <!--  for primitives = dx/afs, dy/aft  -->
             </texture>
-            <!--  geom. transf. are optional and may be repeated, in any order, as necessary:  -->
             <transformations>
-                <!--<translation x="2" y="0.0" z="2.0"/> -->
+                <translation x="0" y="-0.05" z="0"/>
             </transformations>
-            <!--  declaring descendants, at least one node or one leaf must be present
-                        descendants may be mixed, nodes and leafs  -->
             <descendants>
-                <!--<leaf type="triangle" x1="ff" y1="ff" x2="ff" y2="ff" x3="ff" y3="ff" z3="ff"/> -->
-                <!--  x y z coordinates of each vertex  -->
-
                 <noderef id="train_cab"/>
                 <noderef id="train_bottom"/>
                 <noderef id="train_front"/>
@@ -481,10 +421,8 @@
             <texture id="null">
             </texture>
             <transformations>
-                <!--<scale sx="2.25" sy="2.6" sz="2.25"/>-->
             </transformations>
             <descendants>
-                <!--<noderef id="cube"/>-->
                 <noderef id="train_cab_front"/>
                 <noderef id="train_cab_left"/>
                 <noderef id="train_cab_right"/>
@@ -492,22 +430,6 @@
                 <noderef id="train_cab_floor"/>
             </descendants>
         </node>
-
-        <!--old cab front-->
-        <!--
-        <node id="train_cab_front">
-            <material id="null"/>
-            <texture id="null">
-            </texture>
-            <transformations>
-                <translation x="1.05" y="0" z="0"/>
-                <scale sx="0.164" sy="2.7" sz="2"/>
-            </transformations>
-            <descendants>
-                <noderef id="cube"/>
-            </descendants>
-        </node>
-        -->
 
         <node id="train_cab_floor">
             <material id="null"/>
@@ -714,34 +636,7 @@
                 <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
             </descendants>
         </node>
-        <!--old cab side-->
-        <!--
-        <node id="train_cab_side_1">
-            <material id="null"/>
-            <texture id="null">
-            </texture>
-            <transformations>
-                <translation x="0.1" y="0.528" z="0"/>
-                <scale sx="1.88" sy="1.56" sz="0.2"/>
-            </transformations>
-            <descendants>
-                <noderef id="cube"/>
-            </descendants>
-        </node>
-       
-        <node id="train_cab_side_2">
-            <material id="null"/>
-            <texture id="null">
-            </texture>
-            <transformations>
-                <translation x="-0.2" y="-0.8" z="0"/>
-                <scale sx="2.4" sy="1.1" sz="0.2"/>
-            </transformations>
-            <descendants>
-                <noderef id="cube"/>
-            </descendants>
-        </node>
-        -->
+
         <node id="train_cab_furnace">
             <material id="null"/>
             <texture id="train_furnace">
@@ -754,9 +649,6 @@
                 <noderef id="cube"/>
             </descendants>
         </node>
-        
-
-        
 
         <node id="train_cab_top">
             <material id="black_metal"/>
@@ -1548,7 +1440,7 @@
                 <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
-                <translation x="0" y="0" z="0.654"/>
+                <translation x="0" y="0" z="0.62"/>
                 <scale sx="20" sy="0.16" sz="0.16"/>
             </transformations>
             <descendants>
@@ -1562,7 +1454,7 @@
                 <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
-                <translation x="0" y="0" z="-0.654"/>
+                <translation x="0" y="0" z="-0.62"/>
                 <scale sx="20" sy="0.16" sz="0.16"/>
             </transformations>
             <descendants>
