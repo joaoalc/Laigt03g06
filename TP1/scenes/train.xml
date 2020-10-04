@@ -67,8 +67,13 @@
         <texture id="metal_grip" path="./scenes/images/metal_grip.jpg"/>
         <texture id="train_side_1" path="./scenes/images/train_side_1.png"/>
         <texture id="train_side_2" path="./scenes/images/train_side_2.png"/>
+        <texture id="train_side_1_2" path="./scenes/images/train_side_1_2.png"/>
+        <texture id="train_side_2_2" path="./scenes/images/train_side_2_2.png"/>
         <texture id="train_front_1" path="./scenes/images/train_front_1.png"/>
         <texture id="pebbles" path="./scenes/images/pebbles2.jpg"/>
+        <texture id="headlight" path="./scenes/images/headlight1.jpg"/>
+        <texture id="earth" path="./scenes/images/earth.jpg"/>
+        <texture id="main_sphere" path="./scenes/images/main_sphere.png"/>
         <!--<texture id="ground_tex" path="./scenes/images/ground.png"/>-->
         <!--<texture id="wheel_tex" path="./scenes/images/wheel.png"/>-->
         <!--<texture id="wooden_rail_tex" path="./scenes/images/wood_rail.png"/>-->
@@ -99,7 +104,7 @@
             <specular r="0.2" g="0.2" b="0.2" a="1.0"/>
             <emissive r="0.6" g="0.6" b="0.6" a="1.0"/>
         </material>
-        <material id="ground">
+        <material id="groundMat">
             <shininess value="10.0"/>
             <ambient r="0.7" g="0.7" b="0.7" a="1.0"/>
             <diffuse r="0.8" g="0.8" b="0.8" a="1.0"/>
@@ -155,6 +160,13 @@
             <specular r="0" g="0" b="0" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
+        <material id="glass_headlight">
+            <shininess value="10.0"/>
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
+            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.9" g="0.9" b="0.9" a="1.0"/>
+        </material>
     </materials>
     <nodes>
         <node id="RootNode">
@@ -164,7 +176,7 @@
                 <!--  this superimposes the material received from parent node id="null" maintains material from parent node  -->
             <texture id="null">
                 <!--  declared texture superimposes the texture received from parent node id="null" maintains texture from parent node id="clear" clears texture declaration received from parent node  -->
-                <amplification afs="2.0" aft="2.0"/>
+                <amplification afs="1.0" aft="1.0"/>
                 <!--  for primitives = dx/afs, dy/aft  -->
             </texture>
             <!--  geom. transf. are optional and may be repeated, in any order, as necessary:  -->
@@ -289,7 +301,7 @@
         <!--ground-->
 
         <node id="ground">
-            <material id="null"/>
+            <material id="groundMat"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -320,7 +332,7 @@
             </texture>
             <transformations>
                 <translation x="0" y="0" z="0"/>
-                <scale sx="20" sy="0.0005" sz="2.5"/>
+                <scale sx="20" sy="0.01" sz="2.5"/>
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
@@ -622,7 +634,7 @@
 
         <node id="train_cab_side_2">
             <material id="null"/>
-            <texture id="train_side_1">
+            <texture id="train_side_1_2">
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-0.1"/>
@@ -649,7 +661,7 @@
 
         <node id="train_cab_side_4">
             <material id="null"/>
-            <texture id="train_side_2">
+            <texture id="train_side_2_2">
             </texture>
             <transformations>
                 <translation x="-1.36" y="-0.9" z="-0.1"/>
@@ -1157,12 +1169,11 @@
 
         <node id="train_main_sphere">
             <material id="metal"/>
-            <texture id="null">
+            <texture id="main_sphere">
             </texture>
             <transformations>
-                <translation x="2.0" y="0.0" z="0.0"/>
-                <scale sx="0.5" sy="1.0" sz="1.0"/>
-                <rotation axis="y" angle="90"/>
+                <translation x="2.07" y="0.0" z="0.0"/>
+                <scale sx="0.5" sy="0.98" sz="0.98"/>
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
@@ -1183,7 +1194,7 @@
         </node>
 
         <node id="train_headlight">
-            <material id="metal"/>
+            <material id="black_metal"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -1192,7 +1203,23 @@
                 <translation x="0.0" y="0.0" z="-0.375"/>
             </transformations>
             <descendants>
+                <noderef id="train_headlight_sphere"/>
                 <leaf type="cylinder" height="0.75" topRadius="0.16" bottomRadius="0.16" stacks="1" slices="40"/>
+            </descendants>
+        </node>
+
+        <node id="train_headlight_sphere">
+            <material id="glass_headlight"/>
+            <texture id="headlight">
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.745"/>
+                <scale sx="1" sy="1" sz="0.6"/>
+                <rotation axis="y" angle="-90"/>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="0.16" slices="20" stacks="20"/>
             </descendants>
         </node>
 
@@ -1240,7 +1267,7 @@
         <node id="trees">
             <material id="null"/>
             <texture id="clear">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="0" y="-2.3" z="0"/>
@@ -1257,7 +1284,7 @@
         <node id="tree_1">
             <material id="null"/>
             <texture id="clear">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="-6" y="0" z="8"/>
@@ -1270,7 +1297,7 @@
         <node id="tree_2">
             <material id="null"/>
             <texture id="clear">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="-8" y="0" z="3.5"/>
@@ -1284,7 +1311,7 @@
         <node id="tree_3">
             <material id="null"/>
             <texture id="clear">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="-3" y="0" z="-5"/>
@@ -1298,7 +1325,7 @@
         <node id="tree_4">
             <material id="null"/>
             <texture id="clear">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="-7" y="0" z="-7"/>
@@ -1312,7 +1339,7 @@
         <node id="tree_5">
             <material id="null"/>
             <texture id="clear">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="-6.5" y="0" z="-3"/>
@@ -1326,7 +1353,7 @@
         <node id="tree">
             <material id="null"/>
             <texture id="clear">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <rotation axis="x" angle="-90"/>
@@ -1340,7 +1367,7 @@
         <node id="tree_trunk">
             <material id="null"/>
             <texture id="tree_trunk">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
             </transformations>
@@ -1352,7 +1379,7 @@
         <node id="tree_leaves">
             <material id="null"/>
             <texture id="tree_leaves">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
             </transformations>
@@ -1371,7 +1398,7 @@
         <node id="tree_leaves_1">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
             </transformations>
@@ -1383,7 +1410,7 @@
         <node id="tree_leaves_2">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <rotation axis="z" angle="45"/>
@@ -1396,7 +1423,7 @@
         <node id="tree_leaves_3">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <rotation axis="z" angle="90"/>
@@ -1409,7 +1436,7 @@
         <node id="tree_leaves_4">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <rotation axis="z" angle="135"/>
@@ -1422,7 +1449,7 @@
         <node id="tree_leaves_5">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <rotation axis="z" angle="180"/>
@@ -1435,7 +1462,7 @@
         <node id="tree_leaves_6">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <rotation axis="z" angle="225"/>
@@ -1448,7 +1475,7 @@
         <node id="tree_leaves_7">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <rotation axis="z" angle="270"/>
@@ -1461,7 +1488,7 @@
         <node id="tree_leaves_8">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <rotation axis="z" angle="315"/>
@@ -1474,7 +1501,7 @@
         <node id="tree_leaves_base">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="0" y="0" z="1"/>
@@ -1491,7 +1518,7 @@
         <node id="rails">
         <material id="null"/>
             <texture id="clear">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="0" y="0.07" z="0"/>
@@ -1505,7 +1532,7 @@
         <node id="rails_bars">
             <material id="metal"/>
             <texture id="clear">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
             </transformations>
@@ -1518,7 +1545,7 @@
         <node id="rails_bar_2">
             <material id="null"/>
             <texture id="clear">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="0" y="0" z="0.654"/>
@@ -1532,7 +1559,7 @@
         <node id="rails_bar_1">
             <material id="null"/>
             <texture id="clear">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-0.654"/>
@@ -1546,7 +1573,7 @@
         <node id="rails_planks">
             <material id="null"/>
             <texture id="wood">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="0" y="-0.07" z="0"/>
@@ -1571,7 +1598,7 @@
         <node id="rails_plank_1">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="-9" y="0" z="0"/>
@@ -1585,7 +1612,7 @@
         <node id="rails_plank_2">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="-7.5" y="0" z="0"/>
@@ -1599,7 +1626,7 @@
         <node id="rails_plank_3">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="-6" y="0" z="0"/>
@@ -1613,7 +1640,7 @@
         <node id="rails_plank_4">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="-4.5" y="0" z="0"/>
@@ -1627,7 +1654,7 @@
         <node id="rails_plank_5">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="-3" y="0" z="0"/>
@@ -1641,7 +1668,7 @@
         <node id="rails_plank_6">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="-1.5" y="0" z="0"/>
@@ -1655,7 +1682,7 @@
         <node id="rails_plank_7">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <scale sx="0.4" sy="0.1" sz="2"/>
@@ -1668,7 +1695,7 @@
         <node id="rails_plank_8">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="1.5" y="0" z="0"/>
@@ -1682,7 +1709,7 @@
         <node id="rails_plank_9">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="3" y="0" z="0"/>
@@ -1696,7 +1723,7 @@
         <node id="rails_plank_10">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="4.5" y="0" z="0"/>
@@ -1710,7 +1737,7 @@
         <node id="rails_plank_11">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="6" y="0" z="0"/>
@@ -1724,7 +1751,7 @@
         <node id="rails_plank_12">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="7.5" y="0" z="0"/>
@@ -1738,7 +1765,7 @@
         <node id="rails_plank_13">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="2.0" aft="2.0" />
+                <amplification afs="1.0" aft="1.0" />
             </texture>
             <transformations>
                 <translation x="9" y="0" z="0"/>
