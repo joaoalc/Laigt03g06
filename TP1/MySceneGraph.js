@@ -833,7 +833,23 @@ class MySceneGraph {
             return new MySphere(this.scene, info[0], info[1], info[2]);
 
         } else if(type == "torus") {
-            return null;
+            attributeNames = ["inner", "outer", "slices", "loops"];
+            attributeTypes = ["float", "float", "integer", "integer"];
+
+            for(var i = 0; i < attributeNames.length; i++) {
+                if(attributeTypes[i] == "float") {
+                    var attribute = this.reader.getFloat(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on torus " + messageError;
+                } else {
+                    var attribute = this.reader.getInteger(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on torus " + messageError;
+                }
+                info.push(attribute);
+            }
+            console.log("made torus");
+            return new MyTorus(this.scene, info[0], info[1], info[2], info[3]);
         } else 
             return "invalid leaf type";
     }

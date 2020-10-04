@@ -63,6 +63,12 @@
         <texture id="train_furnace" path="./scenes/images/furnace.jpg"/>
         <texture id="glass" path="./scenes/images/glass.jpg"/>
         <texture id="main_cylinder" path="./scenes/images/main_cylinder.png"/>
+        <texture id="train_inside" path="./scenes/images/train_inside.jpg"/>
+        <texture id="metal_grip" path="./scenes/images/metal_grip.jpg"/>
+        <texture id="train_side_1" path="./scenes/images/train_side_1.png"/>
+        <texture id="train_side_2" path="./scenes/images/train_side_2.png"/>
+        <texture id="train_front_1" path="./scenes/images/train_front_1.png"/>
+        <texture id="pebbles" path="./scenes/images/pebbles2.jpg"/>
         <!--<texture id="ground_tex" path="./scenes/images/ground.png"/>-->
         <!--<texture id="wheel_tex" path="./scenes/images/wheel.png"/>-->
         <!--<texture id="wooden_rail_tex" path="./scenes/images/wood_rail.png"/>-->
@@ -107,11 +113,46 @@
             <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
+        <material id="metal_wheels">
+            <shininess value="10.0"/>
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <diffuse r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="metal_axles">
+            <shininess value="10.0"/>
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0"/>
+            <diffuse r="0.1" g="0.1" b="0.1" a="1.0"/>
+            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
         <material id="glass">
             <shininess value="10.0"/>
             <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
             <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
             <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="black_metal">
+            <shininess value="10.0"/>
+            <ambient r="0.05" g="0.05" b="0.05" a="1.0"/>
+            <diffuse r="0" g="0" b="0" a="1.0"/>
+            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="grey_metal">
+            <shininess value="10.0"/>
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <diffuse r="0" g="0" b="0" a="1.0"/>
+            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="black_hole">
+            <shininess value="10.0"/>
+            <ambient r="0" g="0" b="0" a="1.0"/>
+            <diffuse r="0" g="0" b="0" a="1.0"/>
+            <specular r="0" g="0" b="0" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
     </materials>
@@ -257,6 +298,7 @@
             <descendants>
                 <noderef id="rails"/>
                 <noderef id="ground_base"/>
+                <noderef id="ground_pebbles"/>
             </descendants>
         </node>
 
@@ -269,6 +311,20 @@
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-10" y1="10" x2="10" y2="-10"/>
+            </descendants>
+        </node>
+
+        <node id="ground_pebbles">
+            <material id="null"/>
+            <texture id="pebbles">
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0"/>
+                <scale sx="20" sy="0.0005" sz="2.5"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
             </descendants>
         </node>
 
@@ -400,11 +456,10 @@
             <texture id="null">
             </texture>
             <transformations>
-                <translation x="-2.0" y="0.5" z="0"/>
+                <translation x="-1.9" y="0.5" z="0"/>
             </transformations>
             <descendants>
                 <noderef id="train_cab_main"/>
-                <noderef id="train_cab_window_front"/>
                 <noderef id="train_cab_top"/>
             </descendants>
         </node>
@@ -422,9 +477,12 @@
                 <noderef id="train_cab_left"/>
                 <noderef id="train_cab_right"/>
                 <noderef id="train_cab_furnace"/>
+                <noderef id="train_cab_floor"/>
             </descendants>
         </node>
 
+        <!--old cab front-->
+        <!--
         <node id="train_cab_front">
             <material id="null"/>
             <texture id="null">
@@ -437,13 +495,83 @@
                 <noderef id="cube"/>
             </descendants>
         </node>
+        -->
+
+        <node id="train_cab_floor">
+            <material id="null"/>
+            <texture id="metal_grip">
+            </texture>
+            <transformations>
+                <translation x="-0.3" y="-1.29" z="0"/>
+                <scale sx="1.382" sy="1" sz="1"/>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_front">
+            <material id="null"/>
+            <texture id="null">
+            </texture>
+            <transformations>
+                <translation x="0.9" y="0.003" z="0"/>
+                <rotation axis="y" angle="90"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_cab_front_1"/>
+                <noderef id="train_cab_front_2"/>
+                <noderef id="train_cab_front_window"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_front_1">
+            <material id="null"/>
+            <texture id="train_front_1">
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.1"/>
+                <scale sx="1" sy="1.323" sz="1"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_front_2">
+            <material id="null"/>
+            <texture id="train_inside">
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.1"/>
+                <scale sx="0.801" sy="1.323" sz="1"/>
+                <rotation axis="y" angle="180"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_front_window">
+            <material id="glass"/>
+            <texture id="glass">
+            </texture>
+            <transformations>
+                <translation x="0" y="0.8" z="0"/>
+                <scale sx="1.61" sy="0.5" sz="0.25"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/> 
+            </descendants>
+        </node>
 
         <node id="train_cab_left">
             <material id="null"/>
             <texture id="null">
             </texture>
             <transformations>
-                <translation x="0" y="0" z="-0.895"/>     
+                <translation x="0" y="0" z="-0.895"/> 
             </transformations>
             <descendants>
                 <noderef id="train_cab_side"/>
@@ -455,7 +583,7 @@
             <texture id="null">
             </texture>
             <transformations>
-                <translation x="0" y="0" z="0.895"/>
+                <translation x="0" y="0" z="0.9"/>
             </transformations>
             <descendants>
                 <noderef id="train_cab_side"/>
@@ -471,9 +599,111 @@
             <descendants>
                 <noderef id="train_cab_side_1"/>
                 <noderef id="train_cab_side_2"/>
+                <noderef id="train_cab_side_3"/>
+                <noderef id="train_cab_side_4"/>
+                <noderef id="train_cab_side_5"/>
+                <noderef id="train_cab_side_6"/>
+                <noderef id="train_cab_side_7"/>
             </descendants>
         </node>
 
+        <node id="train_cab_side_1">
+            <material id="null"/>
+            <texture id="train_side_1">
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.1"/>
+                <scale sx="1" sy="1.312" sz="1"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_2">
+            <material id="null"/>
+            <texture id="train_side_1">
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.1"/>
+                <scale sx="1" sy="1.312" sz="1"/>
+                <rotation axis="y" angle="180"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_3">
+            <material id="null"/>
+            <texture id="train_side_2">
+            </texture>
+            <transformations>
+                <translation x="-1.36" y="-0.9" z="0.1"/>
+                <scale sx="0.361" sy="0.5" sz="1"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_4">
+            <material id="null"/>
+            <texture id="train_side_2">
+            </texture>
+            <transformations>
+                <translation x="-1.36" y="-0.9" z="-0.1"/>
+                <scale sx="0.361" sy="0.5" sz="1"/>
+                <rotation axis="y" angle="180"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_5">
+            <material id="null"/>
+            <texture id="train_front_1">
+            </texture>
+            <transformations>
+                <translation x="-1.72" y="-0.9" z="0"/>
+                <scale sx="1" sy="0.5" sz="0.1"/>
+                <rotation axis="y" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_6">
+            <material id="null"/>
+            <texture id="train_front_1">
+            </texture>
+            <transformations>
+                <translation x="-1.36" y="-0.411367" z="0"/>
+                <scale sx="0.360" sy="1" sz="0.1"/>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_7">
+            <material id="null"/>
+            <texture id="train_front_1">
+            </texture>
+            <transformations>
+                <translation x="-1" y="0.4515" z="0"/>
+                <scale sx="1" sy="0.872" sz="0.1"/>
+                <rotation axis="y" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+        <!--old cab side-->
+        <!--
         <node id="train_cab_side_1">
             <material id="null"/>
             <texture id="null">
@@ -486,7 +716,7 @@
                 <noderef id="cube"/>
             </descendants>
         </node>
-
+       
         <node id="train_cab_side_2">
             <material id="null"/>
             <texture id="null">
@@ -499,13 +729,13 @@
                 <noderef id="cube"/>
             </descendants>
         </node>
-
+        -->
         <node id="train_cab_furnace">
             <material id="null"/>
             <texture id="train_furnace">
             </texture>
             <transformations>
-                <translation x="1.05" y="-0.9" z="0"/>
+                <translation x="0.88" y="-0.6" z="0"/>
                 <scale sx="0.2" sy="0.86" sz="0.86"/>
             </transformations>
             <descendants>
@@ -514,21 +744,10 @@
         </node>
         
 
-        <node id="train_cab_window_front">
-            <material id="glass"/>
-            <texture id="glass">
-            </texture>
-            <transformations>
-                <translation x="1.125" y="0.8" z="0"/>
-                <scale sx="0.05" sy="0.5" sz="1.61"/>
-            </transformations>
-            <descendants>
-                <noderef id="cube"/> 
-            </descendants>
-        </node>
+        
 
         <node id="train_cab_top">
-            <material id="null"/>
+            <material id="black_metal"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -552,6 +771,7 @@
                 <noderef id="train_front_sphere"/>
                 <noderef id="train_headlight"/>
                 <noderef id="train_smoke_cylinder"/>
+                <noderef id="train_smoke_torus"/>
             </descendants>
         </node>
 
@@ -575,7 +795,7 @@
 
         <!-- Axles -->
         <node id="axles">
-        <material id="null"/>
+            <material id="metal_axles"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -641,7 +861,7 @@
 
         <!--Wheels-->
         <node id="wheels">
-        <material id="null"/>
+            <material id="metal_wheels"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -739,12 +959,12 @@
         </node>
 
         <node id="train_middle_platform">
-            <material id="null"/>
+            <material id="black_metal"/>
             <texture id="null">
             </texture>
             <transformations>
                 <translation x="-0.375" y="0.325" z ="0"/>
-                <scale sx= "5.75" sy="0.25" sz="2.0"/>
+                <scale sx= "5.75" sy="0.25" sz="2.01"/>
             </transformations>
             <descendants>
                 <noderef id="cube"/>
@@ -752,7 +972,7 @@
         </node>
 
         <node id="train_bottom_platform">
-            <material id="null"/>
+            <material id="black_metal"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -851,8 +1071,7 @@
             <texture id="null">
             </texture>
             <transformations>
-                <translation x="0" y="0" z="0.4"/>
-                <rotation axis="x" angle="90.0"/>
+                <translation x="0" y="0" z="0.04"/>
             </transformations>
             <descendants>
                 <leaf type="torus" inner="0.05" outer="0.5" slices="30" loops="30"/>
@@ -863,8 +1082,7 @@
             <texture id="null">
             </texture>
             <transformations>
-                <translation x="0" y="0" z="-0.4"/>
-                <rotation axis="x" angle="90.0"/>
+                <translation x="0" y="0" z="-0.04"/>
             </transformations>
             <descendants>
                 <leaf type="torus" inner="0.05" outer="0.5" slices="30" loops="30"/>
@@ -953,7 +1171,7 @@
         </node>
 
         <node id="train_front_sphere">
-            <material id="metal"/>
+            <material id="black_metal"/>
             <texture id="null">
             </texture>
             <transformations>
@@ -980,7 +1198,7 @@
 
         <node id="train_smoke_cylinder">
             <material id="metal"/>
-            <texture id="null">
+            <texture id="main_cylinder">
             </texture>
             <transformations>
                 <translation x="1.25" y="1.125" z="0.0"/>
@@ -988,12 +1206,25 @@
                 <translation x="0" y="0" z="-0.45"/>
             </transformations>
             <descendants>
+                <noderef id="train_smoke_top"/>
                 <leaf type="cylinder" height="0.9" topRadius="0.3" bottomRadius="0.4" stacks="50" slices="50"/>
             </descendants>
         </node>
 
+        <node id="train_smoke_top">
+            <material id="black_hole"/>
+            <texture id="clear">
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.05"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.01" topRadius="0.4" bottomRadius="0.4" stacks="1" slices="30"/>
+            </descendants>
+        </node>
+
         <node id="train_smoke_torus">
-            <material id="metal"/>
+            <material id="black_metal"/>
             <texture id="null">
             </texture>
             <transformations>
