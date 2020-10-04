@@ -1,13 +1,13 @@
 # LAIG 2020/2021 - TP1
 
-## Group: T0xG0y
-
-| Name             | Number    | E-Mail             |
-| ---------------- | --------- | ------------------ |
-| John Doe         | 201801010 | ...                |
-| Jane Doe         | 201801011 | ...                |
+## Group T03G06
+| Name             | Number    | E-Mail               |
+| ---------------- | --------- | -------------------- |
+| Davide Castro    | 201806512 | up201806512@fe.up.pt |
+| João Cardoso     | 201806531 | up201806531@fe.up.pt |
 
 ----
+
 ## Project information
 
 - (items describing main strong points)
