@@ -23,12 +23,20 @@ class XMLscene extends CGFscene {
 
         this.initCameras();
 
+
         this.enableTextures(true);
+
 
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
+
+
+        
+        this.initObjects();
+        //this.testCylinder.setTexture
+
 
         this.axis = new CGFaxis(this);
         this.setUpdatePeriod(100);
@@ -40,11 +48,78 @@ class XMLscene extends CGFscene {
 
     }
 
+    initMaterials(){
+        // this.testMat = new CGFappearance(this);
+        // this.testMat.setAmbient(1, 1, 1, 1);
+        // this.testMat.setDiffuse(0.1, 0.1, 0.1, 1);
+        // this.testMat.setSpecular(0.1, 0.1, 0.1, 1);
+        // this.testMat.setShininess(100.0);
+        // this.testMat.setTexture(this.testTexture);
+        // this.testMat.setTextureWrap('REPEAT', 'REPEAT');
+        this.materials = [];
+
+        for(var key in this.graph.materials) {
+            var info = this.graph.materials[key];
+        
+            var mat = new CGFappearance(this);
+            mat.setShininess(info[0]);
+            mat.setSpecular(info[1][0], info[1][1], info[1][2]);
+            mat.setDiffuse(info[2][0], info[2][1], info[2][2]);
+            mat.setAmbient(info[3][0], info[3][1], info[3][2]);
+            mat.setEmission(info[4][0], info[4][1], info[4][2]);
+
+            this.materials[key] = mat;
+        }
+
+    }
+
+    initTextures(){
+        this.textures = [];
+
+        
+        for(var key in this.graph.textures){
+            var info = this.graph.textures[key];
+            console.log(info);
+            var tex = new CGFtexture(this, info);
+            this.textures[key] = tex;
+        }
+
+        //this.testTexture = new CGFtexture(this, 'scenes/images/Archer_96x96_upscaled_8x.png');
+    }
+
+    /*Initializes the objects in the scene*/
+    initObjects() {
+        //this.testCylinder = new MyCylinder(this, 2, 2, 4, 16, 8);
+    }
+
     /**
      * Initializes the scene cameras.
      */
     initCameras() {
-        this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
+
+        if(this.sceneInited) {
+            for(var key in this.graph.views) {
+                var info = this.graph.views[key];
+                this.cameras = [];
+
+                if(info[0] == "p") {
+                    this.cameras[key] = new CGFcamera(info[1],info[2],info[3],vec3.fromValues(info[4][0],info[4][1],info[4][2]),
+                                        vec3.fromValues(info[5][0],info[5][1],info[5][2]));
+                } else {
+                    console.log(info);
+                    this.cameras[key] = new CGFcamera(info[1],info[2],info[3],info[4],info[5],info[6],
+                                        vec3.fromValues(info[7][0],info[7][1],info[7][2]),
+                                        vec3.fromValues(info[8][0],info[8][1],info[8][2]),
+                                        vec3.fromValues(info[9][0],info[9][1],info[9][2]));
+                }
+                // if(key == this.graph.defaultView) {
+                //     this.camera = this.cameras[key];
+                // }
+            }
+        } else {
+            //this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
+            this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(20, 10, 20), vec3.fromValues(0, 0, 0));
+        }
     }
     /**
      * Initializes the scene lights with the values read from the XML file.
@@ -90,8 +165,12 @@ class XMLscene extends CGFscene {
         this.setGlobalAmbientLight(...this.graph.ambient);
 
         this.initLights();
+        this.initMaterials();
+        this.initTextures();
+        
 
         this.sceneInited = true;
+        this.initCameras();
     }
 
     /**
@@ -118,17 +197,23 @@ class XMLscene extends CGFscene {
             this.lights[i].enable();
         }
 
+        
         if (this.sceneInited) {
             // Draw axis
             this.axis.display();
  
+            // this.testMat.apply();
             this.defaultAppearance.apply();
-
+            
             // Displays the scene (MySceneGraph function).
             this.graph.displayScene();
+
+            //this.testCylinder.display();
+
         }
         else
         {
+            
             // Show some "loading" visuals
             this.defaultAppearance.apply();
 

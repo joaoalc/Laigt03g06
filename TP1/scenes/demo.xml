@@ -48,7 +48,14 @@
         <!-- NOTE: the "MATERIAL" block may be repeated as required. Each defined material
          requires a distinct "id". At least one material should be present. -->
         <material id="demoMaterial">
-            <shininess value="ff" />
+            <shininess value="10.0"/>
+            <ambient r="0.0" g="0.0" b="0.6" a="1.0" />
+            <diffuse r="0.0" g="0.0" b="0.6" a="1.0" />
+            <specular r="0.6" g="0.0" b="0.0" a="1.0" />
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="demoMaterial1">
+            <shininess value="10.0"/>
             <ambient r="1.0" g="0.0" b="0.0" a="1.0" />
             <diffuse r="0.6" g="0.0" b="0.0" a="1.0" />
             <specular r="0.6" g="0.0" b="0.0" a="1.0" />
@@ -67,26 +74,27 @@
 
             <!-- geom. transf. are optional and may be repeated, in any order, as necessary: -->
             <transformations>
-                <translation x="0" y="1.0" z="1.0" />
-                <rotation axis="yy" angle="45" />
-                <scale sx="2" sy="1" sz="1" />
+                <translation x="0" y="0.0" z="0.0" />
+                <rotation axis="y" angle="0"/>
+                <scale sx="1" sy="1.0" sz="1.0" />
             </transformations>
 
             <!-- declaring descendants, at least one node or one leaf must be present
              descendants may be mixed, nodes and leafs -->
             <descendants>
-                <noderef id="demoChild" />
+                <noderef id="tree_leaves"/>
                 <!-- "ss" is the identifier of a node or of leaf; -->
                 <!-- may be repeated as necessary. It can refer an -->
                 <!-- identifier of another node, before or later defined in the file. -->
                 <!-- next lines define nodes of type leaf; may be repeated, in any order, as necessary -->
+                <leaf type="cylinder" height="5.5" topRadius="0" bottomRadius="0.520" stacks="30" slices="30"/>
                 <leaf type="rectangle" x1="0" y1="1" x2="1" y2="0" />
                 <!-- 2D coordinates on the XY plane for left-top and right-bottom vertices. -->
             </descendants>
         </node>
         <node id="demoChild">            <!-- defines one intermediate node; may be repeated as necessary -->
             <!-- next two lines are mandatory -->
-            <material id="null" /><!-- this superimposes the material received from parent node id="null" maintains material from parent node -->
+            <material id="demoMaterial1" /><!-- this superimposes the material received from parent node id="null" maintains material from parent node -->
 
             <texture id="clear"><!-- declared texture superimposes the texture received from parent node id="null" maintains texture from parent node id="clear" clears texture declaration received from parent node -->
                 <amplification afs="2.0" aft="2.0" /><!-- for primitives = dx/afs, dy/aft -->
@@ -100,8 +108,146 @@
             <!-- declaring descendants, at least one node or one leaf must be present
              descendants may be mixed, nodes and leafs -->
             <descendants>
-                <leaf type="triangle" x1="ff" y1="ff" x2="ff" y2="ff" x3="ff" y3="ff" z3="ff"/>
+                <!--<leaf type="triangle" x1="4" y1="1" x2="2" y2="3" x3="3" y3="5"/>-->
+                <!--<leaf type="cylinder" height="2" topRadius="1" bottomRadius="3" stacks="10" slices="20"/>-->
                 <!-- x y z coordinates of each vertex -->
+            </descendants>
+        </node>
+           
+        <node id="tree_leaves">
+            <material id="demoMaterial1"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_1"/>
+                <noderef id="tree_leaves_2"/>
+                <noderef id="tree_leaves_3"/>
+                <noderef id="tree_leaves_4"/>
+                <noderef id="tree_leaves_5"/>
+                <noderef id="tree_leaves_6"/>
+                <noderef id="tree_leaves_7"/>
+                <noderef id="tree_leaves_8"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_1">
+            <material id="demoMaterial1"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_2">
+            <material id="demoMaterial1"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="45"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_3">
+            <material id="demoMaterial1"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="90"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_4">
+            <material id="demoMaterial1"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="135"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_5">
+            <material id="demoMaterial1"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="180"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_6">
+            <material id="demoMaterial1"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="225"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_7">
+            <material id="demoMaterial1"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="270"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_8">
+            <material id="demoMaterial1"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="315"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_base">
+            <material id="demoMaterial1"/>
+            <texture id="clear">
+                <amplification afs="2.0" aft="2.0" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="1"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="1.7" y2="0" x3="0" y3="4.5"/>
+                <leaf type="triangle" x1="0" y1="0" x2="0" y2="4.5" x3="1.7" y3="0"/>
             </descendants>
         </node>
     </nodes>
