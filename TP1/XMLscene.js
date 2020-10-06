@@ -154,6 +154,13 @@ class XMLscene extends CGFscene {
         }
     }
 
+    updateLights() {
+        for (var i = 0; i < this.lights.length; i++) {
+            this.lights[i].setVisible(false);
+            this.lights[i].update();
+        }
+    }
+
     /** Handler called when the graph is finally loaded. 
      * As loading is asynchronous, this may be called already after the application has started the run loop
      */
@@ -202,13 +209,12 @@ class XMLscene extends CGFscene {
             // Draw axis
             this.axis.display();
  
-            // this.testMat.apply();
             this.defaultAppearance.apply();
             
+            this.updateLights();
+
             // Displays the scene (MySceneGraph function).
             this.graph.displayScene();
-
-            //this.testCylinder.display();
 
         }
         else
