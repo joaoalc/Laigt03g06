@@ -969,8 +969,9 @@ class MySceneGraph {
             var angle = this.reader.getFloat(node, 'angle');
             if (!(angle != null && !isNaN(angle)))
                 return "unable to parse 'angle' component of the " + messageError;
+            angle *= DEGREE_TO_RAD;
 
-            values = ["p", near, far, angle];
+            values = ["p", angle, near, far];
 
         } else if (node.nodeName == "ortho") {
             var near = this.reader.getFloat(node, 'near');

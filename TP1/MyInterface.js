@@ -23,7 +23,9 @@ class MyInterface extends CGFinterface {
         // add a group of controls (and open/expand by defult)
 
         this.initKeys();
+        //this.gui.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));
 
+        
         return true;
     }
 
@@ -31,6 +33,7 @@ class MyInterface extends CGFinterface {
      * initKeys
      */
     initKeys() {
+
         this.scene.gui=this;
         this.processKeyboard=function(){};
         this.activeKeys={};
@@ -38,6 +41,7 @@ class MyInterface extends CGFinterface {
 
     processKeyDown(event) {
         this.activeKeys[event.code]=true;
+
     };
 
     processKeyUp(event) {
