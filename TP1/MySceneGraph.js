@@ -707,6 +707,7 @@ class MySceneGraph {
 
                 } else {
                     this.onXMLMinorError("unknown tag <" + grandgrandChildren[i].nodeName + ">");
+                    amplification.push(...[1, 1]);
                 }
             }
 
@@ -729,7 +730,7 @@ class MySceneGraph {
                     descendants.push(descendantID);
 
                 } else if(grandgrandChildren[n].nodeName == "leaf") {
-                    var leaf = this.parseLeaf(grandgrandChildren[n], " on node ID " + nodeID);
+                    var leaf = this.parseLeaf(grandgrandChildren[n], " on node ID " + nodeID, amplification);
                     if(typeof leaf == 'string') {
                         //console.log(nodeID);
                         return leaf;
@@ -763,7 +764,7 @@ class MySceneGraph {
         this.log("Parsed nodes");
     }
 
-    parseLeaf(node, messageError) {
+    parseLeaf(node, messageError, amplification) {
         var type = this.reader.getString(node, 'type');
         var attributeIndex = -1;
         var attributeNames = [];
@@ -780,7 +781,7 @@ class MySceneGraph {
                 info.push(attribute);
             }
             console.log("made rectangle");
-            return new MyRectangle(this.scene, info[0], info[1], info[2], info[3]);
+            return new MyRectangle(this.scene, info[0], info[1], info[2], info[3], amplification[0], amplification[1]);
             
         } else if(type == "triangle") {
             attributeNames = ["x1", "y1", "x2", "y2", "x3", "y3"];
@@ -792,7 +793,7 @@ class MySceneGraph {
                 info.push(attribute);
             }
             console.log("made triangle");
-            return new MyTriangle(this.scene, info[0], info[1], info[2], info[3], info[4], info[5]);
+            return new MyTriangle(this.scene, info[0], info[1], info[2], info[3], info[4], info[5], amplification[0], amplification[1]);
 
         } else if(type == "cylinder") {
             attributeNames = ["height", "bottomRadius", "topRadius", "slices", "stacks"];

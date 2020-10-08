@@ -54,7 +54,6 @@ class MyNode {
         
         if(this.texture != "clear"){
             //this.scene.materials[materialStack[materialStack.length - 1]].setTexture(this.scene.textures[materialStack[materialStack.length - 1]]);
-            
             if(textureStack[textureStack.length - 1] != null)
                 this.scene.textures[textureStack[textureStack.length - 1]].bind();
         }

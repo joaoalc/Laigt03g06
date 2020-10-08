@@ -11,14 +11,16 @@
  * @param z3 - z 
  */
 class MyTriangle extends CGFobject {
-	constructor(scene, x1, y1, x2, y2, x3, y3) {
+	constructor(scene, x1, y1, x2, y2, x3, y3, afs, aft) {
 		super(scene);
 		this.x1 = x1;
         this.x2 = x2;
         this.x3 = x3;
 		this.y1 = y1;
         this.y2 = y2;
-        this.y3 = y3;
+		this.y3 = y3;
+		this.afs = afs;
+		this.aft = aft;
 
 		this.initBuffers();
 	}
@@ -60,8 +62,8 @@ class MyTriangle extends CGFobject {
 
 		this.texCoords = [
 			0, 0,
-            a, 0,
-            c*cosA, c*(Math.sqrt(1.0-cosA*cosA))
+            a / this.afs, 0,
+            c*cosA / this.afs, c*(Math.sqrt(1.0-cosA*cosA)) / this.aft
 		]
 
 		// this.texCoords = [
