@@ -64,6 +64,7 @@ class MySceneGraph {
 
         this.loadedOk = true;
 
+        console.log("directly before ongraphloaded");
         // As the graph loaded ok, signal the scene so that any additional initialization depending on the graph can take place
         this.scene.onGraphLoaded();
     }

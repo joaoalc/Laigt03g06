@@ -26,8 +26,7 @@ class MyInterface extends CGFinterface {
 
                
 
-        this.gui.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));
-
+        
         
         return true;
     }
@@ -53,5 +52,9 @@ class MyInterface extends CGFinterface {
 
     isKeyPressed(keyCode) {
         return this.activeKeys[keyCode] || false;
+    }
+
+    addGUIelement(){
+        this.gui.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));
     }
 }

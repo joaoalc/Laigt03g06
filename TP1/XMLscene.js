@@ -23,12 +23,10 @@ class XMLscene extends CGFscene {
 
 
         this.activeCamera = 0;
-        this.cameraIds = {};//{"defaultCamera" : 0, "perspective1" : 1, "perspective2" : 2, "perspective3" : 3, "ortho1" : 4};
         
-        this.cameraIds["defaultCamera"] = 0;
+        this.cameraIds = {};
+
         this.initCameras();
-        console.log("AAA");
-        console.log(Object.keys(this.cameraIds).length);
 
 
         this.enableTextures(true);
@@ -51,6 +49,7 @@ class XMLscene extends CGFscene {
         this.loadingProgress=0;
 
         this.defaultAppearance=new CGFappearance(this);
+        
 
     }
 
@@ -104,7 +103,7 @@ class XMLscene extends CGFscene {
                     this.cameras[key] = new CGFcamera(info[1],info[2],info[3],vec3.fromValues(info[4][0],info[4][1],info[4][2]),
                                         vec3.fromValues(info[5][0],info[5][1],info[5][2]));
                 } else {
-                    this.cameras[key] = new CGFcamera(info[1],info[2],info[3],info[4],info[5],info[6],
+                    this.cameras[key] = new CGFcameraOrtho(info[1],info[2],info[3],info[4],info[5],info[6],
                                         vec3.fromValues(info[7][0],info[7][1],info[7][2]),
                                         vec3.fromValues(info[8][0],info[8][1],info[8][2]),
                                         vec3.fromValues(info[9][0],info[9][1],info[9][2]));
@@ -120,8 +119,7 @@ class XMLscene extends CGFscene {
                 i++;
             }
         } else {
-            //this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(15, 15, 15), vec3.fromValues(0, 0, 0));
-            this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(20, 10, 20), vec3.fromValues(0, 0, 0));
+            this.camera = new CGFcameraResettable(0.4, 0.1, 500, vec3.fromValues(20, 10, 20), vec3.fromValues(0, 0, 0));
         }
     }
 
@@ -132,7 +130,9 @@ class XMLscene extends CGFscene {
         
 
         this.camera = this.cameras[Object.keys(this.cameras)[this.activeCamera]];
+        
         console.log(this.camera != null);
+        //this.camera.resetCamera();
         this.interface.setActiveCamera(this.camera);
     }
 
@@ -190,9 +190,9 @@ class XMLscene extends CGFscene {
         this.initMaterials();
         this.initTextures();
         
-
         this.sceneInited = true;
         this.initCameras();
+        this.interface.addGUIelement();
     }
 
     /**
