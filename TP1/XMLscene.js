@@ -23,8 +23,12 @@ class XMLscene extends CGFscene {
 
 
         this.activeCamera = 0;
-        //this.cameraIds = {};
+        this.cameraIds = {};//{"defaultCamera" : 0, "perspective1" : 1, "perspective2" : 2, "perspective3" : 3, "ortho1" : 4};
+        
+        this.cameraIds["defaultCamera"] = 0;
         this.initCameras();
+        console.log("AAA");
+        console.log(Object.keys(this.cameraIds).length);
 
 
         this.enableTextures(true);
@@ -91,11 +95,11 @@ class XMLscene extends CGFscene {
      */
     initCameras() {
         var i = 0;
+        this.cameras = [];
         if(this.sceneInited) {
             for(var key in this.graph.views) {
                 var info = this.graph.views[key];
-                this.cameras = [];
-
+                
                 if(info[0] == "p") {
                     this.cameras[key] = new CGFcamera(info[1],info[2],info[3],vec3.fromValues(info[4][0],info[4][1],info[4][2]),
                                         vec3.fromValues(info[5][0],info[5][1],info[5][2]));
@@ -111,6 +115,8 @@ class XMLscene extends CGFscene {
                     this.camera = this.cameras[key];
                     this.interface.setActiveCamera(this.camera);
                 }
+                this.cameraIds[key] = i; //adding a numeric value
+                console.log(Object.keys(this.cameraIds).length);
                 i++;
             }
         } else {
@@ -120,7 +126,13 @@ class XMLscene extends CGFscene {
     }
 
     updateCamera() {
-        this.camera = this.cameras[this.activeCamera];
+        //console.log(Object.keys(this.cameras).length);
+        //console.log(object.keys(this.cameras)[this.activeCamera]);
+        //console.log(Object.keys(this.cameras)[1]);
+        
+
+        this.camera = this.cameras[Object.keys(this.cameras)[this.activeCamera]];
+        console.log(this.camera != null);
         this.interface.setActiveCamera(this.camera);
     }
 
