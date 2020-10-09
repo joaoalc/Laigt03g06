@@ -27,39 +27,103 @@ class MyCylinder extends CGFobject {
         this.normals = [];
         this.texCoords = [];
 
+
+        var phi = 0;
+        var phiInc = (Math.PI * 2) / this.slices;
+
+
+        for(let st = 0; st <= this.stacks; st++){
+            for(let sl = 0; sl <= this.slices; sl++){
+                //var cosPhi = Math.cos(phi);
+                //var sinPhi = Math.sin(phi);
+
+                this.vertices.push((this.bottomRadius - (this.bottomRadius - this.topRadius) * (st /this.stacks)) * Math.cos(phi), (this.bottomRadius - (this.bottomRadius - this.topRadius) * (st /this.stacks)) * Math.sin(phi), this.height * st / this.stacks);
+                this.texCoords.push(sl / this.slices, 1 - (st / this.stacks));
+                var normalSize = Math.sqrt(Math.pow(Math.cos(phi), 2) + Math.pow(Math.sin(phi), 2) + Math.pow((this.bottomRadius - this.topRadius) / this.height, 2));
+               
+                
+                this.normals.push(Math.cos(phi) /  normalSize, Math.sin(phi) / normalSize, ((this.bottomRadius - this.topRadius) / this.height) / normalSize);
+                phi += phiInc;
+            }
+            phi = 0;
+        }
+        for(let st = 0; st < this.stacks; st++){
+            for(let sl = 0; sl < this.slices; sl++){
+                this.indices.push((st * (this.slices + 1)) + sl, (st * (this.slices + 1)) +  sl + 1, (st * (this.slices + 1)) +  sl + this.slices + 1);
+                this.indices.push((st * (this.slices + 1)) + sl + 1, (st * (this.slices + 1)) +  sl + this.slices + 2, (st * (this.slices + 1)) +  sl + this.slices + 1);
+            }
+        }
+        
+        phi = 0;
+        for(let sl = 0; sl <= this.slices; sl++){
+            this.vertices.push(this.bottomRadius * Math.cos(phi), this.bottomRadius * Math.sin(phi), 0);
+            this.texCoords.push(Math.cos(phi) * 0.5 + 0.5, -Math.sin(phi) * 0.5 + 0.5);
+            this.normals.push(0, 0, -1);
+            if(sl < this.slices - 2){
+                this.indices.push(((this.slices + 1) * (this.stacks + 1)) + 2 + sl, ((this.slices + 1) * (this.stacks + 1)) + 1 + sl, ((this.slices + 1) * (this.stacks + 1)) + 0);
+            }
+            phi += phiInc;
+        }
+
+        phi = 0;
+        for(let sl = 0; sl <= this.slices; sl++){
+            this.vertices.push(this.topRadius * Math.cos(phi), this.topRadius * Math.sin(phi), this.height);
+            this.texCoords.push(Math.cos(phi) * 0.5 + 0.5, -Math.sin(phi) * 0.5 + 0.5);
+            this.normals.push(0, 0, 1);
+            if(sl < this.slices - 2){
+                this.indices.push(((this.slices + 1) * (this.stacks + 1 + 1)) + 0, ((this.slices + 1) * (this.stacks + 1 + 1)) + 1 + sl, ((this.slices + 1) * (this.stacks + 1 + 1)) + 2 + sl);
+            }
+            phi += phiInc;
+        }
+            
+        /*
         var phi = 0;
 
         var phiInc = (Math.PI * 2) / this.slices;
 
         var sideIncrement = (this.bottomRadius - this.topRadius)/this.stacks;
 
-        var vertex = 0;
+        var vertex = 0; //Counts the number of original vertexes (doesnt count the adicional vertexes for the stacks or slices for texture purposes)
         var xCoord = 0.0;
-        
+
+        var phi2 = 0; //Current angle for the adicional vertexes;
+        for (let sl = 0; sl < this.slices; sl++) {
+            var sinPhi = Math.sin(phi2);
+            var cosPhi = Math.cos(phi2);
+            var x = cosPhi * (this.bottomRadius); //x começa fazer o circulo inferior (com raio bottom radius) e depois começa a subir a cada stack (até ter raio top radius).
+            var y = sinPhi * (this.bottomRadius); //O mesmo para o y
+            this.vertices.push(x, y, (this.height/this.stacks)*0);
+            this.texCoords.push(cosPhi * 0.5 + 0.5, sinPhi * 0.5 + 0.5);
+            //console.log("SL: " + sl);
+            //console.log(this.vertices[3 * sl], this.vertices[1 + 3 * sl], this.vertices[2 + 3 * sl]);
+            var normalX = cosPhi;
+            var normalY = sinPhi;
+            var normalZ = (this.bottomRadius - this.topRadius)/this.height;
+            var normalLength = Math.sqrt(normalX*normalX + normalY*normalY + normalZ*normalZ);
+            //this.normals.push(normalX/normalLength, normalY/normalLength, normalZ/normalLength);
+            this.normals.push(0, 0, -1);
+            phi2 += phiInc;
+        }
+        phi = 0;
         for(let st = 0; st <= this.stacks; st++) {
             for (let sl = 0; sl < this.slices; sl++) {
                 var sinPhi = Math.sin(phi);
                 var cosPhi = Math.cos(phi);
                 var x = cosPhi * (this.bottomRadius - st * sideIncrement); //x começa fazer o circulo inferior (com raio bottom radius) e depois começa a subir a cada stack (até ter raio top radius).
                 var y = sinPhi * (this.bottomRadius - st * sideIncrement); //O mesmo para o y
-
+                //console.log("A");
                 this.vertices.push(x, y, (this.height/this.stacks)*st);
-                if(st == 0 || st == this.stacks){
-                    this.texCoords.push(cosPhi * 0.5 + 0.5, sinPhi * 0.5 + 0.5);
-                }
-                else{
-                    this.texCoords.push(sl / this.slices, st / this.stacks);
-                }
+                this.texCoords.push(sl / this.slices, st / this.stacks);
                 //this.texCoords.push(xCoord, 1);
                 //this.texCoords.push(xCoord, 0);
 
                 if(st < this.stacks) {
                     if(sl < (this.slices - 1)) {
-                        this.indices.push(vertex, vertex + 1, vertex + this.slices + 1);
-                        this.indices.push(vertex, vertex + this.slices + 1, vertex + this.slices);
+                        this.indices.push(this.slices + vertex,this.slices +  vertex + 1,this.slices +  vertex + this.slices + 1);
+                        this.indices.push(this.slices + vertex,this.slices +  vertex + this.slices + 1,this.slices +  vertex + this.slices);
                     } else {
-                        this.indices.push(vertex, vertex - this.slices + 1, vertex + 1);
-                        this.indices.push(vertex, vertex + 1, vertex + this.slices );
+                        this.indices.push(this.slices + vertex,this.slices +  vertex - this.slices + 1,this.slices +  vertex + 1);
+                        this.indices.push(this.slices + vertex,this.slices +  vertex + 1,this.slices +  vertex + this.slices );
                     }
                 }
                 
@@ -77,6 +141,24 @@ class MyCylinder extends CGFobject {
             phi = 0;
         }
 
+        
+        phi2 = 0;
+        for (let sl = 0; sl < this.slices; sl++) {
+            var sinPhi = Math.sin(phi2);
+            var cosPhi = Math.cos(phi2);
+            var x = cosPhi * (this.bottomRadius - this.stacks * sideIncrement); //x começa fazer o circulo inferior (com raio bottom radius) e depois começa a subir a cada stack (até ter raio top radius).
+            var y = sinPhi * (this.bottomRadius - this.stacks * sideIncrement); //O mesmo para o y
+            this.vertices.push(x, y, (this.height/this.stacks)*this.stacks);
+            this.texCoords.push(cosPhi * 0.5 + 0.5, sinPhi * 0.5 + 0.5);
+            var normalX = cosPhi;
+            var normalY = sinPhi;
+            var normalZ = (this.bottomRadius - this.topRadius)/this.height;
+            var normalLength = Math.sqrt(normalX*normalX + normalY*normalY + normalZ*normalZ);
+            //this.normals.push(normalX/normalLength, normalY/normalLength, normalZ/normalLength);
+            this.normals.push(0, 0, 1);
+            phi2 += phiInc;
+        }
+
         this.vertices.push(0,0,0);
         this.vertices.push(0,0,this.height);
         this.texCoords.push(0.5, 0.5);
@@ -87,14 +169,14 @@ class MyCylinder extends CGFobject {
 
         for(var sl = 0; sl < this.slices; sl++) {
             if(sl < this.slices - 1) {
-                this.indices.push(sl, vertex - 2, sl + 1);
-                this.indices.push(sl + this.stacks*this.slices, sl + 1 + this.stacks*this.slices, vertex - 1);
+                this.indices.push(sl, this.slices * 2 + vertex - 2, sl + 1);
+                this.indices.push(this.slices * 2 + sl + this.stacks*this.slices,this.slices * 2 +  sl + 1 + this.stacks*this.slices, vertex - 1);
             } else {
-                this.indices.push(sl, vertex - 2, sl - this.slices + 1);
-                this.indices.push(sl + this.stacks*this.slices, this.stacks*this.slices, vertex - 1);
+                this.indices.push(sl, this.slices * 2 + vertex - 2, sl - this.slices + 1);
+                this.indices.push(this.slices * 2 + sl + this.stacks*this.slices,this.slices * 2 +  this.stacks*this.slices, vertex - 1);
             }
         }
-
+*/
         this.primitiveType = this.scene.gl.TRIANGLES;
         this.initGLBuffers();
     }
