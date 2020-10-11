@@ -8,7 +8,7 @@
     </initials>
     <views default="defaultCamera"> <!-- Ver depois :O -->
         <perspective id="defaultCamera" near="0.1" far="500" angle="45">
-            <from x="20" y="10" z="20"/>
+            <from x="18" y="5" z="15"/>
             <to x="0" y="0" z="0"/>
         </perspective>
         <perspective id="perspective1" near="0.1" far="500" angle="45">
@@ -184,6 +184,7 @@
         <node id="skybox_top">
             <material id="null"/>
             <texture id="skybox_top">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="10" z="0"/>
@@ -197,6 +198,7 @@
         <node id="skybox_front">
             <material id="null"/>
             <texture id="skybox_front">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-10" y="0" z="0"/>
@@ -210,6 +212,7 @@
         <node id="skybox_right">
             <material id="null"/>
             <texture id="skybox_right">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-10"/>
@@ -222,6 +225,7 @@
         <node id="skybox_left">
             <material id="null"/>
             <texture id="skybox_left">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="10"/>
@@ -235,6 +239,7 @@
         <node id="skybox_back">
             <material id="null"/>
             <texture id="skybox_back">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="10" y="0" z="0"/>
@@ -248,6 +253,7 @@
         <node id="skybox_bottom">
             <material id="null"/>
             <texture id="skybox_bottom">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="-10" z="0"/>
@@ -264,6 +270,7 @@
         <node id="ground">
             <material id="groundMat"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="-2.3" z="0"/>
@@ -278,6 +285,7 @@
         <node id="ground_base">
             <material id="null"/>
             <texture id="grass">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <rotation axis="x" angle="90"/>
@@ -290,6 +298,7 @@
         <node id="ground_pebbles">
             <material id="null"/>
             <texture id="pebbles">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="0"/>
@@ -305,6 +314,7 @@
         <node id="cube">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
             </transformations>
@@ -320,6 +330,7 @@
         <node id="rect1">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="0.5"/>
@@ -331,6 +342,7 @@
         <node id="rect2">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <rotation axis="y" angle="90"/>
@@ -343,6 +355,7 @@
         <node id="rect3">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <rotation axis="y" angle="180"/>
@@ -355,6 +368,7 @@
         <node id="rect4">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <rotation axis="y" angle="270"/>
@@ -367,6 +381,7 @@
         <node id="rect5">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <rotation axis="x" angle="90"/>
@@ -379,6 +394,7 @@
         <node id="rect6">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <rotation axis="x" angle="270"/>
@@ -393,6 +409,7 @@
         <node id="train">
             <material id="metal"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="-0.05" z="0"/>
@@ -406,6 +423,7 @@
         <node id="train_cab">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-1.9" y="0.5" z="0"/>
@@ -419,6 +437,7 @@
         <node id="train_cab_main">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
             </transformations>
@@ -434,6 +453,7 @@
         <node id="train_cab_floor">
             <material id="null"/>
             <texture id="metal_grip">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-0.3" y="-1.29" z="0"/>
@@ -448,6 +468,7 @@
         <node id="train_cab_front">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0.9" y="0.003" z="0"/>
@@ -463,6 +484,7 @@
         <node id="train_cab_front_1">
             <material id="null"/>
             <texture id="train_front_1">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="0.1"/>
@@ -476,6 +498,7 @@
         <node id="train_cab_front_2">
             <material id="null"/>
             <texture id="train_inside">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-0.1"/>
@@ -490,6 +513,7 @@
         <node id="train_cab_front_window">
             <material id="glass"/>
             <texture id="glass">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0.8" z="0"/>
@@ -503,6 +527,7 @@
         <node id="train_cab_left">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-0.895"/> 
@@ -515,6 +540,7 @@
         <node id="train_cab_right">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="0.9"/>
@@ -527,6 +553,7 @@
         <node id="train_cab_side">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
             </transformations>
@@ -544,6 +571,7 @@
         <node id="train_cab_side_1">
             <material id="null"/>
             <texture id="train_side_1">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="0.1"/>
@@ -557,6 +585,7 @@
         <node id="train_cab_side_2">
             <material id="null"/>
             <texture id="train_side_1_2">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-0.1"/>
@@ -571,6 +600,7 @@
         <node id="train_cab_side_3">
             <material id="null"/>
             <texture id="train_side_2">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-1.36" y="-0.9" z="0.1"/>
@@ -584,6 +614,7 @@
         <node id="train_cab_side_4">
             <material id="null"/>
             <texture id="train_side_2_2">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-1.36" y="-0.9" z="-0.1"/>
@@ -598,6 +629,7 @@
         <node id="train_cab_side_5">
             <material id="null"/>
             <texture id="train_front_1">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-1.72" y="-0.9" z="0"/>
@@ -612,6 +644,7 @@
         <node id="train_cab_side_6">
             <material id="null"/>
             <texture id="train_front_1">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-1.36" y="-0.411367" z="0"/>
@@ -626,6 +659,7 @@
         <node id="train_cab_side_7">
             <material id="null"/>
             <texture id="train_front_1">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-1" y="0.4515" z="0"/>
@@ -640,6 +674,7 @@
         <node id="train_cab_furnace">
             <material id="null"/>
             <texture id="train_furnace">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0.88" y="-0.6" z="0"/>
@@ -653,6 +688,7 @@
         <node id="train_cab_top">
             <material id="black_metal"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="1.365" z="0"/>
@@ -666,6 +702,7 @@
         <node id="train_front">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
             </transformations>
@@ -684,6 +721,7 @@
         <node id="train_bottom">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-0.493" y= "-1.57" z = "0"/>
@@ -701,6 +739,7 @@
         <node id="axles">
             <material id="metal_axles"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
             </transformations>
@@ -715,6 +754,7 @@
         <node id="train_front_axle">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="1.993" y="0.0" z ="0.0"/>
@@ -727,6 +767,7 @@
         <node id="train_middle_axle">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0.0" y="0" z="-0.75"/>
@@ -738,6 +779,7 @@
         <node id="train_back_axle">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-1.993" y="0.0" z ="0.0"/>
@@ -751,6 +793,7 @@
         <node id="train_main_axle">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <scale sx="1" sy="1" sz="2.2"/>
@@ -767,6 +810,7 @@
         <node id="wheels">
             <material id="metal_wheels"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
             </transformations>
@@ -783,6 +827,7 @@
         <node id="train_back_left_wheel">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-2" y="0" z="-0.625"/>
@@ -794,6 +839,7 @@
         <node id="train_back_right_wheel">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-2" y="0.0" z="0.625"/>
@@ -805,6 +851,7 @@
         <node id="train_middle_left_wheel">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-0.625"/>
@@ -816,6 +863,7 @@
         <node id="train_middle_right_wheel">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0.0" z="0.625"/>
@@ -827,6 +875,7 @@
         <node id="train_front_left_wheel">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="2" y="0" z="-0.625"/>
@@ -838,6 +887,7 @@
         <node id="train_front_right_wheel">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="2" y="0" z="0.625"/>
@@ -852,6 +902,7 @@
         <node id="middle_platforms">
         <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0.323" z="0"/>
@@ -865,6 +916,7 @@
         <node id="train_middle_platform">
             <material id="black_metal"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-0.375" y="0.325" z ="0"/>
@@ -878,6 +930,7 @@
         <node id="train_bottom_platform">
             <material id="black_metal"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <scale sx= "3.7" sy="0.5" sz="1.05"/>
@@ -889,8 +942,9 @@
         
         <!-- Coupling rods -->
         <node id="coupling_rods">
-        <material id="null"/>
+            <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
             </transformations>
@@ -905,6 +959,7 @@
         <node id="train_bottom_left_coupling_rod">
             <material id="metal"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-0.257" y="-0.373" z="-0.75"/>
@@ -918,6 +973,7 @@
         <node id="train_top_left_coupling_rod">
             <material id="metal"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0.243" y="0.377" z="-0.75"/>
@@ -931,6 +987,7 @@
         <node id="train_bottom_right_coupling_rod">
             <material id="metal"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-0.257" y="-0.373" z="0.75"/>
@@ -944,6 +1001,7 @@
         <node id="train_top_right_coupling_rod">
             <material id="metal"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0.243" y="0.377" z="0.75"/>
@@ -958,6 +1016,7 @@
         <node id="wheel">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
             </transformations>
@@ -973,6 +1032,7 @@
         <node id="wheel_torus_0">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="0.04"/>
@@ -984,6 +1044,7 @@
         <node id="wheel_torus_1">
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-0.04"/>
@@ -995,6 +1056,7 @@
         <node id="wheel_spoke_0"> <!--em pé-->
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <rotation axis="x" angle="90.0"/>  
@@ -1007,6 +1069,7 @@
         <node id="wheel_spoke_1"> <!--deitada-->
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <rotation axis="y" angle="90.0"/>     
@@ -1019,6 +1082,7 @@
         <node id="wheel_spoke_2"> <!--inclinada esquerda-->
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <rotation axis="z" angle="135.0"/>
@@ -1032,6 +1096,7 @@
         <node id="wheel_spoke_3"> <!--inclinada direita-->
             <material id="null"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <rotation axis="z" angle="45.0"/>
@@ -1047,6 +1112,7 @@
         <node id="train_main_cylinder">
             <material id="metal"/>
             <texture id="main_cylinder">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0.5554" y="0.0" z="0.0"/>
@@ -1062,6 +1128,7 @@
         <node id="train_main_sphere">
             <material id="metal"/>
             <texture id="main_sphere">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="2.07" y="0.0" z="0.0"/>
@@ -1076,6 +1143,7 @@
         <node id="train_front_sphere">
             <material id="black_metal"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="2.5" y="0.0" z="0.0"/>
@@ -1088,6 +1156,7 @@
         <node id="train_headlight">
             <material id="black_metal"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="1.875" y="1.08" z="0.0"/>
@@ -1103,6 +1172,7 @@
         <node id="train_headlight_sphere">
             <material id="glass_headlight"/>
             <texture id="headlight">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="0.745"/>
@@ -1118,6 +1188,7 @@
         <node id="train_smoke_cylinder">
             <material id="metal"/>
             <texture id="main_cylinder">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="1.25" y="1.125" z="0.0"/>
@@ -1133,6 +1204,7 @@
         <node id="train_smoke_top">
             <material id="black_hole"/>
             <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-0.05"/>
@@ -1145,6 +1217,7 @@
         <node id="train_smoke_torus">
             <material id="black_metal"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="1.25" y="1.625" z="0"/>
