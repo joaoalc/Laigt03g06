@@ -1,11 +1,6 @@
 # LAIG 2020/2021 - TP1
 
-<<<<<<< HEAD
 ## Group T03G06
-=======
-## Group: T03G06
-
->>>>>>> parser
 | Name             | Number    | E-Mail               |
 | ---------------- | --------- | -------------------- |
 | Davide Castro    | 201806512 | up201806512@fe.up.pt |
@@ -28,6 +23,6 @@
 ----
 ## Issues/Problems
 
-- The amplification component, cameras and enabling lights are still not completely handled in the parser;
-- There are still some unsolved problems with texture coordinates on the cylinder and sphere primitives;
+- Enabling individual lights is still not implemented on the interface;
+- There are still some unsolved problems with texture coordinates on the sphere primitive;
 - A few possible warnings and errors in the parser are still to be implemented.
