@@ -9,7 +9,7 @@ class MySphere extends CGFobject {
     constructor(scene, radius, slices, stacks) {
       super(scene);
       this.radius = radius;
-      this.latDivs = stacks * 2;
+      this.latDivs = stacks;
       this.longDivs = slices;
   
       this.initBuffers();
@@ -32,7 +32,7 @@ class MySphere extends CGFobject {
       var latVertices = this.longDivs + 1;
   
       var xCoord;
-      var zCoord = 0.0;
+      var yCoord = 0.0;
   
       // build an all-around stack at a time, starting on "north pole" and proceeding "south"
       for (let latitude = 0; latitude <= this.latDivs; latitude++) {
@@ -41,7 +41,7 @@ class MySphere extends CGFobject {
   
         // in each stack, build all the slices around, starting on longitude 0
         theta = 0;
-        xCoord = 0.6;
+        xCoord = 0;
         for (let longitude = 0; longitude <= this.longDivs; longitude++) {
           //--- Vertices coordinates
           var x = Math.cos(theta) * sinPhi * this.radius;
@@ -65,12 +65,12 @@ class MySphere extends CGFobject {
   
           //--- Texture Coordinates
   
-          this.texCoords.push(xCoord, zCoord);
+          this.texCoords.push(xCoord, yCoord);
           xCoord += thetaInc/(2*Math.PI);
           
         }
         phi += phiInc;
-        zCoord += (phiInc/(2*Math.PI))*2;
+        yCoord += (phiInc/(2*Math.PI))*2;
       }
   
   
