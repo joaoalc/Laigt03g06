@@ -707,8 +707,12 @@ class MySceneGraph {
 
                 } else {
                     this.onXMLMinorError("unknown tag <" + grandgrandChildren[i].nodeName + ">");
-                    amplification.push(...[1, 1]);
                 }
+            }
+
+            if(amplification.length == 0) {
+                this.onXMLMinorError("amplification tag not define in node ID " + nodeID + ". Assuming afs=1.0 and aft=1.0");
+                amplification.push(...[1, 1]);
             }
 
 

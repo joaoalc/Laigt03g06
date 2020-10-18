@@ -168,6 +168,7 @@
         <node id="skybox">
             <material id="sky"/>
             <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
             </transformations>

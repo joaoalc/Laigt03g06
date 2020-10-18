@@ -56,5 +56,10 @@ class MyInterface extends CGFinterface {
 
     addGUIelement(){
         this.gui.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));
+
+        for(var i = 0; i < this.scene.lights.length; i++) {
+            if(this.scene.lightsStatus["light"+i] != null) 
+                this.gui.add(this.scene.lightsStatus, 'light' + i).onChange(this.scene.updateLights.bind(this.scene));
+        }
     }
 }

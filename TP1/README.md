@@ -11,7 +11,7 @@
 ## Project information
 
 - The models are complex and detailed;
-- There are multiple cameras from different points of view of the scene;
+- There are multiple cameras from different points of view of the scene, available from the interface;
 - There is a good range of different materials and textures suited for the different kinds of objects;
 - Every primitive available is used on the scene;
 - Every type of transformation is used;
@@ -23,6 +23,4 @@
 ----
 ## Issues/Problems
 
-- Enabling individual lights is still not implemented on the interface;
-- There are still some unsolved problems with texture coordinates on the sphere primitive;
 - A few possible warnings and errors in the parser are still to be implemented.

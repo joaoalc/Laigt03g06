@@ -38,7 +38,6 @@ class XMLscene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
 
 
-
         this.initObjects();
 
 
@@ -115,7 +114,6 @@ class XMLscene extends CGFscene {
                     this.interface.setActiveCamera(this.camera);
                 }
                 this.cameraIds[key] = i; //adding a numeric value
-                console.log(Object.keys(this.cameraIds).length);
                 i++;
             }
         } else {
@@ -140,6 +138,9 @@ class XMLscene extends CGFscene {
      * Initializes the scene lights with the values read from the XML file.
      */
     initLights() {
+
+        this.lightsStatus = {};
+
         var i = 0;
         // Lights index.
 
@@ -164,13 +165,21 @@ class XMLscene extends CGFscene {
 
                 this.lights[i].update();
 
+                this.lightsStatus["light" + i] = graphLight[0];
+
                 i++;
             }
         }
+
+
     }
 
     updateLights() {
         for (var i = 0; i < this.lights.length; i++) {
+            if(this.lightsStatus["light" + i])
+                this.lights[i].enable();
+            else
+                this.lights[i].disable();
             this.lights[i].setVisible(false);
             this.lights[i].update();
         }
