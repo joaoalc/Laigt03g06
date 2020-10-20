@@ -317,7 +317,7 @@ class MySceneGraph {
         }
 
         if (this.views[defaultView] == null) {
-            return "default view ID = " + defaultView + "is not defined";
+            return "default view ID = " + defaultView + " is not defined";
         }
 
         if (numViews == 0)
@@ -415,11 +415,11 @@ class MySceneGraph {
 
                 if (attributeIndex != -1) {
                     if (attributeTypes[j] == "boolean") 
-                        var aux = this.parseBoolean(grandChildren[attributeIndex], "value", "enabled attribute for light of ID" + lightId);
+                        var aux = this.parseBoolean(grandChildren[attributeIndex], "value", "enabled attribute for light of ID " + lightId);
                     else if (attributeTypes[j] == "position")
-                        var aux = this.parseCoordinates4D(grandChildren[attributeIndex], "light position for ID" + lightId);
+                        var aux = this.parseCoordinates4D(grandChildren[attributeIndex], "light position for ID " + lightId);
                     else
-                        var aux = this.parseColor(grandChildren[attributeIndex], attributeNames[j] + " illumination for ID" + lightId);
+                        var aux = this.parseColor(grandChildren[attributeIndex], attributeNames[j] + " illumination for ID " + lightId);
 
                     if (typeof aux === 'string')
                         return aux;
@@ -533,7 +533,7 @@ class MySceneGraph {
                     if (attributeTypes[j] == "float")
                         var aux = this.reader.getFloat(grandChildren[attributeIndex], 'value');
                     else if (attributeTypes[j] == "color")
-                        var aux = this.parseColor(grandChildren[attributeIndex], attributeNames[j] + " component for material ID" + materialID);
+                        var aux = this.parseColor(grandChildren[attributeIndex], attributeNames[j] + " component for material ID " + materialID);
 
                     if (typeof aux === 'string')
                         return aux;
@@ -541,7 +541,7 @@ class MySceneGraph {
                     global.push(aux);
                 }
                 else
-                    return "material " + attributeNames[i] + " undefined for ID = " + materialID;
+                    return "material " + attributeNames[j] + " undefined for ID = " + materialID;
             }
             this.materials[materialID] = global;
         }
@@ -609,7 +609,7 @@ class MySceneGraph {
                 var transf = [];
                 if (grandgrandChildren[k].nodeName == "translation") {
                     transf.push("t");
-                    transf.push(...this.parseCoordinates3D(grandgrandChildren[k], "translation in node ID" + nodeID));
+                    transf.push(...this.parseCoordinates3D(grandgrandChildren[k], "translation in node ID " + nodeID));
 
                 } else if (grandgrandChildren[k].nodeName == "scale") {
                     transf.push("s");
@@ -618,11 +618,11 @@ class MySceneGraph {
                     var sz = null;
 
                     if((sx = this.reader.getFloat(grandgrandChildren[k], 'sx')) == null)
-                        return "unable to parse 'sx' component of scale on node ID" + nodeID;
+                        return "unable to parse 'sx' component of scale on node ID " + nodeID;
                     if((sy = this.reader.getFloat(grandgrandChildren[k], 'sy')) == null)
-                        return "unable to parse 'sy' component of scale on node ID" + nodeID;
+                        return "unable to parse 'sy' component of scale on node ID " + nodeID;
                     if((sz = this.reader.getFloat(grandgrandChildren[k], 'sz')) == null)
-                        return "unable to parse 'sz' component of scale on node ID" + nodeID;
+                        return "unable to parse 'sz' component of scale on node ID " + nodeID;
                     
                     transf.push(...[sx, sy, sz]);
 
@@ -633,10 +633,12 @@ class MySceneGraph {
 
                     axis = this.reader.getString(grandgrandChildren[k], 'axis');
                     if(axis == null || (axis != "x" && axis != "y" && axis != "z"))
-                        return "unable to parse 'axis' component of rotation on node ID" + nodeID;
+                        return "unable to parse 'axis' component of rotation on node ID " + nodeID;
 
                     if((angle = this.reader.getFloat(grandgrandChildren[k], 'angle')) == null)
-                        return "unable to parse 'angle' component of rotation on node ID" + nodeID;
+                        return "unable to parse 'angle' component of rotation on node ID " + nodeID;
+                    if(isNaN(angle))
+                        return "the value of the 'angle' component of the rotation on node ID " + nodeID;
 
                     transf.push(...[axis, angle]);
 
@@ -781,7 +783,7 @@ class MySceneGraph {
             for(var i = 0; i < attributeNames.length; i++) {
                 var attribute = this.reader.getFloat(node, attributeNames[i]);
                 if (!(attribute != null && !isNaN(attribute)))
-                    return "unable to identify '" + attributeNames[i] + "' attribute on rectangle" + messageError;
+                    return "unable to identify '" + attributeNames[i] + "' attribute on rectangle " + messageError;
                 info.push(attribute);
             }
             console.log("made rectangle");
@@ -793,7 +795,7 @@ class MySceneGraph {
             for(var i = 0; i < attributeNames.length; i++) {
                 var attribute = this.reader.getFloat(node, attributeNames[i]);
                 if (!(attribute != null && !isNaN(attribute)))
-                    return "unable to identify '" + attributeNames[i] + "' attribute on triangle" + messageError;
+                    return "unable to identify '" + attributeNames[i] + "' attribute on triangle " + messageError;
                 info.push(attribute);
             }
             console.log("made triangle");
@@ -807,11 +809,11 @@ class MySceneGraph {
                 if(attributeTypes[i] == "float") {
                     var attribute = this.reader.getFloat(node, attributeNames[i]);
                     if (!(attribute != null && !isNaN(attribute)))
-                        return "unable to identify '" + attributeNames[i] + "' attribute on cylinder" + messageError;
+                        return "unable to identify '" + attributeNames[i] + "' attribute on cylinder " + messageError;
                 } else {
                     var attribute = this.reader.getInteger(node, attributeNames[i]);
                     if (!(attribute != null && !isNaN(attribute)))
-                        return "unable to identify '" + attributeNames[i] + "' attribute on cylinder" + messageError;
+                        return "unable to identify '" + attributeNames[i] + "' attribute on cylinder " + messageError;
                 }
                 info.push(attribute);
             }

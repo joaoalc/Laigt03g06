@@ -75,7 +75,6 @@ class XMLscene extends CGFscene {
         
         for(var key in this.graph.textures){
             var info = this.graph.textures[key];
-            console.log(info);
             var tex = new CGFtexture(this, info);
             this.textures[key] = tex;
         }
@@ -196,7 +195,6 @@ class XMLscene extends CGFscene {
         
         this.sceneInited = true;
         this.initCameras();
-        console.log(this.activeCamera);
         this.interface.addGUIelement(this.cameraIds[this.activeCamera]);
     }
 
