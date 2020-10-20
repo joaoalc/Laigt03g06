@@ -610,6 +610,9 @@ class MySceneGraph {
                 if (grandgrandChildren[k].nodeName == "translation") {
                     transf.push("t");
                     transf.push(...this.parseCoordinates3D(grandgrandChildren[k], "translation in node ID " + nodeID));
+                    if(isNaN(transf[k * 3])){
+                        return "unable to parse component of translation on node ID " + nodeID;
+                    }
 
                 } else if (grandgrandChildren[k].nodeName == "scale") {
                     transf.push("s");
@@ -619,11 +622,16 @@ class MySceneGraph {
 
                     if((sx = this.reader.getFloat(grandgrandChildren[k], 'sx')) == null)
                         return "unable to parse 'sx' component of scale on node ID " + nodeID;
+                    if(isNaN(sx))
+                        return "the value of the 'sx' component of the scale on node ID " + nodeID + " isn't a number.";
                     if((sy = this.reader.getFloat(grandgrandChildren[k], 'sy')) == null)
                         return "unable to parse 'sy' component of scale on node ID " + nodeID;
+                    if(isNaN(sy))
+                        return "the value of the 'sy' component of the scale on node ID " + nodeID + " isn't a number.";
                     if((sz = this.reader.getFloat(grandgrandChildren[k], 'sz')) == null)
                         return "unable to parse 'sz' component of scale on node ID " + nodeID;
-                    
+                    if(isNaN(sz))
+                        return "the value of the 'sz' component of the scale on node ID " + nodeID + " isn't a number.";
                     transf.push(...[sx, sy, sz]);
 
                 } else if (grandgrandChildren[k].nodeName == "rotation") {
@@ -638,7 +646,7 @@ class MySceneGraph {
                     if((angle = this.reader.getFloat(grandgrandChildren[k], 'angle')) == null)
                         return "unable to parse 'angle' component of rotation on node ID " + nodeID;
                     if(isNaN(angle))
-                        return "the value of the 'angle' component of the rotation on node ID " + nodeID;
+                        return "the value of the 'angle' component of the rotation on node ID " + nodeID + " isn't a number.";
 
                     transf.push(...[axis, angle]);
 
