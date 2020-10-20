@@ -122,14 +122,12 @@ class XMLscene extends CGFscene {
     }
 
     updateCamera() {
-        //console.log(Object.keys(this.cameras).length);
-        //console.log(object.keys(this.cameras)[this.activeCamera]);
-        //console.log(Object.keys(this.cameras)[1]);
-        
 
         this.camera = this.cameras[Object.keys(this.cameras)[this.activeCamera]];
         
-        console.log(this.camera != null);
+        if(this.camera == null) {
+            console.log("Default camera undefined!!!!!!");
+        }
         //this.camera.resetCamera();
         this.interface.setActiveCamera(this.camera);
     }
@@ -180,7 +178,7 @@ class XMLscene extends CGFscene {
                 this.lights[i].enable();
             else
                 this.lights[i].disable();
-            this.lights[i].setVisible(false);
+            this.lights[i].setVisible(true);
             this.lights[i].update();
         }
     }
@@ -201,7 +199,8 @@ class XMLscene extends CGFscene {
         
         this.sceneInited = true;
         this.initCameras();
-        this.interface.addGUIelement();
+        console.log(this.activeCamera);
+        this.interface.addGUIelement(this.cameraIds[this.activeCamera]);
     }
 
     /**

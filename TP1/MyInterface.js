@@ -54,12 +54,17 @@ class MyInterface extends CGFinterface {
         return this.activeKeys[keyCode] || false;
     }
 
-    addGUIelement(){
-        this.gui.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));
+    addGUIelement(activeCamera){
+        var cameras = this.gui.addFolder("Cameras");
+        cameras.closed = false;
+        var camera = cameras.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));
+        camera.setValue(activeCamera);
 
+        var lights = this.gui.addFolder("Lights");
+        lights.closed = false;
         for(var i = 0; i < this.scene.lights.length; i++) {
             if(this.scene.lightsStatus["light"+i] != null) 
-                this.gui.add(this.scene.lightsStatus, 'light' + i).onChange(this.scene.updateLights.bind(this.scene));
+                lights.add(this.scene.lightsStatus, 'light' + i).onChange(this.scene.updateLights.bind(this.scene));
         }
     }
 }

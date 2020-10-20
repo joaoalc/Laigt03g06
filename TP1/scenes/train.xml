@@ -29,7 +29,7 @@
         </ortho>
     </views>
     <illumination>
-        <ambient r="0.5" g="0.5" b="0.5" a="1.0"/>
+        <ambient r="0.9" g="0.9" b="0.9" a="1.0"/>
         <background r="0.1" g="0.7" b="1.0" a="1.0"/>
     </illumination>
     <lights>
@@ -39,6 +39,13 @@
             <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                   
             <diffuse r="0.8" g="0.8" b="0.8" a="0.8" />             
             <specular r="0.8" g="0.8" b="0.8" a="1.0" />            
+        </light>
+        <light id="furnace">
+            <enable value="1"/>
+            <position x="-1.3" y="-0.2" z="0" w="1.0" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                   
+            <diffuse r="0.8" g="0.8" b="0.8" a="0.8" />             
+            <specular r="0.8" g="0.8" b="0.8" a="1.0" />  
         </light>
     </lights>
     <textures>
@@ -320,12 +327,12 @@
             <transformations>
             </transformations>
             <descendants>
-                <noderef id="rect1"></noderef>
-                <noderef id="rect2"></noderef>
-                <noderef id="rect3"></noderef>
-                <noderef id="rect4"></noderef>
-                <noderef id="rect5"></noderef>
-                <noderef id="rect6"></noderef>
+                <noderef id="rect1"/>
+                <noderef id="rect2"/>
+                <noderef id="rect3"/>
+                <noderef id="rect4"/>
+                <noderef id="rect5"/>
+                <noderef id="rect6"/>
             </descendants>
         </node>
         <node id="rect1">
