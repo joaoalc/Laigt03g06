@@ -124,10 +124,7 @@ class XMLscene extends CGFscene {
     updateCamera() {
 
         this.camera = this.cameras[Object.keys(this.cameras)[this.activeCamera]];
-        
-        if(this.camera == null) {
-            console.log("Default camera undefined!!!!!!");
-        }
+
         //this.camera.resetCamera();
         this.interface.setActiveCamera(this.camera);
     }
@@ -178,7 +175,7 @@ class XMLscene extends CGFscene {
                 this.lights[i].enable();
             else
                 this.lights[i].disable();
-            this.lights[i].setVisible(true);
+            this.lights[i].setVisible(false);
             this.lights[i].update();
         }
     }

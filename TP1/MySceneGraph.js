@@ -249,7 +249,7 @@ class MySceneGraph {
         //this.onXMLMinorError("To do: Parse views and create cameras.");
 
         var defaultView = this.reader.getString(viewsNode, "default");
-        if (defaultView == null) {
+        if (defaultView == null || defaultView == "") {
             return "no default view defined";
         }
         this.defaultView = defaultView;
@@ -267,11 +267,11 @@ class MySceneGraph {
             var global = [];
             var attributeNames = [];
 
-            var up = [0, 1, 0];
+            var defaultUp = [0, 1, 0];
 
             //Get view ID
             var viewID = this.reader.getString(children[i], 'id');
-            if (viewID == null)
+            if (viewID == null || viewID == "")
                 return "no ID defined for view";
 
             //Check for repeated IDs
@@ -306,7 +306,7 @@ class MySceneGraph {
                     global.push(this.parseCoordinates3D(grandChildren[attributeIndex], attributeNames[k] + " component for view ID " + viewID));
                 }
                 else if (attributeNames[k] == "up") {
-                    global.push(up);
+                    global.push(defaultUp);
                 }
                 else
                     return "view " + attributeNames[k] + " undefined for ID = " + viewID;
@@ -395,7 +395,7 @@ class MySceneGraph {
 
             // Get id of the current light.
             var lightId = this.reader.getString(children[i], 'id');
-            if (lightId == null)
+            if (lightId == null || lightId == "")
                 return "no ID defined for light";
 
             // Checks for repeated IDs.
@@ -463,7 +463,7 @@ class MySceneGraph {
             }
 
             var textureID = this.reader.getString(children[i], 'id');
-            if (textureID == null)
+            if (textureID == null || textureID == "")
                 return "no ID defined for texture";
 
             if (this.textures[textureID] != null)
@@ -509,7 +509,7 @@ class MySceneGraph {
 
             // Get id of the current material.
             var materialID = this.reader.getString(children[i], 'id');
-            if (materialID == null)
+            if (materialID == null || materialID == "")
                 return "no ID defined for material";
 
             // Checks for repeated IDs.
@@ -575,8 +575,8 @@ class MySceneGraph {
 
             // Get id of the current node.
             var nodeID = this.reader.getString(children[i], 'id');
-            if (nodeID == null)
-                return "no ID defined for nodeID";
+            if (nodeID == null || nodeID == "")
+                return "no ID defined for node";
 
             // Checks for repeated IDs.
             if (this.nodes[nodeID] != null)
@@ -654,7 +654,7 @@ class MySceneGraph {
                 return "no <material> tag for node ID " + nodeID;
             var materialID = null;
 
-            if ((materialID = this.reader.getString(grandChildren[materialIndex], 'id')) == null) {
+            if ((materialID = this.reader.getString(grandChildren[materialIndex], 'id')) == null || materialID == "") {
                 return "no id defined for material in node ID " + nodeID;
             }
 
@@ -729,7 +729,7 @@ class MySceneGraph {
             for(var n = 0; n < grandgrandChildren.length; n++) {
                 if(grandgrandChildren[n].nodeName == "noderef") {
                     var descendantID = this.reader.getString(grandgrandChildren[n], 'id');
-                    if(descendantID == null) 
+                    if(descendantID == null || descendantID == "") 
                         return "no id defined for descendant on node ID " + nodeID;
                     descendants.push(descendantID);
 
