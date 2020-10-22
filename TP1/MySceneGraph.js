@@ -473,6 +473,13 @@ class MySceneGraph {
             if (texturePath == null)
                 return "no path defined for texture (ID = " + textureID + ")";
 
+            var http = new XMLHttpRequest();
+
+            http.open('HEAD', texturePath, false);
+            http.send();
+            if(http.status != 200)
+                return "invalid path defined for texture (ID = " + textureID + ")";
+
             this.textures[textureID] = texturePath;
         }
 
@@ -610,7 +617,7 @@ class MySceneGraph {
                 if (grandgrandChildren[k].nodeName == "translation") {
                     transf.push("t");
                     transf.push(...this.parseCoordinates3D(grandgrandChildren[k], "translation in node ID " + nodeID));
-                    if(isNaN(transf[k * 3])){
+                    if(isNaN(transf[1]) || isNaN(transf[2]) || isNaN(transf[3])){
                         return "unable to parse component of translation on node ID " + nodeID;
                     }
 
