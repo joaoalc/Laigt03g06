@@ -58,7 +58,7 @@
         <texture id="skybox_top" path="./scenes/textures/skybox/skybox_top.png"/>
         <texture id="skybox_back" path="./scenes/textures/skybox/skybox_back.png"/>
         <texture id="skybox_bottom" path="./scenes/textures/skybox/skybox_bottom.png"/>
-        <texture id="tree_trunk" path="./scenes/textures/trunk-image.jpg"/>
+        <texture id="tree_trunk" path="./scenes/textures/tree_trunk.png"/>
         <texture id="tree_leaves" path="./scenes/textures/tree_leaves.jpg"/>
         <texture id="wood" path="./scenes/textures/wood.jpg"/>
         <texture id="grass" path="./scenes/textures/grass.jpg"/>
@@ -296,7 +296,7 @@
         <node id="ground_base">
             <material id="null"/>
             <texture id="grass">
-                <amplification afs="0.2" aft="0.2"/>
+                <amplification afs="5" aft="5"/>
             </texture>
             <transformations>
                 <rotation axis="x" angle="90"/>
@@ -467,8 +467,8 @@
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
-                <translation x="-0.3" y="-1.29" z="0"/>
-                <scale sx="1.382" sy="1" sz="1"/>
+                <translation x="-0.355" y="-1.29" z="0"/>
+                <scale sx="1.35" sy="1" sz="1"/>
                 <rotation axis="x" angle="-90"/>
             </transformations>
             <descendants>
@@ -1478,7 +1478,7 @@
         <node id="tree_leaves_base">
             <material id="null"/>
             <texture id="null">
-                <amplification afs="1.0" aft="1.0" />
+                <amplification afs="2.5" aft="3.5" />
             </texture>
             <transformations>
                 <translation x="0" y="0" z="1"/>
