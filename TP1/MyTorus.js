@@ -1,5 +1,6 @@
 class MyTorus extends CGFobject { //This torus starts to be drawn in the inner loop in the x axis. Then it goes counter-clockwise through every slice. It draws each slice individually before moving on to next. Drawing loops is also counter clockwise.
     /**
+     * MyTorus
      * @method constructor
      * @param  {CGFscene} scene - MyScene object
      * @param  {integer} slices - number of slices around Z axis
@@ -18,7 +19,6 @@ class MyTorus extends CGFobject { //This torus starts to be drawn in the inner l
     /**
      * @method initBuffers
      * Initializes the torus buffers
-     * TODO: DEFINE TEXTURE COORDINATES
      */
     initBuffers() {
         this.vertices = [];

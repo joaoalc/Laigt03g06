@@ -1,5 +1,6 @@
 class MyCylinder extends CGFobject {
     /**
+     * MyCylinder
      * @method constructor
      * @param  {CGFscene} scene - MyScene object
      * @param  {integer} slices - number of slices around Z axis
@@ -19,7 +20,6 @@ class MyCylinder extends CGFobject {
     /**
      * @method initBuffers
      * Initializes the cylinder buffers
-     * TODO: DEFINE TEXTURE COORDINATES
      */
     initBuffers() {
         this.vertices = [];

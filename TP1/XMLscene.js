@@ -21,25 +21,20 @@ class XMLscene extends CGFscene {
 
         this.sceneInited = false;
 
-
+        //Currently active camera's numeric ID
         this.activeCamera = 0;
         
+        //Cameras numeric IDs
         this.cameraIds = {};
 
         this.initCameras();
 
-
         this.enableTextures(true);
-
 
         this.gl.clearDepth(100.0);
         this.gl.enable(this.gl.DEPTH_TEST);
         this.gl.enable(this.gl.CULL_FACE);
         this.gl.depthFunc(this.gl.LEQUAL);
-
-
-        this.initObjects();
-
 
         this.axis = new CGFaxis(this);
         this.setUpdatePeriod(100);
@@ -78,13 +73,6 @@ class XMLscene extends CGFscene {
             var tex = new CGFtexture(this, info);
             this.textures[key] = tex;
         }
-
-        //this.testTexture = new CGFtexture(this, 'scenes/images/Archer_96x96_upscaled_8x.png');
-    }
-
-    /*Initializes the objects in the scene*/
-    initObjects() {
-        //this.testCylinder = new MyCylinder(this, 2, 2, 4, 16, 8);
     }
 
     /**
@@ -120,11 +108,13 @@ class XMLscene extends CGFscene {
         }
     }
 
+    /**
+     * Updated the currently active camera
+     */
     updateCamera() {
 
         this.camera = this.cameras[Object.keys(this.cameras)[this.activeCamera]];
 
-        //this.camera.resetCamera();
         this.interface.setActiveCamera(this.camera);
     }
 
@@ -133,10 +123,11 @@ class XMLscene extends CGFscene {
      */
     initLights() {
 
+        // {light : enabled/disabled, ...}
         this.lightsStatus = {};
 
-        var i = 0;
         // Lights index.
+        var i = 0;
 
         // Reads the lights from the scene graph.
         for (var key in this.graph.lights) {
@@ -168,6 +159,9 @@ class XMLscene extends CGFscene {
 
     }
 
+    /**
+     * Updates all the scene's lights
+     */
     updateLights() {
         for (var i = 0; i < this.lights.length; i++) {
             if(this.lightsStatus["light" + i])
@@ -195,7 +189,7 @@ class XMLscene extends CGFscene {
         
         this.sceneInited = true;
         this.initCameras();
-        this.interface.addGUIelement(this.cameraIds[this.activeCamera]);
+        this.interface.addGUIelements(this.cameraIds[this.activeCamera]);
     }
 
     /**
@@ -228,6 +222,7 @@ class XMLscene extends CGFscene {
  
             this.defaultAppearance.apply();
             
+            // Updates the scene's lights
             this.updateLights();
 
             // Displays the scene (MySceneGraph function).
@@ -236,7 +231,6 @@ class XMLscene extends CGFscene {
         }
         else
         {
-            
             // Show some "loading" visuals
             this.defaultAppearance.apply();
 

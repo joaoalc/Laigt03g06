@@ -2,14 +2,20 @@
 var materialStack = [];
 var textureStack = [];
 
-
+/**
+ * MyNode class, representing a node of the scene graph.
+ */
 class MyNode {
-    /*
-    * @param {string} id
-    * @param {string} texture_path
-    * @param {string} material
-    */
-
+    /**
+     * MyNode
+     * @constructor
+     * @param scene - Reference to MyScene object
+     * @param texture - CGFtexture object
+     * @param material - CGFappearance object
+     * @param transformations - Array with transformations
+     * @param descendants - Array of references to descendant nodes
+     * @param leaves - Array of CGFobject leaves
+     */
     constructor(scene, texture, material, transformations, descendants, leaves) {
         this.scene = scene;
         this.texture = texture;
@@ -35,6 +41,9 @@ class MyNode {
         }
     }
 
+    /**
+     * Displays the node and its descendants recursively, applying transfomations, textures and materials
+     */
     display() {
         this.scene.pushMatrix();
         this.scene.multMatrix(this.transfMatrix); //Adicionar a nova transformação à matriz de transformações para este objeto e todos os seus descendants

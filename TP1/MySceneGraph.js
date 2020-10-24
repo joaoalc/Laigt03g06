@@ -784,6 +784,14 @@ class MySceneGraph {
 
         this.log("Parsed nodes");
     }
+    
+    /**
+     * Parses a <leaf> object
+     * @returns resulting CGFobject to display 
+     * @param {block element} node
+     * @param {message to be displayed in case of error} messageError
+     * @param {texture amplification} amplification 
+     */
 
     parseLeaf(node, messageError, amplification) {
         var type = this.reader.getString(node, 'type');
@@ -1032,9 +1040,6 @@ class MySceneGraph {
      * Displays the scene, processing each node, starting in the root node.
      */
     displayScene() {
-
-        //To do: Create display loop for transversing the scene graph, calling the root node's display function
-
         this.nodes[this.idRoot].display();
     }
 }

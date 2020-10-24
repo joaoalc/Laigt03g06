@@ -23,10 +23,6 @@ class MyInterface extends CGFinterface {
         // add a group of controls (and open/expand by defult)
 
         this.initKeys();
-
-               
-
-        
         
         return true;
     }
@@ -54,7 +50,11 @@ class MyInterface extends CGFinterface {
         return this.activeKeys[keyCode] || false;
     }
 
-    addGUIelement(activeCamera){
+    /**
+     * Adds the camera selection and lights enable/disable options to the interface
+     * @param activeCamera - currently active camera's ID 
+     */
+    addGUIelements(activeCamera){
         var cameras = this.gui.addFolder("Cameras");
         cameras.closed = false;
         var camera = cameras.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));

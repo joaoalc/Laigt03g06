@@ -1,16 +1,17 @@
-/**
- * MyTriangle
- * @constructor
- * @param scene - Reference to MyScene object
- * @param x1 - x coordinate corner 1
- * @param y1 - y coordinate corner 1
- * @param x2 - x coordinate corner 2
- * @param y2 - y coordinate corner 2
- * @param x3 - x coordinate corner 3
- * @param y3 - y coordinate corner 3
- * @param z3 - z 
- */
 class MyTriangle extends CGFobject {
+	/**
+	 * MyTriangle
+	 * @constructor
+	 * @param scene - Reference to MyScene object
+	 * @param x1 - x coordinate corner 1
+	 * @param y1 - y coordinate corner 1
+	 * @param x2 - x coordinate corner 2
+	 * @param y2 - y coordinate corner 2
+	 * @param x3 - x coordinate corner 3
+	 * @param y3 - y coordinate corner 3
+	 * @param afs - afs component for amplification
+	 * @param aft - aft component for amplification
+	 */
 	constructor(scene, x1, y1, x2, y2, x3, y3, afs, aft) {
 		super(scene);
 		this.x1 = x1;
@@ -44,15 +45,6 @@ class MyTriangle extends CGFobject {
 			0, 0, 1
 		];
 		
-		/*
-		Texture coords (s,t)
-		+----------> s
-        |
-        |
-		|
-		v
-        t
-        */
 
         var a = Math.sqrt(Math.pow(this.x2-this.x1, 2) + Math.pow(this.y2-this.y1, 2));
         var b = Math.sqrt(Math.pow(this.x3-this.x2, 2) + Math.pow(this.y3-this.y2, 2));
@@ -65,12 +57,6 @@ class MyTriangle extends CGFobject {
             a / this.afs, 0,
             c*cosA / this.afs, -c*(Math.sqrt(1.0-cosA*cosA)) / this.aft
 		]
-
-		// this.texCoords = [
-		// 	0, 0,
-        //     1, 0,
-        //     1,1
-		// ]
 
 		this.primitiveType = this.scene.gl.TRIANGLES;
 		this.initGLBuffers();

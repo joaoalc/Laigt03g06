@@ -1,5 +1,6 @@
 class MySphere extends CGFobject {
     /**
+     * MySphere
      * @method constructor
      * @param scene - MyScene object
      * @param radius - radius value
