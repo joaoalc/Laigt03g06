@@ -63,7 +63,7 @@
         <texture id="wood" path="./scenes/textures/wood.jpg"/>
         <texture id="grass" path="./scenes/textures/grass.jpg"/>
         <texture id="train_furnace" path="./scenes/textures/furnace.jpg"/>
-        <texture id="glass" path="./scenes/textures/glass.jpg"/>
+        <texture id="glass" path="./scenes/textures/glass.png"/>
         <texture id="main_cylinder" path="./scenes/textures/main_cylinder.png"/>
         <texture id="train_inside" path="./scenes/textures/train_inside.jpg"/>
         <texture id="metal_grip" path="./scenes/textures/metal_grip.jpg"/>
@@ -76,6 +76,7 @@
         <texture id="headlight" path="./scenes/textures/headlight1.jpg"/>
         <texture id="main_sphere" path="./scenes/textures/main_sphere.png"/>
         <texture id="test" path="./scenes/textures/map.jpg"/>
+        <texture id="metal" path="./scenes/textures/metal.jpg"/>
     </textures>
     <materials>
         <material id="Generic">
@@ -123,8 +124,8 @@
         <material id="glass">
             <shininess value="20.0"/>
             <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
-            <diffuse r="0.7" g="0.7" b="0.7" a="1.0"/>
-            <specular r="0.9" g="0.9" b="0.9" a="1.0"/>
+            <diffuse r="0.3" g="0.3" b="0.3" a="1.0"/>
+            <specular r="1" g="1" b="1" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
         <material id="black_metal">
@@ -749,7 +750,7 @@
         <!-- Axles -->
         <node id="axles">
             <material id="metal_axles"/>
-            <texture id="null">
+            <texture id="metal">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -820,7 +821,7 @@
         <!--Wheels-->
         <node id="wheels">
             <material id="metal_wheels"/>
-            <texture id="null">
+            <texture id="metal">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -954,7 +955,7 @@
         <!-- Coupling rods -->
         <node id="coupling_rods">
             <material id="null"/>
-            <texture id="null">
+            <texture id="metal">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
