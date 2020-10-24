@@ -23,6 +23,10 @@ class MyInterface extends CGFinterface {
         // add a group of controls (and open/expand by defult)
 
         this.initKeys();
+
+        var axis = this.gui.addFolder("Axis");
+        axis.add(this.scene, 'displayAxis').name("Display Axis");
+        axis.closed = false;
         
         return true;
     }
