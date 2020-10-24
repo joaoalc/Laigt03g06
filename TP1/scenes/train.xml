@@ -158,7 +158,7 @@
     <nodes>
         <node id="RootNode">
             <material id="Generic"/>
-            <texture id="null">
+            <texture id="clear">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
