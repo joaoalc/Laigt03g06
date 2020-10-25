@@ -113,7 +113,7 @@ class XMLscene extends CGFscene {
     }
 
     /**
-     * Updated the currently active camera
+     * Updated the currently active camera. Also resets it's attributes to the ones set to at the beggining.
      */
     updateCamera() {
 
