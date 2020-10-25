@@ -11,23 +11,23 @@
             <from x="10" y="4" z="10"/>
             <to x="0" y="0" z="0"/>
         </perspective>
-        <perspective id="perspective1" near="0.1" far="500" angle="45">
+        <perspective id="Overview" near="0.1" far="500" angle="45">
             <from x="18" y="5" z="15"/>
             <to x="0" y="0" z="0"/>
         </perspective>
-        <perspective id="perspective2" near="0.1" far="500" angle="45">
+        <perspective id="Back" near="0.1" far="500" angle="45">
             <from x="-15" y="5" z="-3"/>
             <to x="0" y="0" z="0"/>
         </perspective>
-        <perspective id="perspective3" near="0.1" far="500" angle="45">
+        <perspective id="Train" near="0.1" far="500" angle="45">
             <from x="10" y="0" z="-10"/>
             <to x="0" y="-0.5" z="0"/>
         </perspective>
-        <ortho id="ortho1" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
+        <ortho id="Side View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
             <from x="5" y="0" z="10"/>
             <to x="0" y="0" z="0"/>
         </ortho>
-        <ortho id="ortho2" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
+        <ortho id="Front View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
             <from x="10" y="0" z="0"/>
             <to x="0" y="0" z="0"/>
         </ortho>
@@ -82,6 +82,7 @@
         <texture id="test" path="./scenes/textures/map.jpg"/>
         <texture id="metal" path="./scenes/textures/metal.jpg"/>
         <texture id="rock" path="./scenes/textures/rock.jpg"/>
+        <texture id="grass_blade" path="./scenes/textures/grass_blade.jpg"/>
     </textures>
     <materials>
         <material id="Generic">
@@ -106,6 +107,13 @@
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
         <material id="metal">
+            <shininess value="10.0"/>
+            <ambient r="0.3" g="0.3" b="0.3" a="1.0"/>
+            <diffuse r="0.7" g="0.7" b="0.7" a="1.0"/>
+            <specular r="0.7" g="0.7" b="0.7" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="metal_body">
             <shininess value="10.0"/>
             <ambient r="0.3" g="0.3" b="0.3" a="1.0"/>
             <diffuse r="0.9" g="0.7" b="0.7" a="1.0"/>
@@ -304,6 +312,7 @@
                 <noderef id="ground_base"/>
                 <noderef id="ground_pebbles"/>
                 <noderef id="ground_rocks"/>
+                <noderef id="ground_grass"/>
             </descendants>
         </node>
 
@@ -317,6 +326,9 @@
             <descendants>
                 <noderef id="ground_rock_1"/>
                 <noderef id="ground_rock_2"/>
+                <noderef id="ground_rock_3"/>
+                <noderef id="ground_rock_4"/>
+                <noderef id="ground_rock_5"/>
             </descendants>
         </node>
 
@@ -356,12 +368,265 @@
                 <amplification afs="1" aft="1"/>
             </texture>
             <transformations>
-                <translation x="-4" y="0" z="5.2"/>
+                <translation x="4.3" y="0" z="7.5"/>
                 <rotation axis="z" angle="40"/>
                 <rotation axis="x" angle="10"/>
+                <scale sx="1.5" sy="1" sz="1.5"/>
             </transformations>
             <descendants>
-                <!--<leaf type="triangle" x1="0" y1="0" x2=""/>-->
+                <leaf type="sphere" radius="0.3" slices="5" stacks="3"/>
+            </descendants>
+        </node>
+
+        <node id="ground_rock_4">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-3.3" y="0" z="-7.5"/>
+                <rotation axis="z" angle="30"/>
+                <rotation axis="x" angle="20"/>
+                <rotation axis="y" angle="10"/>
+                <scale sx="1.5" sy="1" sz="1.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="0.3" slices="5" stacks="3"/>
+            </descendants>
+        </node>
+
+        <node id="ground_rock_5">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="5.3" y="0" z="-6.5"/>
+                <rotation axis="z" angle="30"/>
+                <rotation axis="x" angle="20"/>
+                <rotation axis="y" angle="30"/>
+                <scale sx="1.5" sy="1" sz="1.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="0.6" slices="5" stacks="3"/>
+            </descendants>
+        </node>
+
+        <node id="grass_pre">
+            <material id="null"/>
+            <texture id="grass_blade">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="grass_part_1"/>
+                <noderef id="grass_part_2"/>
+            </descendants>
+        </node>
+
+        <node id="grass_blades">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="0.05" y2="0" x3="0" y3="0.4"/>
+                <leaf type="triangle" x2="0" y2="0" x1="0.05" y1="0" x3="0" y3="0.4"/>
+                
+                <leaf type="triangle" x2="0" y2="0" x1="-0.03" y1="0" x3="0" y3="0.4"/>
+                <leaf type="triangle" x1="0" y1="0" x2="-0.03" y2="0" x3="0" y3="0.4"/>
+
+                <leaf type="triangle" x1="0.06" y1="0" x2="0.12" y2="0" x3="0.12" y3="0.3"/>
+                <leaf type="triangle" x2="0.06" y2="0" x1="0.12" y1="0" x3="0.12" y3="0.3"/>
+
+                <leaf type="triangle" x1="0.13" y1="0" x2="0.17" y2="0" x3="0.20" y3="0.20"/>
+                <leaf type="triangle" x2="0.13" y2="0" x1="0.17" y1="0" x3="0.20" y3="0.20"/>
+
+                <leaf type="triangle" x1="0.18" y1="0" x2="0.21" y2="0" x3="0.22" y3="0.10"/>
+                <leaf type="triangle" x2="0.18" y2="0" x1="0.21" y1="0" x3="0.22" y3="0.10"/>
+
+                <leaf type="triangle" x2="-0.04" y2="0" x1="-0.10" y1="0" x3="-0.09" y3="0.25"/>
+                <leaf type="triangle" x1="-0.04" y1="0" x2="-0.10" y2="0" x3="-0.09" y3="0.25"/>
+
+                <leaf type="triangle" x2="-0.11" y2="0" x1="-0.15" y1="0" x3="-0.16" y3="0.15"/>
+                <leaf type="triangle" x1="-0.11" y1="0" x2="-0.15" y2="0" x3="-0.16" y3="0.15"/>
+
+                <leaf type="triangle" x2="-0.16" y2="0" x1="-0.18" y1="0" x3="-0.185" y3="0.08"/>
+                <leaf type="triangle" x1="-0.16" y1="0" x2="-0.18" y2="0" x3="-0.185" y3="0.08"/>
+            </descendants>
+        </node>
+
+        <node id="grass_part_2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="45"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_blades"/>
+            </descendants>
+        </node>
+        <node id="grass_part_1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="-45"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_blades"/>
+            </descendants>
+        </node>
+
+        <node id="ground_grass">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="grass_1"/>
+                <noderef id="grass_2"/>
+                <noderef id="grass_3"/>
+                <noderef id="grass_4"/>
+                <noderef id="grass_5"/>
+                <noderef id="grass_6"/>
+                <noderef id="grass_7"/>
+                <noderef id="grass_8"/>
+                <noderef id="grass_9"/>
+            </descendants>
+        </node>
+
+        <node id="grass_1">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-6" y="0" z="4"/>
+                <scale sx="2" sy="2" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_2">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="8"/>
+                <scale sx="3" sy="1.5" sz="3"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_3">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="5" y="0" z="3"/>
+                <scale sx="2" sy="2" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_4">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-7" y="0" z="7"/>
+                <scale sx="2.5" sy="3" sz="2.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_5">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="2" y="0" z="-7"/>
+                <scale sx="2.5" sy="3" sz="2.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_6">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-5" y="0" z="-6.5"/>
+                <scale sx="2.5" sy="4" sz="2.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_7">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-2" y="0" z="3"/>
+                <scale sx="3" sy="1" sz="3"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_8">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-4" y="0" z="-3"/>
+                <scale sx="4" sy="3" sz="4"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_9">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="6" y="0" z="-5.5"/>
+                <scale sx="2" sy="1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
             </descendants>
         </node>
         
@@ -491,7 +756,7 @@
 
         <!--Train-->
         <node id="train">
-            <material id="metal"/>
+            <material id="metal_body"/>
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
@@ -804,7 +1069,7 @@
 
         <!--Train bottom-->
         <node id="train_bottom">
-            <material id="null"/>
+            <material id="metal"/>
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
@@ -1263,7 +1528,7 @@
             <transformations>
                 <translation x="0" y="0" z="0.745"/>
                 <scale sx="1" sy="1" sz="0.6"/>
-                <rotation axis="y" angle="-90"/>
+                <rotation axis="y" angle="0"/>
                 <rotation axis="x" angle="-90"/>
             </transformations>
             <descendants>
