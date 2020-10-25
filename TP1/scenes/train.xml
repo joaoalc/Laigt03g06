@@ -181,8 +181,8 @@
                 <noderef id="skybox"/>
                 <noderef id="trees"/>
                 <noderef id="ground"/>
-                <!--<leaf type="rectangle" x1="10" y2="0" x2="0" y1="10"/>-->
-                <!--<leaf type="triangle" x1="0" y1="0" x2="3" y2="0" x3="0" y3="3"/>-->
+                <!--<leaf type="rectangle" x1="10" y2="0" x2="0" y1="10"/> -->
+                <!--<leaf type="triangle" x1="0" y1="0" x3="5" y3="0" x2="0" y2="5"/> -->
             </descendants>
         </node>
 

@@ -477,10 +477,12 @@ class MySceneGraph {
 
             http.open('HEAD', texturePath, false);
             http.send();
-            if(http.status != 200)
-                return "invalid path defined for texture (ID = " + textureID + ")";
-
-            this.textures[textureID] = texturePath;
+            if(http.status != 200) {
+                this.onXMLError("invalid path defined for texture (ID = " + textureID + ")");
+                this.textures[textureID] = 0;
+            }
+            else
+                this.textures[textureID] = texturePath;
         }
 
         this.log("Parsed textures");
@@ -680,7 +682,7 @@ class MySceneGraph {
                     return "invalid material ID on node " + nodeID;
             } else {
                 if(nodeID == this.idRoot)
-                    this.onXMLMinorError("Warning: no material defined for root node");
+                    this.onXMLMinorError("Warning: no material defined for root node. Using default material");
             }
 
 
@@ -700,7 +702,7 @@ class MySceneGraph {
 
             if (textureID != "null" && textureID != "clear") {
                 if (this.textures[textureID] == null)
-                    return "invalid texture ID on node " + nodeID;
+                    this.onXMLError("invalid texture ID on node " + nodeID + ". Assuming empty texture");
             }
 
             grandgrandChildren = grandChildren[textureIndex].children;

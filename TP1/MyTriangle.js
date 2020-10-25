@@ -38,11 +38,27 @@ class MyTriangle extends CGFobject {
 			0, 1, 2
 		];
 
+		//Calculating normal direction by vector product
+		var normal = [];
+
+		var u1 = [this.x2 - this.x1, this.y2 - this.y1, 0];
+		var u2 = [this.x3 - this.x1, this.y3 - this.y1, 0];
+
+		normal.x = (u1[1] * u2[2]) - (u1[2] * u2[1]);
+		normal.y = (u1[2] * u2[0]) - (u1[0] * u2[2]);
+		normal.z = (u1[0] * u2[1]) - (u1[1] * u2[0]);
+
+
+		var normal_length = Math.sqrt(Math.pow(normal.x, 2) + Math.pow(normal.y, 2) + Math.pow(normal.z, 2));
+		normal.x /= normal_length;
+		normal.y /= normal_length;
+		normal.z /= normal_length;
+
 		//Facing Z positive
 		this.normals = [
-			0, 0, 1,
-			0, 0, 1,
-			0, 0, 1
+			normal.x, normal.y, normal.z,
+			normal.x, normal.y, normal.z,
+			normal.x, normal.y, normal.z
 		];
 		
 

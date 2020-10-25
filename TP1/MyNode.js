@@ -52,18 +52,18 @@ class MyNode {
             materialStack.push(this.material);
         }
 
-        //Texture stuffs
+        //Texture
         if(this.texture != "null" && this.texture != "clear") //Texture id being "null" means it inherits it's parent's texture
         {
-            //console.log(textureStack.length);
-            textureStack.push(this.texture);
-            //console.log(textureStack.length);
+            if(this.scene.textures[this.texture] != 0)
+                textureStack.push(this.texture);
+            else 
+                this.texture == "clear"; //if the texture path is invalid, texture is set as clear
         }
         if(this.scene.materials[materialStack[materialStack.length - 1]] != null)
             this.scene.materials[materialStack[materialStack.length - 1]].apply();
         
         if(this.texture != "clear"){
-            //this.scene.materials[materialStack[materialStack.length - 1]].setTexture(this.scene.textures[materialStack[materialStack.length - 1]]);
             if(textureStack[textureStack.length - 1] != null)
                 this.scene.textures[textureStack[textureStack.length - 1]].bind();
         }
@@ -79,19 +79,10 @@ class MyNode {
                 this.leaves[i].display();
         }
 
-        //console.log(this.scene.textures[textureStack[textureStack.length - 1]]);
-
-        /*if(this.texture == "clear"){
-            this.scene.textures[textureStack[textureStack.length - 1]].bind();
-        }*/
-
         //Recursively run this code for all the children nodes
         for(var j = 0; j < this.descendants.length; j++) {
             this.descendants[j].display();
         }
-        
-        
-        //this.scene.textures[textureStack[textureStack.length - 1]].bind();
 
         if(this.texture != "null" && this.texture != "clear"){
             textureStack.pop();
