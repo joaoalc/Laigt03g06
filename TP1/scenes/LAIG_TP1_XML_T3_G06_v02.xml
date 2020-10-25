@@ -1,12 +1,9 @@
 <lsf>
     <initials>
-        <reference length="2"/>
-        <!--  axis length; "0" means no axis displayed  -->
+        <reference length="0"/>
         <root id="RootNode"/>
-        <!--  identifier of root node of the scene graph; this node  -->
-        <!--  must be defined in one of the following NODE declarations  -->
     </initials>
-    <views default="defaultCamera"> <!-- Ver depois :O -->
+    <views default="defaultCamera"> 
         <perspective id="defaultCamera" near="0.1" far="500" angle="45">
             <from x="10" y="4" z="10"/>
             <to x="0" y="0" z="0"/>
@@ -53,7 +50,6 @@
         </light>
     </lights>
     <textures>
-        <!--  NOTE: this block "TEXTURE" must be repeated as necessary with different "id"  -->
         <texture id="temp" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/temp.png"/>
         <texture id="vidral" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/vidral.jpg"/>
         <texture id="skybox_left" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/skybox/skybox_left.png"/>
@@ -76,7 +72,7 @@
         <texture id="train_side_1_2" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/train_side_1_2.png"/>
         <texture id="train_side_2_2" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/train_side_2_2.png"/>
         <texture id="train_front_1" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/train_front_1.png"/>
-        <texture id="pebbles" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/pebbles2.jpg"/>
+        <texture id="pebbles" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/pebbles.jpg"/>
         <texture id="headlight" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/headlight1.jpg"/>
         <texture id="main_sphere" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/main_sphere.png"/>
         <texture id="test" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/map.jpg"/>
@@ -191,8 +187,6 @@
                 <noderef id="skybox"/>
                 <noderef id="trees"/>
                 <noderef id="ground"/>
-                <!--<leaf type="rectangle" x1="10" y2="0" x2="0" y1="10"/> -->
-                <!--<leaf type="triangle" x1="0" y1="0" x3="5" y3="0" x2="0" y2="5"/> -->
             </descendants>
         </node>
 

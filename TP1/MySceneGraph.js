@@ -234,6 +234,8 @@ class MySceneGraph {
         if (axis_length == null)
             this.onXMLMinorError("no axis_length defined for scene; assuming 'length = 1'");
 
+        if(axis_length == 0) 
+            this.scene.displayAxis = false;
         this.referenceLength = axis_length || 1;
 
         this.log("Parsed initials");
