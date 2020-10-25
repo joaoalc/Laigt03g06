@@ -37,8 +37,9 @@ class XMLscene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
 
         this.axis = new CGFaxis(this);
-        this.displayAxis = true;
-        
+        this.displayAxis = false;
+        this.displayNormals = false;
+
         this.setUpdatePeriod(100);
 
         this.loadingProgressObject=new MyRectangle(this, -1, -.1, 1, .1, 1, 1);
@@ -222,6 +223,11 @@ class XMLscene extends CGFscene {
             // Draw axis
             if(this.displayAxis)
                 this.axis.display();
+                
+            if(this.displayNormals)
+                this.graph.enableNormals();
+            else
+                this.graph.disableNormals();
  
             this.defaultAppearance.apply();
             

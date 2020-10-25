@@ -1039,6 +1039,28 @@ class MySceneGraph {
     }
 
     /**
+     * Enables display for normals on all leaves in the graph
+     */
+    enableNormals() {
+        for(var node in this.nodes) {
+            for(var i = 0; i < this.nodes[node].leaves.length; i++) {
+                this.nodes[node].leaves[i].enableNormalViz();
+            }
+        }
+    }
+
+    /**
+     * Display display for normals on all leaves in the graph
+     */
+    disableNormals() {
+        for(var node in this.nodes) {
+            for(var i = 0; i < this.nodes[node].leaves.length; i++) {
+                this.nodes[node].leaves[i].disableNormalViz();
+            }
+        }
+    }
+
+    /**
      * Displays the scene, processing each node recursively, starting by the root node.
      */
     displayScene() {

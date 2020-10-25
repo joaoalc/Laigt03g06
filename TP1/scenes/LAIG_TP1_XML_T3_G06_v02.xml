@@ -83,6 +83,7 @@
         <texture id="metal" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/metal.jpg"/>
         <texture id="rock" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/rock.jpg"/>
         <texture id="grass_blade" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/grass_blade.jpg"/>
+        <texture id="golden" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v02/golden.jpg"/>
     </textures>
     <materials>
         <material id="Generic">
@@ -2110,7 +2111,7 @@
 
         <node id="train_bell_main">
             <material id="metal_bell"/>
-            <texture id="null">
+            <texture id="golden">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
