@@ -59,7 +59,8 @@ class MyNode {
             textureStack.push(this.texture);
             //console.log(textureStack.length);
         }
-        this.scene.materials[materialStack[materialStack.length - 1]].apply();
+        if(this.scene.materials[materialStack[materialStack.length - 1]] != null)
+            this.scene.materials[materialStack[materialStack.length - 1]].apply();
         
         if(this.texture != "clear"){
             //this.scene.materials[materialStack[materialStack.length - 1]].setTexture(this.scene.textures[materialStack[materialStack.length - 1]]);

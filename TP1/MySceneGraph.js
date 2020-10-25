@@ -680,7 +680,7 @@ class MySceneGraph {
                     return "invalid material ID on node " + nodeID;
             } else {
                 if(nodeID == this.idRoot)
-                    return "root node must have a material";
+                    this.onXMLMinorError("Warning: no material defined for root node");
             }
 
 
