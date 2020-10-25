@@ -1218,7 +1218,7 @@
             <transformations>
                 <translation x="2.07" y="0.0" z="0.0"/>
                 <scale sx="0.5" sy="0.999" sz="0.999"/>
-                <rotation axis="y" angle="180"/>
+                <rotation axis="y" angle="-90"/>
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
