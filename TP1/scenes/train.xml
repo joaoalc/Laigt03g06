@@ -81,6 +81,7 @@
         <texture id="main_sphere" path="./scenes/textures/main_sphere.png"/>
         <texture id="test" path="./scenes/textures/map.jpg"/>
         <texture id="metal" path="./scenes/textures/metal.jpg"/>
+        <texture id="rock" path="./scenes/textures/rock.jpg"/>
     </textures>
     <materials>
         <material id="Generic">
@@ -302,8 +303,68 @@
                 <noderef id="rails"/>
                 <noderef id="ground_base"/>
                 <noderef id="ground_pebbles"/>
+                <noderef id="ground_rocks"/>
             </descendants>
         </node>
+
+        <node id="ground_rocks">
+            <material id="null"/>
+            <texture id="rock">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="ground_rock_1"/>
+                <noderef id="ground_rock_2"/>
+            </descendants>
+        </node>
+
+        <node id="ground_rock_1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-5" y="0" z="5"/>
+                <rotation axis="z" angle="30"/>
+                <rotation axis="x" angle="20"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="1" slices="5" stacks="3"/>
+            </descendants>
+        </node>
+
+        <node id="ground_rock_2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-4.3" y="0" z="5.8"/>
+                <rotation axis="z" angle="40"/>
+                <rotation axis="x" angle="10"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="0.3" slices="5" stacks="3"/>
+            </descendants>
+        </node>
+
+        <node id="ground_rock_3">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-4" y="0" z="5.2"/>
+                <rotation axis="z" angle="40"/>
+                <rotation axis="x" angle="10"/>
+            </transformations>
+            <descendants>
+                <!--<leaf type="triangle" x1="0" y1="0" x2=""/>-->
+            </descendants>
+        </node>
+        
 
         <node id="ground_base">
             <material id="null"/>

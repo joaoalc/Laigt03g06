@@ -1039,7 +1039,7 @@ class MySceneGraph {
     }
 
     /**
-     * Displays the scene, processing each node, starting in the root node.
+     * Displays the scene, processing each node recursively, starting by the root node.
      */
     displayScene() {
         this.nodes[this.idRoot].display();

@@ -54,7 +54,6 @@ class MyTriangle extends CGFobject {
 		normal.y /= normal_length;
 		normal.z /= normal_length;
 
-		//Facing Z positive
 		this.normals = [
 			normal.x, normal.y, normal.z,
 			normal.x, normal.y, normal.z,
