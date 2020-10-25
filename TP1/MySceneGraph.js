@@ -248,8 +248,8 @@ class MySceneGraph {
      * @param {view block element} viewsNode
      */
     parseViews(viewsNode) {
-        //this.onXMLMinorError("To do: Parse views and create cameras.");
-
+        
+        //Get the view's name
         var defaultView = this.reader.getString(viewsNode, "default");
         if (defaultView == null || defaultView == "") {
             return "no default view defined";
@@ -450,7 +450,6 @@ class MySceneGraph {
      */
     parseTextures(texturesNode) {
 
-        //this.onXMLMinorError("To do: Parse textures.");
 
         //For each texture in textures block, check ID and file URL
         this.textures = [];
@@ -527,8 +526,6 @@ class MySceneGraph {
             if (this.materials[materialID] != null)
                 return "ID must be unique for each material (conflict: ID = " + materialID + ")";
 
-            //Continue here
-            //this.onXMLMinorError("To do: Parse materials.");
             grandChildren = children[i].children;
             // Specifications for the current material.
 
@@ -605,13 +602,10 @@ class MySceneGraph {
             var textureIndex = nodeNames.indexOf("texture");
             var descendantsIndex = nodeNames.indexOf("descendants");
 
-            //this.onXMLMinorError("To do: Parse nodes.");
 
             // Transformations
             var transformations = [];
 
-            //if (transformationsIndex == -1)
-            //    return "no <transformations> tag for node ID " + nodeID;
 
             if (transformationsIndex != -1) {
 
@@ -687,9 +681,7 @@ class MySceneGraph {
                     this.onXMLMinorError("Warning: no material defined for root node. Using default material");
             }
 
-
             // Texture
-
             grandgrandChildren = [];
 
             if (textureIndex == -1)
@@ -708,6 +700,8 @@ class MySceneGraph {
             }
 
             grandgrandChildren = grandChildren[textureIndex].children;
+
+            // Amplification
             var amplification = [];
             var afs;
             var aft;
@@ -757,7 +751,6 @@ class MySceneGraph {
                 } else if(grandgrandChildren[n].nodeName == "leaf") {
                     var leaf = this.parseLeaf(grandgrandChildren[n], " on node ID " + nodeID, amplification);
                     if(typeof leaf == 'string') {
-                        //console.log(nodeID);
                         return leaf;
                     }
                     leaves.push(leaf);
@@ -1026,7 +1019,7 @@ class MySceneGraph {
 
             var right = this.reader.getFloat(node, 'right');
             if (!(right != null && !isNaN(right)))
-                return "unable to parse 'lrighteft' component of the " + messageError;
+                return "unable to parse 'right' component of the " + messageError;
 
             var bottom = this.reader.getFloat(node, 'bottom');
             if (!(bottom != null && !isNaN(bottom)))
