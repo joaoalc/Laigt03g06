@@ -1,6 +1,6 @@
 <lsf>
     <initials>
-        <reference length="0"/>
+        <reference length="3"/>
         <root id="RootNode"/>
     </initials>
     <views default="defaultCamera"> 
