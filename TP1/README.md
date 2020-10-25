@@ -13,15 +13,18 @@
 - The models are complex and detailed;
 - There are multiple cameras from different points of view of the scene, available from the interface;
 - The interface is organized into different sections (axis/normals, cameras and lights);
+- The user can toggle the display of the axis and the normals in the interface;
 - There is a good range of different materials and textures suited for the different objects;
 - Every primitive available is used on the scene with textures;
 - Every type of transformation is used;
 - We used the transformation, material and texture inheritance to make a better structured scene graph;
 - The scene graph also has a high level of complexity;
-- The scene has a good variety of objects to fill the environment.
-- Scene
+- The scene has a good variety of objects to fill the environment;
+- The project code is properly commented;
+- The XML parser detects and flags a wide array of errors.
+- Scene:
   - The scene consists of a steam locomotive by a forest. There are models for the locomotive, the rails it is moving on, some trees, rocks and grass, along with a skybox.
-  - Scene link: "./scenes/LAIG_TP1_XML_T3_G06_v02.xml"
+  - Scene link: "./scenes/LAIG_TP1_XML_T3_G06_v1.xml"
 ----
 ## Issues/Problems
 

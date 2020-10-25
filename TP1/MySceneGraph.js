@@ -197,7 +197,7 @@ class MySceneGraph {
             if ((error = this.parseNodes(nodes[index])) != null)
                 return error;
         }
-        this.log("all parsed");
+        this.log("All parsed");
     }
 
     /**
@@ -806,7 +806,6 @@ class MySceneGraph {
                     return "unable to identify '" + attributeNames[i] + "' attribute on rectangle " + messageError;
                 info.push(attribute);
             }
-            console.log("made rectangle");
             return new MyRectangle(this.scene, info[0], info[1], info[2], info[3], amplification[0], amplification[1]);
             
         } else if(type == "triangle") {
@@ -818,7 +817,6 @@ class MySceneGraph {
                     return "unable to identify '" + attributeNames[i] + "' attribute on triangle " + messageError;
                 info.push(attribute);
             }
-            console.log("made triangle");
             return new MyTriangle(this.scene, info[0], info[1], info[2], info[3], info[4], info[5], amplification[0], amplification[1]);
 
         } else if(type == "cylinder") {
@@ -837,7 +835,6 @@ class MySceneGraph {
                 }
                 info.push(attribute);
             }
-            console.log("made cylinder");
             return new MyCylinder(this.scene, info[0], info[1], info[2], info[3], info[4], info[5]);
 
         } else if(type == "sphere") {
@@ -856,7 +853,6 @@ class MySceneGraph {
                 }
                 info.push(attribute);
             }
-            console.log("made sphere");
             return new MySphere(this.scene, info[0], info[1], info[2]);
 
         } else if(type == "torus") {
@@ -875,7 +871,6 @@ class MySceneGraph {
                 }
                 info.push(attribute);
             }
-            console.log("made torus");
             return new MyTorus(this.scene, info[0], info[1], info[2], info[3]);
         } else 
             return "invalid leaf type";

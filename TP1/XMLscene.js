@@ -74,8 +74,10 @@ class XMLscene extends CGFscene {
         
         for(var key in this.graph.textures){
             var info = this.graph.textures[key];
-            var tex = new CGFtexture(this, info);
-            this.textures[key] = tex;
+            if(info != 0) {
+                var tex = new CGFtexture(this, info);
+                this.textures[key] = tex;
+            }
         }
     }
 
