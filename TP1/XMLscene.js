@@ -39,6 +39,7 @@ class XMLscene extends CGFscene {
         this.axis = new CGFaxis(this);
         this.displayAxis = false;
         this.displayNormals = false;
+        this.displayNormals_before = false;
 
         this.setUpdatePeriod(100);
 
@@ -223,11 +224,15 @@ class XMLscene extends CGFscene {
             // Draw axis
             if(this.displayAxis)
                 this.axis.display();
-                
-            if(this.displayNormals)
+
+            if(this.displayNormals && !this.displayNormals_before) {
                 this.graph.enableNormals();
-            else
+                this.displayNormals_before = true;
+            }
+            else if(!this.displayNormals && this.displayNormals_before) {
                 this.graph.disableNormals();
+                this.displayNormals_before = false;
+            }
  
             this.defaultAppearance.apply();
             
