@@ -1,0 +1,2227 @@
+<lsf>
+    <initials>
+        <reference length="3"/>
+        <root id="RootNode"/>
+    </initials>
+    <views default="defaultCamera"> 
+        <perspective id="defaultCamera" near="0.1" far="500" angle="45">
+            <from x="10" y="4" z="10"/>
+            <to x="0" y="0" z="0"/>
+        </perspective>
+        <perspective id="Overview" near="0.1" far="500" angle="45">
+            <from x="18" y="5" z="15"/>
+            <to x="0" y="0" z="0"/>
+        </perspective>
+        <perspective id="Back" near="0.1" far="500" angle="45">
+            <from x="-15" y="5" z="-3"/>
+            <to x="0" y="0" z="0"/>
+        </perspective>
+        <perspective id="Train" near="0.1" far="500" angle="45">
+            <from x="10" y="0" z="-10"/>
+            <to x="0" y="-0.5" z="0"/>
+        </perspective>
+        <ortho id="Side View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
+            <from x="5" y="0" z="10"/>
+            <to x="0" y="0" z="0"/>
+        </ortho>
+        <ortho id="Front View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
+            <from x="10" y="0" z="0"/>
+            <to x="0" y="0" z="0"/>
+        </ortho>
+    </views>
+    <illumination>
+        <ambient r="0.9" g="0.9" b="0.9" a="1.0"/>
+        <background r="0.1" g="0.7" b="1.0" a="1.0"/>
+    </illumination>
+    <lights>
+        <light id="headlight">
+            <enable value="1"/>
+            <position x="2.4127" y="1.086" z="0" w="1.0" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                   
+            <diffuse r="0.8" g="0.8" b="0.8" a="0.8" />             
+            <specular r="0.8" g="0.8" b="0.8" a="1.0" />            
+        </light>
+        <light id="furnace">
+            <enable value="1"/>
+            <position x="-1.3" y="-0.2" z="0" w="1.0" />
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                   
+            <diffuse r="0.8" g="0.8" b="0.8" a="0.8" />             
+            <specular r="0.8" g="0.8" b="0.8" a="1.0" />  
+        </light>
+    </lights>
+    <textures>
+        <texture id="skybox_left" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/skybox/skybox_left.png"/>
+        <texture id="skybox_right" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/skybox/skybox_right.png"/>
+        <texture id="skybox_front" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/skybox/skybox_front.png"/>
+        <texture id="skybox_top" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/skybox/skybox_top.png"/>
+        <texture id="skybox_back" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/skybox/skybox_back.png"/>
+        <texture id="skybox_bottom" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/skybox/skybox_bottom.png"/>
+        <texture id="tree_trunk" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/tree_trunk.png"/>
+        <texture id="tree_leaves" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/tree_leaves.jpg"/>
+        <texture id="wood" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/wood.jpg"/>
+        <texture id="grass" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/grass.jpg"/>
+        <texture id="train_furnace" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/furnace.jpg"/>
+        <texture id="glass" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/glass.png"/>
+        <texture id="main_cylinder" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/main_cylinder.png"/>
+        <texture id="train_inside" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/train_inside.jpg"/>
+        <texture id="metal_grip" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/metal_grip.jpg"/>
+        <texture id="train_side_1" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/train_side_1.png"/>
+        <texture id="train_side_2" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/train_side_2.png"/>
+        <texture id="train_side_1_2" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/train_side_1_2.png"/>
+        <texture id="train_side_2_2" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/train_side_2_2.png"/>
+        <texture id="train_front_1" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/train_front_1.png"/>
+        <texture id="pebbles" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/pebbles.jpg"/>
+        <texture id="headlight" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/headlight1.jpg"/>
+        <texture id="main_sphere" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/main_sphere.png"/>
+        <texture id="metal" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/metal.jpg"/>
+        <texture id="rock" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/rock.jpg"/>
+        <texture id="grass_blade" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/grass_blade.jpg"/>
+        <texture id="golden" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/golden.jpg"/>
+    </textures>
+    <materials>
+        <material id="Generic">
+            <shininess value="10.0"/>
+            <ambient r="0.5" g="0.5" b="0.5" a="1.0"/>
+            <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
+            <specular r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="sky">
+            <shininess value="10.0"/>
+            <ambient r="0.9" g="0.9" b="0.9" a="1.0"/>
+            <diffuse r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <specular r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <emissive r="0.6" g="0.6" b="0.6" a="1.0"/>
+        </material>
+        <material id="groundMat">
+            <shininess value="10.0"/>
+            <ambient r="0.7" g="0.7" b="0.7" a="1.0"/>
+            <diffuse r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <specular r="0.1" g="0.1" b="0.1" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="metal">
+            <shininess value="10.0"/>
+            <ambient r="0.3" g="0.3" b="0.3" a="1.0"/>
+            <diffuse r="0.7" g="0.7" b="0.7" a="1.0"/>
+            <specular r="0.7" g="0.7" b="0.7" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="metal_body">
+            <shininess value="10.0"/>
+            <ambient r="0.3" g="0.3" b="0.3" a="1.0"/>
+            <diffuse r="0.9" g="0.7" b="0.7" a="1.0"/>
+            <specular r="0.8" g="0.7" b="0.7" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="metal_bell">
+            <shininess value="10.0"/>
+            <ambient r="0.22" g="0.15" b="0.06" a="1.0"/>
+            <diffuse r="0.82" g="0.71" b="0.23" a="1.0"/>
+            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="metal_wheels">
+            <shininess value="10.0"/>
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <diffuse r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="metal_axles">
+            <shininess value="10.0"/>
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0"/>
+            <diffuse r="0.1" g="0.1" b="0.1" a="1.0"/>
+            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="glass">
+            <shininess value="20.0"/>
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <diffuse r="0.3" g="0.3" b="0.3" a="1.0"/>
+            <specular r="1" g="1" b="1" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="black_metal">
+            <shininess value="10.0"/>
+            <ambient r="0.05" g="0.05" b="0.05" a="1.0"/>
+            <diffuse r="0" g="0" b="0" a="1.0"/>
+            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="grey_metal">
+            <shininess value="10.0"/>
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <diffuse r="0" g="0" b="0" a="1.0"/>
+            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="black_hole">
+            <shininess value="10.0"/>
+            <ambient r="0" g="0" b="0" a="1.0"/>
+            <diffuse r="0" g="0" b="0" a="1.0"/>
+            <specular r="0" g="0" b="0" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="glass_headlight">
+            <shininess value="10.0"/>
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
+            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.9" g="0.9" b="0.9" a="1.0"/>
+        </material>
+    </materials>
+    <nodes>
+        <node id="RootNode">
+            <material id="Generic"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train"/>
+                <noderef id="skybox"/>
+                <noderef id="trees"/>
+                <noderef id="ground"/>
+            </descendants>
+        </node>
+
+        <!-- Skybox -->
+        <node id="skybox">
+            <material id="sky"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="skybox_top"/>    
+                <noderef id="skybox_front"/>  
+                <noderef id="skybox_right"/>  
+                <noderef id="skybox_left"/> 
+                <noderef id="skybox_back"/> 
+                <noderef id="skybox_bottom"/> 
+            </descendants>
+        </node>
+
+        <node id="skybox_top">
+            <material id="null"/>
+            <texture id="skybox_top">
+                <amplification afs="20.0" aft="20.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="10" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_front">
+            <material id="null"/>
+            <texture id="skybox_front">
+                <amplification afs="20.0" aft="20.0"/>
+            </texture>
+            <transformations>
+                <translation x="-10" y="0" z="0"/>
+                <rotation axis="y" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_right">
+            <material id="null"/>
+            <texture id="skybox_right">
+                <amplification afs="20.0" aft="20.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-10"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_left">
+            <material id="null"/>
+            <texture id="skybox_left">
+                <amplification afs="20.0" aft="20.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="10"/>
+                <rotation axis="y" angle="180"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_back">
+            <material id="null"/>
+            <texture id="skybox_back">
+                <amplification afs="20.0" aft="20.0"/>
+            </texture>
+            <transformations>
+                <translation x="10" y="0" z="0"/>
+                <rotation axis="y" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_bottom">
+            <material id="null"/>
+            <texture id="skybox_bottom">
+                <amplification afs="20.0" aft="20.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-10" z="0"/>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+            </descendants>
+        </node>
+
+
+        <!--Ground-->
+
+        <node id="ground">
+            <material id="groundMat"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-2.3" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="rails"/>
+                <noderef id="ground_base"/>
+                <noderef id="ground_pebbles"/>
+                <noderef id="ground_rocks"/>
+                <noderef id="ground_grass"/>
+            </descendants>
+        </node>
+
+        <node id="ground_rocks">
+            <material id="null"/>
+            <texture id="rock">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="ground_rock_1"/>
+                <noderef id="ground_rock_2"/>
+                <noderef id="ground_rock_3"/>
+                <noderef id="ground_rock_4"/>
+                <noderef id="ground_rock_5"/>
+            </descendants>
+        </node>
+
+        <node id="ground_rock_1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-5" y="0" z="5"/>
+                <rotation axis="z" angle="30"/>
+                <rotation axis="x" angle="20"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="1" slices="5" stacks="3"/>
+            </descendants>
+        </node>
+
+        <node id="ground_rock_2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-4.3" y="0" z="5.8"/>
+                <rotation axis="z" angle="40"/>
+                <rotation axis="x" angle="10"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="0.3" slices="5" stacks="3"/>
+            </descendants>
+        </node>
+
+        <node id="ground_rock_3">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="4.3" y="0" z="7.5"/>
+                <rotation axis="z" angle="40"/>
+                <rotation axis="x" angle="10"/>
+                <scale sx="1.5" sy="1" sz="1.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="0.3" slices="5" stacks="3"/>
+            </descendants>
+        </node>
+
+        <node id="ground_rock_4">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-3.3" y="0" z="-7.5"/>
+                <rotation axis="z" angle="30"/>
+                <rotation axis="x" angle="20"/>
+                <rotation axis="y" angle="10"/>
+                <scale sx="1.5" sy="1" sz="1.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="0.3" slices="5" stacks="3"/>
+            </descendants>
+        </node>
+
+        <node id="ground_rock_5">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="5.3" y="0" z="-6.5"/>
+                <rotation axis="z" angle="30"/>
+                <rotation axis="x" angle="20"/>
+                <rotation axis="y" angle="30"/>
+                <scale sx="1.5" sy="1" sz="1.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="0.6" slices="5" stacks="3"/>
+            </descendants>
+        </node>
+
+        <node id="grass_pre">
+            <material id="null"/>
+            <texture id="grass_blade">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="grass_part_1"/>
+                <noderef id="grass_part_2"/>
+            </descendants>
+        </node>
+
+        <node id="grass_blades">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="0.05" y2="0" x3="0" y3="0.4"/>
+                <leaf type="triangle" x2="0" y2="0" x1="0.05" y1="0" x3="0" y3="0.4"/>
+                
+                <leaf type="triangle" x2="0" y2="0" x1="-0.03" y1="0" x3="0" y3="0.4"/>
+                <leaf type="triangle" x1="0" y1="0" x2="-0.03" y2="0" x3="0" y3="0.4"/>
+
+                <leaf type="triangle" x1="0.06" y1="0" x2="0.12" y2="0" x3="0.12" y3="0.3"/>
+                <leaf type="triangle" x2="0.06" y2="0" x1="0.12" y1="0" x3="0.12" y3="0.3"/>
+
+                <leaf type="triangle" x1="0.13" y1="0" x2="0.17" y2="0" x3="0.20" y3="0.20"/>
+                <leaf type="triangle" x2="0.13" y2="0" x1="0.17" y1="0" x3="0.20" y3="0.20"/>
+
+                <leaf type="triangle" x1="0.18" y1="0" x2="0.21" y2="0" x3="0.22" y3="0.10"/>
+                <leaf type="triangle" x2="0.18" y2="0" x1="0.21" y1="0" x3="0.22" y3="0.10"/>
+
+                <leaf type="triangle" x2="-0.04" y2="0" x1="-0.10" y1="0" x3="-0.09" y3="0.25"/>
+                <leaf type="triangle" x1="-0.04" y1="0" x2="-0.10" y2="0" x3="-0.09" y3="0.25"/>
+
+                <leaf type="triangle" x2="-0.11" y2="0" x1="-0.15" y1="0" x3="-0.16" y3="0.15"/>
+                <leaf type="triangle" x1="-0.11" y1="0" x2="-0.15" y2="0" x3="-0.16" y3="0.15"/>
+
+                <leaf type="triangle" x2="-0.16" y2="0" x1="-0.18" y1="0" x3="-0.185" y3="0.08"/>
+                <leaf type="triangle" x1="-0.16" y1="0" x2="-0.18" y2="0" x3="-0.185" y3="0.08"/>
+            </descendants>
+        </node>
+
+        <node id="grass_part_2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="45"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_blades"/>
+            </descendants>
+        </node>
+        <node id="grass_part_1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="-45"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_blades"/>
+            </descendants>
+        </node>
+
+        <node id="ground_grass">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="grass_1"/>
+                <noderef id="grass_2"/>
+                <noderef id="grass_3"/>
+                <noderef id="grass_4"/>
+                <noderef id="grass_5"/>
+                <noderef id="grass_6"/>
+                <noderef id="grass_7"/>
+                <noderef id="grass_8"/>
+                <noderef id="grass_9"/>
+            </descendants>
+        </node>
+
+        <node id="grass_1">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-6" y="0" z="4"/>
+                <scale sx="2" sy="2" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_2">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="8"/>
+                <scale sx="3" sy="1.5" sz="3"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_3">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="5" y="0" z="3"/>
+                <scale sx="2" sy="2" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_4">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-7" y="0" z="7"/>
+                <scale sx="2.5" sy="3" sz="2.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_5">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="2" y="0" z="-7"/>
+                <scale sx="2.5" sy="3" sz="2.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_6">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-5" y="0" z="-6.5"/>
+                <scale sx="2.5" sy="4" sz="2.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_7">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-2" y="0" z="3"/>
+                <scale sx="3" sy="1" sz="3"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_8">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="-4" y="0" z="-3"/>
+                <scale sx="4" sy="3" sz="4"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+
+        <node id="grass_9">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1" aft="1"/>
+            </texture>
+            <transformations>
+                <translation x="6" y="0" z="-5.5"/>
+                <scale sx="2" sy="1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="grass_pre"/>
+            </descendants>
+        </node>
+        
+
+        <node id="ground_base">
+            <material id="null"/>
+            <texture id="grass">
+                <amplification afs="5" aft="5"/>
+            </texture>
+            <transformations>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-10" y1="10" x2="10" y2="-10"/>
+            </descendants>
+        </node>
+
+        <node id="ground_pebbles">
+            <material id="null"/>
+            <texture id="pebbles">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0"/>
+                <scale sx="20" sy="0.01" sz="2.5"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <!-- Generic cube node -->
+        <node id="cube">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="rect1"/>
+                <noderef id="rect2"/>
+                <noderef id="rect3"/>
+                <noderef id="rect4"/>
+                <noderef id="rect5"/>
+                <noderef id="rect6"/>
+            </descendants>
+        </node>
+        <node id="rect1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+            </descendants>
+        </node>
+        <node id="rect2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="90"/>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+            </descendants>
+        </node>
+        <node id="rect3">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="180"/>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+            </descendants>
+        </node>
+        <node id="rect4">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="270"/>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+            </descendants>
+        </node>
+        <node id="rect5">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation axis="x" angle="90"/>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+            </descendants>
+        </node>
+        <node id="rect6">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation axis="x" angle="270"/>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+            </descendants>
+        </node>
+
+        <!--Train-->
+        <node id="train">
+            <material id="metal_body"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.05" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_cab"/>
+                <noderef id="train_bottom"/>
+                <noderef id="train_front"/>
+            </descendants>
+        </node>
+        <node id="train_cab">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1.9" y="0.5" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_cab_main"/>
+                <noderef id="train_cab_top"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_main">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train_cab_front"/>
+                <noderef id="train_cab_left"/>
+                <noderef id="train_cab_right"/>
+                <noderef id="train_cab_furnace"/>
+                <noderef id="train_cab_floor"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_floor">
+            <material id="null"/>
+            <texture id="metal_grip">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-0.355" y="-1.29" z="0"/>
+                <scale sx="1.35" sy="1" sz="1"/>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_front">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.9" y="0.003" z="0"/>
+                <rotation axis="y" angle="90"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_cab_front_1"/>
+                <noderef id="train_cab_front_2"/>
+                <noderef id="train_cab_front_window"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_front_1">
+            <material id="null"/>
+            <texture id="train_front_1">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.1"/>
+                <scale sx="1" sy="1.323" sz="1"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_front_2">
+            <material id="null"/>
+            <texture id="train_inside">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.1"/>
+                <scale sx="0.801" sy="1.323" sz="1"/>
+                <rotation axis="y" angle="180"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_front_window">
+            <material id="glass"/>
+            <texture id="glass">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0.8" z="0"/>
+                <scale sx="1.61" sy="0.5" sz="0.25"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/> 
+            </descendants>
+        </node>
+
+        <node id="train_cab_left">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.895"/> 
+            </transformations>
+            <descendants>
+                <noderef id="train_cab_side"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_right">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.9"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_cab_side"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train_cab_side_1"/>
+                <noderef id="train_cab_side_2"/>
+                <noderef id="train_cab_side_3"/>
+                <noderef id="train_cab_side_4"/>
+                <noderef id="train_cab_side_5"/>
+                <noderef id="train_cab_side_6"/>
+                <noderef id="train_cab_side_7"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_1">
+            <material id="null"/>
+            <texture id="train_side_1">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.1"/>
+                <scale sx="1" sy="1.312" sz="1"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_2">
+            <material id="null"/>
+            <texture id="train_side_1_2">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.1"/>
+                <scale sx="1" sy="1.312" sz="1"/>
+                <rotation axis="y" angle="180"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_3">
+            <material id="null"/>
+            <texture id="train_side_2">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1.36" y="-0.9" z="0.1"/>
+                <scale sx="0.361" sy="0.5" sz="1"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_4">
+            <material id="null"/>
+            <texture id="train_side_2_2">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1.36" y="-0.9" z="-0.1"/>
+                <scale sx="0.361" sy="0.5" sz="1"/>
+                <rotation axis="y" angle="180"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_5">
+            <material id="null"/>
+            <texture id="train_front_1">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1.72" y="-0.9" z="0"/>
+                <scale sx="1" sy="0.5" sz="0.1"/>
+                <rotation axis="y" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_6">
+            <material id="null"/>
+            <texture id="train_front_1">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1.36" y="-0.411367" z="0"/>
+                <scale sx="0.360" sy="1" sz="0.1"/>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_side_7">
+            <material id="null"/>
+            <texture id="train_front_1">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1" y="0.4515" z="0"/>
+                <scale sx="1" sy="0.872" sz="0.1"/>
+                <rotation axis="y" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-1" y1="-1" x2="1" y2="1"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_furnace">
+            <material id="null"/>
+            <texture id="train_furnace">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.88" y="-0.6" z="0"/>
+                <scale sx="0.2" sy="0.86" sz="0.86"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="train_cab_top">
+            <material id="black_metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1.365" z="0"/>
+                <scale sx="2.58" sy="0.13" sz="2.3"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="train_front">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train_main_cylinder"/>
+                <noderef id="train_main_sphere"/>
+                <noderef id="train_front_sphere"/>
+                <noderef id="train_headlight"/>
+                <noderef id="train_smoke_cylinder"/>
+                <noderef id="train_smoke_torus"/>
+                <noderef id="train_bell"/>
+            </descendants>
+        </node>
+
+
+        <!--Train bottom-->
+        <node id="train_bottom">
+            <material id="metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-0.493" y= "-1.57" z = "0"/>
+            </transformations>
+            <descendants>
+                <noderef id="axles"/>
+                <noderef id="wheels"/>
+                <noderef id="middle_platforms"/>              
+                <noderef id="coupling_rods"/>
+               
+            </descendants>
+        </node>
+
+        <!-- Axles -->
+        <node id="axles">
+            <material id="metal_axles"/>
+            <texture id="metal">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train_front_axle"/>
+                <noderef id="train_middle_axle"/>
+                <noderef id="train_back_axle"/>
+                <noderef id="train_main_axle"/>
+            </descendants>
+        </node>
+
+        <node id="train_front_axle">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="1.993" y="0.0" z ="0.0"/>
+                <translation x="0.0" y="0" z="-0.75"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+        <node id="train_middle_axle">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.0" y="0" z="-0.75"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+        <node id="train_back_axle">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1.993" y="0.0" z ="0.0"/>
+                <translation x="0.0" y="0" z="-0.75"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+
+        <node id="train_main_axle">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <scale sx="1" sy="1" sz="2.2"/>
+                <rotation axis="y" angle="90.0"/>
+                <translation x="0.0" y="0.0" z="-2.0"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+
+
+        <!--Wheels-->
+        <node id="wheels">
+            <material id="metal_wheels"/>
+            <texture id="metal">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train_front_left_wheel"/>
+                <noderef id="train_middle_left_wheel"/>
+                <noderef id="train_back_left_wheel"/>
+                <noderef id="train_front_right_wheel"/>
+                <noderef id="train_middle_right_wheel"/>
+                <noderef id="train_back_right_wheel"/>
+            </descendants>
+        </node>
+
+        <node id="train_back_left_wheel">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-2" y="0" z="-0.625"/>
+            </transformations>
+            <descendants>
+                <noderef id="wheel"/>
+            </descendants>
+        </node>
+        <node id="train_back_right_wheel">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-2" y="0.0" z="0.625"/>
+            </transformations>
+            <descendants>
+                <noderef id="wheel"/>
+            </descendants>
+        </node>
+        <node id="train_middle_left_wheel">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.625"/>
+            </transformations>
+            <descendants>
+                <noderef id="wheel"/>
+            </descendants>
+        </node>
+        <node id="train_middle_right_wheel">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0.0" z="0.625"/>
+            </transformations>
+            <descendants>
+                <noderef id="wheel"/>
+            </descendants>
+        </node>
+        <node id="train_front_left_wheel">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="2" y="0" z="-0.625"/>
+            </transformations>
+            <descendants>
+                <noderef id="wheel"/>
+            </descendants>
+        </node>
+        <node id="train_front_right_wheel">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="2" y="0" z="0.625"/>
+            </transformations>
+            <descendants>
+                <noderef id="wheel"/>
+            </descendants>
+        </node>
+
+        
+        <!-- Middle platforms -->
+        <node id="middle_platforms">
+        <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0.323" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_middle_platform"/>
+                <noderef id="train_bottom_platform"/> 
+            </descendants>
+        </node>
+
+        <node id="train_middle_platform">
+            <material id="black_metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-0.375" y="0.325" z ="0"/>
+                <scale sx= "5.75" sy="0.25" sz="2.01"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="train_bottom_platform">
+            <material id="black_metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <scale sx= "3.7" sy="0.5" sz="1.05"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+        
+        <!-- Coupling rods -->
+        <node id="coupling_rods">
+            <material id="null"/>
+            <texture id="metal">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train_bottom_left_coupling_rod"/>
+                <noderef id="train_top_left_coupling_rod"/>
+                <noderef id="train_bottom_right_coupling_rod"/>
+                <noderef id="train_top_right_coupling_rod"/>
+            </descendants>
+        </node>
+        
+        <node id="train_bottom_left_coupling_rod">
+            <material id="metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-0.257" y="-0.373" z="-0.75"/>
+                <rotation axis="y" angle="90.0"/>
+                <translation x="0" y="0" z="-2.0"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+        <node id="train_top_left_coupling_rod">
+            <material id="metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.243" y="0.377" z="-0.75"/>
+                <rotation axis="y" angle="90.0"/>
+                <translation x="0" y="0" z="-2.0"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+        <node id="train_bottom_right_coupling_rod">
+            <material id="metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-0.257" y="-0.373" z="0.75"/>
+                <rotation axis="y" angle="90.0"/>
+                <translation x="0" y="0" z="-2.0"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+        <node id="train_top_right_coupling_rod">
+            <material id="metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.243" y="0.377" z="0.75"/>
+                <rotation axis="y" angle="90.0"/>
+                <translation x="0" y="0" z="-2.0"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+
+        <node id="wheel">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="wheel_torus_0"/>
+                <noderef id="wheel_torus_1"/>
+                <noderef id="wheel_spoke_0"/>
+                <noderef id="wheel_spoke_1"/>
+                <noderef id="wheel_spoke_2"/>
+                <noderef id="wheel_spoke_3"/>
+            </descendants>
+        </node>
+        <node id="wheel_torus_0">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.04"/>
+            </transformations>
+            <descendants>
+                <leaf type="torus" inner="0.05" outer="0.5" slices="30" loops="30"/>
+            </descendants>
+        </node>
+        <node id="wheel_torus_1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.04"/>
+            </transformations>
+            <descendants>
+                <leaf type="torus" inner="0.05" outer="0.5" slices="30" loops="30"/>
+            </descendants>
+        </node>
+        <node id="wheel_spoke_0"> <!--em pé-->
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation axis="x" angle="90.0"/>  
+                <translation x="0" y="0" z="-0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+        <node id="wheel_spoke_1"> <!--deitada-->
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation axis="y" angle="90.0"/>     
+                <translation x="0" y="0" z="-0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+        <node id="wheel_spoke_2"> <!--inclinada esquerda-->
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="135.0"/>
+                <rotation axis="y" angle="90.0"/>  
+                <translation x="0" y="0" z="-0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+        <node id="wheel_spoke_3"> <!--inclinada direita-->
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="45.0"/>
+                <rotation axis="y" angle="90.0"/>
+                <translation x="0" y="0" z="-0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+
+        <!-- Train front -->
+        <node id="train_main_cylinder">
+            <material id="metal"/>
+            <texture id="main_cylinder">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.5554" y="0.0" z="0.0"/>
+                <rotation axis="x" angle="90.0"/>
+                <rotation axis="y" angle="90.0"/>
+                <translation x="0.0" y="0" z="-1.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="3.0" topRadius="1.0" bottomRadius="1.0" stacks="20" slices="60"/>
+            </descendants>
+        </node>
+
+        <node id="train_main_sphere">
+            <material id="metal"/>
+            <texture id="main_sphere">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="2.07" y="0.0" z="0.0"/>
+                <scale sx="0.5" sy="0.999" sz="0.999"/>
+                <rotation axis="y" angle="-90"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="1.0" slices="50" stacks="50"/>
+            </descendants>
+        </node>
+
+        <node id="train_front_sphere">
+            <material id="black_metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="2.5" y="0.0" z="0.0"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="0.1" slices="20" stacks="20"/>
+            </descendants>
+        </node>
+
+        <node id="train_headlight">
+            <material id="black_metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="1.875" y="1.08" z="0.0"/>
+                <rotation axis="y" angle="90.0"/>
+                <translation x="0.0" y="0.0" z="-0.375"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_headlight_sphere"/>
+                <leaf type="cylinder" height="0.75" topRadius="0.16" bottomRadius="0.16" stacks="1" slices="40"/>
+            </descendants>
+        </node>
+
+        <node id="train_headlight_sphere">
+            <material id="glass_headlight"/>
+            <texture id="headlight">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.745"/>
+                <scale sx="1" sy="1" sz="0.6"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="0.16" slices="20" stacks="20"/>
+            </descendants>
+        </node>
+
+        <node id="train_smoke_cylinder">
+            <material id="metal"/>
+            <texture id="main_cylinder">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="1.25" y="1.125" z="0.0"/>
+                <rotation axis="x" angle="90"/>
+                <translation x="0" y="0" z="-0.45"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_smoke_top"/>
+                <leaf type="cylinder" height="0.9" topRadius="0.3" bottomRadius="0.4" stacks="50" slices="50"/>
+            </descendants>
+        </node>
+
+        <node id="train_smoke_top">
+            <material id="black_hole"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.05"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.01" topRadius="0.4" bottomRadius="0.4" stacks="1" slices="30"/>
+            </descendants>
+        </node>
+
+        <node id="train_smoke_torus">
+            <material id="black_metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="1.25" y="1.625" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="torus" inner="0.05" outer="0.4" slices="40" loops="40"/>
+            </descendants>
+        </node>
+
+        <!-- Trees -->
+        <node id="trees">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="0" y="-2.3" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_1"/>
+                <noderef id="tree_2"/>
+                <noderef id="tree_3"/>
+                <noderef id="tree_4"/>
+                <noderef id="tree_5"/>
+            </descendants>
+        </node>
+
+        <node id="tree_1">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-6" y="0" z="8"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_2">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-8" y="0" z="3.5"/>
+                <scale sx="1.3" sy="1.75" sz="1.3"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_3">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-3" y="0" z="-5"/>
+                <scale sx="1.3" sy="0.7" sz="1.3"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_4">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-7" y="0" z="-7"/>
+                <scale sx="1.6" sy="2" sz="1.6"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_5">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-6.5" y="0" z="-3"/>
+                <scale sx="1" sy="1.3" sz="1"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+        
+        <node id="tree">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_trunk"/>
+                <noderef id="tree_leaves"/>
+            </descendants>
+        </node>
+
+        <node id="tree_trunk">
+            <material id="null"/>
+            <texture id="tree_trunk">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="5.5" topRadius="0" bottomRadius="0.420" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves">
+            <material id="null"/>
+            <texture id="tree_leaves">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_1"/>
+                <noderef id="tree_leaves_2"/>
+                <noderef id="tree_leaves_3"/>
+                <noderef id="tree_leaves_4"/>
+                <noderef id="tree_leaves_5"/>
+                <noderef id="tree_leaves_6"/>
+                <noderef id="tree_leaves_7"/>
+                <noderef id="tree_leaves_8"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="45"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_3">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="90"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_4">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="135"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_5">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="180"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_6">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="225"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_7">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="270"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_8">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="315"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_base">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="2.5" aft="3.5" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="1"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="1.7" y2="0" x3="0" y3="4.5"/>
+                <leaf type="triangle" x1="0" y1="0" x2="0" y2="4.5" x3="1.7" y3="0"/>
+            </descendants>
+        </node>
+
+
+        <!-- Rails -->
+        <node id="rails">
+        <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0.07" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="rails_planks"/>
+                <noderef id="rails_bars"/>
+            </descendants>
+        </node>
+
+        <node id="rails_bars">
+            <material id="metal"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="rails_bar_1"/>
+                <noderef id="rails_bar_2"/>
+            </descendants>
+        </node>
+
+        <node id="rails_bar_2">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.62"/>
+                <scale sx="20" sy="0.16" sz="0.16"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_bar_1">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.62"/>
+                <scale sx="20" sy="0.16" sz="0.16"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_planks">
+            <material id="null"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.07" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="rails_plank_1"/>
+                <noderef id="rails_plank_2"/>
+                <noderef id="rails_plank_3"/>
+                <noderef id="rails_plank_4"/>
+                <noderef id="rails_plank_5"/>
+                <noderef id="rails_plank_6"/>
+                <noderef id="rails_plank_7"/>
+                <noderef id="rails_plank_8"/>
+                <noderef id="rails_plank_9"/>
+                <noderef id="rails_plank_10"/>
+                <noderef id="rails_plank_11"/>
+                <noderef id="rails_plank_12"/>
+                <noderef id="rails_plank_13"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-9" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-7.5" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_3">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-6" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_4">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-4.5" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_5">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-3" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_6">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-1.5" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_7">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_8">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="1.5" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_9">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="3" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_10">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="4.5" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_11">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="6" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_12">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="7.5" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <node id="rails_plank_13">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="9" y="0" z="0"/>
+                <scale sx="0.4" sy="0.1" sz="2"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+
+        <!-- BELL -->
+
+        <node id="train_bell">
+            <material id="metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.2" y="1.1" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_bell_main"/>
+                <noderef id="train_bell_support"/>
+            </descendants>
+        </node>
+
+        <node id="train_bell_main">
+            <material id="metal_bell"/>
+            <texture id="golden">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <scale sx="0.5" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_bell_part1"/>
+                <noderef id="train_bell_part2"/>
+                <noderef id="train_bell_part3"/>
+                <noderef id="train_bell_part4"/>
+            </descendants>
+        </node>
+
+        <node id="train_bell_part1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.5" bottomRadius="0.4" topRadius="0.32" stacks="1" slices="40"/>
+            </descendants>
+        </node>
+
+        <node id="train_bell_part2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0.46" z="0"/>
+                <scale sx="1" sy="0.9" sz="1"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="0.323" stacks="20" slices="20"/>
+            </descendants>
+        </node>
+
+        <node id="train_bell_part3">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="torus" inner="0.07" outer="0.4" loops="20" slices="20"/>
+            </descendants>
+        </node>
+
+        <node id="train_bell_part4">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.07" z="0"/>
+            </transformations>
+            <descendants>
+                <leaf type="sphere" radius="0.08" stacks="20" slices="20"/>
+            </descendants>
+        </node>
+
+        <node id="train_bell_support">
+            <material id="black_metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="train_bell_support_left"/>
+                <noderef id="train_bell_support_right"/>
+                <noderef id="train_bell_support_top"/>
+            </descendants>
+        </node>
+
+        <node id="train_bell_support_left">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.2" z="-0.3"/>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.6" bottomRadius="0.04" topRadius="0.04" stacks="1" slices="20"/>
+            </descendants>
+        </node>
+
+        <node id="train_bell_support_right">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.2" z="0.3"/>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.6" bottomRadius="0.04" topRadius="0.04" stacks="1" slices="20"/>
+            </descendants>
+        </node>
+
+        <node id="train_bell_support_top">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0.37" z="-0.3"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.6" bottomRadius="0.03" topRadius="0.03" stacks="1" slices="20"/>
+            </descendants>
+        </node>
+    </nodes>
+</lsf>
