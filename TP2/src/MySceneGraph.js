@@ -7,7 +7,8 @@ var ILLUMINATION_INDEX = 2;
 var LIGHTS_INDEX = 3;
 var TEXTURES_INDEX = 4;
 var MATERIALS_INDEX = 5;
-var NODES_INDEX = 6;
+var ANIMATIONS_INDEX = 6
+var NODES_INDEX = 7;
 
 
 /**
@@ -183,6 +184,18 @@ class MySceneGraph {
 
             //Parse materials block
             if ((error = this.parseMaterials(nodes[index])) != null)
+                return error;
+        }
+
+        // <animations>
+        if ((index = nodeNames.indexOf("animations")) == -1)
+            NODES_INDEX--; // animations block not declared
+        else {
+            if (index != ANIMATIONS_INDEX)
+                this.onXMLMinorError("tag <animations> out of order");
+
+            //Parse animations block
+            if ((error = this.parseAnimations(nodes[index])) != null)
                 return error;
         }
 
@@ -609,59 +622,15 @@ class MySceneGraph {
 
             if (transformationsIndex != -1) {
 
-            grandgrandChildren = grandChildren[transformationsIndex].children;
-            for (var k = 0; k < grandgrandChildren.length; k++) {
-                var transf = [];
-                if (grandgrandChildren[k].nodeName == "translation") {
-                    transf.push("t");
-                    transf.push(...this.parseCoordinates3D(grandgrandChildren[k], "translation in node ID " + nodeID));
-                    if(isNaN(transf[1]) || isNaN(transf[2]) || isNaN(transf[3])){
-                        return "unable to parse component of translation on node ID " + nodeID;
-                    }
-
-                } else if (grandgrandChildren[k].nodeName == "scale") {
-                    transf.push("s");
-                    var sx = null;
-                    var sy = null;
-                    var sz = null;
-
-                    if((sx = this.reader.getFloat(grandgrandChildren[k], 'sx')) == null)
-                        return "unable to parse 'sx' component of scale on node ID " + nodeID;
-                    if(isNaN(sx))
-                        return "the value of the 'sx' component of the scale on node ID " + nodeID + " isn't a number.";
-                    if((sy = this.reader.getFloat(grandgrandChildren[k], 'sy')) == null)
-                        return "unable to parse 'sy' component of scale on node ID " + nodeID;
-                    if(isNaN(sy))
-                        return "the value of the 'sy' component of the scale on node ID " + nodeID + " isn't a number.";
-                    if((sz = this.reader.getFloat(grandgrandChildren[k], 'sz')) == null)
-                        return "unable to parse 'sz' component of scale on node ID " + nodeID;
-                    if(isNaN(sz))
-                        return "the value of the 'sz' component of the scale on node ID " + nodeID + " isn't a number.";
-                    transf.push(...[sx, sy, sz]);
-
-                } else if (grandgrandChildren[k].nodeName == "rotation") {
-                    transf.push("r");
-                    var axis = null;
-                    var angle = null;
-
-                    axis = this.reader.getString(grandgrandChildren[k], 'axis');
-                    if(axis == null || (axis != "x" && axis != "y" && axis != "z"))
-                        return "unable to parse 'axis' component of rotation on node ID " + nodeID;
-
-                    if((angle = this.reader.getFloat(grandgrandChildren[k], 'angle')) == null)
-                        return "unable to parse 'angle' component of rotation on node ID " + nodeID;
-                    if(isNaN(angle))
-                        return "the value of the 'angle' component of the rotation on node ID " + nodeID + " isn't a number.";
-
-                    transf.push(...[axis, angle]);
-
-                } else {
-                    this.onXMLMinorError("unknown tag <" + grandgrandChildren[k].nodeName + ">");
-                    continue;
+                grandgrandChildren = grandChildren[transformationsIndex].children;
+                for (var k = 0; k < grandgrandChildren.length; k++) {
+                    var transf = this.parseTransformation(grandgrandChildren[k], nodeID, "node");
+                    if(typeof(transf) == "string" && transf != "unknown")
+                        return transf;
+                    
+                    if(transf.length > 0)
+                        transformations.push(transf);
                 }
-                
-                transformations.push(transf);
-            }
 
             }
             // Material
@@ -876,6 +845,64 @@ class MySceneGraph {
             return "invalid leaf type";
     }
 
+    parseAnimations(animationsNode) {
+        var children = animationsNode.children;
+
+        this.animations = [];
+
+        var grandChildren = [];
+        var grandgrandChildren = [];
+        var nodeNames = [];
+
+        for(var i = 0; i < children.length; ++i) {
+            if(children[i].nodeName != "animation") {
+                this.onXMLMinorError("unknown tag <" + children[i].nodeName + "> in <animations> block");
+                continue;
+            }
+            var animID = this.reader.getString(children[i], 'id');
+            if (animID == null || animID == "")
+                return "no ID defined for animation";
+
+            // Checks for repeated IDs.
+            if (this.animations[animID] != null)
+                return "ID must be unique for each animation (conflict: ID = " + animID + ")";
+
+            grandChildren = children[i].children; 
+
+            var keyframes = [];
+
+            //ASSUMING <keyframe> IS THE ONLY POSSIBLE CHILD FOR ANIMATION -- TODO - MAYBE CHANGE LATER 
+            for(var j = 0; j < grandChildren.length; ++j) {
+                if(grandChildren[j].nodeName != "keyframe") {
+                    this.onXMLMinorError("unknown tag <" + grandChildren[j].nodeName + "> in <animation> block ID = " + animID);
+                    continue;
+                }
+                var instant = this.reader.getFloat(grandChildren[j]);
+                if (!(instant != null && !isNaN(instant)))
+                    return "unable to identify 'instant' attribute of keyframe in animation ID = " + animID;
+                
+                grandgrandChildren = grandChildren[j].children;
+                var transformations = [];
+                for(var k = 0; k < grandgrandChildren.length; ++k) {
+                    var transf = this.parseTransformation(grandgrandChildren[k], animID, "animation", msgError);
+
+                    if(typeof(transf) == "string" && transf != "unknown")
+                        return transf;
+                    
+                    if(transf.length > 0)
+                        transformations.push(transf);
+                }
+                keyframes.push(new Keyframe(instant, transformations));
+            }
+
+            if(keyframes.length == 0)
+                return "at least one keyframe must be declared on an animation";
+            
+            keyframes.sort(function(a, b){return b.instant - a.instant});
+            this.animations.push(new KeyframeAnimation(id, keyframes));
+        }
+    }
+
 
     parseBoolean(node, name, messageError) {
         var boolVal = true;
@@ -1026,6 +1053,58 @@ class MySceneGraph {
             return null;
 
         return values;
+    }
+
+    parseTransformation(node, parentID, type) {
+        var transf = [];
+        if (node.nodeName == "translation") {
+            transf.push("t");
+            transf.push(...this.parseCoordinates3D(node, "translation in " + type + " ID " + parentID));
+            if(isNaN(transf[1]) || isNaN(transf[2]) || isNaN(transf[3])){
+                return "unable to parse component of translation on " + type + " ID " + parentID;
+            }
+
+        } else if (node.nodeName == "scale") {
+            transf.push("s");
+            var sx = null;
+            var sy = null;
+            var sz = null;
+
+            if((sx = this.reader.getFloat(node, 'sx')) == null)
+                return   "unable to parse 'sx' component of scale on " + type + " ID " + parentID;
+            if(isNaN(sx))
+                return   "the value of the 'sx' component of the scale on " + type + " ID " + parentID + " isn't a number.";
+            if((sy = this.reader.getFloat(node, 'sy')) == null)
+                return   "unable to parse 'sy' component of scale on " + type + " ID " + parentID;
+            if(isNaN(sy))
+                return   "the value of the 'sy' component of the scale on " + type + " ID " + parentID + " isn't a number.";
+            if((sz = this.reader.getFloat(node, 'sz')) == null)
+                return   "unable to parse 'sz' component of scale on " + type + " ID " + parentID;
+            if(isNaN(sz))
+                return   "the value of the 'sz' component of the scale on " + type + " ID " + parentID + " isn't a number.";
+            transf.push(...[sx, sy, sz]);
+
+        } else if (node.nodeName == "rotation") {
+            transf.push("r");
+            var axis = null;
+            var angle = null;
+
+            axis = this.reader.getString(node, 'axis');
+            if(axis == null || (axis != "x" && axis != "y" && axis != "z"))
+                return   "unable to parse 'axis' component of rotation on " + type + " ID " + parentID;
+
+            if((angle = this.reader.getFloat(node, 'angle')) == null)
+                return   "unable to parse 'angle' component of rotation on " + type + " ID " + parentID;
+            if(isNaN(angle))
+                return   "the value of the 'angle' component of the rotation on " + type + " ID " + parentID + " isn't a number.";
+
+            transf.push(...[axis, angle]);
+
+        } else {
+            this.onXMLMinorError("unknown tag <" + node.nodeName + ">");
+            return  "unknown";
+        }
+        return transf;
     }
 
     /**
