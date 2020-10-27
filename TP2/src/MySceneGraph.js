@@ -188,8 +188,10 @@ class MySceneGraph {
         }
 
         // <animations>
-        if ((index = nodeNames.indexOf("animations")) == -1)
+        if ((index = nodeNames.indexOf("animations")) == -1) {
             NODES_INDEX--; // animations block not declared
+            console.warn("<animations> block not declared. Assuming there are no animations");
+        }
         else {
             if (index != ANIMATIONS_INDEX)
                 this.onXMLMinorError("tag <animations> out of order");
@@ -901,6 +903,9 @@ class MySceneGraph {
             keyframes.sort(function(a, b){return b.instant - a.instant});
             this.animations.push(new KeyframeAnimation(id, keyframes));
         }
+
+        this.log("Parsed Animations");
+        return null;
     }
 
 
