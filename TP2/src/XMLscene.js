@@ -185,7 +185,7 @@ class XMLscene extends CGFscene {
     onGraphLoaded() {
         this.axis = new CGFaxis(this, this.graph.referenceLength);
 
-        this.setUpdatePeriod(100);
+        this.setUpdatePeriod(40);
 
         this.gl.clearColor(...this.graph.background);
 
@@ -201,8 +201,10 @@ class XMLscene extends CGFscene {
     }
 
     update(time) {
-        for(var key in this.graph.animations) {
-            this.graph.animations[key].update(time);
+        if(this.sceneInited){
+            for(var key in this.graph.animations) {
+                this.graph.animations[key].update(time/1000);
+            }
         }
     }
 

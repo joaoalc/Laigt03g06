@@ -897,7 +897,7 @@ class MySceneGraph {
                     this.onXMLMinorError("unknown tag <" + grandChildren[j].nodeName + "> in <animation> block ID = " + animID);
                     continue;
                 }
-                var instant = this.reader.getFloat(grandChildren[j]);
+                var instant = this.reader.getFloat(grandChildren[j], "instant");
                 if (!(instant != null && !isNaN(instant)))
                     return "unable to identify 'instant' attribute of keyframe in animation ID = " + animID;
 
@@ -909,16 +909,16 @@ class MySceneGraph {
                 
                 grandgrandChildren = grandChildren[j].children;
 
-                var translation;
+                var translation = null;
                 var rotation = [];
-                var scale;
+                var scale = null;
 
-                var rotationx;
-                var rotationy;
-                var rotationz;
+                var rotationx = null;
+                var rotationy = null;
+                var rotationz = null;
 
                 for(var k = 0; k < grandgrandChildren.length; ++k) {
-                    var transf = this.parseTransformation(grandgrandChildren[k], animID, "animation", msgError);
+                    var transf = this.parseTransformation(grandgrandChildren[k], animID, "animation");
 
                     if(typeof(transf) == "string" && transf != "unknown")
                         return transf;
@@ -961,8 +961,8 @@ class MySceneGraph {
             if(keyframes.length == 0)
                 return "at least one keyframe must be declared on an animation";
             
-            keyframes.sort(function(a, b){return b.instant - a.instant});
-            this.animations.push(new KeyframeAnimation(id, keyframes));
+            keyframes.sort(function(a, b){return a.instant - b.instant});
+            this.animations[animID] = new KeyframeAnimation(animID, keyframes);
         }
 
         this.log("Parsed Animations");

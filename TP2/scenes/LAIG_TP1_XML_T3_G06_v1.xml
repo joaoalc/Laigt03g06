@@ -171,6 +171,38 @@
             <emissive r="0.9" g="0.9" b="0.9" a="1.0"/>
         </material>
     </materials>
+    <animations>
+        <animation id="train_animation">
+            <keyframe instant="0">
+                <translation x="-5" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="2">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="7">
+                <translation x="10" y="5" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="40"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="12">
+                <translation x="20" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+        </animation>
+    </animations>
     <nodes>
         <node id="RootNode">
             <material id="Generic"/>
@@ -755,6 +787,7 @@
             <transformations>
                 <translation x="0" y="-0.05" z="0"/>
             </transformations>
+            <animationref id="train_animation"/>
             <descendants>
                 <noderef id="train_cab"/>
                 <noderef id="train_bottom"/>
