@@ -185,6 +185,8 @@ class XMLscene extends CGFscene {
     onGraphLoaded() {
         this.axis = new CGFaxis(this, this.graph.referenceLength);
 
+        this.setUpdatePeriod(100);
+
         this.gl.clearColor(...this.graph.background);
 
         this.setGlobalAmbientLight(...this.graph.ambient);
@@ -196,6 +198,12 @@ class XMLscene extends CGFscene {
         this.sceneInited = true;
         this.initCameras();
         this.interface.addGUIelements(this.cameraIds[this.activeCamera]);
+    }
+
+    update(time) {
+        for(var key in this.graph.animations) {
+            this.graph.animations[key].update(time);
+        }
     }
 
     /**

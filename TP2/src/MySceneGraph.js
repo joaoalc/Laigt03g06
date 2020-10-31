@@ -616,6 +616,7 @@ class MySceneGraph {
             var materialIndex = nodeNames.indexOf("material");
             var textureIndex = nodeNames.indexOf("texture");
             var descendantsIndex = nodeNames.indexOf("descendants");
+            var animationIndex = nodeNames.indexOf("animationref");
 
 
             // Transformations
@@ -635,6 +636,7 @@ class MySceneGraph {
                 }
 
             }
+            
             // Material
             if (materialIndex == -1)
                 return "no <material> tag for node ID " + nodeID;
@@ -731,7 +733,23 @@ class MySceneGraph {
                 }
             }
 
-            this.nodes[nodeID] = new MyNode(this.scene, textureID, materialID, transformations, [], leaves);
+            var animation = null;
+            if (animationIndex != -1) {
+                
+                var animID = null;
+
+                if ((animID = this.reader.getString(grandChildren[animationIndex], 'id')) == null || animID == "") {
+                    this.onXMLMinorError("no id defined for animation in node ID " + nodeID + ". Assuming no animation");
+
+                } else if (animID != "null" && this.animations[animID] == null) {
+                    this.onXMLMinorError("invalid animation ID on node " + nodeID + ". Assuming no animation");
+                }
+                
+                if(animID != null)
+                    animation = this.animations[animID];
+            }
+
+            this.nodes[nodeID] = new MyNode(this.scene, textureID, materialID, transformations, [], leaves, animation);
             nodeChilds[nodeID] = descendants;
         }
 
@@ -882,19 +900,62 @@ class MySceneGraph {
                 var instant = this.reader.getFloat(grandChildren[j]);
                 if (!(instant != null && !isNaN(instant)))
                     return "unable to identify 'instant' attribute of keyframe in animation ID = " + animID;
+
+                for(var l = 0; l < keyframes.length; ++l) {
+                    if(keyframes[l].instant == instant)
+                        this.onXMLError("Animation ID=" + animID + " has more than one keyframe on instant=" + instant + ". Using the first declared");
+                    continue;
+                }
                 
                 grandgrandChildren = grandChildren[j].children;
-                var transformations = [];
+
+                var translation;
+                var rotation = [];
+                var scale;
+
+                var rotationx;
+                var rotationy;
+                var rotationz;
+
                 for(var k = 0; k < grandgrandChildren.length; ++k) {
                     var transf = this.parseTransformation(grandgrandChildren[k], animID, "animation", msgError);
 
                     if(typeof(transf) == "string" && transf != "unknown")
                         return transf;
                     
-                    if(transf.length > 0)
-                        transformations.push(transf);
+                    if(transf.length > 0) {
+                        if(transf[0] == "t") {
+                            if(translation == null)
+                                translation = transf;
+                            else this.onXMLError("Animation " + animID + " keyframe on instant " + instant + " has more than one translation block");
+                        }
+                        else if(transf[0] == "s"){
+                            if(scale == null){
+                                scale = transf;
+                            }
+                            else this.onXMLError("Animation " + animID + " keyframe on instant " + instant + " has more than one scale block");
+                        }
+                        else if(transf[0] == "r"){
+                            if(transf[1] == "x"){
+                                if(rotationx == null){
+                                    rotationx = transf[2];
+                                }
+                            }
+                            else if(transf[1] == "y"){
+                                if(rotationy == null){
+                                    rotationy = transf[2];
+                                }
+                            }
+                            else if(transf[1] == "z"){
+                                if(rotationz == null){
+                                    rotationz = transf[2];
+                                }
+                            }
+                        }
+                    }
                 }
-                keyframes.push(new Keyframe(instant, transformations));
+                rotation.push(...[rotationx, rotationy, rotationz]);
+                keyframes.push(new Keyframe(instant, translation, rotation, scale));
             }
 
             if(keyframes.length == 0)

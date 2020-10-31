@@ -16,7 +16,7 @@ class MyNode {
      * @param descendants - Array of references to descendant nodes
      * @param leaves - Array of CGFobject leaves
      */
-    constructor(scene, texture, material, transformations, descendants, leaves) {
+    constructor(scene, texture, material, transformations, descendants, leaves, animation) {
         this.scene = scene;
         this.texture = texture;
         this.material = material;
@@ -24,6 +24,7 @@ class MyNode {
         this.transfMatrix = mat4.create();
         this.descendants = descendants;
         this.leaves = leaves;
+        this.animation = animation;
 
         for(var i = 0; i < transformations.length; i++) {
             if(transformations[i][0] == "t") {
@@ -47,6 +48,10 @@ class MyNode {
     display() {
         this.scene.pushMatrix();
         this.scene.multMatrix(this.transfMatrix); //Adicionar a nova transformação à matriz de transformações para este objeto e todos os seus descendants
+
+        if(this.animation != null) {
+            this.animation.apply(this.scene);
+        }
 
         if(this.material != "null") { //Adicionar o material se não for "null"
             materialStack.push(this.material);
