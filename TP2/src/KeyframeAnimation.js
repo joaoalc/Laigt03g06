@@ -46,13 +46,24 @@ class KeyframeAnimation extends Animation{
         }
         else{
             if(time >= this.keyframes[this.nextKeyframeIndex].instant){
-                this.currentKeyframeIndex++;
-                if(this.nextKeyframeIndex + 1 >= this.keyframes.length){ //If the animation has just ended
+                for(let i = this.nextKeyframeIndex; i < this.keyframes.length; i++){
+                    if(time >= this.keyframes[this.nextKeyframeIndex].instant){
+                        this.nextKeyframeIndex = i;
+                    }
+                }
+                if(this.nextKeyframeIndex == this.currentKeyframeIndex + 1){ //Reached end of animation
                     this.nextKeyframeIndex = null;
+                    this.currentKeyframeIndex = this.keyframes.length - 1;
                 }
-                else { 
+                else{
+                    this.currentKeyframeIndex = this.nextKeyframeIndex - 1;
+                }
+                /*if(this.nextKeyframeIndex + 1 >= this.keyframes.length){ //If the animation has just ended
+                    this.nextKeyframeIndex = null;
+                }*/
+                /*else { 
                     this.nextKeyframeIndex++;
-                }
+                }*/
             }
         }
 
