@@ -6,9 +6,10 @@ var VIEWS_INDEX = 1;
 var ILLUMINATION_INDEX = 2;
 var LIGHTS_INDEX = 3;
 var TEXTURES_INDEX = 4;
-var MATERIALS_INDEX = 5;
-var ANIMATIONS_INDEX = 6
-var NODES_INDEX = 7;
+var SPRITESHEETS_INDEX = 5;
+var MATERIALS_INDEX = 6;
+var ANIMATIONS_INDEX = 7;
+var NODES_INDEX = 8;
 
 
 /**
@@ -172,6 +173,18 @@ class MySceneGraph {
 
             //Parse textures block
             if ((error = this.parseTextures(nodes[index])) != null)
+                return error;
+        }
+
+        // <spritesheets>
+        if ((index = nodeNames.indexOf("spritesheets")) == -1) 
+            return "tag <spritesheets> missing";
+        else {
+            if (index != TEXTURES_INDEX)
+                this.onXMLMinorError("tag <spritesheets> out of order");
+
+            //Parse textures block
+            if ((error = this.parseSpritesheets(nodes[index])) != null)
                 return error;
         }
 
@@ -861,7 +874,42 @@ class MySceneGraph {
                 info.push(attribute);
             }
             return new MyTorus(this.scene, info[0], info[1], info[2], info[3]);
-        } else 
+        } else if(type == "spritetext") {
+            var text;
+            
+            if((text = this.reader.getString(node, 'text')) == null)
+                return "unable to identify 'text' attribute on spritetext " + messageError;
+
+            return new MySpriteText(this,scene, text);
+
+        } else if(type == "spriteanim") {
+            attributeNames = ["ssid", "startCell", "endCell", "duration"];
+            attributeTypes = ["string", "integer", "integer", "float"];
+
+            for(var i = 0; i < attributeNames.length; i++) {
+                if(attributeTypes[i] == "float") {
+                    var attribute = this.reader.getFloat(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on spriteanim " + messageError;
+                } else if(attributeTypes[i] == "integer") {
+                    var attribute = this.reader.getInteger(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on spriteanim " + messageError;
+                } else {
+                    var attribute = this.reader.getString(node, attributeNames[i]);
+                    if (attribute == null || attribute == "")
+                        return "unable to identify '" + attributeNames[i] + "' attribute on spriteanim " + messageError;
+                }
+                info.push(attribute);
+            }
+
+            if(this.spritesheets[info[0]] == null)
+                return "invalid ssid on spriteanim " + messageError;
+            
+            // TODO - verify if startCell and endCell are not out of bounds of spritesheet size
+            return new MySpriteAnimation(this.spritesheets[info[0]], info[1], info[2], info[3]);
+        }
+        else 
             return "invalid leaf type";
     }
 
@@ -966,6 +1014,56 @@ class MySceneGraph {
         }
 
         this.log("Parsed Animations");
+        return null;
+    }
+
+    parseSpritesheets(spritesheetsNode) {
+
+        this.spritesheets = [];
+
+        var children = spritesheetsNode.children;
+
+        for (var i = 0; i < children.length; i++) {
+
+            if (children[i].nodeName != "spritesheet") {
+                this.onXMLMinorError("unknown tag <" + children[i].nodeName + ">");
+                continue;
+            }
+
+            var spritesheetID = this.reader.getString(children[i], 'id');
+            if (spritesheetID == null || spritesheetID == "")
+                return "no ID defined for spritesheet";
+
+            if (this.spritesheets[spritesheetID] != null)
+                return "ID must be unique for each spritesheet (conflict: ID = " + spritesheetID + ")";
+
+            var spritePath = this.reader.getString(children[i], 'path');
+            if (spritePath == null)
+                return "no path defined for spritesheet (ID = " + spritesheetID + ")";
+
+            var http = new XMLHttpRequest();
+
+            http.open('HEAD', spritePath, false);
+            http.send();
+            if(http.status != 200) {
+                //this.onXMLError("invalid path defined for texture (ID = " + textureID + ")");
+                return "invalid path defined for spritesheet (ID = " + spritesheetID + ")";
+            }
+
+            var spritesheetTexture = new CGFtexture(this.scene, spritePath);
+
+            var sizeM = this.reader.getFloat(children[i], 'sizeM');
+            if (!(sizeM != null && !isNaN(sizeM)))
+                    return "unable to identify 'sizeM' attribute of spritesheet ID = " + spritesheetID;
+
+            var sizeN = this.reader.getFloat(children[i], 'sizeN');
+            if (!(sizeN != null && !isNaN(sizeN)))
+                    return "unable to identify 'sizeN' attribute of spritesheet ID = " + spritesheetID;
+            
+            this.spritesheets[spritesheetID] = new MySpriteSheet(spritesheetTexture, sizeM, sizeN);
+        }
+
+        this.log("Parsed spritesheets");
         return null;
     }
 
