@@ -1060,7 +1060,7 @@ class MySceneGraph {
             if (!(sizeN != null && !isNaN(sizeN)))
                     return "unable to identify 'sizeN' attribute of spritesheet ID = " + spritesheetID;
             
-            this.spritesheets[spritesheetID] = new MySpriteSheet(spritesheetTexture, sizeM, sizeN);
+            this.spritesheets[spritesheetID] = new MySpriteSheet(this.scene, spritesheetTexture, sizeM, sizeN);
         }
 
         this.log("Parsed spritesheets");

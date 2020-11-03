@@ -10,7 +10,7 @@ class MySpriteText {
         }
 
         var textSprite = new CGFtexture(this.scene, "text.png"); // doesnt exist yet
-        this.spritesheet = new MySpriteSheet(textSprite, 10, 10); // random numbers atm
+        this.spritesheet = new MySpriteSheet(this.scene, textSprite, 10, 10); // random numbers atm
     }
 
     getCharacterPosition(character) {
@@ -23,6 +23,7 @@ class MySpriteText {
             this.spritesheet.activateCellP(this.getCharacterPosition(this.text.charAt(i)));
             this.scene.translate(i, 0, 0);
             this.objects[i].display();
+            this.scene.setActiveShader(this.scene.defaultShader);
             this.scene.popMatrix();
         }
     }
