@@ -180,7 +180,7 @@ class MySceneGraph {
         if ((index = nodeNames.indexOf("spritesheets")) == -1) 
             return "tag <spritesheets> missing";
         else {
-            if (index != TEXTURES_INDEX)
+            if (index != SPRITESHEETS_INDEX)
                 this.onXMLMinorError("tag <spritesheets> out of order");
 
             //Parse textures block
@@ -880,7 +880,7 @@ class MySceneGraph {
             if((text = this.reader.getString(node, 'text')) == null)
                 return "unable to identify 'text' attribute on spritetext " + messageError;
 
-            return new MySpriteText(this,scene, text);
+            return new MySpriteText(this.scene, text);
 
         } else if(type == "spriteanim") {
             attributeNames = ["ssid", "startCell", "endCell", "duration"];

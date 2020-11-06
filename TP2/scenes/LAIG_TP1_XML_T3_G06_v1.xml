@@ -78,6 +78,8 @@
         <texture id="grass_blade" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/grass_blade.jpg"/>
         <texture id="golden" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/golden.jpg"/>
     </textures>
+    <spritesheets>
+    </spritesheets>
     <materials>
         <material id="Generic">
             <shininess value="10.0"/>
@@ -216,6 +218,8 @@
                 <noderef id="skybox"/>
                 <noderef id="trees"/>
                 <noderef id="ground"/>
+
+                <leaf type="spritetext" text="This is a sprite text test"/>
             </descendants>
         </node>
 
