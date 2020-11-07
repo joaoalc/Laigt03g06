@@ -49,4 +49,10 @@ class MySpriteText {
         }
         this.scene.setActiveShader(this.scene.defaultShader);
     }
+    
+    enableNormalViz() {
+        for(var i = 0; i < this.objects.length; ++i) {
+            this.objects[i].enableNormalViz();
+        }
+    }
 }

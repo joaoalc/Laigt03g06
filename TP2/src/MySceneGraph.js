@@ -908,6 +908,18 @@ class MySceneGraph {
             
             // TODO - verify if startCell and endCell are not out of bounds of spritesheet size
             return new MySpriteAnimation(this.spritesheets[info[0]], info[1], info[2], info[3]);
+        } 
+        else if(type == "plane") {
+            
+            var partsU = this.reader.getInteger(node, 'npartsU');
+            if (!(partsU != null && !isNaN(partsU)))
+                return "unable to identify 'npartsU' attribute on plane " + messageError;
+
+            var partsV = this.reader.getInteger(node, 'npartsV');
+            if (!(partsV != null && !isNaN(partsV)))
+                return "unable to identify 'npartsV' attribute on plane " + messageError;
+
+            return new Plane(this.scene, partsU, partsV);
         }
         else 
             return "invalid leaf type";
