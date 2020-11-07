@@ -219,7 +219,7 @@
                 <noderef id="trees"/>
                 <noderef id="ground"/>
 
-                <leaf type="spritetext" text="This is a sprite text test"/>
+                <leaf type="spritetext" text="This is a sprite text testtttttttttttttttttttyyyyyyyyyyy"/>
             </descendants>
         </node>
 
