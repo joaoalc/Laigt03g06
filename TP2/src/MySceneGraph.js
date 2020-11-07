@@ -923,7 +923,6 @@ class MySceneGraph {
         } 
         else if(type == "patch") {
             attributeNames = ["npointsU", "npointsV", "npartsU", "npartsV"];
-            attributeTypes = ["integer", "integer", "integer", "integer"];
 
             var controlPoints = [];
 
@@ -934,19 +933,11 @@ class MySceneGraph {
             }
 
             for(var i = 0; i < attributeNames.length; i++) {
-                if(attributeTypes[i] == "float") {
-                    var attribute = this.reader.getFloat(node, attributeNames[i]);
-                    if (!(attribute != null && !isNaN(attribute)))
-                        return "unable to identify '" + attributeNames[i] + "' attribute on spriteanim " + messageError;
-                } else if(attributeTypes[i] == "integer") {
-                    var attribute = this.reader.getInteger(node, attributeNames[i]);
-                    if (!(attribute != null && !isNaN(attribute)))
-                        return "unable to identify '" + attributeNames[i] + "' attribute on spriteanim " + messageError;
-                } else {
-                    var attribute = this.reader.getString(node, attributeNames[i]);
-                    if (attribute == null || attribute == "")
-                        return "unable to identify '" + attributeNames[i] + "' attribute on spriteanim " + messageError;
-                }
+
+                var attribute = this.reader.getInteger(node, attributeNames[i]);
+                if (!(attribute != null && !isNaN(attribute)))
+                    return "unable to identify '" + attributeNames[i] + "' attribute on patch " + messageError;
+
                 info.push(attribute);
             }
 
