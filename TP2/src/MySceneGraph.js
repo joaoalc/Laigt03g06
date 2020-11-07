@@ -920,7 +920,50 @@ class MySceneGraph {
                 return "unable to identify 'npartsV' attribute on plane " + messageError;
 
             return new Plane(this.scene, partsU, partsV);
-        }
+        } 
+        else if(type == "patch") {
+            attributeNames = ["npointsU", "npointsV", "npartsU", "npartsV"];
+            attributeTypes = ["integer", "integer", "integer", "integer"];
+
+            var controlPoints = [];
+
+            var children = node.children;
+
+            if(children.length < 1) {
+                return "no control points defined for patch";
+            }
+
+            for(var i = 0; i < attributeNames.length; i++) {
+                if(attributeTypes[i] == "float") {
+                    var attribute = this.reader.getFloat(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on spriteanim " + messageError;
+                } else if(attributeTypes[i] == "integer") {
+                    var attribute = this.reader.getInteger(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on spriteanim " + messageError;
+                } else {
+                    var attribute = this.reader.getString(node, attributeNames[i]);
+                    if (attribute == null || attribute == "")
+                        return "unable to identify '" + attributeNames[i] + "' attribute on spriteanim " + messageError;
+                }
+                info.push(attribute);
+            }
+
+            for(var j = 0; j < children.length; ++j) {
+                if(children[i].nodeName == "controlpoint") {
+                    var point = this.parseCoordinates3D(children[i], "control point in patch leaf");
+                    if(typeof(point) == "string")
+                        return point;
+
+                    this.controlPoints.push(point);
+
+                } else this.onXMLMinorError("unkown tag " + children[i].nodeName + " in patch leaf");
+            }
+            
+            return new Patch(this.scene, info[0], info[1], info[2], info[3], controlPoints);
+            
+        } 
         else 
             return "invalid leaf type";
     }
