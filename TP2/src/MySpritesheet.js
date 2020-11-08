@@ -17,9 +17,8 @@ class MySpriteSheet {
     }
 
     activateCellP(p) {
-        var m = p % this.sizeM;
+        var m = p % this.sizeM; //p + 1 because p begins at 0
         var n = Math.floor(p / this.sizeM);
         this.activateCellMN(m, n);
-        this.scene.setActiveShader(this.shader);
     }
 }
