@@ -19,7 +19,7 @@ class MySpriteText {
         this.appearance.setEmission(0, 0, 0);
 
         this.textSprite = new CGFtexture(this.scene, "fonts/font.png"); //text sprite
-        this.appearance.setTexture(this.textSprite);
+        //this.appearance.setTexture(this.textSprite);
 
         this.spritesheet = new MySpriteSheet(this.scene, this.textSprite, 16, 16); // font sheet
         this.sheetSize = 16*16;
@@ -35,6 +35,7 @@ class MySpriteText {
 
     display() {
         this.appearance.apply();
+        this.textSprite.bind();
         this.scene.setActiveShader(this.spritesheet.shader);
         
         this.scene.pushMatrix();
@@ -62,5 +63,12 @@ class MySpriteText {
         this.scene.popMatrix();
 
         this.scene.setActiveShader(this.scene.defaultShader);
+        this.textSprite.unbind();
+    }
+    
+    enableNormalViz() {
+        for(var i = 0; i < this.objects.length; ++i) {
+            this.objects[i].enableNormalViz();
+        }
     }
 }

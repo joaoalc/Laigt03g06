@@ -12,7 +12,7 @@ class MySpriteAnimation {
 
         this.object = new MyRectangle(scene, -0.5, -0.5, 0.5, 0.5);
         this.appearance = new CGFappearance(this.scene);
-        this.appearance.setTexture(this.spritesheet.texture);
+        //this.appearance.setTexture(this.spritesheet.texture);
 
     }
 
@@ -50,10 +50,12 @@ class MySpriteAnimation {
 
     display() {
         this.appearance.apply();
+        this.spritesheet.texture.bind();
         this.scene.setActiveShader(this.spritesheet.shader);
 
         this.object.display();
 
         this.scene.setActiveShader(this.scene.defaultShader);
+        this.spritesheet.texture.unbind();
     }
 }
