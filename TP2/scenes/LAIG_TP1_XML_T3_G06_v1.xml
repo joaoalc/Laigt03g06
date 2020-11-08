@@ -79,6 +79,7 @@
         <texture id="golden" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/golden.jpg"/>
     </textures>
     <spritesheets>
+        <spritesheet id="spriteanim_test" path="scenes/textures_LAIG_TP1_XML_T3_G06_v1/spritesheet_temp.png" sizeM="3" sizeN="2"/>
     </spritesheets>
     <materials>
         <material id="Generic">
@@ -218,8 +219,9 @@
                 <noderef id="skybox"/>
                 <noderef id="trees"/>
                 <noderef id="ground"/>
-
-                <leaf type="spritetext" text="This is a sprite text testtttttttttttttttttttyyyyyyyyyyy"/>
+                
+                <leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="3"/>
+                <!--<leaf type="spritetext" text="This is a sprite text testtttttttttttttttttttyyyyyyyyyyy"/>-->
             </descendants>
         </node>
 

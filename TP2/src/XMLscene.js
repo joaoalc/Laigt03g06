@@ -50,18 +50,18 @@ class XMLscene extends CGFscene {
         
 
         //Testing
-        /*this.appearance = new CGFappearance(this);
-		this.appearance.setAmbient(0.3, 0.3, 0.3, 1);
-		this.appearance.setDiffuse(0.7, 0.7, 0.7, 1);
-		this.appearance.setSpecular(0.0, 0.0, 0.0, 1);
-		this.appearance.setShininess(120);
+        // this.appearance = new CGFappearance(this);
+		// this.appearance.setAmbient(0.3, 0.3, 0.3, 1);
+		// this.appearance.setDiffuse(0.7, 0.7, 0.7, 1);
+		// this.appearance.setSpecular(0.0, 0.0, 0.0, 1);
+		// this.appearance.setShininess(120);
 
-        this.cylinder = new MyCylinder(this, 10, 5, 7, 15, 25);
+        // this.cylinder = new MyCylinder(this, 10, 5, 7, 15, 25);
 
-        this.texture = new CGFtexture(this, "scenes/textures_LAIG_TP1_XML_T3_G06_v1/spritesheet_temp.png");
+        // this.texture = new CGFtexture(this, "scenes/textures_LAIG_TP1_XML_T3_G06_v1/spritesheet_temp.png");
 
-        this.spritesheet = new MySpriteSheet(this, this.texture, 3, 2);
-        this.spritesheetAnimation = new MySpriteAnimation(this.spritesheet, 3, 3, 9);*/
+        // this.spritesheet = new MySpriteSheet(this, this.texture, 3, 2);
+        // this.spritesheetAnimation = new MySpriteAnimation(this.spritesheet, 0, 3, 3);
     }
 
     initMaterials(){
@@ -221,6 +221,10 @@ class XMLscene extends CGFscene {
                 //this.spritesheetAnimation.update(time / 1000);
                 //--------
             }
+
+            for(var i = 0; i <  this.graph.spriteAnimations.length; ++i) {
+                this.graph.spriteAnimations[i].update(time/1000);
+            }
         }
     }
 
@@ -262,11 +266,11 @@ class XMLscene extends CGFscene {
                 this.displayNormals_before = false;
             }
             //Testing-----
-            /*this.setActiveShader(this.spritesheet.shader);
-            this.appearance.apply();
-            this.texture.bind();
-            this.cylinder.display();
-            this.setActiveShader(this.defaultShader);*/
+            // this.setActiveShader(this.spritesheet.shader);
+            // this.appearance.apply();
+            // this.texture.bind();
+            // this.cylinder.display();
+            // this.setActiveShader(this.defaultShader);
             //------
             this.defaultAppearance.apply();
             

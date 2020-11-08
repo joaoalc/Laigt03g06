@@ -601,6 +601,8 @@ class MySceneGraph {
 
         var nodeChilds = [];
 
+        this.spriteAnimations = [];
+
         // Any number of nodes.
         for (var i = 0; i < children.length; i++) {
 
@@ -726,6 +728,7 @@ class MySceneGraph {
 
             var descendants = [];
             var leaves = [];
+
 
             for(var n = 0; n < grandgrandChildren.length; n++) {
                 if(grandgrandChildren[n].nodeName == "noderef") {
@@ -905,9 +908,18 @@ class MySceneGraph {
 
             if(this.spritesheets[info[0]] == null)
                 return "invalid ssid on spriteanim " + messageError;
+
+            var sizeSprite = this.spritesheets[info[0]].sizeM * this.spritesheets[info[0]].sizeN;
+
+
+            if(info[1] < 0 || info[2] < 0 || info[1] > sizeSprite || info[2] > sizeSprite)
+                return "invalid startCell or endCell values on spriteanim " + messageError;
             
-            // TODO - verify if startCell and endCell are not out of bounds of spritesheet size
-            return new MySpriteAnimation(this.spritesheets[info[0]], info[1], info[2], info[3]);
+            var newAnimation = new MySpriteAnimation(this.scene, this.spritesheets[info[0]], info[1], info[2], info[3]);
+
+            this.spriteAnimations.push(newAnimation);
+
+            return newAnimation;
         }
         else 
             return "invalid leaf type";

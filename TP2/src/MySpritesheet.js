@@ -13,11 +13,10 @@ class MySpriteSheet {
     activateCellMN(m, n) {
         this.shader.setUniformsValues({m: m});
         this.shader.setUniformsValues({n: n});
-        this.scene.setActiveShader(this.shader);
     }
 
     activateCellP(p) {
-        var m = p % this.sizeM; //p + 1 because p begins at 0
+        var m = p % this.sizeM;
         var n = Math.floor(p / this.sizeM);
         this.activateCellMN(m, n);
     }

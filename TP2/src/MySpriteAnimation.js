@@ -1,5 +1,6 @@
 class MySpriteAnimation {
-    constructor(spritesheet, startCell, endCell, duration) {
+    constructor(scene, spritesheet, startCell, endCell, duration) {
+        this.scene = scene;
         this.spritesheet = spritesheet;
         this.startCell = startCell;
         this.endCell = endCell;
@@ -8,6 +9,11 @@ class MySpriteAnimation {
         this.currentCell = startCell;
 
         this.firstTime = 0;
+
+        this.object = new MyRectangle(scene, -0.5, -0.5, 0.5, 0.5);
+        this.appearance = new CGFappearance(this.scene);
+        this.appearance.setTexture(this.spritesheet.texture);
+
     }
 
     update(time) {
@@ -40,5 +46,14 @@ class MySpriteAnimation {
                 this.spritesheet.activateCellP(this.currentCell);
             }
         }
+    }
+
+    display() {
+        this.appearance.apply();
+        this.scene.setActiveShader(this.spritesheet.shader);
+
+        this.object.display();
+
+        this.scene.setActiveShader(this.scene.defaultShader);
     }
 }
