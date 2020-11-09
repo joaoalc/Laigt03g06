@@ -221,8 +221,8 @@
                 <noderef id="ground"/>
                 
 
-                <leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="3"/>
-                <leaf type="plane" npartsU="50" npartsV="50"/> 
+                <!--<leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="3"/>-->
+                <leaf type="plane" npartsU="5" npartsV="5"/> 
                 <!--<leaf type="spritetext" text="This is a sprite text testtttttttttttttttttttyyyyyyyyyyy"/>-->
             </descendants>
         </node>
