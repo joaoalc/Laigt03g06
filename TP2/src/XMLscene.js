@@ -48,7 +48,7 @@ class XMLscene extends CGFscene {
 
         this.defaultAppearance=new CGFappearance(this);
         
-
+        this.patch = new Patch(this, 3, 2, 20, 20);
         //Testing
         // this.appearance = new CGFappearance(this);
 		// this.appearance.setAmbient(0.3, 0.3, 0.3, 1);
@@ -274,6 +274,7 @@ class XMLscene extends CGFscene {
             //------
             this.defaultAppearance.apply();
             
+            this.patch.display();
             // Updates the scene's lights
             this.updateLights();
 
