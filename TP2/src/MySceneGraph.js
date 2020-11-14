@@ -742,6 +742,7 @@ class MySceneGraph {
                     if(typeof leaf == 'string') {
                         return leaf;
                     }
+                    console.log(leaf);
                     leaves.push(leaf);
 
                 } else {
@@ -936,6 +937,7 @@ class MySceneGraph {
         else if(type == "patch") {
             attributeNames = ["npointsU", "npointsV", "npartsU", "npartsV"];
 
+            var controlPointsLine = []; //
             var controlPoints = [];
 
             var children = node.children;
@@ -953,17 +955,28 @@ class MySceneGraph {
                 info.push(attribute);
             }
 
-            for(var j = 0; j < children.length; ++j) {
-                if(children[i].nodeName == "controlpoint") {
-                    var point = this.parseCoordinates3D(children[i], "control point in patch leaf");
-                    if(typeof(point) == "string")
-                        return point;
-
-                    this.controlPoints.push(point);
-
-                } else this.onXMLMinorError("unkown tag " + children[i].nodeName + " in patch leaf");
+            //The number of control points has to be equal to npointsU * npointsV
+            if(children.length > (info[0] * info[1])){
+                return "not enough control points (" + children.length + " were defined when " + (info[0] * info[1]) + " should've been) defined for patch"
             }
-            
+            else if(children.length < (info[0] * info[1])){
+                return "too many control points (" + children.length + " were defined when " + (info[0] * info[1]) + " should've been) defined for patch"
+            }
+
+            for(var k = 0; k < info[0]; ++k){
+                for(var j = 0; j < info[1]; ++j) {
+                    if(children[k * info[1] + j].nodeName == "controlpoint") {
+                        var point = this.parseAnyCoordinates3D(children[k * info[1] + j], "control point in patch leaf", ["xx", "yy", "zz"]);
+                        point.push(1); //Control point's weight
+                        if(typeof(point) == "string")
+                            return point;
+                        controlPointsLine.push(point);
+
+                    } else this.onXMLMinorError("unkown tag " + children[i].nodeName + " in patch leaf");
+                }
+                controlPoints.push(controlPointsLine);
+                controlPointsLine = [];
+            }
             return new Patch(this.scene, info[0], info[1], info[2], info[3], controlPoints);
             
         } 
@@ -1161,6 +1174,39 @@ class MySceneGraph {
 
         return position;
     }
+    /**
+     * Parse the coordinates from a node with ID = id
+     * Unlike parseCoordinates3D, the names of the parsed elements are passed to the function by argument instead of being assumed as x, y and z
+     * @param {block element} node
+     * @param {message to be displayed in case of error} messageError
+     * @param {names of the 3 coordinates to parse (in order)} coordNames
+     */
+    parseAnyCoordinates3D(node, messageError, coordNames) {
+        var position = [];
+
+        if(coordNames.length != 3){
+            console.log("Too many coordenates for parseAnyCoorinates3D");
+        }
+
+        // x
+        var x = this.reader.getFloat(node, coordNames[0]);
+        if (!(x != null && !isNaN(x)))
+            return "unable to parse x-coordinate of the " + messageError;
+
+        // y
+        var y = this.reader.getFloat(node, coordNames[1]);
+        if (!(y != null && !isNaN(y)))
+            return "unable to parse y-coordinate of the " + messageError;
+
+        // z
+        var z = this.reader.getFloat(node, coordNames[2]);
+        if (!(z != null && !isNaN(z)))
+            return "unable to parse z-coordinate of the " + messageError;
+        position.push(...[x, y, z]);
+
+        return position;
+    }
+
 
     /**
      * Parse the coordinates from a node with ID = id

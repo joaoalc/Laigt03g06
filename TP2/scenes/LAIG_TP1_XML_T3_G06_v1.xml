@@ -204,6 +204,55 @@
                 <rotation axis="z" angle="0"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
+            <keyframe instant="15">
+                <translation x="20" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="360"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="18">
+                <translation x="20" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="720"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="21">
+                <translation x="20" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="1080"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="24">
+                <translation x="20" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="1440"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="27">
+                <translation x="20" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="1800"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="30">
+                <translation x="20" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="2160"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="33">
+                <translation x="20" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="2520"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
         </animation>
     </animations>
     <nodes>
@@ -220,7 +269,17 @@
                 <noderef id="trees"/>
                 <noderef id="ground"/>
                 
-
+                <leaf type="patch" npointsU="3" npointsV="3" npartsU="4" npartsV="4">
+                    <controlpoint xx="0.5" yy="0" zz="-0.5"/>
+                    <controlpoint xx="0.7" yy="0" zz="0"/>
+                    <controlpoint xx="0.5" yy="0" zz="0.5"/>
+                    <controlpoint xx="0" yy="0.5" zz="-0.5"/>
+                    <controlpoint xx="0" yy="0.7" zz="0"/>
+                    <controlpoint xx="0" yy="0.5" zz="0.5"/>
+                    <controlpoint xx="-0.5" yy="0" zz="-0.5"/>
+                    <controlpoint xx="-0.7" yy="0" zz="0"/>
+                    <controlpoint xx="-0.5" yy="0" zz="0.5"/>
+                </leaf>
                 <!--<leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="3"/>-->
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/> -->
                 <!--<leaf type="spritetext" text="This is a sprite text testtttttttttttttttttttyyyyyyyyyyy"/>-->
