@@ -276,7 +276,7 @@ class XMLscene extends CGFscene {
             //------
             this.defaultAppearance.apply();
             
-            this.patch.display();
+            //this.patch.display();
             // Updates the scene's lights
             this.updateLights();
 
