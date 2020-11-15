@@ -269,6 +269,8 @@
                 <noderef id="trees"/>
                 <noderef id="ground"/>
                 
+                <leaf type="defbarrel" base="1" middle="1.8" height="2" slices="20" stacks="20"/>
+                 <!--
                 <leaf type="patch" npointsU="3" npointsV="3" npartsU="4" npartsV="4">
                     <controlpoint xx="0.5" yy="0" zz="-0.5"/>
                     <controlpoint xx="0.7" yy="0" zz="0"/>
@@ -280,6 +282,7 @@
                     <controlpoint xx="-0.7" yy="0" zz="0"/>
                     <controlpoint xx="-0.5" yy="0" zz="0.5"/>
                 </leaf>
+                -->
                 <!--<leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="3"/>-->
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/> -->
                 <!--<leaf type="spritetext" text="This is a sprite text testtttttttttttttttttttyyyyyyyyyyy"/>-->

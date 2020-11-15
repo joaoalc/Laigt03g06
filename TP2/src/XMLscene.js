@@ -49,7 +49,7 @@ class XMLscene extends CGFscene {
         this.defaultAppearance=new CGFappearance(this);
         
         //this.patch = new Patch(this, 3, 2, 20, 20);
-        this.barrel = new Barrel(this, 0, 0, 50, 50);
+        //this.barrel = new Barrel(this, 1, 1.8, 2, 15, 15);
 
         //Testing
         // this.appearance = new CGFappearance(this);
@@ -277,6 +277,7 @@ class XMLscene extends CGFscene {
             this.defaultAppearance.apply();
             
             //this.patch.display();
+            //this.barrel.display();
             // Updates the scene's lights
             this.updateLights();
 
