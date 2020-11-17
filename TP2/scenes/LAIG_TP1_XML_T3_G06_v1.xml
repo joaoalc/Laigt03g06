@@ -59,6 +59,7 @@
         <texture id="tree_trunk" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/tree_trunk.png"/>
         <texture id="tree_leaves" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/tree_leaves.jpg"/>
         <texture id="wood" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/wood.jpg"/>
+        <texture id="wood2" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/wood_2.jpg"/>
         <texture id="grass" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/grass.jpg"/>
         <texture id="train_furnace" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/furnace.jpg"/>
         <texture id="glass" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/glass.png"/>
@@ -269,7 +270,7 @@
                 <noderef id="trees"/>
                 <noderef id="ground"/>
                 
-                <leaf type="defbarrel" base="1" middle="2.5" height="5" slices="20" stacks="20"/>
+                <leaf type="defbarrel" base="2" middle="2.5" height="5" slices="20" stacks="20"/>
                  <!--
                 <leaf type="patch" npointsU="3" npointsV="3" npartsU="4" npartsV="4">
                     <controlpoint xx="0.5" yy="0" zz="-0.5"/>
@@ -283,7 +284,7 @@
                     <controlpoint xx="-0.5" yy="0" zz="0.5"/>
                 </leaf>
                 -->
-                <leaf type="spriteanim" ssid="spriteanim_test" duration="15" startCell="0" endCell="31"/>
+                <leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="31"/>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/> -->
                 <!--<leaf type="spritetext" text="This is a sprite text testtttttttttttttttttttyyyyyyyyyyy"/>-->
             </descendants>
@@ -734,7 +735,7 @@
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
-                <!--<leaf type="rectangle" x1="-10" y1="10" x2="10" y2="-10"/>-->
+                <leaf type="rectangle" x1="-10" y1="10" x2="10" y2="-10"/>
             </descendants>
         </node>
 

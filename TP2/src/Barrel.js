@@ -28,14 +28,14 @@ class Barrel {
             ],
             [
                 [base, h, 0, 1],
-                [(base+H), h+H, H/tanAngle, 1],
-                [(base+H), h+H, height - (H/tanAngle), 1],
+                [(base+H), h+(4/3)*H, H/tanAngle, 1],
+                [(base+H), h+(4/3)*H, height - (H/tanAngle), 1],
                 [base, h, height, 1]
             ],
             [
                 [-base, h, 0, 1],
-                [-(base+H), h+H, H/tanAngle, 1],
-                [-(base+H), h+H, height - (H/tanAngle), 1],
+                [-(base+H), h+(4/3)*H, H/tanAngle, 1],
+                [-(base+H), h+(4/3)*H, height - (H/tanAngle), 1],
                 [-base, h, height, 1]
             ],
             [
@@ -67,10 +67,7 @@ class Barrel {
             //     [-(base + H), 0, H/tanAngle, 1],
             //     [-(base + H), 0, height - (H/tanAngle), 1],
             //     [-base, 0, height, 1]
-            // ]
-            
-            
-            
+            // ] 
         ];
 
         this.evaluator = new CGFnurbsSurface(3, 3, this.controlPoints);
