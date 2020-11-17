@@ -59,7 +59,7 @@
         <texture id="tree_trunk" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/tree_trunk.png"/>
         <texture id="tree_leaves" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/tree_leaves.jpg"/>
         <texture id="wood" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/wood.jpg"/>
-        <texture id="bee_movie_script" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/output-onlinetexttools.png"/>
+        <!--<texture id="bee_movie_script" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/output-onlinetexttools.png"/>-->
         <texture id="grass" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/grass.jpg"/>
         <texture id="train_furnace" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/furnace.jpg"/>
         <texture id="glass" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/glass.png"/>
@@ -78,9 +78,13 @@
         <texture id="rock" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/rock.jpg"/>
         <texture id="grass_blade" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/grass_blade.jpg"/>
         <texture id="golden" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/golden.jpg"/>
+        <texture id="brick_wall" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/brick_wall.jpg"/>
+        <texture id="roof" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/roof.jpg"/>
+        <texture id="clock" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/clock.jpg"/>
     </textures>
     <spritesheets>
         <spritesheet id="spriteanim_test" path="scenes/textures_LAIG_TP1_XML_T3_G06_v1/train_spritesheet.png" sizeM="8" sizeN="4"/>
+        <spritesheet id="furnace_sprite" path="scenes/textures_LAIG_TP1_XML_T3_G06_v1/furnace_spritesheet.png" sizeM="5" sizeN="3"/>
     </spritesheets>
     <materials>
         <material id="Generic">
@@ -338,11 +342,62 @@
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
         </animation>
+
+        <animation id="clock_seconds">
+            <keyframe instant="0">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="60">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="-360"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+        </animation>
+
+        <animation id="clock_minutes">
+            <keyframe instant="0">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="-96"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="60">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="-102"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+        </animation>
+
+        <animation id="clock_hours">
+            <keyframe instant="0">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="29.6"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="60">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="29.5"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+        </animation>
     </animations>
     <nodes>
         <node id="RootNode">
             <material id="Generic"/>
-            <texture id="bee_movie_script">
+            <texture id="clear">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -352,6 +407,7 @@
                 <noderef id="skybox"/>
                 <noderef id="trees"/>
                 <noderef id="ground"/>
+                <noderef id="train_station"/>
                 
                 <!--<leaf type="defbarrel" base="2" middle="2.5" height="5" slices="20" stacks="10"/>-->
                  <!--
@@ -368,6 +424,7 @@
                 </leaf>
                 -->
                 <leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="31"/>
+                
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/> -->
                 <!--<leaf type="spritetext" text="This is a sprite text testtttttttttttttttttttyyyyyyyyyyy"/>-->
             </descendants>
@@ -931,6 +988,8 @@
                 <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
             </descendants>
         </node>
+
+
         <!--Train Station-->
         <node id="train_station">
             <material id="grey_metal"/>
@@ -1034,17 +1093,182 @@
         </node>
         <node id="station_tower">
             <material id="grey_metal"/>
-            <texture id="wood">
+            <texture id="brick_wall">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="1" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="station_tower_body"/>
+                <noderef id="clock"/>
+            </descendants>
+        </node>
+
+        <node id="station_tower_body">
+            <material id="grey_metal"/>
+            <texture id="brick_wall">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
                 <scale sx="2.5" sy="6" sz="2.5"/>
             </transformations>
             <descendants>
                 <noderef id="cube"/>
             </descendants>
         </node>
+
+
+
+        <!-- Clock -->
+        <node id="clock">
+            <material id="grey_metal"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1.8" z="0.8"/>
+            </transformations>
+            <descendants>
+                <noderef id="clock_main"/>
+                <noderef id="clock_torus"/>
+            </descendants>
+        </node>
+
+        <node id="clock_torus">
+            <material id="black_metal"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.45"/>
+            </transformations>
+            <descendants>
+                <leaf type="torus" inner="0.06" outer="0.7" slices="50" loops="30"/>
+            </descendants>
+        </node>
+
+        <node id="clock_main">
+            <material id="grey_metal"/>
+            <texture id="clock">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="clock_hands"/>
+                <leaf type="cylinder" height="0.5" topRadius="0.7" bottomRadius="0.7" stacks="1" slices="50"/>
+            </descendants>
+        </node>
+
+        <node id="clock_hands">
+            <material id="black_metal"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="clock_hand_1"/>
+                <noderef id="clock_hand_2"/>
+                <noderef id="clock_hand_3"/>
+            </descendants>
+        </node>
+
+        <node id="clock_hand_1">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+
+            <animationref id="clock_seconds"/>
+
+            <transformations>
+                <scale sx="1.0" sy="1.0" sz="1.0"/>
+            </transformations>
+            <descendants>
+                <noderef id="clock_hand_seconds"/>
+            </descendants>
+        </node>
+
+        <node id="clock_hand_2">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+
+            <animationref id="clock_minutes"/>
+
+            <transformations>
+                <scale sx="1.0" sy="1" sz="1.0"/>
+            </transformations>
+            <descendants>
+                <noderef id="clock_hand_minutes"/>
+            </descendants>
+        </node>
+
+        <node id="clock_hand_3">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+
+            <animationref id="clock_hours"/>
+
+            <transformations>
+                <scale sx="1.0" sy="1" sz="1.0"/>
+            </transformations>
+            <descendants>
+                <noderef id="clock_hand_hours"/>
+            </descendants>
+        </node>
+
+        <node id="clock_hand_seconds">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+
+            <transformations>
+                <translation x="0" y="0.62" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.62" topRadius="0.02" bottomRadius="0.001" stacks="10" slices="10"/>
+            </descendants>
+        </node>
+
+        <node id="clock_hand_minutes">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+
+            <transformations>
+                <translation x="0" y="0.55" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.55" topRadius="0.025" bottomRadius="0.001" stacks="10" slices="10"/>
+            </descendants>
+        </node>
+
+        <node id="clock_hand_hours">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+
+            <transformations>
+                <translation x="0" y="0.3" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.3" topRadius="0.02" bottomRadius="0.001" stacks="10" slices="10"/>
+            </descendants>
+        </node>
+
         <node id="pyramid">
             <material id="grey_metal"/>
             <texture id="wood">
@@ -1062,8 +1286,8 @@
         </node>
         <node id="pyramid_side_1">
             <material id="grey_metal"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
+            <texture id="roof">
+                <amplification afs="0.8" aft="0.8"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="0.5"/>
@@ -1075,8 +1299,8 @@
         </node>
         <node id="pyramid_side_2">
             <material id="grey_metal"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
+            <texture id="roof">
+                <amplification afs="0.8" aft="0.8"/>
             </texture>
             <transformations>
                 <translation x="0.5" y="0" z="0"/>
@@ -1089,8 +1313,8 @@
         </node>
         <node id="pyramid_side_3">
             <material id="grey_metal"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
+            <texture id="roof">
+                <amplification afs="0.8" aft="0.8"/>
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-0.5"/>
@@ -1103,8 +1327,8 @@
         </node>
         <node id="pyramid_side_4">
             <material id="grey_metal"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
+            <texture id="roof">
+                <amplification afs="0.8" aft="0.8"/>
             </texture>
             <transformations>
                 <translation x="-0.5" y="0" z="0"/>
@@ -1117,7 +1341,7 @@
         </node>
         <node id="pyramid_base">
             <material id="grey_metal"/>
-            <texture id="wood">
+            <texture id="roof">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1166,6 +1390,20 @@
                     <controlpoint xx="-0.5" yy="0" zz="0"/>
                     <controlpoint xx="-0.5" yy="0" zz="0.5"/>
                 </leaf>
+                <leaf type="patch" npointsU="4" npointsV="3" npartsU="16" npartsV="12">
+                    <controlpoint xx="0.5" yy="0" zz="0.5"/>
+                    <controlpoint xx="0.5" yy="0" zz="0"/>
+                    <controlpoint xx="0.5" yy="0" zz="-0.5"/>
+                    <controlpoint xx="0.1" yy="0.5" zz="0.5"/>
+                    <controlpoint xx="0.1" yy="0.7" zz="0"/>
+                    <controlpoint xx="0.1" yy="0.5" zz="-0.5"/>
+                    <controlpoint xx="-0.2" yy="0.1" zz="0.5"/>
+                    <controlpoint xx="-0.2" yy="0.1" zz="0"/>
+                    <controlpoint xx="-0.2" yy="0.1" zz="-0.5"/>
+                    <controlpoint xx="-0.5" yy="0" zz="0.5"/>
+                    <controlpoint xx="-0.5" yy="0" zz="0"/>
+                    <controlpoint xx="-0.5" yy="0" zz="-0.5"/>
+                </leaf>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>
         </node>
@@ -1182,6 +1420,9 @@
                 <leaf type="plane" npartsU="5" npartsV="5"/>
             </descendants>
         </node>
+
+
+
         <!--Train-->
         <node id="train">
             <material id="metal_body"/>
@@ -1191,7 +1432,7 @@
             <transformations>
                 <translation x="0" y="-0.05" z="0"/>
             </transformations>
-            <animationref id="train_animation"/>
+            <!--<animationref id="train_animation"/>-->
             <descendants>
                 <noderef id="train_cab"/>
                 <noderef id="train_bottom"/>
@@ -1449,6 +1690,7 @@
             </descendants>
         </node>
 
+    	<!--
         <node id="train_cab_furnace">
             <material id="null"/>
             <texture id="train_furnace">
@@ -1462,6 +1704,23 @@
                 <noderef id="cube"/>
             </descendants>
         </node>
+        -->
+
+        <node id="train_cab_furnace">
+            <material id="null"/>
+            <texture id="train_furnace">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.78" y="-0.6" z="0"/>
+                
+                <rotation axis="y" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="spriteanim" ssid="furnace_sprite" duration="2" startCell="0" endCell="14"/>
+            </descendants>
+        </node>
+
 
         <node id="train_cab_top">
             <material id="black_metal"/>
