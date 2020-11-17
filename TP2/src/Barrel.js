@@ -166,6 +166,10 @@ class Barrel {
         this.nurbs.enableNormalViz();
     }
 
+    disableNormalViz(){
+        this.nurbs.disableNormalViz();
+    }
+
     display() {
         this.scene.pushMatrix();
         

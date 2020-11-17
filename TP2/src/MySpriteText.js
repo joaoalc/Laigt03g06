@@ -71,4 +71,11 @@ class MySpriteText {
             this.objects[i].enableNormalViz();
         }
     }
+
+    disableNormalViz() {
+        for(var i = 0; i < this.objects.length; ++i) {
+            this.objects[i].disableNormalViz();
+        }
+    }
+
 }

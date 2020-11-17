@@ -48,6 +48,14 @@ class MySpriteAnimation {
         }
     }
 
+    enableNormalViz() {
+        this.object.enableNormalViz();
+    }
+
+    disableNormalViz() {
+        this.object.disableNormalViz();
+    }
+
     display() {
         this.appearance.apply();
         this.spritesheet.texture.bind();

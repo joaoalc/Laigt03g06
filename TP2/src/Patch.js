@@ -17,6 +17,10 @@ class Patch {
         this.nurbs.enableNormalViz();
     }
 
+    disableNormalViz() {
+        this.nurbs.disableNormalViz();
+    }
+
     display() {
         this.nurbs.display();
     }

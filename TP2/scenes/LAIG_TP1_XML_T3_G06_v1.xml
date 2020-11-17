@@ -79,7 +79,7 @@
         <texture id="golden" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/golden.jpg"/>
     </textures>
     <spritesheets>
-        <spritesheet id="spriteanim_test" path="scenes/textures_LAIG_TP1_XML_T3_G06_v1/spritesheet_temp.png" sizeM="3" sizeN="2"/>
+        <spritesheet id="spriteanim_test" path="scenes/textures_LAIG_TP1_XML_T3_G06_v1/train_spritesheet.png" sizeM="8" sizeN="4"/>
     </spritesheets>
     <materials>
         <material id="Generic">
@@ -283,7 +283,7 @@
                     <controlpoint xx="-0.5" yy="0" zz="0.5"/>
                 </leaf>
                 -->
-                <!--<leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="3"/>-->
+                <leaf type="spriteanim" ssid="spriteanim_test" duration="15" startCell="0" endCell="31"/>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/> -->
                 <!--<leaf type="spritetext" text="This is a sprite text testtttttttttttttttttttyyyyyyyyyyy"/>-->
             </descendants>

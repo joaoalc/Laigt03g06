@@ -17,6 +17,10 @@ class Plane extends CGFobject {
         
     }
 
+    disableNormalViz(){
+        
+    }
+
     display() {
         this.nurbs.display();
     }
