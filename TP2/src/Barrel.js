@@ -13,153 +13,70 @@ class Barrel {
         var c = 0.551915024494;
         this.C = c;
 
-        this.controlPoints = 
-        [
+        var H = (4/3)*(middle-base);
 
-            [
-                [-this.base, 0, height_2, 1],
+        var h = (4/3)*(base);
 
-                [-this.base, -this.base*c, height_2, 1],
-                [-this.base*c, -this.base, height_2, 1],
-
-                [0, -this.base, height_2, 1],
-
-                [this.base*c, -this.base, height_2, 1],
-                [this.base, -this.base*c, height_2, 1],
-
-                [this.base, 0, height_2, 1],
-
-                [this.base, this.base*c, height_2, 1],
-                [this.base*c, this.base, height_2, 1],
-
-                [0, this.base, height_2, 1],
-
-                [-this.base*c, this.base, height_2, 1],
-                [-this.base, this.base*c, height_2, 1],
-
-                [-this.base, 0, height_2, 1]
-            ],
-            [
-                [-this.middle, 0, 0, 1],
-
-                [-this.middle, -this.middle*c, 0, 1],
-                [-this.middle*c, -this.middle, 0, 1],
-
-                [0, -this.middle, 0, 1],
-
-                [this.middle*c, -this.middle, 0, 1],
-                [this.middle, -this.middle*c, 0, 1],
-
-                [this.middle, 0, 0, 1],
-
-                [this.middle, this.middle*c, 0, 1],
-                [this.middle*c, this.middle, 0, 1],
-
-                [0, this.middle, 0, 1],
-
-                [-this.middle*c, this.middle, 0, 1],
-                [-this.middle, this.middle*c, 0, 1],
-
-                [-this.middle, 0, 0, 1]
-            ],
-            [
-                [-this.base, 0, -height_2, 1],
-
-                [-this.base, -this.base*c, -height_2, 1],
-                [-this.base*c, -this.base, -height_2, 1],
-
-                [0, -this.base, -height_2, 1],
-
-                [this.base*c, -this.base, -height_2, 1],
-                [this.base, -this.base*c, -height_2, 1],
-
-                [this.base, 0, -height_2, 1],
-
-                [this.base, this.base*c, -height_2, 1],
-                [this.base*c, this.base, -height_2, 1],
-
-                [0, this.base, -height_2, 1],
-
-                [-this.base*c, this.base, -height_2, 1],
-                [-this.base, this.base*c, -height_2, 1],
-
-                [-this.base, 0, -height_2, 1]
-            ]
-
-            //test
-            // [
-            //     [-this.base, 0, height_2, 1],
-            //     [-this.base, -this.base, height_2, 1],
-            //     [0, -this.base, height_2, 1],
-            //     [this.base, -this.base, height_2, 1],
-            //     [this.base, 0, height_2, 1],
-            //     [this.base, this.base, height_2, 1],
-            //     [0, this.base, height_2, 1],
-            //     [-this.base, this.base, height_2, 1],
-            //     [-this.base, 0, height_2, 1]
-            // ],
-            // [
-            //     [-this.middle, 0, 0, 1],
-            //     [-this.middle, -this.middle, 0, 1],
-            //     [0, -this.middle, 0, 1],
-            //     [this.middle, -this.middle, 0, 1],
-            //     [this.middle, 0, 0, 1],
-            //     [this.middle, this.middle, 0, 1],
-            //     [0, this.middle, 0, 1],
-            //     [-this.middle, this.middle, 0, 1],
-            //     [-this.middle, 0, 0, 1]
-            // ],
-            // [
-            //     [-this.base, 0, -height_2, 1],
-            //     [-this.base, -this.base, -height_2, 1],
-            //     [0, -this.base, -height_2, 1],
-            //     [this.base, -this.base, -height_2, 1],
-            //     [this.base, 0, -height_2, 1],
-            //     [this.base, this.base, -height_2, 1],
-            //     [0, this.base, -height_2, 1],
-            //     [-this.base, this.base, -height_2, 1],
-            //     [-this.base, 0, -height_2, 1]
-            // ]
-
-            //hardcode
-            // [
-            //     [-0.5, 0, 0.5, 1],
-            //     [-0.5, -0.5, 0.5, 1],
-            //     [0, -0.5, 0.5, 1],
-            //     [0.5, -0.5, 0.5, 1],
-            //     [0.5, 0, 0.5, 1],
-            //     [0.5, 0.5, 0.5, 1],
-            //     [0, 0.5, 0.5, 1],
-            //     [-0.5, 0.5, 0.5, 1],
-            //     [-0.5, 0, 0.5, 1]
-            // ],
-            // [
-            //     [-0.9, 0, 0, 1],
-            //     [-0.9, -0.9, 0, 1],
-            //     [0, -0.9, 0, 1],
-            //     [0.9, -0.9, 0, 1],
-            //     [0.9, 0, 0, 1],
-            //     [0.9, 0.9, 0, 1],
-            //     [0, 0.9, 0, 1],
-            //     [-0.9, 0.9, 0, 1],
-            //     [-0.9, 0, 0, 1]
-            // ],
-            // [
-            //     [-0.5, 0, -0.5, 1],
-            //     [-0.5, -0.5, -0.5, 1],
-            //     [0, -0.5, -0.5, 1],
-            //     [0.5, -0.5, -0.5, 1],
-            //     [0.5, 0, -0.5, 1],
-            //     [0.5, 0.5, -0.5, 1],
-            //     [0, 0.5, -0.5, 1],
-            //     [-0.5, 0.5, -0.5, 1],
-            //     [-0.5, 0, -0.5, 1]
-            // ]
+        var tanAngle = Math.tan(Math.PI / 6);
         
+        this.controlPoints = [
+            [
+                [base, 0, 0, 1],
+                [(base + H), 0, H/tanAngle, 1],
+                [(base + H), 0, height - (H/tanAngle), 1],
+                [base, 0, height, 1]
+            ],
+            [
+                [base, h, 0, 1],
+                [(base+H), h+H, H/tanAngle, 1],
+                [(base+H), h+H, height - (H/tanAngle), 1],
+                [base, h, height, 1]
+            ],
+            [
+                [-base, h, 0, 1],
+                [-(base+H), h+H, H/tanAngle, 1],
+                [-(base+H), h+H, height - (H/tanAngle), 1],
+                [-base, h, height, 1]
+            ],
+            [
+                [-base, 0, 0, 1],
+                [-(base + H), 0, H/tanAngle, 1],
+                [-(base + H), 0, height - (H/tanAngle), 1],
+                [-base, 0, height, 1]
+            ]
+            // [
+            //     [base, 0, 0, 1],
+            //     [(base + H), 0, H/tanAngle, 1],
+            //     [(base + H), 0, height - (H/tanAngle), 1],
+            //     [base, 0, height, 1]
+            // ],
+            // [
+            //     [base, h, 0, 1],
+            //     [(base + H), h, H/tanAngle, 1],
+            //     [(base + H), h, height - (H/tanAngle), 1],
+            //     [base, h, height, 1]
+            // ],
+            // [
+            //     [-base, h, 0, 1],
+            //     [-(base + H), h, H/tanAngle, 1],
+            //     [-(base + H), h, height - (H/tanAngle), 1],
+            //     [-base, h, height, 1]
+            // ],
+            // [
+            //     [-base, 0, 0, 1],
+            //     [-(base + H), 0, H/tanAngle, 1],
+            //     [-(base + H), 0, height - (H/tanAngle), 1],
+            //     [-base, 0, height, 1]
+            // ]
+            
+            
+            
         ];
-        this.evaluator = new CGFnurbsSurface(2, 12, this.controlPoints);
+
+        this.evaluator = new CGFnurbsSurface(3, 3, this.controlPoints);
 
         this.nurbs = new CGFnurbsObject(this.scene, this.npartsU, this.npartsV, this.evaluator);
+    
     }
 
     enableNormalViz() {
@@ -176,6 +93,14 @@ class Barrel {
         //this.scene.translate(this.C/2, 0, 0);
 
         this.nurbs.display();
+
+        this.scene.pushMatrix();
+        
+        this.scene.rotate(Math.PI, 0,0,1);
+
+        this.nurbs.display();
+
+        this.scene.popMatrix();
 
         this.scene.popMatrix();
     }
