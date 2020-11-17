@@ -59,7 +59,7 @@
         <texture id="tree_trunk" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/tree_trunk.png"/>
         <texture id="tree_leaves" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/tree_leaves.jpg"/>
         <texture id="wood" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/wood.jpg"/>
-        <texture id="wood2" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/wood_2.jpg"/>
+        <texture id="bee_movie_script" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/output-onlinetexttools.png"/>
         <texture id="grass" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/grass.jpg"/>
         <texture id="train_furnace" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/furnace.jpg"/>
         <texture id="glass" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/glass.png"/>
@@ -259,7 +259,7 @@
     <nodes>
         <node id="RootNode">
             <material id="Generic"/>
-            <texture id="clear">
+            <texture id="bee_movie_script">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -269,7 +269,7 @@
                 <noderef id="skybox"/>
                 <noderef id="trees"/>
                 <noderef id="ground"/>
-                
+                <noderef id="train_station"/>
                 <leaf type="defbarrel" base="2" middle="2.5" height="5" slices="20" stacks="20"/>
                  <!--
                 <leaf type="patch" npointsU="3" npointsV="3" npartsU="4" npartsV="4">
@@ -848,7 +848,257 @@
                 <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
             </descendants>
         </node>
-
+        <!--Train Station-->
+        <node id="train_station">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="3" y="0" z="-5"/>
+            </transformations>
+            <descendants>
+                <noderef id="station_pillars"/>
+                <noderef id="station_ground"/>
+                <noderef id="station_building"/>
+                <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
+            </descendants>
+        </node>
+        <node id="station_pillars">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1.5" y="0" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="front_left_station_pillar"/>
+                <noderef id="back_left_station_pillar"/>
+                <noderef id="front_right_station_pillar"/>
+                <noderef id="back_right_station_pillar"/>
+                <noderef id="station_ceiling"/>
+            </descendants>
+        </node>
+        <node id="back_left_station_pillar">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="2" y="1" z="-2"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="3.0" topRadius="0.25" bottomRadius="0.25" stacks="24" slices="24"/>
+                <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
+            </descendants>
+        </node>
+        <node id="front_left_station_pillar">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="2" y="1" z="2"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="3.0" topRadius="0.25" bottomRadius="0.25" stacks="24" slices="24"/>
+                <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
+            </descendants>
+        </node>
+        <node id="back_right_station_pillar">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-2" y="1" z="-2"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="3.0" topRadius="0.25" bottomRadius="0.25" stacks="24" slices="24"/>
+                <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
+            </descendants>
+        </node>
+        <node id="front_right_station_pillar">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-2" y="1" z="2"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="3.0" topRadius="0.25" bottomRadius="0.25" stacks="24" slices="24"/>
+                <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
+            </descendants>
+        </node>
+        <node id="station_building">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="3" y="0" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="station_tower"/>
+                <noderef id="station_tower_ceiling"/>
+            </descendants>
+        </node>
+        <node id="station_tower">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1" z="0"/>
+                <scale sx="2.5" sy="6" sz="2.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
+        <node id="pyramid">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="pyramid_side_1"/>
+                <noderef id="pyramid_side_2"/>
+                <noderef id="pyramid_side_3"/>
+                <noderef id="pyramid_side_4"/>
+                <noderef id="pyramid_base"/>
+            </descendants>
+        </node>
+        <node id="pyramid_side_1">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.5"/>
+                <rotation axis="x" angle="-45"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="-0.5" y1="0" x2="0.5" y2="0" x3="0" y3="0.70710678119"/>
+            </descendants>
+        </node>
+        <node id="pyramid_side_2">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.5" y="0" z="0"/>
+                <rotation axis="y" angle="90"/>
+                <rotation axis="x" angle="-45"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="-0.5" y1="0" x2="0.5" y2="0" x3="0" y3="0.70710678119"/>
+            </descendants>
+        </node>
+        <node id="pyramid_side_3">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.5"/>
+                <rotation axis="y" angle="180"/>
+                <rotation axis="x" angle="-45"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="-0.5" y1="0" x2="0.5" y2="0" x3="0" y3="0.70710678119"/>
+            </descendants>
+        </node>
+        <node id="pyramid_side_4">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-0.5" y="0" z="0"/>
+                <rotation axis="y" angle="270"/>
+                <rotation axis="x" angle="-45"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="-0.5" y1="0" x2="0.5" y2="0" x3="0" y3="0.70710678119"/>
+            </descendants>
+        </node>
+        <node id="pyramid_base">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/>
+            </descendants>
+        </node>
+        <node id="station_tower_ceiling">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="4" z="0"/>
+                <scale sx="3" sy="5" sz="3"/>
+            </transformations>
+            <descendants>
+                <noderef id="pyramid"/>
+            </descendants>
+        </node>
+        <node id="station_ceiling">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0.9" z="0"/>
+                <rotation axis="y" angle="90"/>
+                <scale sx="5" sy="5" sz="5"/>
+            </transformations>
+            <descendants>
+                <leaf type="patch" npointsU="4" npointsV="3" npartsU="16" npartsV="12">
+                    <controlpoint xx="0.5" yy="0" zz="-0.5"/>
+                    <controlpoint xx="0.5" yy="0" zz="0"/>
+                    <controlpoint xx="0.5" yy="0" zz="0.5"/>
+                    <controlpoint xx="0.1" yy="0.5" zz="-0.5"/>
+                    <controlpoint xx="0.1" yy="0.7" zz="0"/>
+                    <controlpoint xx="0.1" yy="0.5" zz="0.5"/>
+                    <controlpoint xx="-0.2" yy="0.1" zz="-0.5"/>
+                    <controlpoint xx="-0.2" yy="0.1" zz="0"/>
+                    <controlpoint xx="-0.2" yy="0.1" zz="0.5"/>
+                    <controlpoint xx="-0.5" yy="0" zz="-0.5"/>
+                    <controlpoint xx="-0.5" yy="0" zz="0"/>
+                    <controlpoint xx="-0.5" yy="0" zz="0.5"/>
+                </leaf>
+                <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
+            </descendants>
+        </node>
+        <node id="station_ground">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-2" z="0"/>
+                <scale sx="10" sy="1" sz="6"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="5" npartsV="5"/>
+            </descendants>
+        </node>
         <!--Train-->
         <node id="train">
             <material id="metal_body"/>
