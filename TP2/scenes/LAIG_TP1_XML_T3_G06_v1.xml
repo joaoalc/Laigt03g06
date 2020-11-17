@@ -255,6 +255,89 @@
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
         </animation>
+
+        <animation id="bell_animation">
+            <keyframe instant="0">
+                <translation x="0.25" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="20"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="1">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="2">
+                <translation x="-0.25" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="-20"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="3">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="4">
+                <translation x="0.25" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="20"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="5">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="6">
+                <translation x="-0.25" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="-20"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="7">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="8">
+                <translation x="0.25" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="20"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+        </animation>
+
+        <animation id="wheels_animation">
+            <keyframe instant="0">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="10">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="-800"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+        </animation>
     </animations>
     <nodes>
         <node id="RootNode">
@@ -270,7 +353,7 @@
                 <noderef id="trees"/>
                 <noderef id="ground"/>
                 
-                <leaf type="defbarrel" base="2" middle="2.5" height="5" slices="20" stacks="20"/>
+                <!--<leaf type="defbarrel" base="2" middle="2.5" height="5" slices="20" stacks="10"/>-->
                  <!--
                 <leaf type="patch" npointsU="3" npointsV="3" npartsU="4" npartsV="4">
                     <controlpoint xx="0.5" yy="0" zz="-0.5"/>
@@ -1464,6 +1547,9 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
+
+            <animationref id="wheels_animation"/>
+
             <transformations>
             </transformations>
             <descendants>
@@ -2209,6 +2295,9 @@
             <texture id="golden">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
+
+            <animationref id="bell_animation"/>
+
             <transformations>
                 <scale sx="0.5" sy="0.5" sz="0.5"/>
             </transformations>
