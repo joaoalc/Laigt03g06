@@ -19,6 +19,9 @@ class XMLscene extends CGFscene {
     init(application) {
         super.init(application);
 
+        this.appearance = new CGFappearance(this.scene);
+        console.log(this.appearance);
+
         this.sceneInited = false;
 
         //Currently active camera's numeric ID
@@ -74,10 +77,10 @@ class XMLscene extends CGFscene {
         
             var mat = new CGFappearance(this);
             mat.setShininess(info[0]);
-            mat.setSpecular(info[1][0], info[1][1], info[1][2]);
-            mat.setDiffuse(info[2][0], info[2][1], info[2][2]);
-            mat.setAmbient(info[3][0], info[3][1], info[3][2]);
-            mat.setEmission(info[4][0], info[4][1], info[4][2]);
+            mat.setSpecular(info[1][0], info[1][1], info[1][2], 1);
+            mat.setDiffuse(info[2][0], info[2][1], info[2][2], 1);
+            mat.setAmbient(info[3][0], info[3][1], info[3][2], 1);
+            mat.setEmission(info[4][0], info[4][1], info[4][2], 1);
 
             this.materials[key] = mat;
         }
@@ -107,10 +110,10 @@ class XMLscene extends CGFscene {
                 var info = this.graph.views[key];
                 
                 if(info[0] == "p") {
-                    this.cameras[key] = new CGFcameraResettable(info[1],info[2],info[3],vec3.fromValues(info[4][0],info[4][1],info[4][2]),
+                    this.cameras[key] = new CGFcamera(info[1],info[2],info[3],vec3.fromValues(info[4][0],info[4][1],info[4][2]),
                                         vec3.fromValues(info[5][0],info[5][1],info[5][2]));
                 } else {
-                    this.cameras[key] = new CGFcameraOrthoResettable(info[1],info[2],info[3],info[4],info[5],info[6],
+                    this.cameras[key] = new CGFcameraOrtho(info[1],info[2],info[3],info[4],info[5],info[6],
                                         vec3.fromValues(info[7][0],info[7][1],info[7][2]),
                                         vec3.fromValues(info[8][0],info[8][1],info[8][2]),
                                         vec3.fromValues(info[9][0],info[9][1],info[9][2]));
@@ -125,7 +128,7 @@ class XMLscene extends CGFscene {
                 i++;
             }
         } else {
-            this.camera = new CGFcameraResettable(0.4, 0.1, 500, vec3.fromValues(20, 10, 20), vec3.fromValues(0, 0, 0));
+            this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(20, 10, 20), vec3.fromValues(0, 0, 0));
         }
     }
 
@@ -135,7 +138,7 @@ class XMLscene extends CGFscene {
     updateCamera() {
 
         this.camera = this.cameras[Object.keys(this.cameras)[this.activeCamera]];
-        this.camera.resetCamera();
+        //this.camera.resetCamera();
         this.interface.setActiveCamera(this.camera);
     }
 

@@ -25,6 +25,7 @@ class MyNode {
         this.descendants = descendants;
         this.leaves = leaves;
         this.animation = animation;
+        this.appearance = new CGFappearance(this.scene);
 
         for(var i = 0; i < transformations.length; i++) {
             if(transformations[i][0] == "t") {
