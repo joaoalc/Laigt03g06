@@ -159,6 +159,13 @@
             <specular r="0.7" g="0.7" b="0.7" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
+        <material id="plastic">
+            <shininess value="5.0"/>
+            <ambient r="0.35" g="0.35" b="0.35" a="1.0"/>
+            <diffuse r="0.6" g="0.6" b="0.6" a="1.0"/>
+            <specular r="0.1" g="0.1" b="0.1" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
         <material id="bricks_bright">
             <shininess value="10.0"/>
             <ambient r="0.5" g="0.5" b="0.5" a="1.0"/>
@@ -181,10 +188,10 @@
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
         <material id="black_metal">
-            <shininess value="10.0"/>
+            <shininess value="15.0"/>
             <ambient r="0.05" g="0.05" b="0.05" a="1.0"/>
             <diffuse r="0" g="0" b="0" a="1.0"/>
-            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <specular r="0.5" g="0.5" b="0.5" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
         <material id="grey_metal">
@@ -381,11 +388,11 @@
                 <rotation axis="z" angle="0"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
-            <keyframe instant="60">
+            <keyframe instant="3600">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-360"/>
+                <rotation axis="z" angle="-21600"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
         </animation>
@@ -398,11 +405,11 @@
                 <rotation axis="z" angle="-96"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
-            <keyframe instant="60">
+            <keyframe instant="3600">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-102"/>
+                <rotation axis="z" angle="-456"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
         </animation>
@@ -415,11 +422,11 @@
                 <rotation axis="z" angle="29.6"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
-            <keyframe instant="60">
+            <keyframe instant="3600">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="29.5"/>
+                <rotation axis="z" angle="-0.4"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
         </animation>
@@ -1193,7 +1200,7 @@
         </node>
 
         <node id="clock_main">
-            <material id="grey_metal"/>
+            <material id="plastic"/>
             <texture id="clock">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
@@ -1201,7 +1208,21 @@
             </transformations>
             <descendants>
                 <noderef id="clock_hands"/>
+                <noderef id="clock_center"/>
                 <leaf type="cylinder" height="0.5" topRadius="0.7" bottomRadius="0.7" stacks="1" slices="50"/>
+            </descendants>
+        </node>
+
+        <node id="clock_center">
+            <material id="black_metal"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.48"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.05" topRadius="0.04" bottomRadius="0.04" stacks="1" slices="50"/>
             </descendants>
         </node>
 

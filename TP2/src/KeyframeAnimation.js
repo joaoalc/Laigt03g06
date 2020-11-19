@@ -1,7 +1,6 @@
 class KeyframeAnimation extends Animation{
     constructor(id, keyframes){
         super(id);
-        this.id = id;
         this.keyframes = keyframes; //Keyframes is an array of Keyframe objects sorted by their instant in ascending order
         
         this.currentKeyframeIndex = null;
