@@ -48,6 +48,13 @@
             <diffuse r="0.8" g="0.8" b="0.8" a="0.8" />             
             <specular r="0.8" g="0.8" b="0.8" a="1.0" />  
         </light>
+        <light id="sun">
+            <enable value="1"/>
+            <position x="10" y="10" z="10" w="1.0" />
+            <ambient r="0.25" g="0.25" b="0.25" a="1.0" />                   
+            <diffuse r="0.7" g="0.7" b="0.7" a="1.0" />             
+            <specular r="0.7" g="0.7" b="0.7" a="1.0" />            
+        </light>
     </lights>
     <textures>
         <texture id="skybox_left" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/skybox/skybox_left.png"/>
@@ -81,6 +88,8 @@
         <texture id="brick_wall" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/brick_wall.jpg"/>
         <texture id="roof" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/roof.jpg"/>
         <texture id="clock" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/clock.jpg"/>
+        <texture id="station_roof" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/station_roof.png"/>
+        <texture id="bricks_texture" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/bricks_texture.png"/>
     </textures>
     <spritesheets>
         <spritesheet id="spriteanim_test" path="scenes/textures_LAIG_TP1_XML_T3_G06_v1/train_spritesheet.png" sizeM="8" sizeN="4"/>
@@ -141,6 +150,27 @@
             <ambient r="0.1" g="0.1" b="0.1" a="1.0"/>
             <diffuse r="0.1" g="0.1" b="0.1" a="1.0"/>
             <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="plastic_shiny">
+            <shininess value="10.0"/>
+            <ambient r="0.35" g="0.35" b="0.35" a="1.0"/>
+            <diffuse r="0.6" g="0.6" b="0.6" a="1.0"/>
+            <specular r="0.7" g="0.7" b="0.7" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="bricks_bright">
+            <shininess value="10.0"/>
+            <ambient r="0.5" g="0.5" b="0.5" a="1.0"/>
+            <diffuse r="0.4" g="0.4" b="0.4" a="1.0"/>
+            <specular r="0.25" g="0.25" b="0.25" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="bricks_regular">
+            <shininess value="10.0"/>
+            <ambient r="0.3" g="0.3" b="0.3" a="1.0"/>
+            <diffuse r="0.25" g="0.25" b="0.25" a="1.0"/>
+            <specular r="0.25" g="0.25" b="0.25" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
         <material id="glass">
@@ -1003,11 +1033,12 @@
                 <noderef id="station_pillars"/>
                 <noderef id="station_ground"/>
                 <noderef id="station_building"/>
+                <noderef id="station_barrels"/>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>
         </node>
         <node id="station_pillars">
-            <material id="grey_metal"/>
+            <material id="bricks_bright"/>
             <texture id="wood">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
@@ -1023,8 +1054,8 @@
             </descendants>
         </node>
         <node id="back_left_station_pillar">
-            <material id="grey_metal"/>
-            <texture id="wood">
+            <material id="null"/>
+            <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1037,8 +1068,8 @@
             </descendants>
         </node>
         <node id="front_left_station_pillar">
-            <material id="grey_metal"/>
-            <texture id="wood">
+            <material id="null"/>
+            <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1051,8 +1082,8 @@
             </descendants>
         </node>
         <node id="back_right_station_pillar">
-            <material id="grey_metal"/>
-            <texture id="wood">
+            <material id="null"/>
+            <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1065,8 +1096,8 @@
             </descendants>
         </node>
         <node id="front_right_station_pillar">
-            <material id="grey_metal"/>
-            <texture id="wood">
+            <material id="null"/>
+            <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1106,7 +1137,7 @@
         </node>
 
         <node id="station_tower_body">
-            <material id="grey_metal"/>
+            <material id="bricks_regular"/>
             <texture id="brick_wall">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
@@ -1117,7 +1148,20 @@
                 <noderef id="cube"/>
             </descendants>
         </node>
-
+        <node id="station_barrels">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="5" y="-1" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="1" topRadius="0.4" bottomRadius="0.4" stacks="1" slices="40"/>
+                <leaf type="defbarrel" base="0.4" middle="0.5" height="1" slices="20" stacks="10"/>
+            </descendants>
+        </node>
 
 
         <!-- Clock -->
@@ -1270,8 +1314,8 @@
         </node>
 
         <node id="pyramid">
-            <material id="grey_metal"/>
-            <texture id="wood">
+            <material id="null"/>
+            <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1285,8 +1329,8 @@
             </descendants>
         </node>
         <node id="pyramid_side_1">
-            <material id="grey_metal"/>
-            <texture id="roof">
+            <material id="null"/>
+            <texture id="null">
                 <amplification afs="0.8" aft="0.8"/>
             </texture>
             <transformations>
@@ -1298,8 +1342,8 @@
             </descendants>
         </node>
         <node id="pyramid_side_2">
-            <material id="grey_metal"/>
-            <texture id="roof">
+            <material id="null"/>
+            <texture id="null">
                 <amplification afs="0.8" aft="0.8"/>
             </texture>
             <transformations>
@@ -1312,8 +1356,8 @@
             </descendants>
         </node>
         <node id="pyramid_side_3">
-            <material id="grey_metal"/>
-            <texture id="roof">
+            <material id="null"/>
+            <texture id="null">
                 <amplification afs="0.8" aft="0.8"/>
             </texture>
             <transformations>
@@ -1326,8 +1370,8 @@
             </descendants>
         </node>
         <node id="pyramid_side_4">
-            <material id="grey_metal"/>
-            <texture id="roof">
+            <material id="null"/>
+            <texture id="null">
                 <amplification afs="0.8" aft="0.8"/>
             </texture>
             <transformations>
@@ -1340,8 +1384,8 @@
             </descendants>
         </node>
         <node id="pyramid_base">
-            <material id="grey_metal"/>
-            <texture id="roof">
+            <material id="null"/>
+            <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1353,8 +1397,8 @@
             </descendants>
         </node>
         <node id="station_tower_ceiling">
-            <material id="grey_metal"/>
-            <texture id="wood">
+            <material id="bricks_bright"/>
+            <texture id="bricks_texture">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1366,8 +1410,8 @@
             </descendants>
         </node>
         <node id="station_ceiling">
-            <material id="grey_metal"/>
-            <texture id="wood">
+            <material id="plastic_shiny"/>
+            <texture id="station_roof">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1408,13 +1452,13 @@
             </descendants>
         </node>
         <node id="station_ground">
-            <material id="grey_metal"/>
+            <material id="plastic_shiny"/>
             <texture id="wood">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="0" y="-2" z="0"/>
-                <scale sx="10" sy="1" sz="6"/>
+                <scale sx="11" sy="1" sz="6"/>
             </transformations>
             <descendants>
                 <leaf type="plane" npartsU="5" npartsV="5"/>
