@@ -17,8 +17,8 @@
             <to x="0" y="0" z="0"/>
         </perspective>
         <perspective id="Train" near="0.1" far="500" angle="45">
-            <from x="10" y="0" z="-10"/>
-            <to x="0" y="-0.5" z="0"/>
+            <from x="7" y="1" z="5"/>
+            <to x="0" y="0.5" z="0"/>
         </perspective>
         <ortho id="Side View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
             <from x="5" y="0" z="10"/>
@@ -88,8 +88,9 @@
         <texture id="brick_wall" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/brick_wall.jpg"/>
         <texture id="roof" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/roof.jpg"/>
         <texture id="clock" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/clock.jpg"/>
-        <texture id="station_roof" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/station_roof.png"/>
+        <texture id="station_roof" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/roof2.jpg"/>
         <texture id="bricks_texture" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/bricks_texture.png"/>
+        <texture id="wood_pillar" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/woodPillar.jpg"/>
     </textures>
     <spritesheets>
         <spritesheet id="spriteanim_test" path="scenes/textures_LAIG_TP1_XML_T3_G06_v1/train_spritesheet.png" sizeM="8" sizeN="4"/>
@@ -214,6 +215,13 @@
             <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
             <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
             <emissive r="0.9" g="0.9" b="0.9" a="1.0"/>
+        </material>
+        <material id="wood">
+            <shininess value="10.0"/>
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0"/>
+            <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
+            <specular r="0.1" g="0.1" b="0.1" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
     </materials>
     <animations>
@@ -1029,14 +1037,16 @@
 
         <!--Train Station-->
         <node id="train_station">
-            <material id="grey_metal"/>
-            <texture id="wood">
+            <material id="null"/>
+            <texture id="clear">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="3" y="0" z="-5"/>
             </transformations>
             <descendants>
+                <noderef id="station_sign"/>
+                <noderef id="station_ceiling"/>
                 <noderef id="station_pillars"/>
                 <noderef id="station_ground"/>
                 <noderef id="station_building"/>
@@ -1044,9 +1054,37 @@
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>
         </node>
+        <node id="station_sign">
+            <material id="wood"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1.5" y="1.45" z="2"/>
+                <scale sx="0.7" sy="0.7" sz="1"/>
+            </transformations>
+            <descendants>
+                <leaf type="spritetext" text="Trofa"/>
+                <noderef id="station_sign_back"/>
+            </descendants>
+        </node>
+        <node id="station_sign_back">
+            <material id="wood"/>
+            <texture id="wood_pillar">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-0.1"/>
+                <scale sx="5" sy="1" sz="0.15"/>
+                <rotation axis="z" angle="90"/>
+            </transformations>
+            <descendants>
+                <noderef id="cube"/>
+            </descendants>
+        </node>
         <node id="station_pillars">
-            <material id="bricks_bright"/>
-            <texture id="wood">
+            <material id="wood"/>
+            <texture id="wood_pillar">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1057,7 +1095,34 @@
                 <noderef id="back_left_station_pillar"/>
                 <noderef id="front_right_station_pillar"/>
                 <noderef id="back_right_station_pillar"/>
-                <noderef id="station_ceiling"/>
+                <noderef id="left_top_station_pillar"/>
+                <noderef id="right_top_station_pillar"/>
+            </descendants>
+        </node>
+        <node id="left_top_station_pillar">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="2" y="0.75" z="-2.25"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="4.5" topRadius="0.25" bottomRadius="0.25" stacks="24" slices="24"/>
+                <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
+            </descendants>
+        </node>
+        <node id="right_top_station_pillar">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-2" y="0.75" z="-2.25"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="4.5" topRadius="0.25" bottomRadius="0.25" stacks="24" slices="24"/>
+                <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>
         </node>
         <node id="back_left_station_pillar">
@@ -1419,7 +1484,7 @@
         </node>
         <node id="station_tower_ceiling">
             <material id="bricks_bright"/>
-            <texture id="bricks_texture">
+            <texture id="roof">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1436,15 +1501,15 @@
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
-                <translation x="0" y="0.9" z="0"/>
+                <translation x="-1.5" y="0.9" z="0"/>
                 <rotation axis="y" angle="90"/>
                 <scale sx="5" sy="5" sz="5"/>
             </transformations>
             <descendants>
                 <leaf type="patch" npointsU="4" npointsV="3" npartsU="16" npartsV="12">
-                    <controlpoint xx="0.5" yy="0" zz="-0.5"/>
-                    <controlpoint xx="0.5" yy="0" zz="0"/>
-                    <controlpoint xx="0.5" yy="0" zz="0.5"/>
+                    <controlpoint xx="0.465" yy="0" zz="-0.5"/>
+                    <controlpoint xx="0.465" yy="0" zz="0"/>
+                    <controlpoint xx="0.465" yy="0" zz="0.5"/>
                     <controlpoint xx="0.1" yy="0.5" zz="-0.5"/>
                     <controlpoint xx="0.1" yy="0.7" zz="0"/>
                     <controlpoint xx="0.1" yy="0.5" zz="0.5"/>
@@ -1456,9 +1521,9 @@
                     <controlpoint xx="-0.5" yy="0" zz="0.5"/>
                 </leaf>
                 <leaf type="patch" npointsU="4" npointsV="3" npartsU="16" npartsV="12">
-                    <controlpoint xx="0.5" yy="0" zz="0.5"/>
-                    <controlpoint xx="0.5" yy="0" zz="0"/>
-                    <controlpoint xx="0.5" yy="0" zz="-0.5"/>
+                    <controlpoint xx="0.465" yy="0" zz="0.5"/>
+                    <controlpoint xx="0.465" yy="0" zz="0"/>
+                    <controlpoint xx="0.465" yy="0" zz="-0.5"/>
                     <controlpoint xx="0.1" yy="0.5" zz="0.5"/>
                     <controlpoint xx="0.1" yy="0.7" zz="0"/>
                     <controlpoint xx="0.1" yy="0.5" zz="-0.5"/>

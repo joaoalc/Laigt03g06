@@ -12,13 +12,8 @@ class MySpriteText {
         this.lineLimit = 16; //max line length
 
         this.appearance = new CGFappearance(this.scene);
-        this.appearance.setShininess(0);
-        this.appearance.setSpecular(0, 0, 0);
-        this.appearance.setDiffuse(0, 0, 0);
-        this.appearance.setAmbient(0, 0, 0);
-        this.appearance.setEmission(0, 0, 0);
 
-        this.textSprite = new CGFtexture(this.scene, "fonts/font.png"); //text sprite
+        this.textSprite = new CGFtexture(this.scene, "fonts/font3.png"); //text sprite
         //this.appearance.setTexture(this.textSprite);
 
         this.spritesheet = new MySpriteSheet(this.scene, this.textSprite, 16, 16); // font sheet

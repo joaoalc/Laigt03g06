@@ -16,7 +16,8 @@ class MyNode {
      * @param descendants - Array of references to descendant nodes
      * @param leaves - Array of CGFobject leaves
      */
-    constructor(scene, texture, material, transformations, descendants, leaves, animation) {
+    constructor(scene, id, texture, material, transformations, descendants, leaves, animation) {
+        this.id = id;
         this.scene = scene;
         this.texture = texture;
         this.material = material;
@@ -58,25 +59,44 @@ class MyNode {
             materialStack.push(this.material);
         }
 
-        //Texture
-        if(this.texture != "null" && this.texture != "clear") //Texture id being "null" means it inherits it's parent's texture
-        {
-            if(this.scene.textures[this.texture] != 0)
-                textureStack.push(this.texture);
-            else 
-                this.texture == "clear"; //if the texture path is invalid, texture is set as clear
-        }
         if(this.scene.materials[materialStack[materialStack.length - 1]] != null)
             this.scene.materials[materialStack[materialStack.length - 1]].apply();
-        
-        if(this.texture != "clear"){
-            if(textureStack[textureStack.length - 1] != null)
+
+        if(this.texture == "clear") {
+            if(this.scene.textures[textureStack[textureStack.length - 1]] != null) 
+                this.scene.textures[textureStack[textureStack.length - 1]].unbind();  
+            textureStack.push(0);
+        } else if(this.texture == "null") {
+            if(this.scene.textures[textureStack[textureStack.length - 1]] != null) {
+                if(this.scene.textures[textureStack[textureStack.length - 1]] != 0)
+                    this.scene.textures[textureStack[textureStack.length - 1]].bind();
+            }
+        } else {
+            if(this.scene.textures[this.texture] != 0 && this.scene.textures[this.texture] != null) {
+                textureStack.push(this.texture);
                 this.scene.textures[textureStack[textureStack.length - 1]].bind();
+            }
         }
-        else{
-            if(this.scene.textures[textureStack[textureStack.length - 1]] != null)
-                this.scene.textures[textureStack[textureStack.length - 1]].unbind();
-        }
+        // //Texture
+        // if(this.texture != "null" && this.texture != "clear") //Texture id being "null" means it inherits it's parent's texture
+        // {
+        //     if(this.scene.textures[this.texture] != 0 && this.scene.textures[this.texture] != null)
+        //         textureStack.push(this.texture);
+        //     else 
+        //         this.texture == "clear"; //if the texture path is invalid, texture is set as clear
+        // }
+        
+        
+        // if(this.texture != "clear"){
+        //     if(textureStack[textureStack.length - 1] != null)
+        //         this.scene.textures[textureStack[textureStack.length - 1]].bind();
+        // }
+        // else{
+        //     if(this.scene.textures[textureStack[textureStack.length - 1]] != null)
+        //         this.scene.textures[textureStack[textureStack.length - 1]].unbind();
+        //     else {
+        //     }
+        //}
 
 
         //Display leaves if they exist
@@ -90,7 +110,7 @@ class MyNode {
             this.descendants[j].display();
         }
 
-        if(this.texture != "null" && this.texture != "clear"){
+        if(this.texture != "null"){
             textureStack.pop();
         }
 

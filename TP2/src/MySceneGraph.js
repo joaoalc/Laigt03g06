@@ -742,7 +742,6 @@ class MySceneGraph {
                     if(typeof leaf == 'string') {
                         return leaf;
                     }
-                    console.log(leaf);
                     leaves.push(leaf);
 
                 } else {
@@ -766,7 +765,7 @@ class MySceneGraph {
                     animation = this.animations[animID];
             }
 
-            this.nodes[nodeID] = new MyNode(this.scene, textureID, materialID, transformations, [], leaves, animation);
+            this.nodes[nodeID] = new MyNode(this.scene, nodeID, textureID, materialID, transformations, [], leaves, animation);
             nodeChilds[nodeID] = descendants;
         }
 

@@ -20,7 +20,6 @@ class XMLscene extends CGFscene {
         super.init(application);
 
         this.appearance = new CGFappearance(this.scene);
-        console.log(this.appearance);
 
         this.sceneInited = false;
 
@@ -50,6 +49,9 @@ class XMLscene extends CGFscene {
         this.loadingProgress=0;
 
         this.defaultAppearance=new CGFappearance(this);
+        
+        //this.gl.enable(this.gl.BLEND);
+        //this.gl.blendFunc(this.gl.SRC_ALPHA, this.gl.ONE_MINUS_SRC_ALPHA);
         
         //this.patch = new Patch(this, 3, 2, 20, 20);
         //this.barrel = new Barrel(this, 1, 1.8, 2, 15, 15);
@@ -110,10 +112,10 @@ class XMLscene extends CGFscene {
                 var info = this.graph.views[key];
                 
                 if(info[0] == "p") {
-                    this.cameras[key] = new CGFcamera(info[1],info[2],info[3],vec3.fromValues(info[4][0],info[4][1],info[4][2]),
+                    this.cameras[key] = new CGFcameraResettable(info[1],info[2],info[3],vec3.fromValues(info[4][0],info[4][1],info[4][2]),
                                         vec3.fromValues(info[5][0],info[5][1],info[5][2]));
                 } else {
-                    this.cameras[key] = new CGFcameraOrtho(info[1],info[2],info[3],info[4],info[5],info[6],
+                    this.cameras[key] = new CGFcameraOrthoResettable(info[1],info[2],info[3],info[4],info[5],info[6],
                                         vec3.fromValues(info[7][0],info[7][1],info[7][2]),
                                         vec3.fromValues(info[8][0],info[8][1],info[8][2]),
                                         vec3.fromValues(info[9][0],info[9][1],info[9][2]));
@@ -128,7 +130,7 @@ class XMLscene extends CGFscene {
                 i++;
             }
         } else {
-            this.camera = new CGFcamera(0.4, 0.1, 500, vec3.fromValues(20, 10, 20), vec3.fromValues(0, 0, 0));
+            this.camera = new CGFcameraResettable(0.4, 0.1, 500, vec3.fromValues(20, 10, 20), vec3.fromValues(0, 0, 0));
         }
     }
 
@@ -138,7 +140,7 @@ class XMLscene extends CGFscene {
     updateCamera() {
 
         this.camera = this.cameras[Object.keys(this.cameras)[this.activeCamera]];
-        //this.camera.resetCamera();
+        this.camera.resetCamera();
         this.interface.setActiveCamera(this.camera);
     }
 
