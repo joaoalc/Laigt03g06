@@ -1,91 +1,60 @@
 class KeyframeAnimation extends Animation{
-    constructor(id, keyframes){
-        super(id);
+    constructor(scene, id, keyframes){
+        super(keyframes[0], keyframes[1]);
+        this.scene = scene;
         this.keyframes = keyframes; //Keyframes is an array of Keyframe objects sorted by their instant in ascending order
         
         this.currentKeyframeIndex = null;
         this.nextKeyframeIndex = null;
 
         this.matrix = mat4.create();
+
+        this.started = false;
         this.finished = false;
 
-        this.firstTime = 0;
+        this.firstTime = -1;
     }
 
-    apply(scene) {
-        scene.multMatrix(this.matrix);
+    apply() {
+        this.scene.multMatrix(this.matrix);
     }
 
-    checkVisibility(){ //Returns true if it's visible
-        return this.currentKeyframeIndex != null;
+    checkVisibility() { //Returns true if it's visible
+        return this.started;
     }
 
-    update(time){ //Returns the index of the next keyframe. Returns null when there isn't a next keyframe
-        if(this.firstTime == 0)
+    update(time){ 
+        //set first time this is executed
+        if(this.firstTime == -1 && this.initial == this.keyframes[0])
             this.firstTime = time;
 
-        time -= this.firstTime;
+        time -= this.firstTime; //current time
 
-        if(this.currentKeyframeIndex == null){ //First time this function is being called
-            var i = 0;
-            for(i; i < this.keyframes.length; i++){
-                if(this.keyframes[i].instant >= time){
-                    this.nextKeyframeIndex = i;
-                    if(this.nextKeyframeIndex != 0){
-                        this.currentKeyframeIndex = this.nextKeyframeIndex - 1;
-                        break;
-                    }
-                }
-            }
-        }
-        else if(this.nextKeyframeIndex == null){ //This animation has reached the end.
-            if(this.currentKeyframeIndex != this.keyframes.length - 1){
-                console.log("There isn't a next keyframe but the current keyframe isn't the last keyframe. This isn't supposed to happen!!!!!!!!!!!!!");
-            }
-        }
-        else{
-            if(time >= this.keyframes[this.nextKeyframeIndex].instant){
-                for(let i = this.nextKeyframeIndex; i < this.keyframes.length; i++){
-                    if(time >= this.keyframes[this.nextKeyframeIndex].instant){
-                        this.nextKeyframeIndex = i;
-                    }
-                }
-                if(this.nextKeyframeIndex == this.currentKeyframeIndex + 1){ //Reached end of animation
-                    this.nextKeyframeIndex = null;
-                    this.currentKeyframeIndex = this.keyframes.length - 1;
-                }
-                else{
-                    this.currentKeyframeIndex = this.nextKeyframeIndex - 1;
-                }
-                /*if(this.nextKeyframeIndex + 1 >= this.keyframes.length){ //If the animation has just ended
-                    this.nextKeyframeIndex = null;
-                }*/
-                /*else { 
-                    this.nextKeyframeIndex++;
-                }*/
-            }
+        if(this.initial.instant > time) { // first keyframe hasnt been reached yet - no display
+            return;
+        } else this.started = true;
+
+        var aux = false;
+        while(!aux) { //check if there are skipped keyframes and update current and next keyframes if necessary
+            if(this.end == null) {
+                this.finished = true;
+                break;
+            } else if(this.end.instant < time) {
+                this.initial = this.end;
+                this.end = this.end.next;
+            } else aux = true;
         }
 
-        if(this.currentKeyframeIndex != null && this.nextKeyframeIndex != null) {
-            
-            var startKey = this.keyframes[this.currentKeyframeIndex];
-            var endKey = this.keyframes[this.nextKeyframeIndex];
-
-            var elapsed = (time - startKey.instant)/(endKey.instant - startKey.instant); // 0(no segment time elapsed) to 1(segment complete)
-
-            this.interpolate(startKey, endKey, elapsed);
-
-        } else if(this.currentKeyframeIndex != null && this.nextKeyframeIndex == null && !this.finished) { // finish animation
-
-            var startKey = this.keyframes[this.currentKeyframeIndex];
-            this.interpolate(startKey, startKey, 1);
-            this.finished = true;
+        if(this.finished)
+            this.interpolate(this.initial, this.initial, 1);
+        else {
+            // 0(no segment time elapsed) to 1(segment complete)
+            var elapsed = (time - this.initial.instant)/(this.end.instant - this.initial.instant);
+            this.interpolate(this.initial, this.end, elapsed);
         }
     }
 
     interpolate(startKey, endKey, elapsed) {
-         // 0(no segment time elapsed) to 1(segment complete)
-
         this.matrix = mat4.create();
 
         //Interpoltate transformations and multiply to matrix

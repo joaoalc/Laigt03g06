@@ -1562,7 +1562,7 @@
             <transformations>
                 <translation x="0" y="-0.05" z="0"/>
             </transformations>
-            <!--<animationref id="train_animation"/>-->
+            <animationref id="train_animation"/>
             <descendants>
                 <noderef id="train_cab"/>
                 <noderef id="train_bottom"/>

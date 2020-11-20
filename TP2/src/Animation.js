@@ -1,10 +1,11 @@
 class Animation {
 
-    constructor(id) {
+    constructor(initial, end) {
         if(this.constructor == Animation) {
             throw new Error("Abstract class Animation cannot be instantiated");
         }
-        this.id = id;
+        this.initial = initial;
+        this.end = end;
     }
 
     update(time) {

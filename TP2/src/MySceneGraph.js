@@ -1102,7 +1102,10 @@ class MySceneGraph {
                 return "at least one keyframe must be declared on an animation";
             
             keyframes.sort(function(a, b){return a.instant - b.instant});
-            this.animations[animID] = new KeyframeAnimation(animID, keyframes);
+            for(var k = 0; k < keyframes.length - 1; ++k) {
+                keyframes[k].setNext(keyframes[k+1]);
+            }
+            this.animations[animID] = new KeyframeAnimation(this.scene, animID, keyframes);
         }
 
         this.log("Parsed Animations");

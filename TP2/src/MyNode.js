@@ -51,71 +51,75 @@ class MyNode {
         this.scene.pushMatrix();
         this.scene.multMatrix(this.transfMatrix); //Adicionar a nova transformação à matriz de transformações para este objeto e todos os seus descendants
 
-        if(this.animation != null) {
-            this.animation.apply(this.scene);
-        }
+        
 
-        if(this.material != "null") { //Adicionar o material se não for "null"
-            materialStack.push(this.material);
-        }
+        if((this.animation != null && (this.animation.checkVisibility() == true)) || this.animation == null) {
+            if(this.animation != null) {
+                this.animation.apply(this.scene);
+            }
+            
+            if(this.material != "null") { //Adicionar o material se não for "null"
+                materialStack.push(this.material);
+            }
 
-        if(this.scene.materials[materialStack[materialStack.length - 1]] != null)
-            this.scene.materials[materialStack[materialStack.length - 1]].apply();
+            if(this.scene.materials[materialStack[materialStack.length - 1]] != null)
+                this.scene.materials[materialStack[materialStack.length - 1]].apply();
 
-        if(this.texture == "clear") {
-            if(this.scene.textures[textureStack[textureStack.length - 1]] != null) 
-                this.scene.textures[textureStack[textureStack.length - 1]].unbind();  
-            textureStack.push(0);
-        } else if(this.texture == "null") {
-            if(this.scene.textures[textureStack[textureStack.length - 1]] != null) {
-                if(this.scene.textures[textureStack[textureStack.length - 1]] != 0)
+            if(this.texture == "clear") {
+                if(this.scene.textures[textureStack[textureStack.length - 1]] != null) 
+                    this.scene.textures[textureStack[textureStack.length - 1]].unbind();  
+                textureStack.push(0);
+            } else if(this.texture == "null") {
+                if(this.scene.textures[textureStack[textureStack.length - 1]] != null) {
+                    if(this.scene.textures[textureStack[textureStack.length - 1]] != 0)
+                        this.scene.textures[textureStack[textureStack.length - 1]].bind();
+                }
+            } else {
+                if(this.scene.textures[this.texture] != 0 && this.scene.textures[this.texture] != null) {
+                    textureStack.push(this.texture);
                     this.scene.textures[textureStack[textureStack.length - 1]].bind();
+                }
             }
-        } else {
-            if(this.scene.textures[this.texture] != 0 && this.scene.textures[this.texture] != null) {
-                textureStack.push(this.texture);
-                this.scene.textures[textureStack[textureStack.length - 1]].bind();
+            // //Texture
+            // if(this.texture != "null" && this.texture != "clear") //Texture id being "null" means it inherits it's parent's texture
+            // {
+            //     if(this.scene.textures[this.texture] != 0 && this.scene.textures[this.texture] != null)
+            //         textureStack.push(this.texture);
+            //     else 
+            //         this.texture == "clear"; //if the texture path is invalid, texture is set as clear
+            // }
+            
+            
+            // if(this.texture != "clear"){
+            //     if(textureStack[textureStack.length - 1] != null)
+            //         this.scene.textures[textureStack[textureStack.length - 1]].bind();
+            // }
+            // else{
+            //     if(this.scene.textures[textureStack[textureStack.length - 1]] != null)
+            //         this.scene.textures[textureStack[textureStack.length - 1]].unbind();
+            //     else {
+            //     }
+            //}
+
+
+            //Display leaves if they exist
+            for(var i = 0; i < this.leaves.length; i++) {
+                if(this.leaves[i] != null)
+                    this.leaves[i].display();
             }
+
+            //Recursively run this code for all the children nodes
+            for(var j = 0; j < this.descendants.length; j++) {
+                this.descendants[j].display();
+            }
+
+            if(this.texture != "null"){
+                textureStack.pop();
+            }
+
+            if(this.material != "null")
+                materialStack.pop();
         }
-        // //Texture
-        // if(this.texture != "null" && this.texture != "clear") //Texture id being "null" means it inherits it's parent's texture
-        // {
-        //     if(this.scene.textures[this.texture] != 0 && this.scene.textures[this.texture] != null)
-        //         textureStack.push(this.texture);
-        //     else 
-        //         this.texture == "clear"; //if the texture path is invalid, texture is set as clear
-        // }
-        
-        
-        // if(this.texture != "clear"){
-        //     if(textureStack[textureStack.length - 1] != null)
-        //         this.scene.textures[textureStack[textureStack.length - 1]].bind();
-        // }
-        // else{
-        //     if(this.scene.textures[textureStack[textureStack.length - 1]] != null)
-        //         this.scene.textures[textureStack[textureStack.length - 1]].unbind();
-        //     else {
-        //     }
-        //}
-
-
-        //Display leaves if they exist
-        for(var i = 0; i < this.leaves.length; i++) {
-            if(this.leaves[i] != null)
-                this.leaves[i].display();
-        }
-
-        //Recursively run this code for all the children nodes
-        for(var j = 0; j < this.descendants.length; j++) {
-            this.descendants[j].display();
-        }
-
-        if(this.texture != "null"){
-            textureStack.pop();
-        }
-
-        if(this.material != "null")
-            materialStack.pop();
 
         this.scene.popMatrix();
 
