@@ -622,6 +622,7 @@ class MySceneGraph {
 
             grandChildren = children[i].children;
 
+
             nodeNames = [];
             for (var j = 0; j < grandChildren.length; j++) {
                 nodeNames.push(grandChildren[j].nodeName);
@@ -637,7 +638,6 @@ class MySceneGraph {
             // Transformations
             var transformations = [];
 
-
             if (transformationsIndex != -1) {
 
                 grandgrandChildren = grandChildren[transformationsIndex].children;
@@ -649,7 +649,22 @@ class MySceneGraph {
                     if(transf.length > 0)
                         transformations.push(transf);
                 }
+            }
+            var transfMatrix = mat4.create();
 
+            for(var t = 0; t < transformations.length; t++) {
+                if(transformations[t][0] == "t") {
+                    mat4.translate(transfMatrix, transfMatrix, [transformations[t][1],transformations[t][2],transformations[t][3]]);
+                } else if(transformations[t][0] == "r") {
+                    if(transformations[t][1] == "x")
+                        mat4.rotate(transfMatrix, transfMatrix, DEGREE_TO_RAD * transformations[t][2], [1,0,0]);
+                    else if(transformations[t][1] == "y")
+                        mat4.rotate(transfMatrix, transfMatrix, DEGREE_TO_RAD * transformations[t][2], [0,1,0]);
+                    else if(transformations[t][1] == "z")
+                        mat4.rotate(transfMatrix, transfMatrix, DEGREE_TO_RAD * transformations[t][2], [0,0,1]);
+                } else if(transformations[t][0] == "s") {
+                    mat4.scale(transfMatrix, transfMatrix, [transformations[t][1],transformations[t][2],transformations[t][3]])
+                }
             }
             
             // Material
@@ -765,8 +780,9 @@ class MySceneGraph {
                     animation = this.animations[animID];
             }
 
-            this.nodes[nodeID] = new MyNode(this.scene, nodeID, textureID, materialID, transformations, [], leaves, animation);
+            this.nodes[nodeID] = new MyNode(this.scene, nodeID, textureID, materialID, transfMatrix, [], leaves, animation);
             nodeChilds[nodeID] = descendants;
+
         }
 
 

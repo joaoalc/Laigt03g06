@@ -16,32 +16,16 @@ class MyNode {
      * @param descendants - Array of references to descendant nodes
      * @param leaves - Array of CGFobject leaves
      */
-    constructor(scene, id, texture, material, transformations, descendants, leaves, animation) {
+    constructor(scene, id, texture, material, transfMatrix, descendants, leaves, animation) {
         this.id = id;
         this.scene = scene;
         this.texture = texture;
         this.material = material;
-        this.transformations = transformations;
-        this.transfMatrix = mat4.create();
+        this.transfMatrix = transfMatrix;
         this.descendants = descendants;
         this.leaves = leaves;
         this.animation = animation;
         this.appearance = new CGFappearance(this.scene);
-
-        for(var i = 0; i < transformations.length; i++) {
-            if(transformations[i][0] == "t") {
-                mat4.translate(this.transfMatrix, this.transfMatrix, [transformations[i][1],transformations[i][2],transformations[i][3]]);
-            } else if(transformations[i][0] == "r") {
-                if(transformations[i][1] == "x")
-                    mat4.rotate(this.transfMatrix, this.transfMatrix, DEGREE_TO_RAD * transformations[i][2], [1,0,0]);
-                else if(transformations[i][1] == "y")
-                    mat4.rotate(this.transfMatrix, this.transfMatrix, DEGREE_TO_RAD * transformations[i][2], [0,1,0]);
-                else if(transformations[i][1] == "z")
-                    mat4.rotate(this.transfMatrix, this.transfMatrix, DEGREE_TO_RAD * transformations[i][2], [0,0,1]);
-            } else if(transformations[i][0] == "s") {
-                mat4.scale(this.transfMatrix, this.transfMatrix, [transformations[i][1],transformations[i][2],transformations[i][3]])
-            }
-        }
     }
 
     /**
@@ -51,8 +35,7 @@ class MyNode {
         this.scene.pushMatrix();
         this.scene.multMatrix(this.transfMatrix); //Adicionar a nova transformação à matriz de transformações para este objeto e todos os seus descendants
 
-        
-
+        // se existir uma animação e esta não tiver começado, não efetuar o display do nó
         if((this.animation != null && (this.animation.checkVisibility() == true)) || this.animation == null) {
             if(this.animation != null) {
                 this.animation.apply(this.scene);
@@ -80,27 +63,6 @@ class MyNode {
                     this.scene.textures[textureStack[textureStack.length - 1]].bind();
                 }
             }
-            // //Texture
-            // if(this.texture != "null" && this.texture != "clear") //Texture id being "null" means it inherits it's parent's texture
-            // {
-            //     if(this.scene.textures[this.texture] != 0 && this.scene.textures[this.texture] != null)
-            //         textureStack.push(this.texture);
-            //     else 
-            //         this.texture == "clear"; //if the texture path is invalid, texture is set as clear
-            // }
-            
-            
-            // if(this.texture != "clear"){
-            //     if(textureStack[textureStack.length - 1] != null)
-            //         this.scene.textures[textureStack[textureStack.length - 1]].bind();
-            // }
-            // else{
-            //     if(this.scene.textures[textureStack[textureStack.length - 1]] != null)
-            //         this.scene.textures[textureStack[textureStack.length - 1]].unbind();
-            //     else {
-            //     }
-            //}
-
 
             //Display leaves if they exist
             for(var i = 0; i < this.leaves.length; i++) {
