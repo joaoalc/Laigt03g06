@@ -1204,6 +1204,7 @@
             </transformations>
             <descendants>
                 <noderef id="station_tower_body"/>
+                <noderef id="station_tower_screen"/>
                 <noderef id="clock"/>
             </descendants>
         </node>
@@ -1220,6 +1221,19 @@
                 <noderef id="cube"/>
             </descendants>
         </node>
+        <node id="station_tower_screen">
+            <material id="bricks_regular"/>
+            <texture id="brick_wall">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-1" z="1.26"/>
+                <scale sx="1.5" sy="1.5" sz="1"/>
+            </transformations>
+            <descendants>
+                <leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="31"/>
+            </descendants>
+        </node>
         <node id="station_barrels">
             <material id="grey_metal"/>
             <texture id="wood">
@@ -1227,14 +1241,129 @@
             </texture>
             <transformations>
                 <translation x="5" y="-1" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="station_barrel_1"/>
+                <noderef id="station_barrel_2"/>
+                <noderef id="station_barrel_3"/>
+            </descendants>
+        </node>
+        <node id="station_barrel_1">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="1"/>
                 <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <noderef id="full_barrel_inside"/>
+                <noderef id="full_barrel_hoops"/>
+            </descendants>
+        </node>
+        <node id="station_barrel_2">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <noderef id="full_barrel_inside"/>
+                <noderef id="full_barrel_hoops"/>
+            </descendants>
+        </node>
+        <node id="station_barrel_3">
+            <material id="grey_metal"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0.05" z="-1"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <noderef id="full_barrel_inside"/>
+                <noderef id="full_barrel_hoops"/>
+            </descendants>
+        </node>
+        <node id="full_barrel_inside">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
             </transformations>
             <descendants>
                 <leaf type="cylinder" height="1" topRadius="0.4" bottomRadius="0.4" stacks="1" slices="40"/>
                 <leaf type="defbarrel" base="0.4" middle="0.5" height="1" slices="20" stacks="10"/>
             </descendants>
         </node>
-
+        <node id="full_barrel_hoops">
+            <material id="grey_metal"/>
+            <texture id="metal">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="barrel_top_hoop"/>
+                <noderef id="barrel_top_mid_hoop"/>
+                <noderef id="barrel_bot_mid_hoop"/>
+                <noderef id="barrel_bot_hoop"/>
+            </descendants>
+        </node>
+        <node id="barrel_top_hoop">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0"/>
+            </transformations>
+            <descendants>
+                <leaf type="torus" inner="0.03" outer="0.4" slices="40" loops="40"/>
+            </descendants>
+        </node>
+        <node id="barrel_bot_hoop">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="1"/>
+            </transformations>
+            <descendants>
+                <leaf type="torus" inner="0.03" outer="0.4" slices="40" loops="40"/>
+            </descendants>
+        </node>
+        <node id="barrel_top_mid_hoop">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.2"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.08" topRadius="0.52" bottomRadius="0.5" stacks="1" slices="50"/>
+            </descendants>
+        </node>
+        <node id="barrel_bot_mid_hoop">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0.72"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.08" topRadius="0.5" bottomRadius="0.52" stacks="1" slices="50"/>
+            </descendants>
+        </node>
 
         <!-- Clock -->
         <node id="clock">
@@ -1544,15 +1673,83 @@
             </texture>
             <transformations>
                 <translation x="0" y="-2" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="station_ground_front"/>
+                <noderef id="station_ground_left"/>
+                <noderef id="station_ground_back"/>
+                <noderef id="station_ground_right"/>
+                <noderef id="station_ground_top"/>
+            </descendants>
+        </node>
+        <node id="station_ground_top">
+            <material id="plastic_shiny"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
                 <scale sx="11" sy="1" sz="6"/>
             </transformations>
             <descendants>
                 <leaf type="plane" npartsU="5" npartsV="5"/>
             </descendants>
         </node>
-
-
-
+        <node id="station_ground_front">
+            <material id="plastic_shiny"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.25" z="3"/>
+                <scale sx="11" sy="0.5" sz="1"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="5" npartsV="5"/>
+            </descendants>
+        </node>
+        <node id="station_ground_left">
+            <material id="plastic_shiny"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="5.5" y="-0.25" z="0"/>
+                <scale sx="1" sy="0.5" sz="6"/>
+                <rotation axis="z" angle="270"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="5" npartsV="5"/>
+            </descendants>
+        </node>
+        <node id="station_ground_back">
+            <material id="plastic_shiny"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.25" z="-3"/>
+                <scale sx="11" sy="0.5" sz="1"/>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="5" npartsV="5"/>
+            </descendants>
+        </node>
+        <node id="station_ground_right">
+            <material id="plastic_shiny"/>
+            <texture id="wood">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-5.5" y="-0.25" z="0"/>
+                <scale sx="1" sy="0.5" sz="6"/>
+                <rotation axis="z" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="5" npartsV="5"/>
+            </descendants>
+        </node>
         <!--Train-->
         <node id="train">
             <material id="metal_body"/>
