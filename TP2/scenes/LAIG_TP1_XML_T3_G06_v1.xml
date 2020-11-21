@@ -453,25 +453,6 @@
                 <noderef id="trees"/>
                 <noderef id="ground"/>
                 <noderef id="train_station"/>
-                
-                <!--<leaf type="defbarrel" base="2" middle="2.5" height="5" slices="20" stacks="10"/>-->
-                 <!--
-                <leaf type="patch" npointsU="3" npointsV="3" npartsU="4" npartsV="4">
-                    <controlpoint xx="0.5" yy="0" zz="-0.5"/>
-                    <controlpoint xx="0.7" yy="0" zz="0"/>
-                    <controlpoint xx="0.5" yy="0" zz="0.5"/>
-                    <controlpoint xx="0" yy="0.5" zz="-0.5"/>
-                    <controlpoint xx="0" yy="0.7" zz="0"/>
-                    <controlpoint xx="0" yy="0.5" zz="0.5"/>
-                    <controlpoint xx="-0.5" yy="0" zz="-0.5"/>
-                    <controlpoint xx="-0.7" yy="0" zz="0"/>
-                    <controlpoint xx="-0.5" yy="0" zz="0.5"/>
-                </leaf>
-                -->
-                <leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="31"/>
-                
-                <!--<leaf type="plane" npartsU="5" npartsV="5"/> -->
-                <!--<leaf type="spritetext" text="This is a sprite text testtttttttttttttttttttyyyyyyyyyyy"/>-->
             </descendants>
         </node>
 
@@ -608,7 +589,6 @@
                 <noderef id="ground_rock_2"/>
                 <noderef id="ground_rock_3"/>
                 <noderef id="ground_rock_4"/>
-                <noderef id="ground_rock_5"/>
             </descendants>
         </node>
 
@@ -672,23 +652,6 @@
             </transformations>
             <descendants>
                 <leaf type="sphere" radius="0.3" slices="5" stacks="3"/>
-            </descendants>
-        </node>
-
-        <node id="ground_rock_5">
-            <material id="null"/>
-            <texture id="null">
-                <amplification afs="1" aft="1"/>
-            </texture>
-            <transformations>
-                <translation x="5.3" y="0" z="-6.5"/>
-                <rotation axis="z" angle="30"/>
-                <rotation axis="x" angle="20"/>
-                <rotation axis="y" angle="30"/>
-                <scale sx="1.5" sy="1" sz="1.5"/>
-            </transformations>
-            <descendants>
-                <leaf type="sphere" radius="0.6" slices="5" stacks="3"/>
             </descendants>
         </node>
 
@@ -780,7 +743,6 @@
                 <noderef id="grass_6"/>
                 <noderef id="grass_7"/>
                 <noderef id="grass_8"/>
-                <noderef id="grass_9"/>
             </descendants>
         </node>
 
@@ -846,20 +808,6 @@
                 <amplification afs="1" aft="1"/>
             </texture>
             <transformations>
-                <translation x="2" y="0" z="-7"/>
-                <scale sx="2.5" sy="3" sz="2.5"/>
-            </transformations>
-            <descendants>
-                <noderef id="grass_pre"/>
-            </descendants>
-        </node>
-
-        <node id="grass_6">
-            <material id="null"/>
-            <texture id="clear">
-                <amplification afs="1" aft="1"/>
-            </texture>
-            <transformations>
                 <translation x="-5" y="0" z="-6.5"/>
                 <scale sx="2.5" sy="4" sz="2.5"/>
             </transformations>
@@ -868,7 +816,7 @@
             </descendants>
         </node>
 
-        <node id="grass_7">
+        <node id="grass_6">
             <material id="null"/>
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
@@ -882,7 +830,7 @@
             </descendants>
         </node>
 
-        <node id="grass_8">
+        <node id="grass_7">
             <material id="null"/>
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
@@ -896,7 +844,7 @@
             </descendants>
         </node>
 
-        <node id="grass_9">
+        <node id="grass_8">
             <material id="null"/>
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
