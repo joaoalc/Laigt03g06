@@ -1586,32 +1586,32 @@
             </transformations>
             <descendants>
                 <leaf type="patch" npointsU="4" npointsV="3" npartsU="16" npartsV="12">
-                    <controlpoint xx="0.465" yy="0" zz="-0.5"/>
-                    <controlpoint xx="0.465" yy="0" zz="0"/>
-                    <controlpoint xx="0.465" yy="0" zz="0.5"/>
-                    <controlpoint xx="0.1" yy="0.5" zz="-0.5"/>
-                    <controlpoint xx="0.1" yy="0.7" zz="0"/>
-                    <controlpoint xx="0.1" yy="0.5" zz="0.5"/>
-                    <controlpoint xx="-0.2" yy="0.1" zz="-0.5"/>
-                    <controlpoint xx="-0.2" yy="0.1" zz="0"/>
-                    <controlpoint xx="-0.2" yy="0.1" zz="0.5"/>
-                    <controlpoint xx="-0.5" yy="0" zz="-0.5"/>
-                    <controlpoint xx="-0.5" yy="0" zz="0"/>
-                    <controlpoint xx="-0.5" yy="0" zz="0.5"/>
+                    <controlpoint x="0.465" y="0" z="-0.5"/>
+                    <controlpoint x="0.465" y="0" z="0"/>
+                    <controlpoint x="0.465" y="0" z="0.5"/>
+                    <controlpoint x="0.1" y="0.5" z="-0.5"/>
+                    <controlpoint x="0.1" y="0.7" z="0"/>
+                    <controlpoint x="0.1" y="0.5" z="0.5"/>
+                    <controlpoint x="-0.2" y="0.1" z="-0.5"/>
+                    <controlpoint x="-0.2" y="0.1" z="0"/>
+                    <controlpoint x="-0.2" y="0.1" z="0.5"/>
+                    <controlpoint x="-0.5" y="0" z="-0.5"/>
+                    <controlpoint x="-0.5" y="0" z="0"/>
+                    <controlpoint x="-0.5" y="0" z="0.5"/>
                 </leaf>
                 <leaf type="patch" npointsU="4" npointsV="3" npartsU="16" npartsV="12">
-                    <controlpoint xx="0.465" yy="0" zz="0.5"/>
-                    <controlpoint xx="0.465" yy="0" zz="0"/>
-                    <controlpoint xx="0.465" yy="0" zz="-0.5"/>
-                    <controlpoint xx="0.1" yy="0.5" zz="0.5"/>
-                    <controlpoint xx="0.1" yy="0.7" zz="0"/>
-                    <controlpoint xx="0.1" yy="0.5" zz="-0.5"/>
-                    <controlpoint xx="-0.2" yy="0.1" zz="0.5"/>
-                    <controlpoint xx="-0.2" yy="0.1" zz="0"/>
-                    <controlpoint xx="-0.2" yy="0.1" zz="-0.5"/>
-                    <controlpoint xx="-0.5" yy="0" zz="0.5"/>
-                    <controlpoint xx="-0.5" yy="0" zz="0"/>
-                    <controlpoint xx="-0.5" yy="0" zz="-0.5"/>
+                    <controlpoint x="0.465" y="0" z="0.5"/>
+                    <controlpoint x="0.465" y="0" z="0"/>
+                    <controlpoint x="0.465" y="0" z="-0.5"/>
+                    <controlpoint x="0.1" y="0.5" z="0.5"/>
+                    <controlpoint x="0.1" y="0.7" z="0"/>
+                    <controlpoint x="0.1" y="0.5" z="-0.5"/>
+                    <controlpoint x="-0.2" y="0.1" z="0.5"/>
+                    <controlpoint x="-0.2" y="0.1" z="0"/>
+                    <controlpoint x="-0.2" y="0.1" z="-0.5"/>
+                    <controlpoint x="-0.5" y="0" z="0.5"/>
+                    <controlpoint x="-0.5" y="0" z="0"/>
+                    <controlpoint x="-0.5" y="0" z="-0.5"/>
                 </leaf>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>

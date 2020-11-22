@@ -981,7 +981,7 @@ class MySceneGraph {
             for(var k = 0; k < info[0]; ++k){
                 for(var j = 0; j < info[1]; ++j) {
                     if(children[k * info[1] + j].nodeName == "controlpoint") {
-                        var point = this.parseAnyCoordinates3D(children[k * info[1] + j], "control point in patch leaf", ["xx", "yy", "zz"]);
+                        var point = this.parseCoordinates3D(children[k * info[1] + j], "control point in patch leaf", ["x", "y", "z"]);
                         point.push(1); //Control point's weight
                         if(typeof(point) == "string")
                             return point;
