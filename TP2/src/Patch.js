@@ -1,5 +1,6 @@
-class Patch {
+class Patch extends CGFobject {
     constructor(scene, npointsU, npointsV, npartsU, npartsV, controlPoints) {
+        super(scene);
         this.scene = scene;
         this.npointsU = npointsU;
         this.npointsV = npointsV;

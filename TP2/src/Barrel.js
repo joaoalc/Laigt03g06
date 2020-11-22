@@ -1,5 +1,6 @@
-class Barrel {
+class Barrel extends CGFobject{
     constructor(scene, base, middle, height, stacks, slices) {
+        super(scene);
         this.scene = scene;
         this.base = base;
         this.middle = middle;

@@ -91,6 +91,8 @@
         <texture id="station_roof" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/roof2.jpg"/>
         <texture id="bricks_texture" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/bricks_texture.png"/>
         <texture id="wood_pillar" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/woodPillar.jpg"/>
+        <texture id="stone_floor" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/stone_floor.jpg"/>
+        <texture id="wood_barrel" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/wood_planks.jpg"/>
     </textures>
     <spritesheets>
         <spritesheet id="spriteanim_test" path="scenes/textures_LAIG_TP1_XML_T3_G06_v1/train_spritesheet.png" sizeM="8" sizeN="4"/>
@@ -990,7 +992,7 @@
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
-                <translation x="3" y="0" z="-5"/>
+                <translation x="3" y="0.7" z="-5"/>
             </transformations>
             <descendants>
                 <noderef id="station_sign"/>
@@ -1239,8 +1241,8 @@
             </descendants>
         </node>
         <node id="full_barrel_inside">
-            <material id="null"/>
-            <texture id="null">
+            <material id="wood"/>
+            <texture id="wood_barrel">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1616,7 +1618,7 @@
         </node>
         <node id="station_ground">
             <material id="plastic_shiny"/>
-            <texture id="wood">
+            <texture id="stone_floor">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1631,71 +1633,77 @@
             </descendants>
         </node>
         <node id="station_ground_top">
-            <material id="plastic_shiny"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="5" aft="3.5"/>
             </texture>
             <transformations>
-                <scale sx="11" sy="1" sz="6"/>
-            </transformations>
-            <descendants>
-                <leaf type="plane" npartsU="5" npartsV="5"/>
-            </descendants>
-        </node>
-        <node id="station_ground_front">
-            <material id="plastic_shiny"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="0" y="-0.25" z="3"/>
-                <scale sx="11" sy="0.5" sz="1"/>
-                <rotation axis="x" angle="90"/>
-            </transformations>
-            <descendants>
-                <leaf type="plane" npartsU="5" npartsV="5"/>
-            </descendants>
-        </node>
-        <node id="station_ground_left">
-            <material id="plastic_shiny"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="5.5" y="-0.25" z="0"/>
-                <scale sx="1" sy="0.5" sz="6"/>
-                <rotation axis="z" angle="270"/>
-            </transformations>
-            <descendants>
-                <leaf type="plane" npartsU="5" npartsV="5"/>
-            </descendants>
-        </node>
-        <node id="station_ground_back">
-            <material id="plastic_shiny"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="0" y="-0.25" z="-3"/>
-                <scale sx="11" sy="0.5" sz="1"/>
+                <!-- <scale sx="11" sy="1" sz="6"/> -->
                 <rotation axis="x" angle="-90"/>
             </transformations>
             <descendants>
-                <leaf type="plane" npartsU="5" npartsV="5"/>
+                <leaf type="rectangle" x1="-5.5" y1="-3" x2="5.5" y2="3"/>
+                <!-- <leaf type="plane" npartsU="5" npartsV="5"/> -->
+            </descendants>
+        </node>
+        <node id="station_ground_front">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="5" aft="3"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.5" z="3"/>
+                <!-- <scale sx="11" sy="0.5" sz="1"/> -->
+                <!-- <rotation axis="x" angle="90"/> -->
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-5.5" y1="-0.5" x2="5.5" y2="0.5"/>
+                <!-- <leaf type="plane" npartsU="5" npartsV="5"/> -->
+            </descendants>
+        </node>
+        <node id="station_ground_left">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="4.0" aft="3.0"/>
+            </texture>
+            <transformations>
+                <translation x="5.5" y="-0.5" z="0"/>
+                <!-- <scale sx="1" sy="0.5" sz="6"/> -->
+                <rotation axis="y" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-3" y1="-0.5" x2="3" y2="0.5"/>
+                <!-- <leaf type="plane" npartsU="5" npartsV="5"/> -->
+            </descendants>
+        </node>
+        <node id="station_ground_back">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="5.0" aft="3.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.5" z="-3"/>
+                <!-- <scale sx="11" sy="0.5" sz="1"/> -->
+                <rotation axis="y" angle="180"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-5.5" y1="-0.5" x2="5.5" y2="0.5"/>
+                <!-- <leaf type="plane" npartsU="5" npartsV="5"/> -->
             </descendants>
         </node>
         <node id="station_ground_right">
-            <material id="plastic_shiny"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="4.0" aft="3.0"/>
             </texture>
             <transformations>
-                <translation x="-5.5" y="-0.25" z="0"/>
-                <scale sx="1" sy="0.5" sz="6"/>
-                <rotation axis="z" angle="90"/>
+                <translation x="-5.5" y="-0.5" z="0"/>
+                <!-- <scale sx="1" sy="0.5" sz="6"/> -->
+                <rotation axis="y" angle="-90"/>
             </transformations>
             <descendants>
-                <leaf type="plane" npartsU="5" npartsV="5"/>
+                <leaf type="rectangle" x1="-3" y1="-0.5" x2="3" y2="0.5"/>
+                <!-- <leaf type="plane" npartsU="5" npartsV="5"/> -->
             </descendants>
         </node>
         <!--Train-->
