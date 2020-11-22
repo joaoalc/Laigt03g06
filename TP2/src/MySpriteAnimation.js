@@ -14,6 +14,12 @@ class MySpriteAnimation {
         this.appearance = new CGFappearance(this.scene);
         //this.appearance.setTexture(this.spritesheet.texture);
 
+        if(this.startCell > this.endCell){
+            let temp = this.startCell;
+            this.startCell = this.endCell;
+            this.endCell = temp;
+        }
+
     }
 
     update(time) {
@@ -30,13 +36,18 @@ class MySpriteAnimation {
         if(this.endCell > this.startCell){ //Animation going forwards
             nextCell = Math.floor(((this.endCell - this.startCell) * time / this.duration) +  this.startCell);
             //nextCell = Math.min(this.endCell, nextCell); //Next cell can't be higher than lastCell
-            nextCell = nextCell % this.endCell;
-            
+            //nextCell = nextCell % this.endCell;
+            while(nextCell > this.endCell){
+                nextCell += -this.endCell + this.startCell - 1;
+            }
+
+
             if(this.currentCell != nextCell){ //Check if the spritesheet's current sprite should change
                 this.currentCell = nextCell;
                 this.spritesheet.activateCellP(this.currentCell);
             }
         }
+        /*
         else if(this.startCell > this.endCell){ //Animation going backwards
             nextCell = Math.ceil(((this.endCell - this.startCell) * time / this.duration) +  this.startCell);
             //nextCell = Math.max(this.endCell, nextCell); //Next cell can't be lower than startCell
@@ -45,7 +56,7 @@ class MySpriteAnimation {
                 this.currentCell = nextCell;
                 this.spritesheet.activateCellP(this.currentCell);
             }
-        }
+        }*/
     }
 
     enableNormalViz() {

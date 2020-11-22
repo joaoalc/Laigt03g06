@@ -423,7 +423,43 @@
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
         </animation>
-
+        <animation id="grass">
+            <keyframe instant="0">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="1">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="2.5">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="-15"/>
+                <scale sx="1" sy="0.75" sz="1.25"/>
+            </keyframe>
+            <keyframe instant="3.5">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="-15"/>
+                <scale sx="1" sy="0.75" sz="1.5"/>
+            </keyframe>
+            <keyframe instant="5">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+        </animation>
         <animation id="clock_hours">
             <keyframe instant="0">
                 <translation x="0" y="0" z="0"/>
@@ -753,6 +789,7 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
+            <animationref id="grass"/>
             <transformations>
                 <translation x="-6" y="0" z="4"/>
                 <scale sx="2" sy="2" sz="2"/>
@@ -767,6 +804,7 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
+            <animationref id="grass"/>
             <transformations>
                 <translation x="0" y="0" z="8"/>
                 <scale sx="3" sy="1.5" sz="3"/>
@@ -781,6 +819,7 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
+            <animationref id="grass"/>
             <transformations>
                 <translation x="5" y="0" z="3"/>
                 <scale sx="2" sy="2" sz="2"/>
@@ -795,6 +834,7 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
+            <animationref id="grass"/>
             <transformations>
                 <translation x="-7" y="0" z="7"/>
                 <scale sx="2.5" sy="3" sz="2.5"/>
@@ -809,6 +849,7 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
+            <animationref id="grass"/>
             <transformations>
                 <translation x="-5" y="0" z="-6.5"/>
                 <scale sx="2.5" sy="4" sz="2.5"/>
@@ -823,6 +864,7 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
+            <animationref id="grass"/>
             <transformations>
                 <translation x="-2" y="0" z="3"/>
                 <scale sx="3" sy="1" sz="3"/>
@@ -837,6 +879,7 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
+            <animationref id="grass"/>
             <transformations>
                 <translation x="-4" y="0" z="-3"/>
                 <scale sx="4" sy="3" sz="4"/>
@@ -851,6 +894,7 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
+            <animationref id="grass"/>
             <transformations>
                 <translation x="6" y="0" z="-5.5"/>
                 <scale sx="2" sy="1" sz="2"/>
