@@ -551,10 +551,11 @@
             </texture>
             <transformations>
                 <translation x="0" y="10" z="0"/>
-                <rotation axis="x" angle="90"/>
+                <rotation axis="x" angle="180"/>
+                <scale sx="20" sy="20" sz="20"/>
             </transformations>
             <descendants>
-                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
             </descendants>
         </node>
 
@@ -566,9 +567,11 @@
             <transformations>
                 <translation x="-10" y="0" z="0"/>
                 <rotation axis="y" angle="90"/>
+                <rotation axis="x" angle="90"/>
+                <scale sx="20" sy="20" sz="20"/>
             </transformations>
             <descendants>
-                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
             </descendants>
         </node>
 
@@ -579,9 +582,11 @@
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-10"/>
+                <rotation axis="x" angle="90"/>
+                <scale sx="20" sy="20" sz="20"/>
             </transformations>
             <descendants>
-                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
             </descendants>
         </node>
 
@@ -593,9 +598,11 @@
             <transformations>
                 <translation x="0" y="0" z="10"/>
                 <rotation axis="y" angle="180"/>
+                <rotation axis="x" angle="90"/>
+                <scale sx="20" sy="20" sz="20"/>
             </transformations>
             <descendants>
-                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
             </descendants>
         </node>
 
@@ -607,9 +614,11 @@
             <transformations>
                 <translation x="10" y="0" z="0"/>
                 <rotation axis="y" angle="-90"/>
+                <rotation axis="x" angle="90"/>
+                <scale sx="20" sy="20" sz="20"/>
             </transformations>
             <descendants>
-                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
             </descendants>
         </node>
 
@@ -620,10 +629,10 @@
             </texture>
             <transformations>
                 <translation x="0" y="-10" z="0"/>
-                <rotation axis="x" angle="-90"/>
+                <scale sx="20" sy="20" sz="20"/>
             </transformations>
             <descendants>
-                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
             </descendants>
         </node>
 
