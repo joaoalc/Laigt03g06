@@ -93,6 +93,7 @@
         <texture id="wood_pillar" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/woodPillar.jpg"/>
         <texture id="stone_floor" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/stone_floor.jpg"/>
         <texture id="wood_barrel" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/wood_planks.jpg"/>
+        <texture id="wooden_planks" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/wooden_planks.png"/>
     </textures>
     <spritesheets>
         <spritesheet id="spriteanim_test" path="scenes/textures_LAIG_TP1_XML_T3_G06_v1/train_spritesheet.png" sizeM="8" sizeN="4"/>
@@ -481,7 +482,7 @@
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
                 <rotation axis="z" angle="-15"/>
-                <scale sx="1" sy="0.75" sz="1.5"/>
+                <scale sx="1" sy="0.75" sz="1.25"/>
             </keyframe>
             <keyframe instant="5">
                 <translation x="0" y="0" z="0"/>
@@ -1095,7 +1096,7 @@
         </node>
         <node id="station_sign_back">
             <material id="wood"/>
-            <texture id="wood_pillar">
+            <texture id="wooden_planks">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1109,7 +1110,7 @@
         </node>
         <node id="station_pillars">
             <material id="wood"/>
-            <texture id="wood_pillar">
+            <texture id="wooden_planks">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>

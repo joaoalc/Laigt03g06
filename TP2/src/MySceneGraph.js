@@ -928,9 +928,9 @@ class MySceneGraph {
             var sizeSprite = this.spritesheets[info[0]].sizeM * this.spritesheets[info[0]].sizeN;
 
 
-            if(info[1] < 0 || info[2] < 0 || info[1] > sizeSprite || info[2] > sizeSprite)
+            if(info[1] < 0 || info[2] < 0 || info[1] > sizeSprite - 1 || info[2] > sizeSprite - 1)
                 return "invalid startCell or endCell values on spriteanim " + messageError;
-            
+
             var newAnimation = new MySpriteAnimation(this.scene, this.spritesheets[info[0]], info[1], info[2], info[3]);
 
             this.spriteAnimations.push(newAnimation);
