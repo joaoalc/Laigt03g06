@@ -1735,7 +1735,6 @@
                     <controlpoint x="-0.5" y="0" z="-0.5"/>
                 </leaf>
                 <noderef id="station_ceiling_sides"/>
-                <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>
         </node>
         <node id="station_ceiling_sides">
@@ -1811,12 +1810,10 @@
                 <amplification afs="5" aft="3.5"/>
             </texture>
             <transformations>
-                <!-- <scale sx="11" sy="1" sz="6"/> -->
                 <rotation axis="x" angle="-90"/>
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-5.5" y1="-3" x2="5.5" y2="3"/>
-                <!-- <leaf type="plane" npartsU="5" npartsV="5"/> -->
             </descendants>
         </node>
         <node id="station_ground_front">
@@ -1826,12 +1823,9 @@
             </texture>
             <transformations>
                 <translation x="0" y="-0.5" z="3"/>
-                <!-- <scale sx="11" sy="0.5" sz="1"/> -->
-                <!-- <rotation axis="x" angle="90"/> -->
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-5.5" y1="-0.5" x2="5.5" y2="0.5"/>
-                <!-- <leaf type="plane" npartsU="5" npartsV="5"/> -->
             </descendants>
         </node>
         <node id="station_ground_left">
@@ -1841,12 +1835,10 @@
             </texture>
             <transformations>
                 <translation x="5.5" y="-0.5" z="0"/>
-                <!-- <scale sx="1" sy="0.5" sz="6"/> -->
                 <rotation axis="y" angle="90"/>
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-3" y1="-0.5" x2="3" y2="0.5"/>
-                <!-- <leaf type="plane" npartsU="5" npartsV="5"/> -->
             </descendants>
         </node>
         <node id="station_ground_back">
@@ -1856,12 +1848,10 @@
             </texture>
             <transformations>
                 <translation x="0" y="-0.5" z="-3"/>
-                <!-- <scale sx="11" sy="0.5" sz="1"/> -->
                 <rotation axis="y" angle="180"/>
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-5.5" y1="-0.5" x2="5.5" y2="0.5"/>
-                <!-- <leaf type="plane" npartsU="5" npartsV="5"/> -->
             </descendants>
         </node>
         <node id="station_ground_right">
@@ -1871,12 +1861,10 @@
             </texture>
             <transformations>
                 <translation x="-5.5" y="-0.5" z="0"/>
-                <!-- <scale sx="1" sy="0.5" sz="6"/> -->
                 <rotation axis="y" angle="-90"/>
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-3" y1="-0.5" x2="3" y2="0.5"/>
-                <!-- <leaf type="plane" npartsU="5" npartsV="5"/> -->
             </descendants>
         </node>
         <!--Train-->
@@ -2146,22 +2134,6 @@
             </descendants>
         </node>
 
-    	<!--
-        <node id="train_cab_furnace">
-            <material id="null"/>
-            <texture id="train_furnace">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="0.88" y="-0.6" z="0"/>
-                <scale sx="0.2" sy="0.86" sz="0.86"/>
-            </transformations>
-            <descendants>
-                <noderef id="cube"/>
-            </descendants>
-        </node>
-        -->
-
         <node id="train_cab_furnace">
             <material id="null"/>
             <texture id="train_furnace">
@@ -2176,7 +2148,6 @@
                 <leaf type="spriteanim" ssid="furnace_sprite" duration="2" startCell="0" endCell="14"/>
             </descendants>
         </node>
-
 
         <node id="train_cab_top">
             <material id="black_metal"/>
@@ -2415,9 +2386,7 @@
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
-                <!-- <translation x="0.243" y="0.377" z="0.75"/> -->
                 <rotation axis="y" angle="90.0"/>
-                <!-- <translation x="0" y="0" z="-2.0"/> -->
             </transformations>
             <descendants>
                 <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
