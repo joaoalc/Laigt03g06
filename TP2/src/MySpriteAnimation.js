@@ -31,7 +31,7 @@ class MySpriteAnimation {
 
     update(time) {
         if(this.firstTime == 0){
-            this.spritesheet.activateCellP(this.startCell);
+            //this.spritesheet.activateCellP(this.startCell);
             this.firstTime = time;
 
         }
@@ -48,7 +48,7 @@ class MySpriteAnimation {
 
             if(this.currentCell != nextCell){ //Check if the spritesheet's current sprite should change
                 this.currentCell = nextCell;
-                this.spritesheet.activateCellP(this.currentCell);
+                //this.spritesheet.activateCellP(this.currentCell);
             }
         }
     }
@@ -66,6 +66,7 @@ class MySpriteAnimation {
         this.spritesheet.texture.bind();
         this.scene.setActiveShader(this.spritesheet.shader);
 
+        this.spritesheet.activateCellP(this.currentCell);
         this.object.display();
 
         this.scene.setActiveShader(this.scene.defaultShader);
