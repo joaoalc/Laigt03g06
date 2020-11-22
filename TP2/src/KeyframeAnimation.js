@@ -1,4 +1,13 @@
 class KeyframeAnimation extends Animation{
+    /**
+	 * KeyframeAnimation
+	 * @constructor
+	 * @param instant - Reference to MyScene object
+	 * @param translation - 3 element array containing the x, y and z components of this keyframe's translation
+	 * @param rotation - 3 element array containing the x, y and z components of this keyframe's rotation
+	 * @param scale - 3 element array containing the x, y and z components of this keyframe's scale
+	 * @param next - Reference to the next keyframe in the animation, it's value is assigned in the setNext function, not in the constructor
+	 */
     constructor(scene, id, keyframes){
         super(keyframes[0], keyframes[1]);
         this.scene = scene;

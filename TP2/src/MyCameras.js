@@ -1,3 +1,10 @@
+/*
+These cameras are extensions of the regular cameras defined in the CGF library. By saving their starting values to different variables, we are able to effectively reset a camera's position to it's initial position.
+The resetCamera function is called whenever a camera is changed and resets the position of the camera to it's default starting position.
+
+Otherwise, they are exactly like CGFcamera and CGFcameraOrtho, the classes they extend, respectively.
+*/
+
 class CGFcameraResettable extends CGFcamera{
     constructor(t, e, i, r, n) {
         super(t, e, i, r, n);

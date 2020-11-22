@@ -1,4 +1,12 @@
 class MySpriteAnimation {
+    /**
+     * Constructor for MySpriteAnimation class.
+     * @scene - Reference to MyScene object
+     * @spritesheet - The animation's spritesheet object
+     * @endCell - The number of the first cell in the animation
+     * @endCell - The number of the final cell in the animation
+     * @duration - The animation's duration
+     */
     constructor(scene, spritesheet, startCell, endCell, duration) {
         this.scene = scene;
         this.spritesheet = spritesheet;

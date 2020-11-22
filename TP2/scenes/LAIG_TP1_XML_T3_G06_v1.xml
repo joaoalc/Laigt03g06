@@ -66,7 +66,6 @@
         <texture id="tree_trunk" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/tree_trunk.png"/>
         <texture id="tree_leaves" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/tree_leaves.jpg"/>
         <texture id="wood" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/wood.jpg"/>
-        <!--<texture id="bee_movie_script" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/output-onlinetexttools.png"/>-->
         <texture id="grass" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/grass.jpg"/>
         <texture id="train_furnace" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/furnace.jpg"/>
         <texture id="glass" path="./scenes/textures_LAIG_TP1_XML_T3_G06_v1/glass.png"/>

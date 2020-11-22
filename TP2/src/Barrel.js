@@ -1,4 +1,19 @@
+/**
+ * Barrel class, contains the proprieties and necessary functions for creating and displaying the outer shell (except the top and bottom) of a barrel.
+ * Uses a patch and dispalys it twice with a different rotation in order to make it barrel shaped.
+ * 
+ */
 class Barrel extends CGFobject{
+    /**
+	 * Barrel
+	 * @constructor
+	 * @param scene - Reference to MyScene object
+	 * @param base - The base of the barrel's radius.
+	 * @param middle - The middle of the barrel's radius.
+	 * @param height - The barrel's height.
+	 * @param stacks - The number of stacks on the z axis.
+	 * @param slices - The number of slices around the z axis.
+	 */
     constructor(scene, base, middle, height, stacks, slices) {
         super(scene);
         this.scene = scene;

@@ -1020,7 +1020,11 @@ class MySceneGraph {
         else 
             return "invalid leaf type";
     }
-
+    /**
+     * Parses the <animations> block.
+     * @returns null on success, a string upon finding an irrecoverable error in the XML file
+     * @param {animations block element} animationsNode
+     */
     parseAnimations(animationsNode) {
         var children = animationsNode.children;
 

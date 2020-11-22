@@ -1,4 +1,13 @@
 class Patch extends CGFobject {
+    /**
+     * Constructor for Patch class.
+     * @scene - Reference to MyScene object
+     * @npointsU - Number of control points in the x direction
+     * @npointsV - Number of control points in the z direction
+     * @npartsU - Reference to MyScene object
+     * @npartsV - Reference to MyScene object
+     * @controlPoints - Array containing the patch's (npointsU * nPointsV) control points
+     */
     constructor(scene, npointsU, npointsV, npartsU, npartsV, controlPoints) {
         super(scene);
         this.scene = scene;

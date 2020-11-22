@@ -1,4 +1,9 @@
 class MySpriteText {
+    /**
+     * Constructor for MySpriteAnimation class.
+     * @scene - Reference to MyScene object
+     * @text - The string contiaining the text to be represented
+     */
     constructor(scene, text) {
         this.scene = scene;
         this.text = text;

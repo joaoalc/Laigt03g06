@@ -1,5 +1,10 @@
 class Animation {
-
+    /**
+	 * Animation
+	 * @constructor
+	 * @param initial - Reference to the initial keyframe
+	 * @param end - Reference to final keyframe
+	 */
     constructor(initial, end) {
         if(this.constructor == Animation) {
             throw new Error("Abstract class Animation cannot be instantiated");

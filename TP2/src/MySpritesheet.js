@@ -1,4 +1,11 @@
 class MySpriteSheet {
+    /**
+     * Constructor for MySpriteAnimation class.
+     * @scene - Reference to MyScene object
+     * @texture - The spritesheet's texture
+     * @sizeM - The number of sprites in each line of the spritesheet
+     * @sizeN - The number of sprites in each column of the spritesheet
+     */
     constructor(scene, texture, sizeM, sizeN) {
         this.scene = scene;
         this.texture = texture;
