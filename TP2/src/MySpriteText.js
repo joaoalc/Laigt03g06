@@ -9,8 +9,6 @@ class MySpriteText {
             this.objects[i] = new MyRectangle(this.scene, 0, 0, 1, 1);
         }
 
-        this.lineLimit = 16; //max line length
-
         this.appearance = new CGFappearance(this.scene);
 
         this.textSprite = new CGFtexture(this.scene, "fonts/font3.png"); //text sprite
@@ -35,12 +33,7 @@ class MySpriteText {
         
         this.scene.pushMatrix();
 
-        var lines = Math.floor(this.text.length/this.lineLimit);
-
-        if(lines > 0) // shift sprite to the center
-            this.scene.translate(-this.lineLimit/2, (lines-1)/2, 0);
-        else 
-            this.scene.translate(-this.text.length/2, -0.5, 0);
+        this.scene.translate(-this.text.length/2, -0.5, 0);
         
 
         for(var i = 0; i < this.text.length; ++i) {
@@ -49,7 +42,7 @@ class MySpriteText {
             var character = this.text.charAt(i);
             this.spritesheet.activateCellP(this.getCharacterPosition(character));
 
-            this.scene.translate(i%this.lineLimit, -Math.floor(i/this.lineLimit), 0); 
+            this.scene.translate(i, 0, 0); 
             this.objects[i].display();
 
             this.scene.popMatrix();
