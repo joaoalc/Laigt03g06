@@ -35,15 +35,15 @@ class MyTorus extends CGFobject { //This torus starts to be drawn in the inner l
         var phiSli = 0; //ângulo atual da slice que se está a desenhar
         
 
-        var phiSliInc = (Math.PI * 2) / this.slices; //Incremento do angulo a ser adicionado a cada slice que se desenha e reset no início de cada stack
-        var phiLoopInc = (Math.PI * 2) / this.loops;
+        var phiSliInc = (Math.PI * 2) / this.loops; //Incremento do angulo a ser adicionado a cada slice que se desenha e reset no início de cada stack
+        var phiLoopInc = (Math.PI * 2) / this.slices;
 
-        for(let lo = 0; lo <= this.loops; lo++){
-            if(lo == this.loops){
+        for(let lo = 0; lo <= this.slices; lo++){
+            if(lo == this.slices){
                 phiLoop = 0;//To make 125% sure floating point errors with phiLoop don't affect the texture placement
             }
-            for(let sl = 0; sl <= this.slices; sl++){
-                if(sl == this.slices){
+            for(let sl = 0; sl <= this.loops; sl++){
+                if(sl == this.loops){
                     phiSli = 0; //To make 125% sure floating point errors with phiSli don't affect the texture placement
                 }
                 xPos = (this.outerRadius - (this.innerRadius * Math.cos(phiLoop))) * Math.cos(phiSli);
@@ -53,7 +53,7 @@ class MyTorus extends CGFobject { //This torus starts to be drawn in the inner l
                 this.vertices.push(xPos, yPos, zPos);
                 var normalLength = Math.sqrt((-Math.cos(phiLoop) * Math.cos(phiSli)) * (-Math.cos(phiLoop) * Math.cos(phiSli)) + (-Math.cos(phiLoop) * Math.sin(phiSli)) * (-Math.cos(phiLoop) * Math.sin(phiSli)) +  (-Math.sin(phiLoop)) * (-Math.sin(phiLoop)));
                 this.normals.push(-Math.cos(phiLoop) * Math.cos(phiSli) / normalLength, -Math.cos(phiLoop) * Math.sin(phiSli) / normalLength, -Math.sin(phiLoop) / normalLength);
-                this.texCoords.push(sl / this.slices, lo / this.loops);
+                this.texCoords.push(sl / this.loops, lo / this.slices);
                 phiSli += phiSliInc;
             }
             phiSli = 0;
@@ -62,10 +62,10 @@ class MyTorus extends CGFobject { //This torus starts to be drawn in the inner l
         phiLoop = 0;
 
 
-        for(let lo = 0; lo < this.loops; lo++){
-            for(let sl = 0; sl < this.slices; sl++){
-                this.indices.push(lo * (this.slices + 1) + sl, lo * (this.slices + 1) +  sl + 1, lo * (this.slices + 1) +  sl + this.slices + 1);
-                this.indices.push(lo * (this.slices + 1) + sl + 1, lo * (this.slices + 1) +  sl + this.slices + 2, lo * (this.slices + 1) +  sl + this.slices + 1);
+        for(let lo = 0; lo < this.slices; lo++){
+            for(let sl = 0; sl < this.loops; sl++){
+                this.indices.push(lo * (this.loops + 1) + sl, lo * (this.loops + 1) +  sl + 1, lo * (this.loops + 1) +  sl + this.loops + 1);
+                this.indices.push(lo * (this.loops + 1) + sl + 1, lo * (this.loops + 1) +  sl + this.loops + 2, lo * (this.loops + 1) +  sl + this.loops + 1);
             }
         }   
 
