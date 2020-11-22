@@ -17,7 +17,6 @@ class MySpriteText {
         this.appearance = new CGFappearance(this.scene);
 
         this.textSprite = new CGFtexture(this.scene, "fonts/font3.png"); //text sprite
-        //this.appearance.setTexture(this.textSprite);
 
         this.spritesheet = new MySpriteSheet(this.scene, this.textSprite, 16, 16); // font sheet
         this.sheetSize = 16*16;

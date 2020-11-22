@@ -1,4 +1,4 @@
-class KeyframeAnimation extends Animation{
+class KeyframeAnimation extends Animation {
     /**
 	 * KeyframeAnimation
 	 * @constructor
@@ -10,6 +10,7 @@ class KeyframeAnimation extends Animation{
 	 */
     constructor(scene, id, keyframes){
         super(keyframes[0], keyframes[1]);
+        this.id = id;
         this.scene = scene;
         this.keyframes = keyframes; //Keyframes is an array of Keyframe objects sorted by their instant in ascending order
         
@@ -57,7 +58,7 @@ class KeyframeAnimation extends Animation{
         if(this.finished)
             this.interpolate(this.initial, this.initial, 1);
         else {
-            // 0(no segment time elapsed) to 1(segment complete)
+            // elapsed - 0(no segment time elapsed) to 1(segment complete)
             var elapsed = (time - this.initial.instant)/(this.end.instant - this.initial.instant);
             this.interpolate(this.initial, this.end, elapsed);
         }

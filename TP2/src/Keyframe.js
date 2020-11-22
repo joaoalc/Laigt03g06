@@ -8,8 +8,7 @@ class Keyframe{
 	 * @param scale - 3 element array containing the x, y and z components of this keyframe's scale
 	 * @param next - Reference to the next keyframe in the animation, it's value is assigned in the setNext function, not in the constructor
 	 */
-    constructor(instant, translation, rotation, scale, next) {
-        console.log(instant);
+    constructor(instant, translation, rotation, scale) {
         this.instant = instant;
         this.translation = translation;
         this.rotationX = rotation[0];

@@ -49,26 +49,7 @@ class XMLscene extends CGFscene {
         this.loadingProgress=0;
 
         this.defaultAppearance=new CGFappearance(this);
-        
-        //this.gl.enable(this.gl.BLEND);
-        //this.gl.blendFunc(this.gl.SRC_ALPHA, this.gl.ONE_MINUS_SRC_ALPHA);
-        
-        //this.patch = new Patch(this, 3, 2, 20, 20);
-        //this.barrel = new Barrel(this, 1, 1.8, 2, 15, 15);
-
-        //Testing
-        // this.appearance = new CGFappearance(this);
-		// this.appearance.setAmbient(0.3, 0.3, 0.3, 1);
-		// this.appearance.setDiffuse(0.7, 0.7, 0.7, 1);
-		// this.appearance.setSpecular(0.0, 0.0, 0.0, 1);
-		// this.appearance.setShininess(120);
-
-        // this.cylinder = new MyCylinder(this, 10, 5, 7, 15, 25);
-
-        // this.texture = new CGFtexture(this, "scenes/textures_LAIG_TP1_XML_T3_G06_v1/spritesheet_temp.png");
-
-        // this.spritesheet = new MySpriteSheet(this, this.texture, 3, 2);
-        // this.spritesheetAnimation = new MySpriteAnimation(this.spritesheet, 0, 3, 3);
+    
     }
 
     initMaterials(){
@@ -224,9 +205,6 @@ class XMLscene extends CGFscene {
         if(this.sceneInited){
             for(var key in this.graph.animations) {
                 this.graph.animations[key].update(time/1000);
-                //Testing--------
-                //this.spritesheetAnimation.update(time / 1000);
-                //--------
             }
 
             for(var i = 0; i <  this.graph.spriteAnimations.length; ++i) {
@@ -272,17 +250,9 @@ class XMLscene extends CGFscene {
                 this.graph.disableNormals();
                 this.displayNormals_before = false;
             }
-            //Testing-----
-            // this.setActiveShader(this.spritesheet.shader);
-            // this.appearance.apply();
-            // this.texture.bind();
-            // this.cylinder.display();
-            // this.setActiveShader(this.defaultShader);
-            //------
+
             this.defaultAppearance.apply();
             
-            //this.patch.display();
-            //this.barrel.display();
             // Updates the scene's lights
             this.updateLights();
 

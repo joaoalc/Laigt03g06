@@ -17,7 +17,7 @@ class Animation {
         throw new Error("Abstract method update of Animation class called!");
     }
 
-    apply(scene) {
+    apply() {
         throw new Error("Abstract method apply of Animation class called!");
     }
 }

@@ -10,11 +10,13 @@ class MyNode {
      * MyNode
      * @constructor
      * @param scene - Reference to MyScene object
+     * @param id - Node ID
      * @param texture - CGFtexture object
      * @param material - CGFappearance object
-     * @param transformations - Array with transformations
+     * @param transfMatrix - Matrix of transformations
      * @param descendants - Array of references to descendant nodes
      * @param leaves - Array of CGFobject leaves
+     * @param animation - Reference to the animation applied to the node (null if not animated)
      */
     constructor(scene, id, texture, material, transfMatrix, descendants, leaves, animation) {
         this.id = id;
@@ -25,7 +27,6 @@ class MyNode {
         this.descendants = descendants;
         this.leaves = leaves;
         this.animation = animation;
-        this.appearance = new CGFappearance(this.scene);
     }
 
     /**
@@ -33,9 +34,10 @@ class MyNode {
      */
     display() {
         this.scene.pushMatrix();
-        this.scene.multMatrix(this.transfMatrix); //Adicionar a nova transformação à matriz de transformações para este objeto e todos os seus descendants
+        this.scene.multMatrix(this.transfMatrix); /*Add the new transformation matrix to this node 
+                                                        and all its descendants*/
 
-        // se existir uma animação e esta não tiver começado, não efetuar o display do nó
+        /*if this node is keyframe animated and the animation has not started yet, node cannot be displayed*/
         if((this.animation != null && (this.animation.checkVisibility() == true)) || this.animation == null) {
             if(this.animation != null) {
                 this.animation.apply(this.scene);
