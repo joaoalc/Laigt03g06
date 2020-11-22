@@ -235,73 +235,10 @@
                 <rotation axis="z" angle="0"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
-            <keyframe instant="2">
-                <translation x="0" y="0" z="0"/>
+            <keyframe instant="6">
+                <translation x="3" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="7">
-                <translation x="10" y="5" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="40"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="12">
-                <translation x="20" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="15">
-                <translation x="20" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="360"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="18">
-                <translation x="20" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="720"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="21">
-                <translation x="20" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="1080"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="24">
-                <translation x="20" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="1440"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="27">
-                <translation x="20" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="1800"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="30">
-                <translation x="20" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="2160"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="33">
-                <translation x="20" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="2520"/>
                 <rotation axis="z" angle="0"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
@@ -315,7 +252,21 @@
                 <rotation axis="z" angle="20"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
+            <keyframe instant="0.5">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
             <keyframe instant="1">
+                <translation x="-0.25" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="-20"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="1.5">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
@@ -323,13 +274,27 @@
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
             <keyframe instant="2">
+                <translation x="0.25" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="20"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="2.5">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="3">
                 <translation x="-0.25" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
                 <rotation axis="z" angle="-20"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
-            <keyframe instant="3">
+            <keyframe instant="3.5">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
@@ -343,7 +308,21 @@
                 <rotation axis="z" angle="20"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
+            <keyframe instant="4.5">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
             <keyframe instant="5">
+                <translation x="-0.25" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="-20"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="5.5">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
@@ -351,13 +330,27 @@
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
             <keyframe instant="6">
+                <translation x="0.25" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="20"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="6.5">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="7">
                 <translation x="-0.25" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
                 <rotation axis="z" angle="-20"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
-            <keyframe instant="7">
+            <keyframe instant="7.5">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
@@ -371,6 +364,27 @@
                 <rotation axis="z" angle="20"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
+            <keyframe instant="9">
+                <translation x="-0.12" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="-10"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="9.5">
+                <translation x="0.06" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="5"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="10">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
         </animation>
 
         <animation id="wheels_animation">
@@ -381,11 +395,28 @@
                 <rotation axis="z" angle="0"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
-            <keyframe instant="10">
+            <keyframe instant="6">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
                 <rotation axis="z" angle="-800"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+        </animation>
+
+        <animation id="wheels_bar_animation">
+            <keyframe instant="0">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="6">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="800"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
         </animation>
@@ -2094,8 +2125,7 @@
             <descendants>
                 <noderef id="axles"/>
                 <noderef id="wheels"/>
-                <noderef id="middle_platforms"/>              
-                <noderef id="coupling_rods"/>
+                <noderef id="middle_platforms"/>         
                
             </descendants>
         </node>
@@ -2194,11 +2224,14 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
+            <animationref id="wheels_animation"/>
             <transformations>
                 <translation x="-2" y="0" z="-0.625"/>
             </transformations>
             <descendants>
                 <noderef id="wheel"/>
+                <noderef id="rod1_left"/>
+                <noderef id="rod2_left"/>
             </descendants>
         </node>
         <node id="train_back_right_wheel">
@@ -2206,18 +2239,100 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
+            <animationref id="wheels_animation"/>
+
             <transformations>
                 <translation x="-2" y="0.0" z="0.625"/>
             </transformations>
             <descendants>
                 <noderef id="wheel"/>
+                <noderef id="rod1_right"/>
+                <noderef id="rod2_right"/>
             </descendants>
         </node>
+
+        <node id="rod1_right">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <animationref id="wheels_bar_animation"/>
+
+            <transformations>
+                <translation x="0.45" y="0" z="0.12"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_coupling_rod"/>
+            </descendants>
+        </node>
+        
+        <node id="rod2_right">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <animationref id="wheels_bar_animation"/>
+
+            <transformations>
+                <translation x="-0.45" y="0" z="0.12"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_coupling_rod"/>
+            </descendants>
+        </node>
+
+        <node id="rod1_left">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <animationref id="wheels_bar_animation"/>
+
+            <transformations>
+                <translation x="0.45" y="0" z="-0.12"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_coupling_rod"/>
+            </descendants>
+        </node>
+        
+        <node id="rod2_left">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <animationref id="wheels_bar_animation"/>
+
+            <transformations>
+                <translation x="-0.45" y="0" z="-0.12"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_coupling_rod"/>
+            </descendants>
+        </node>
+
+        <node id="train_coupling_rod">
+            <material id="metal"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <!-- <translation x="0.243" y="0.377" z="0.75"/> -->
+                <rotation axis="y" angle="90.0"/>
+                <!-- <translation x="0" y="0" z="-2.0"/> -->
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+
         <node id="train_middle_left_wheel">
             <material id="null"/>
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
+            <animationref id="wheels_animation"/>
+
             <transformations>
                 <translation x="0" y="0" z="-0.625"/>
             </transformations>
@@ -2230,6 +2345,8 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
+            <animationref id="wheels_animation"/>
+
             <transformations>
                 <translation x="0" y="0.0" z="0.625"/>
             </transformations>
@@ -2237,11 +2354,15 @@
                 <noderef id="wheel"/>
             </descendants>
         </node>
+
+
         <node id="train_front_left_wheel">
             <material id="null"/>
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
+            <animationref id="wheels_animation"/>
+
             <transformations>
                 <translation x="2" y="0" z="-0.625"/>
             </transformations>
@@ -2254,6 +2375,8 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
+            <animationref id="wheels_animation"/>
+
             <transformations>
                 <translation x="2" y="0" z="0.625"/>
             </transformations>
@@ -2304,79 +2427,6 @@
                 <noderef id="cube"/>
             </descendants>
         </node>
-        
-        <!-- Coupling rods -->
-        <node id="coupling_rods">
-            <material id="null"/>
-            <texture id="metal">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-            </transformations>
-            <descendants>
-                <noderef id="train_bottom_left_coupling_rod"/>
-                <noderef id="train_top_left_coupling_rod"/>
-                <noderef id="train_bottom_right_coupling_rod"/>
-                <noderef id="train_top_right_coupling_rod"/>
-            </descendants>
-        </node>
-        
-        <node id="train_bottom_left_coupling_rod">
-            <material id="metal"/>
-            <texture id="null">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="-0.257" y="-0.373" z="-0.75"/>
-                <rotation axis="y" angle="90.0"/>
-                <translation x="0" y="0" z="-2.0"/>
-            </transformations>
-            <descendants>
-                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
-            </descendants>
-        </node>
-        <node id="train_top_left_coupling_rod">
-            <material id="metal"/>
-            <texture id="null">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="0.243" y="0.377" z="-0.75"/>
-                <rotation axis="y" angle="90.0"/>
-                <translation x="0" y="0" z="-2.0"/>
-            </transformations>
-            <descendants>
-                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
-            </descendants>
-        </node>
-        <node id="train_bottom_right_coupling_rod">
-            <material id="metal"/>
-            <texture id="null">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="-0.257" y="-0.373" z="0.75"/>
-                <rotation axis="y" angle="90.0"/>
-                <translation x="0" y="0" z="-2.0"/>
-            </transformations>
-            <descendants>
-                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
-            </descendants>
-        </node>
-        <node id="train_top_right_coupling_rod">
-            <material id="metal"/>
-            <texture id="null">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="0.243" y="0.377" z="0.75"/>
-                <rotation axis="y" angle="90.0"/>
-                <translation x="0" y="0" z="-2.0"/>
-            </transformations>
-            <descendants>
-                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
-            </descendants>
-        </node>
 
         <node id="wheel">
             <material id="null"/>
@@ -2384,7 +2434,6 @@
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
 
-            <animationref id="wheels_animation"/>
 
             <transformations>
             </transformations>
