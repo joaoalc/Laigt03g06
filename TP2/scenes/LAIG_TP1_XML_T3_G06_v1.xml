@@ -1250,7 +1250,7 @@
         </node>
         <node id="station_tower_screen">
             <material id="bricks_regular"/>
-            <texture id="brick_wall">
+            <texture id="clear">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
@@ -1258,9 +1258,24 @@
                 <scale sx="1.5" sy="1.5" sz="1"/>
             </transformations>
             <descendants>
+                <noderef id="station_tower_screen_frame"/>
                 <leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="31"/>
             </descendants>
         </node>
+
+        <node id="station_tower_screen_frame">
+            <material id="black_metal"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="45"/>
+            </transformations>
+            <descendants>
+                <leaf type="torus" inner="0.03" outer="0.73" slices="10" loops="4"/>
+            </descendants>
+        </node>
+
         <node id="station_barrels">
             <material id="grey_metal"/>
             <texture id="wood">
@@ -1352,7 +1367,7 @@
                 <translation x="0" y="0" z="0"/>
             </transformations>
             <descendants>
-                <leaf type="torus" inner="0.03" outer="0.4" slices="40" loops="40"/>
+                <leaf type="torus" inner="0.03" outer="0.4" slices="20" loops="40"/>
             </descendants>
         </node>
         <node id="barrel_bot_hoop">
@@ -1364,7 +1379,7 @@
                 <translation x="0" y="0" z="1"/>
             </transformations>
             <descendants>
-                <leaf type="torus" inner="0.03" outer="0.4" slices="40" loops="40"/>
+                <leaf type="torus" inner="0.03" outer="0.4" slices="20" loops="40"/>
             </descendants>
         </node>
         <node id="barrel_top_mid_hoop">
@@ -1416,7 +1431,7 @@
                 <translation x="0" y="0" z="0.45"/>
             </transformations>
             <descendants>
-                <leaf type="torus" inner="0.06" outer="0.7" slices="50" loops="30"/>
+                <leaf type="torus" inner="0.06" outer="0.7" slices="20" loops="50"/>
             </descendants>
         </node>
 
