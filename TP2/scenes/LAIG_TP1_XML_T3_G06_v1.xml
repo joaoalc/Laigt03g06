@@ -1758,12 +1758,32 @@
                     <controlpoint x="-0.5" y="0" z="0.4"/>
                 </leaf>
                 <leaf type="patch" npointsU="4" npointsV="2" npartsU="16" npartsV="8">
+                    <controlpoint x="0.465" y="0" z="0.4"/>
+                    <controlpoint x="0.465" y="0" z="0.4"/>
+                    <controlpoint x="0.1" y="0.0" z="0.4"/>
+                    <controlpoint x="0.1" y="0.53" z="0.4"/>
+                    <controlpoint x="-0.2" y="0.0" z="0.4"/>
+                    <controlpoint x="-0.2" y="0.1" z="0.4"/>
+                    <controlpoint x="-0.5" y="0" z="0.4"/>
+                    <controlpoint x="-0.5" y="0" z="0.4"/>
+                </leaf>
+                <leaf type="patch" npointsU="4" npointsV="2" npartsU="16" npartsV="8">
                     <controlpoint x="0.465" y="0" z="-0.4"/>
                     <controlpoint x="0.465" y="0" z="-0.4"/>
                     <controlpoint x="0.1" y="0.0" z="-0.4"/>
                     <controlpoint x="0.1" y="0.53" z="-0.4"/>
                     <controlpoint x="-0.2" y="0.0" z="-0.4"/>
                     <controlpoint x="-0.2" y="0.1" z="-0.4"/>
+                    <controlpoint x="-0.5" y="0" z="-0.4"/>
+                    <controlpoint x="-0.5" y="0" z="-0.4"/>
+                </leaf>
+                <leaf type="patch" npointsU="4" npointsV="2" npartsU="16" npartsV="8">
+                    <controlpoint x="0.465" y="0" z="-0.4"/>
+                    <controlpoint x="0.465" y="0" z="-0.4"/>
+                    <controlpoint x="0.1" y="0.53" z="-0.4"/>
+                    <controlpoint x="0.1" y="0.0" z="-0.4"/>
+                    <controlpoint x="-0.2" y="0.1" z="-0.4"/>
+                    <controlpoint x="-0.2" y="0.0" z="-0.4"/>
                     <controlpoint x="-0.5" y="0" z="-0.4"/>
                     <controlpoint x="-0.5" y="0" z="-0.4"/>
                 </leaf>
