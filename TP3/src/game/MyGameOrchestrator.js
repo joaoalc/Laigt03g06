@@ -1,4 +1,4 @@
-class GameOrchestrator {
+class MyGameOrchestrator {
     constructor() {
         
     }

@@ -1,4 +1,4 @@
-class Piece extends CGFobject {
+class MyPiece extends CGFobject {
     constructor(scene, colour) {
         super(scene);
         this.colour = colour;

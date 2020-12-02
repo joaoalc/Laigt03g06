@@ -14,7 +14,6 @@ class MyGameBoard extends CGFobject {
             var startDiag = this.startDiagonals[line - 1];
             for(var col = 1; col <= this.lineLengths[line-1]; ++col) {
                 var diagonal = startDiag + col - 1;
-                console.log(line+":"+diagonal);
                 this.tiles[[line, diagonal]] = new MyTile(this.scene, this);
             }
         }

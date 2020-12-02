@@ -55,9 +55,9 @@ class XMLscene extends CGFscene {
         this.testBoard = new MyGameBoard(this);
         this.testBoard.create();
 
-        this.testPiece1 = new Piece(this, "purple");
-        this.testPiece2 = new Piece(this, "green");
-        this.testPiece3 = new Piece(this, "purple");
+        this.testPiece1 = new MyPiece(this, "purple");
+        this.testPiece2 = new MyPiece(this, "green");
+        this.testPiece3 = new MyPiece(this, "purple");
         this.testBoard.addPiece(this.testPiece1, 1, 1);
         this.testBoard.addPiece(this.testPiece2, 3, 4);
         this.testBoard.addPiece(this.testPiece3, 23, 13);
