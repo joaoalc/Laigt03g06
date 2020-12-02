@@ -1,7 +1,9 @@
 class Piece extends CGFobject {
-    constructor(colour) {
+    constructor(scene, colour) {
+        super(scene);
         this.colour = colour;
         this.tile = null;
+        this.obj = new MyCylinder(this.scene, 0.2, 0.4, 0.4, 20, 5);
     }
 
     getTile() {
@@ -13,6 +15,9 @@ class Piece extends CGFobject {
     }
 
     display() {
-        
+        this.scene.pushMatrix();
+        this.scene.translate(0, 0, 0);
+        this.obj.display();
+        this.scene.popMatrix();
     }
 }

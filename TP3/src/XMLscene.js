@@ -39,7 +39,7 @@ class XMLscene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
 
         this.axis = new CGFaxis(this);
-        this.displayAxis = false;
+        this.displayAxis = true;
         this.displayNormals = false;
         this.displayNormals_before = false;
 
@@ -51,6 +51,13 @@ class XMLscene extends CGFscene {
         this.defaultAppearance=new CGFappearance(this); 
 
         this.setPickEnabled(true);
+
+        this.testBoard = new MyGameBoard(this);
+        this.testBoard.create();
+
+        this.testPiece = new Piece(this, "purple");
+        this.testBoard.addPiece(this.testPiece, 1, 1);
+
     
     }
 
@@ -276,8 +283,10 @@ class XMLscene extends CGFscene {
             // Updates the scene's lights
             this.updateLights();
 
+            this.testBoard.display();
+
             // Displays the scene (MySceneGraph function).
-            this.graph.displayScene();
+            //this.graph.displayScene();
             
         }
         else
