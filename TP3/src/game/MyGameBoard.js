@@ -5,9 +5,6 @@ class MyGameBoard extends CGFobject {
         this.startDiagonals = [1,1,1,1,1,2,2,2,3,3,4,4,5,5,6,6,7,8,8,9,10,11,12];
         this.startLines = [1,1,1,1,1,2,2,2,3,3,4,4,5,5,6,6,7,8,8,9,10,11,12];
         this.lineLengths = [2,3,4,5,6,5,6,7,6,7,6,7,6,7,6,7,6,5,6,5,4,3,2];
-        this.columnLengths = [5,8,9,10,11,12,11,12,11,10,9,8,5];
-        //this.horShift = 1 - Math.cos(Math.PI/3)/2;
-        //this.vertShift = Math.sin(Math.PI/3);
         this.horShift = 1.5;
         this.vertShift = Math.sin(Math.PI/3)/2;
     }
@@ -21,13 +18,6 @@ class MyGameBoard extends CGFobject {
                 this.tiles[[line, diagonal]] = new MyTile(this.scene, this);
             }
         }
-        // var numCols = this.columnLengths.length;
-        // for(var col = 1; col <= numCols; ++col) {
-        //     for(var line = 1; line <= this.columnLengths[col-1]; ++line) {
-        //         var diagonal = this.startDiagonals[line-1] + col - 1;
-        //         this.tiles[[line, diagonal]] = new MyTile(this.scene, this);
-        //     }
-        // }
     }
 
     // get piece on given tile
@@ -58,9 +48,9 @@ class MyGameBoard extends CGFobject {
     display() {
         this.scene.pushMatrix();
 
-        //var numCols = this.columnLengths.length;
+        this.scene.rotate(-Math.PI/2, 1, 0, 0);
+
         this.scene.translate(-3.5 * this.horShift + this.horShift/2, 11.5 * this.vertShift - this.vertShift/2, 0);
-        //this.scene.rotate(Math.PI/2, 1, 0, 0);
 
         for(var line = 1; line <= 23; ++line) {
             this.scene.pushMatrix();
@@ -79,20 +69,5 @@ class MyGameBoard extends CGFobject {
             this.scene.popMatrix();
         }
         this.scene.popMatrix();
-
-        // for(var col = 1; col <= numCols; ++col) {
-        //     this.scene.pushMatrix();
-        //     var colVertShift = this.columnLengths[col-1]/2 * this.vertShift - this.vertShift/2;
-        //     this.scene.translate(this.horShift * (col-1), colVertShift, 0);
-        //     for(var line = 1; line <= this.columnLengths[col-1]; ++line) {
-        //         this.scene.pushMatrix();
-        //         this.scene.translate(0,-this.vertShift*(line-1),0);
-        //         var diagonal = this.startDiagonals[line-1] + col - 1;
-        //         this.tiles[[line, diagonal]].display();
-        //         this.scene.popMatrix();
-        //     }
-        //     this.scene.popMatrix();
-        // }
-        // this.scene.popMatrix();
     }
 }
