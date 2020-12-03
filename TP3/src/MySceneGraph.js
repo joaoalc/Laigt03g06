@@ -1017,6 +1017,54 @@ class MySceneGraph {
 
             return new Barrel(this.scene, info[0], info[1], info[2], info[3], info[4]);
         }
+        else if(type == "gameboard") {
+
+             var children = node.children;
+             attributeNames = ["base", "middle", "height", "stacks", "slices"];
+             attributeTypes = ["float", "float", "float", "integer", "integer"];
+
+             for(var i = 0; i < attributeNames.length; i++) {
+                 if(attributeTypes[i] == "float") {
+                     var attribute = this.reader.getFloat(node, attributeNames[i]);
+                     if (!(attribute != null && !isNaN(attribute)))
+                         return "unable to identify '" + attributeNames[i] + "' attribute on gameboard " + messageError;
+                 } else if(attributeTypes[i] == "integer") {
+                     var attribute = this.reader.getInteger(node, attributeNames[i]);
+                     if (!(attribute != null && !isNaN(attribute)))
+                         return "unable to identify '" + attributeNames[i] + "' attribute on gameboard " + messageError;
+                 } else {
+                     var attribute = this.reader.getString(node, attributeNames[i]);
+                     if (attribute == null || attribute == "")
+                         return "unable to identify '" + attributeNames[i] + "' attribute on gameboard " + messageError;
+                 }
+                 info.push(attribute);
+             }
+
+            return new MyGameBoard(this.scene);
+        }
+        else if(type == "piecebox"){
+            var children = node.children;
+            attributeNames = ["style", "color"];
+            attributeTypes = ["string", "string"];
+            for(var i = 0; i < attributeNames.length; i++) {
+                if(attributeTypes[i] == "float") {
+                    var attribute = this.reader.getFloat(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on piecebox " + messageError;
+                } else if(attributeTypes[i] == "integer") {
+                    var attribute = this.reader.getInteger(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on piecebox " + messageError;
+                } else {
+                    var attribute = this.reader.getString(node, attributeNames[i]);
+                    if (attribute == null || attribute == "")
+                        return "unable to identify '" + attributeNames[i] + "' attribute on piecebox " + messageError;
+                }
+                info.push(attribute);
+            }
+            
+            return new MyPieceBox(this.scene, info[0], info[1]);
+        }
         else 
             return "invalid leaf type";
     }

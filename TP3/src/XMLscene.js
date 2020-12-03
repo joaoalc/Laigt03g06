@@ -52,15 +52,15 @@ class XMLscene extends CGFscene {
 
         this.setPickEnabled(true);
 
-        this.testBoard = new MyGameBoard(this);
-        this.testBoard.create();
+        //this.testBoard = new MyGameBoard(this);
+        //this.testBoard.create();
 
-        this.testPiece1 = new MyPiece(this, "purple");
-        this.testPiece2 = new MyPiece(this, "green");
-        this.testPiece3 = new MyPiece(this, "purple");
-        this.testBoard.addPiece(this.testPiece1, 1, 1);
-        this.testBoard.addPiece(this.testPiece2, 3, 4);
-        this.testBoard.addPiece(this.testPiece3, 23, 13);
+        //this.testPiece1 = new MyPiece(this, "purple");
+        //this.testPiece2 = new MyPiece(this, "green");
+        //this.testPiece3 = new MyPiece(this, "purple");
+        //this.testBoard.addPiece(this.testPiece1, 1, 1);
+        //this.testBoard.addPiece(this.testPiece2, 3, 4);
+        //this.testBoard.addPiece(this.testPiece3, 23, 13);
     
     }
 
@@ -143,9 +143,14 @@ class XMLscene extends CGFscene {
 				for (var i = 0; i < this.pickResults.length; i++) {
 					var obj = this.pickResults[i][0];
 					if (obj) {
-						var customId = this.pickResults[i][1];
-						console.log("Picked object: " + obj + ", with pick id " + customId);						
-					}
+                        var customId = this.pickResults[i][1];
+                        if(customId > 100){
+						    console.log("Picked tile at line" + Math.floor(customId / 100) + " and column " + customId % 100);						
+                        }
+                        else{
+                            console.log("Picked box with id = " + customId);
+                        }
+                    }
 				}
 				this.pickResults.splice(0, this.pickResults.length);
 			}
@@ -301,10 +306,10 @@ class XMLscene extends CGFscene {
             // Updates the scene's lights
             this.updateLights();
 
-            this.testBoard.display();
+            //this.testBoard.display();
 
             // Displays the scene (MySceneGraph function).
-            //this.graph.displayScene();
+            this.graph.displayScene();
             
         }
         else

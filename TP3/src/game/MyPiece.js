@@ -14,7 +14,16 @@ class MyPiece extends CGFobject {
         this.tile = tile;
     }
 
-    display() {
+    display(orapp, greenapp, purpapp) {
+        if(this.colour == "orange"){
+            orapp.apply();
+        }
+        else if(this.colour == "green"){
+            greenapp.apply();
+        }
+        else if(this.colour == "purple"){
+            purpapp.apply();
+        }
         this.scene.pushMatrix();
         this.scene.translate(0, 0, 0);
         this.obj.display();
