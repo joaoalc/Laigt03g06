@@ -62,7 +62,7 @@ class MyGameBoard extends CGFobject {
                 this.scene.pushMatrix();
                 this.scene.translate(this.horShift * (col - 1), 0, 0);
                 var diagonal = startDiagonal + col - 1;
-                this.tiles[[line, diagonal]].display();
+                this.tiles[[line, diagonal]].display(line, diagonal);
                 this.scene.popMatrix();
             }
             this.scene.popMatrix();
