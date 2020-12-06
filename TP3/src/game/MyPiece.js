@@ -14,19 +14,29 @@ class MyPiece extends CGFobject {
         this.tile = tile;
     }
 
-    display(orapp, greenapp, purpapp) {
+    display(orange, green, purple) { //TODO : melhorar isto (ta bastante mau)
         if(this.colour == "orange"){
-            orapp.apply();
+            orange.bind();
         }
         else if(this.colour == "green"){
-            greenapp.apply();
+            green.bind();
         }
         else if(this.colour == "purple"){
-            purpapp.apply();
+            purple.bind();
         }
         this.scene.pushMatrix();
         this.scene.translate(0, 0, 0);
         this.obj.display();
         this.scene.popMatrix();
+
+        if(this.colour == "orange"){
+            orange.unbind();
+        }
+        else if(this.colour == "green"){
+            green.unbind();
+        }
+        else if(this.colour == "purple"){
+            purple.unbind();
+        }
     }
 }

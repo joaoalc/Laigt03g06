@@ -9,34 +9,9 @@ class MyGameBoard extends CGFobject {
         this.vertShift = Math.sin(Math.PI/3)/2;
         this.create();
 
-        /*<material id="piece_green">
-            <shininess value="5.0"/>
-            <ambient r="0" g="0.9" b="0.25" a="1.0"/>
-            <diffuse r="0.15" g="1" b="0.3" a="1.0"/>
-            <specular r="0" g="0.25" b="0.1" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>*/
-
-        this.greenMat = new CGFappearance(this.scene);
-        this.greenMat.setShininess(5.0);
-        this.greenMat.setSpecular(0, 0.9, 0.25, 1);
-        this.greenMat.setDiffuse(0.15, 3, 0.3, 1);
-        this.greenMat.setAmbient(0, 0.25, 0.1, 1);
-        this.greenMat.setEmission(0.0, 0.0, 0.0, 1);
-
-        this.orangeMat = new CGFappearance(this.scene);
-        this.orangeMat.setShininess(5.0);
-        this.orangeMat.setSpecular(0.7, 0.5, 0, 1);
-        this.orangeMat.setDiffuse(0.25, 0.2, 0, 1);
-        this.orangeMat.setAmbient(0.2, 0.15, 0, 1);
-        this.orangeMat.setEmission(0, 0, 0, 1);
-
-        this.purpleMat = new CGFappearance(this.scene);
-        this.purpleMat.setShininess(5.0);
-        this.purpleMat.setSpecular(0, 0.35, 0.8, 1);
-        this.purpleMat.setDiffuse(0.15, 1, 0.3, 1);
-        this.purpleMat.setAmbient(0, 0.25, 0.1, 1);
-        this.purpleMat.setEmission(0.0, 0.0, 0.0, 1);
+        this.purple = new CGFtexture(this.scene, "images/purple.png");
+        this.orange = new CGFtexture(this.scene, "images/orange.png");
+        this.green = new CGFtexture(this.scene, "images/green.png");
 
         var testPiece1 = new MyPiece(this.scene, "purple");
         var testPiece2 = new MyPiece(this.scene, "green");
@@ -99,7 +74,7 @@ class MyGameBoard extends CGFobject {
                 this.scene.pushMatrix();
                 this.scene.translate(this.horShift * (col - 1), 0, 0);
                 var diagonal = startDiagonal + col - 1;
-                this.tiles[[line, diagonal]].display(line, diagonal, this.orangeMat, this.greenMat, this.purpleMat);
+                this.tiles[[line, diagonal]].display(line, diagonal, this.orange, this.green, this.purple);
                 this.scene.popMatrix();
             }
             this.scene.popMatrix();

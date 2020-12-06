@@ -61,6 +61,10 @@ class XMLscene extends CGFscene {
         //this.testBoard.addPiece(this.testPiece1, 1, 1);
         //this.testBoard.addPiece(this.testPiece2, 3, 4);
         //this.testBoard.addPiece(this.testPiece3, 23, 13);
+
+        this.gameboard = null; //GAMEBOARD
+        this.boxes = [];
+
     
     }
 
@@ -228,6 +232,8 @@ class XMLscene extends CGFscene {
         this.initMaterials();
         this.initTextures();
         
+        this.gameOrchestrator = new MyGameOrchestrator(this, this.gameboard);
+
         this.sceneInited = true;
         this.initCameras();
         this.interface.addGUIelements(this.cameraIds[this.activeCamera]);

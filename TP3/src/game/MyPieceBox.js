@@ -4,6 +4,7 @@ class MyPieceBox extends CGFobject{
         super(scene);
         this.style = style;
         this.color = color;
+        this.nPieces = 42;
         if(this.color == "orange"){
             this.id = 1;
         }
@@ -38,7 +39,9 @@ class MyPieceBox extends CGFobject{
     }
 
     display(){
-        this.scene.registerForPick(this.id, this);
+        if(this.nPieces > 0)
+            this.scene.registerForPick(this.id, this);
+        else this.scene.registerForPick(0, null);
         this.rectangle.display();
     }
 }

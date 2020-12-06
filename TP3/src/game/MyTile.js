@@ -14,13 +14,13 @@ class MyTile extends CGFobject {
         this.piece = piece;
     }
 
-    display(line, diagonal, orapp, greenapp, purpapp) {
+    display(line, diagonal, orange, green, purple) {
         if(this.piece == null){
             this.scene.registerForPick(diagonal + line * 100, this);
-        }
+        } else this.scene.registerForPick(0, null);
         //display da tile e da peça(se existir)
         this.obj.display();
         if(this.piece != null)
-            this.piece.display(orapp, greenapp, purpapp);
+            this.piece.display(orange, green, purple);
     }
 }

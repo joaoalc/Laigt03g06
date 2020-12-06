@@ -1039,8 +1039,9 @@ class MySceneGraph {
                  }
                  info.push(attribute);
              }
-
-            return new MyGameBoard(this.scene);
+            
+            this.scene.gameboard = new MyGameBoard(this.scene);
+            return this.scene.gameboard;
         }
         else if(type == "piecebox"){
             var children = node.children;
@@ -1062,8 +1063,9 @@ class MySceneGraph {
                 }
                 info.push(attribute);
             }
-            
-            return new MyPieceBox(this.scene, info[0], info[1]);
+            var newBox = new MyPieceBox(this.scene, info[0], info[1]);
+            this.scene.boxes.push(newBox);
+            return newBox;
         }
         else 
             return "invalid leaf type";
