@@ -5,13 +5,13 @@ class MyPieceBox extends CGFobject{
         this.style = style;
         this.color = color;
         this.nPieces = 42;
-        if(this.color == "orange"){
+        if(this.color == "purple"){
             this.id = 1;
         }
-        else if(this.color == "green"){
+        else if(this.color == "orange"){
             this.id = 2;
         }
-        else if(this.color == "purple"){
+        else if(this.color == "green"){
             this.id = 3;
         }
         else{

@@ -111,9 +111,9 @@
             </transformations>
             <descendants>
                 <noderef id="game_board"/>
-                <noderef id="orange_box"/>
+                <!-- <noderef id="orange_box"/>
                 <noderef id="green_box"/>
-                <noderef id="purple_box"/>
+                <noderef id="purple_box"/> -->
             </descendants>
         </node>
         <!-- Game board -->
@@ -126,50 +126,6 @@
             </transformations>
             <descendants>
                 <leaf type="gameboard" base = "1" middle = "1" height = "1" stacks = "1" slices = "1"/>
-            </descendants>
-        </node>
-
-        <!-- Piece boxes -->
-        <node id="orange_box">
-            <material id="box_orange"/>
-            <texture id="clear">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="-7" y="0" z="0"/>
-                <rotation axis="x" angle="270"/>
-            </transformations>
-            <descendants>
-                <!--<noderef id="box"/>-->
-                <leaf type="piecebox" style="regular" color="orange"/>
-            </descendants>
-        </node>
-        <node id="green_box">
-            <material id="box_green"/>
-            <texture id="clear">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="7" y="0" z="7"/>
-                <rotation axis="x" angle="270"/>
-            </transformations>
-            <descendants>
-                <!--<noderef id="box"/>-->
-                <leaf type="piecebox" style="regular" color="green"/>
-            </descendants>
-        </node>
-        <node id="purple_box">
-            <material id="box_purple"/>
-            <texture id="clear">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="7" y="0" z="-7"/>
-                <rotation axis="x" angle="270"/>
-            </transformations>
-            <descendants>
-                <!--<noderef id="box"/>-->
-                <leaf type="piecebox" style="regular" color="purple"/>
             </descendants>
         </node>
     </nodes>

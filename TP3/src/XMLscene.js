@@ -260,7 +260,8 @@ class XMLscene extends CGFscene {
 						var customId = this.pickResults[i][1];
 						console.log("Picked object: " + obj + ", with pick id " + customId);						
 					}
-				}
+                }
+                this.gameOrchestrator.managePick(this.pickResults);
 				this.pickResults.splice(0, this.pickResults.length);
 			}
 		}
@@ -271,7 +272,7 @@ class XMLscene extends CGFscene {
      */
     display() {
         
-		this.logPicking();
+        this.logPicking();
 		this.clearPickRegistration();
         // ---- BEGIN Background, camera and axis setup
 
