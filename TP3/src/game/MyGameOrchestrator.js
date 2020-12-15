@@ -1,7 +1,11 @@
 class MyGameOrchestrator {
     constructor(scene, gameboard) {
         this.gameboard = gameboard;
-        //this.prolog = new MyPrologInterface();
+        this.prolog = new MyPrologInterface();
+    }
+
+    startGame(){
+        this.prolog.makeRequest("play");
     }
 
     update(time) {

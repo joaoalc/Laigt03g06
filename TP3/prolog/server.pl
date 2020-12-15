@@ -104,10 +104,13 @@ print_header_line(_).
 
 % Require your Prolog Files here
 
+use_module(alliances/alliances.pl).
+
 parse_input(handshake, handshake).
 parse_input(test(C,N), Res) :- test(C,Res,N).
 parse_input(quit, goodbye).
-
+parse_input(bruh, xd).
+parse_input(play, 0) :- play.
 test(_,[],N) :- N =< 0.
 test(A,[A|Bs],N) :- N1 is N-1, test(A,Bs,N1).
 	
