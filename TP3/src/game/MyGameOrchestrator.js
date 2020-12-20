@@ -7,12 +7,12 @@ class MyGameOrchestrator {
         this.gameboard = gameboard;
         //this.prolog = new MyPrologInterface();
         this.state = PICK_PIECE;
-        this.animator = new MyAnimator(this, []);
+        this.animator = new MyAnimator(this);
         
     }
 
     update(time) {
-
+        this.animator.update(time);
     }
 
     managePick(results) {

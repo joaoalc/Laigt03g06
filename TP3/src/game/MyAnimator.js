@@ -1,7 +1,7 @@
 class MyAnimator {
-    constructor(orchestrator, sequence) {
+    constructor(orchestrator) {
         this.orchestrator = orchestrator;
-        this.sequence = sequence;
+        this.sequence = [];
     }
 
     reset() {
@@ -13,6 +13,6 @@ class MyAnimator {
     }
 
     update(time) {
-        
+
     }
 }

@@ -248,6 +248,8 @@ class XMLscene extends CGFscene {
             for(var i = 0; i <  this.graph.spriteAnimations.length; ++i) {
                 this.graph.spriteAnimations[i].update(time/1000);
             }
+
+            this.gameOrchestrator.update(time);
         }
     }
 
