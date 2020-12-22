@@ -249,6 +249,8 @@ class XMLscene extends CGFscene {
             for(var i = 0; i <  this.graph.spriteAnimations.length; ++i) {
                 this.graph.spriteAnimations[i].update(time/1000);
             }
+
+            this.gameOrchestrator.update(time);
         }
     }
 
@@ -262,7 +264,8 @@ class XMLscene extends CGFscene {
                         console.log("Picked object: " + obj + ", with pick id " + customId);
                         this.gameOrchestrator.prolog.makeRequest("bruh");
 					}
-				}
+                }
+                this.gameOrchestrator.managePick(this.pickResults);
 				this.pickResults.splice(0, this.pickResults.length);
 			}
 		}
@@ -273,7 +276,7 @@ class XMLscene extends CGFscene {
      */
     display() {
         
-		this.logPicking();
+        this.logPicking();
 		this.clearPickRegistration();
         // ---- BEGIN Background, camera and axis setup
 

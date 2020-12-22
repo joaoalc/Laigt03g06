@@ -13,6 +13,11 @@ class MyGameBoard extends CGFobject {
         this.orange = new CGFtexture(this.scene, "images/orange.png");
         this.green = new CGFtexture(this.scene, "images/green.png");
 
+        this.pieceBoxes = [];
+        this.pieceBoxes["purple"] = new MyPieceBox(this.scene, "regular", "purple");
+        this.pieceBoxes["orange"] = new MyPieceBox(this.scene, "regular", "orange");
+        this.pieceBoxes["green"] = new MyPieceBox(this.scene, "regular", "green");
+
         var testPiece1 = new MyPiece(this.scene, "purple");
         var testPiece2 = new MyPiece(this.scene, "green");
         var testPiece3 = new MyPiece(this.scene, "purple");
@@ -29,6 +34,10 @@ class MyGameBoard extends CGFobject {
                 this.tiles[[line, diagonal]] = new MyTile(this.scene, this);
             }
         }
+    }
+
+    getPieceBox(colour) {
+        return this.pieceBoxes[colour];
     }
 
     // get piece on given tile
@@ -79,6 +88,17 @@ class MyGameBoard extends CGFobject {
             }
             this.scene.popMatrix();
         }
+
+        this.scene.pushMatrix();
+            this.scene.translate(0, 3, 0);
+            this.pieceBoxes["purple"].display();
+            this.scene.translate(4.5, 0, 0);
+            this.pieceBoxes["orange"].display();
+            this.scene.translate(4.5, 0, 0);
+            this.pieceBoxes["green"].display();
+        this.scene.popMatrix();
+
+
         this.scene.popMatrix();
     }
 }
