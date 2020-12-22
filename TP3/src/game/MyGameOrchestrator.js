@@ -5,7 +5,7 @@ class MyGameOrchestrator {
     constructor(scene, gameboard) {
         this.scene = scene;
         this.gameboard = gameboard;
-        //this.prolog = new MyPrologInterface();
+        this.prolog = new MyPrologInterface();
         this.state = PICK_PIECE;
         this.animator = new MyAnimator(this);
         
@@ -34,14 +34,13 @@ class MyGameOrchestrator {
     onObjectSelected(object, id) {
         if(object instanceof MyPieceBox) {
             if(object.nPieces > 0) {
-                console.log(this.state);
                 this.pickedColor = object.color;
                 this.state = PICK_TILE;
             }
         }
         else if(object instanceof MyTile) {
-            console.log(this.state);
             if(object.piece == null && this.state == PICK_TILE) {
+                console.log("set piece");
                 this.pickedTile = object;
                 object.setPiece(new MyPiece(this.scene, this.pickedColor));
                 this.gameboard.getPieceBox(this.pickedColor).nPieces--;
