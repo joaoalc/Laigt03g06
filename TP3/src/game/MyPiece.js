@@ -4,6 +4,7 @@ class MyPiece extends CGFobject {
         this.colour = colour;
         this.tile = null;
         this.obj = new MyCylinder(this.scene, 0.2, 0.4, 0.4, 20, 5);
+        this.animation = null;
     }
 
     getTile() {
@@ -25,7 +26,10 @@ class MyPiece extends CGFobject {
             purple.bind();
         }
         this.scene.pushMatrix();
-        this.scene.translate(0, 0, 0);
+
+        if(this.animation != null)
+            this.animation.apply();
+            
         this.obj.display();
         this.scene.popMatrix();
 

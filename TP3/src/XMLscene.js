@@ -233,6 +233,7 @@ class XMLscene extends CGFscene {
         this.initTextures();
         
         this.gameOrchestrator = new MyGameOrchestrator(this, this.gameboard);
+        this.gameOrchestrator.startGame();
 
         this.sceneInited = true;
         this.initCameras();
@@ -260,7 +261,8 @@ class XMLscene extends CGFscene {
 					var obj = this.pickResults[i][0];
 					if (obj) {
 						var customId = this.pickResults[i][1];
-						console.log("Picked object: " + obj + ", with pick id " + customId);						
+                        console.log("Picked object: " + obj + ", with pick id " + customId);
+                        this.gameOrchestrator.prolog.makeRequest("bruh");
 					}
                 }
                 this.gameOrchestrator.managePick(this.pickResults);

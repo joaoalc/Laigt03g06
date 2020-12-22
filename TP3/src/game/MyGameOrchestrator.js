@@ -5,10 +5,14 @@ class MyGameOrchestrator {
     constructor(scene, gameboard) {
         this.scene = scene;
         this.gameboard = gameboard;
-        //this.prolog = new MyPrologInterface();
+        this.prolog = new MyPrologInterface();
         this.state = PICK_PIECE;
-        this.animator = new MyAnimator(this);
+        this.animator = new MyAnimator(scene, this);
         
+    }
+
+    startGame(){
+        this.prolog.makeRequest("play");
     }
 
     update(time) {
@@ -30,24 +34,28 @@ class MyGameOrchestrator {
     onObjectSelected(object, id) {
         if(object instanceof MyPieceBox) {
             if(object.nPieces > 0) {
-                console.log(this.state);
                 this.pickedColor = object.color;
                 this.state = PICK_TILE;
             }
         }
         else if(object instanceof MyTile) {
-            console.log(this.state);
             if(object.piece == null && this.state == PICK_TILE) {
-                this.pickedTile = object;
-                object.setPiece(new MyPiece(this.scene, this.pickedColor));
-                this.gameboard.getPieceBox(this.pickedColor).nPieces--;
-                this.pickedColor = null;
-                this.pickedTile = null;
-                this.state = PICK_PIECE;
+                this.userPlay(object);
             }
         } else {
             console.log("Picked invalid object!");
         }
+    }
+
+    userPlay(tile) {
+        this.pickedTile = tile;
+        var newPiece = new MyPiece(this.scene, this.pickedColor);
+        tile.setPiece(newPiece);
+        this.gameboard.getPieceBox(this.pickedColor).nPieces--;
+        this.animator.addMove(new MyGameMove(this.scene, this.gameboard, newPiece, tile));
+        this.pickedColor = null;
+        this.pickedTile = null;
+        this.state = PICK_PIECE;
     }
 
     display() {

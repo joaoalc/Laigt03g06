@@ -12,17 +12,19 @@ class MyPrologInterface {
         request.send();
     }
 
-    makeRequest()
+    makeRequest(requestString)
     {
-        // Get Parameter Values
-        var requestString = document.querySelector("#query_field").value;				
-        
         // Make Request
-        getPrologRequest(requestString, handleReply);
+        this.getPrologRequest(requestString, this.handleReply, this.handleError);
     }
     
     //Handle the Reply
     handleReply(data){
-        document.querySelector("#query_result").innerHTML=data.target.response;
+        console.log(data.target.response);
+    }
+
+    //Handle the Reply
+    handleError(){
+        console.log(">:[");
     }
 }
