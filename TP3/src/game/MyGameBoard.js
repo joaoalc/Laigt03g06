@@ -13,17 +13,21 @@ class MyGameBoard extends CGFobject {
         this.orange = new CGFtexture(this.scene, "images/orange.png");
         this.green = new CGFtexture(this.scene, "images/green.png");
 
+        this.purpleWon = 0;
+        this.orangeWon = 0;
+        this.greenWon = 0;
+
         this.pieceBoxes = [];
         this.pieceBoxes["purple"] = new MyPieceBox(this.scene, "regular", "purple");
         this.pieceBoxes["orange"] = new MyPieceBox(this.scene, "regular", "orange");
         this.pieceBoxes["green"] = new MyPieceBox(this.scene, "regular", "green");
 
-        var testPiece1 = new MyPiece(this.scene, "purple");
-        var testPiece2 = new MyPiece(this.scene, "green");
-        var testPiece3 = new MyPiece(this.scene, "purple");
-        this.addPiece(testPiece1, 1, 1);
-        this.addPiece(testPiece2, 3, 4);
-        this.addPiece(testPiece3, 23, 13);
+        // var testPiece1 = new MyPiece(this.scene, "purple");
+        // var testPiece2 = new MyPiece(this.scene, "green");
+        // var testPiece3 = new MyPiece(this.scene, "purple");
+        // this.addPiece(testPiece1, 1, 1);
+        // this.addPiece(testPiece2, 3, 4);
+        // this.addPiece(testPiece3, 23, 13);
     }
 
     create() {
@@ -65,6 +69,15 @@ class MyGameBoard extends CGFobject {
         this.tiles[[line, diagonal]].setPiece(piece);
     }
 
+    updateColoursWon(purple1, orange1, green1, purple2, orange2, green2) {
+        if(purple1 || purple2) 
+            this.purpleWon = 1;
+        if(orange1 || orange2) 
+            this.orangeWon = 1;
+        if(green1 || green2) 
+            this.greenWon = 1;
+    }
+
     display() {
         this.scene.pushMatrix();
 
@@ -83,10 +96,15 @@ class MyGameBoard extends CGFobject {
                 this.scene.pushMatrix();
                 this.scene.translate(this.horShift * (col - 1), 0, 0);
                 var diagonal = startDiagonal + col - 1;
-                this.tiles[[line, diagonal]].display(line, diagonal, this.orange, this.green, this.purple);
+                this.tiles[[line, diagonal]].display(line, diagonal);
                 this.scene.popMatrix();
             }
             this.scene.popMatrix();
+        }
+
+        for(var tile in this.tiles) {
+            if(this.tiles[tile].piece != null)
+                this.tiles[tile].piece.display(this.orange, this.green, this.purple);
         }
 
         this.scene.pushMatrix();

@@ -7,7 +7,7 @@ class MyGameOrchestrator {
         this.gameboard = gameboard;
         this.prolog = new MyPrologInterface();
         this.state = PICK_PIECE;
-        this.animator = new MyAnimator(this);
+        this.animator = new MyAnimator(scene, this);
         
     }
 
@@ -40,17 +40,22 @@ class MyGameOrchestrator {
         }
         else if(object instanceof MyTile) {
             if(object.piece == null && this.state == PICK_TILE) {
-                console.log("set piece");
-                this.pickedTile = object;
-                object.setPiece(new MyPiece(this.scene, this.pickedColor));
-                this.gameboard.getPieceBox(this.pickedColor).nPieces--;
-                this.pickedColor = null;
-                this.pickedTile = null;
-                this.state = PICK_PIECE;
+                this.userPlay(object);
             }
         } else {
             console.log("Picked invalid object!");
         }
+    }
+
+    userPlay(tile) {
+        this.pickedTile = tile;
+        var newPiece = new MyPiece(this.scene, this.pickedColor);
+        tile.setPiece(newPiece);
+        this.gameboard.getPieceBox(this.pickedColor).nPieces--;
+        this.animator.addMove(new MyGameMove(this.scene, this.gameboard, newPiece, tile));
+        this.pickedColor = null;
+        this.pickedTile = null;
+        this.state = PICK_PIECE;
     }
 
     display() {
