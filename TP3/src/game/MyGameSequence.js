@@ -7,9 +7,15 @@ class MyGameSequence {
         this.moves.push(move);
     }
 
-    getUndoState() {
+    removeMove(move) {
         this.moves.pop();
-        return this.moves[this.moves.length - 1];
+    }
+
+    getUndoState() {
+        if(this.moves.length > 1) {
+            this.moves.pop();
+            return this.moves[this.moves.length - 1].gamestate;
+        }
     }
 
     getReplay() {

@@ -14,6 +14,7 @@ class MyPrologInterface {
 
     makeRequest(requestString)
     {
+        console.log(requestString);
         // Make Request
         this.getPrologRequest(requestString, this.handleReply, this.handleError);
     }

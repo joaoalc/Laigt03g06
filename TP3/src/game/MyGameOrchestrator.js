@@ -8,11 +8,12 @@ class MyGameOrchestrator {
         this.prolog = new MyPrologInterface();
         this.state = PICK_PIECE;
         this.animator = new MyAnimator(scene, this);
-        
+        this.coloursWon = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
+        this.player = 1;
     }
 
     startGame(){
-        this.prolog.makeRequest("play");
+        //this.prolog.makeRequest("play");
     }
 
     update(time) {
@@ -41,22 +42,45 @@ class MyGameOrchestrator {
         }
         else if(object instanceof MyTile) {
             if(object.piece == null && this.state == PICK_TILE) {
-                this.userPlay(object);
+                this.userPlay(object, [Math.floor(id/100), id%100]);
             }
         } else {
             console.log("Picked invalid object!");
         }
     }
 
-    userPlay(tile) {
+    undo() { //DOESNT WORKKK
+        var undoState = this.animator.undo();
+        if(undoState == -1) {
+            this.gameboard = new MyGameBoard(this.scene);
+        } else this.gameboard = undoState;
+    }
+
+    userPlay(tile, coords) {
         this.pickedTile = tile;
         var newPiece = new MyPiece(this.scene, this.pickedColor);
-        tile.setPiece(newPiece);
+        this.onMove(coords, this.pickedColor);
         this.gameboard.getPieceBox(this.pickedColor).nPieces--;
+        tile.setPiece(newPiece);
         this.animator.addMove(new MyGameMove(this.scene, this.gameboard, newPiece, tile));
         this.pickedColor = null;
         this.pickedTile = null;
         this.state = PICK_PIECE;
+    }
+
+    onMove(coords, colour) {
+        var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
+        this.prolog.makeRequest("player_move("+ gameState + ",[" + coords[0]+","+coords[1]+","+colour+"],"+this.player+")");
+    }
+
+    coloursWonString() {
+        var result = "";
+        for(var i = 0; i < this.coloursWon.length; ++i) {
+            if(i != (this.coloursWon.length - 1))
+                result += "'" + this.coloursWon[i] + "'-"
+            else result += "'"+this.coloursWon[i]+"'";
+        }
+        return result;
     }
 
     display() {

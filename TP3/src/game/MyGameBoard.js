@@ -84,6 +84,26 @@ class MyGameBoard extends CGFobject {
             this.greenWon = 1;
     }
 
+    boardString() {
+        var result = "["
+        for(var line = 1; line <= 23; ++line) {
+            var lineArr = [];
+            var startDiag = this.startDiagonals[line - 1];
+            for(var col = 1; col <= this.lineLengths[line-1]; ++col) {
+                var diagonal = startDiag + col - 1;
+                var cellValue;
+                if(this.tiles[[line, diagonal]].piece != null)
+                    cellValue = this.tiles[[line, diagonal]].piece.colour;
+                else cellValue = "empty";
+                lineArr.push(cellValue);
+            }
+            result += "[" + lineArr.join() + "]";
+            if(line < 23)
+                result += ",";
+        }
+        return result + "]";
+    }
+
     display() {
         this.scene.pushMatrix();
 
