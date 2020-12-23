@@ -233,7 +233,7 @@ class XMLscene extends CGFscene {
         this.initTextures();
         
         this.gameOrchestrator = new MyGameOrchestrator(this, this.gameboard);
-        this.gameOrchestrator.startGame();
+        this.gameOrchestrator.startGame(0);
 
         this.sceneInited = true;
         this.initCameras();
