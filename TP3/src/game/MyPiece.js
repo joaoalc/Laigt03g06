@@ -16,31 +16,34 @@ class MyPiece extends CGFobject {
     }
 
     display(orange, green, purple) { //TODO : melhorar isto (ta bastante mau)
-        if(this.colour == "orange"){
-            orange.bind();
-        }
-        else if(this.colour == "green"){
-            green.bind();
-        }
-        else if(this.colour == "purple"){
-            purple.bind();
-        }
-        this.scene.pushMatrix();
 
-        if(this.animation != null)
-            this.animation.apply();
-            
-        this.obj.display();
-        this.scene.popMatrix();
+        if(this.animation != null && this.animation.started) {
+            if(this.colour == "orange"){
+                orange.bind();
+            }
+            else if(this.colour == "green"){
+                green.bind();
+            }
+            else if(this.colour == "purple"){
+                purple.bind();
+            }
+            this.scene.pushMatrix();
 
-        if(this.colour == "orange"){
-            orange.unbind();
-        }
-        else if(this.colour == "green"){
-            green.unbind();
-        }
-        else if(this.colour == "purple"){
-            purple.unbind();
+            if(this.animation != null) 
+                this.animation.apply();
+                
+            this.obj.display();
+            this.scene.popMatrix();
+
+            if(this.colour == "orange"){
+                orange.unbind();
+            }
+            else if(this.colour == "green"){
+                green.unbind();
+            }
+            else if(this.colour == "purple"){
+                purple.unbind();
+            }
         }
     }
 }
