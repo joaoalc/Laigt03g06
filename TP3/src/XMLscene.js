@@ -141,25 +141,25 @@ class XMLscene extends CGFscene {
         this.interface.setActiveCamera(this.camera);
     }
 
-    logPicking() {
-		if (this.pickMode == false) {
-			if (this.pickResults != null && this.pickResults.length > 0) {
-				for (var i = 0; i < this.pickResults.length; i++) {
-					var obj = this.pickResults[i][0];
-					if (obj) {
-                        var customId = this.pickResults[i][1];
-                        if(customId > 100){
-						    console.log("Picked tile at line" + Math.floor(customId / 100) + " and column " + customId % 100);						
-                        }
-                        else{
-                            console.log("Picked box with id = " + customId);
-                        }
-                    }
-				}
-				this.pickResults.splice(0, this.pickResults.length);
-			}
-		}
-	}
+    // logPicking() {
+	// 	if (this.pickMode == false) {
+	// 		if (this.pickResults != null && this.pickResults.length > 0) {
+	// 			for (var i = 0; i < this.pickResults.length; i++) {
+	// 				var obj = this.pickResults[i][0];
+	// 				if (obj) {
+    //                     var customId = this.pickResults[i][1];
+    //                     if(customId > 100){
+	// 					    console.log("Picked tile at line" + Math.floor(customId / 100) + " and column " + customId % 100);						
+    //                     }
+    //                     else{
+    //                         console.log("Picked box with id = " + customId);
+    //                     }
+    //                 }
+	// 			}
+	// 			this.pickResults.splice(0, this.pickResults.length);
+	// 		}
+	// 	}
+	// }
 
     /**
      * Initializes the scene lights with the values read from the XML file.
@@ -262,7 +262,7 @@ class XMLscene extends CGFscene {
 					if (obj) {
 						var customId = this.pickResults[i][1];
                         console.log("Picked object: " + obj + ", with pick id " + customId);
-                        this.gameOrchestrator.prolog.makeRequest("bruh");
+                        //this.gameOrchestrator.prolog.makeRequest("bruh");
 					}
                 }
                 this.gameOrchestrator.managePick(this.pickResults);

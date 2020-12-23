@@ -12,11 +12,11 @@ class MyPrologInterface {
         request.send();
     }
 
-    makeRequest(requestString)
+    makeRequest(requestString, onSuccess)
     {
         console.log(requestString);
         // Make Request
-        this.getPrologRequest(requestString, this.handleReply, this.handleError);
+        this.getPrologRequest(requestString, onSuccess, this.handleError);
     }
     
     //Handle the Reply

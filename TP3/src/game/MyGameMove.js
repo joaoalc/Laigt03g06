@@ -24,7 +24,6 @@ class MyGameMove {
 
         var tilePosition = ["t"];
         tilePosition.push(...this.tile.position);
-        console.log(tilePosition);
 
         keyframes[1] = new Keyframe(1, tilePosition, [0, 0, 0], ["s", 1.0, 1.0, 1.0]);
 
