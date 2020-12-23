@@ -1,8 +1,9 @@
 class MyTile extends CGFobject {
-    constructor(scene, board) {
+    constructor(scene, board, position) {
         super(scene);
         this.board = board;
         this.piece = null;
+        this.position = position;
         this.obj = new MyCylinder(this.scene, 0.01, 0.5, 0.5, 6, 1);
     }
 

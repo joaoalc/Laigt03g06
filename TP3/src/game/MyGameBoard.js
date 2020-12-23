@@ -33,9 +33,15 @@ class MyGameBoard extends CGFobject {
     create() {
         for(var line = 1; line <= 23; ++line) {
             var startDiag = this.startDiagonals[line - 1];
+
+            var lineLength = this.lineLengths[line-1];
+            var position1 = [(10 - (lineLength + (lineLength-1)*0.5))/2, -this.vertShift * (line-1), 0];
+
             for(var col = 1; col <= this.lineLengths[line-1]; ++col) {
                 var diagonal = startDiag + col - 1;
-                this.tiles[[line, diagonal]] = new MyTile(this.scene, this);
+
+                var position2 = [position1[0] + this.horShift * (col - 1), position1[1], position1[2]];
+                this.tiles[[line, diagonal]] = new MyTile(this.scene, this, position2);
             }
         }
     }

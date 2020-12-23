@@ -74,7 +74,6 @@ class KeyframeAnimation extends Animation {
 
         mat4.translate(this.matrix, this.matrix, [translationX, translationY, translationZ]);
 
-
         var rotationX = startKey.rotationX * (1-elapsed) + endKey.rotationX * elapsed;
         var rotationY = startKey.rotationY * (1-elapsed) + endKey.rotationY * elapsed;
         var rotationZ = startKey.rotationZ * (1-elapsed) + endKey.rotationZ * elapsed;
@@ -82,7 +81,6 @@ class KeyframeAnimation extends Animation {
         mat4.rotate(this.matrix, this.matrix, DEGREE_TO_RAD * rotationX, [1,0,0]);
         mat4.rotate(this.matrix, this.matrix, DEGREE_TO_RAD * rotationY, [0,1,0]);
         mat4.rotate(this.matrix, this.matrix, DEGREE_TO_RAD * rotationZ, [0,0,1]);
-
 
         var scaleX = startKey.scale[1] * (1-elapsed) + endKey.scale[1] * elapsed;
         var scaleY = startKey.scale[2] * (1-elapsed) + endKey.scale[2] * elapsed;

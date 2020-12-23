@@ -15,13 +15,20 @@ class MyGameMove {
         var keyframes = [];
 
         if(this.piece.colour == "purple") 
-            keyframes[0] = new Keyframe(0.1, [0, 3, 0], [0, 0, 0], [1, 1, 1]);
+            keyframes[0] = new Keyframe(0.1, ["t", 0, 3.0, 0], [0, 0, 0], ["s", 1.0, 1.0, 1.0]);
         else if(this.piece.colour == "orange") 
-            keyframes[0] = new Keyframe(0.1, [4.5, 3, 0], [0, 0, 0], [1, 1, 1]);
+            keyframes[0] = new Keyframe(0.1, ["t", 4.5, 3.0, 0], [0, 0, 0], ["s", 1.0, 1.0, 1.0]);
         else 
-            keyframes[0] = new Keyframe(0.1, [9, 3, 0], [0, 0, 0], [1, 1, 1]);
+            keyframes[0] = new Keyframe(0.1, ["t", 9.0, 3.0, 0], [0, 0, 0], ["s", 1.0, 1.0, 1.0]);
 
-        keyframes[1] = new Keyframe(2, [9, 3, 0], [0, 0, 0], [1, 1, 1]);
+
+        var tilePosition = ["t"];
+        tilePosition.push(...this.tile.position);
+        console.log(tilePosition);
+
+        keyframes[1] = new Keyframe(1, tilePosition, [0, 0, 0], ["s", 1.0, 1.0, 1.0]);
+
+        keyframes[0].setNext(keyframes[1]);
 
         return keyframes;
     }

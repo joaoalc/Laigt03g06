@@ -16,6 +16,7 @@ class MyGameOrchestrator {
     }
 
     update(time) {
+        time /= 1000;
         this.animator.update(time);
     }
 
