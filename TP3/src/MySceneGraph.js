@@ -22,12 +22,17 @@ class MySceneGraph {
      * @param {string} filename - File that defines the 3D scene
      * @param {XMLScene} scene
      */
-    constructor(filename, scene) {
+    constructor(filename, scene, mainGraph) {
+        this.mainGraph = mainGraph;
         this.loadedOk = null;
 
         // Establish bidirectional references between scene and graph.
         this.scene = scene;
-        scene.graph = this;
+        //Main graph contains essential game elements and such
+        if(mainGraph){
+            scene.graph = this;
+        }
+        
 
         this.nodes = [];
 
@@ -67,7 +72,9 @@ class MySceneGraph {
         this.loadedOk = true;
 
         // As the graph loaded ok, signal the scene so that any additional initialization depending on the graph can take place
-        this.scene.onGraphLoaded();
+        if(this.mainGraph){
+            this.scene.onGraphLoaded();
+        }
     }
 
     /*

@@ -17,6 +17,7 @@ serialInclude(['../lib/CGF.js', './src/XMLscene.js', './src/MySceneGraph.js', '.
                   './src/spritesheet/MySpriteText.js', './src/spritesheet/MySpriteAnimation.js', './src/primitives/Plane.js', './src/primitives/Patch.js', './src/primitives/Barrel.js', 
                   './src/MyCameras.js', './src/game/MyGameOrchestrator.js', './src/game/MyTile.js', './src/game/MyPiece.js', './src/game/MyGameBoard.js',
                   './src/game/MyGameMove.js', './src/game/MyGameSequence.js', './src/game/MyPieceBox.js', './src/game/MyAnimator.js', './src/game/MyPrologInterface.js',
+                  './src/obj_reader/CGFOBJModel.js', './src/obj_reader/CGFResourceReader.js',
 
 main=function()
 {
@@ -37,10 +38,16 @@ main=function()
 	
     var filename=getUrlVars()['file'] || "LAIG_TP2_XML_T3_G06_v1.xml";
 
+    myScene.sceneNames = {0 : "Train", 1 : "Beach"};
+    var filenames = {0 : 'backgroundScenes/TrainScene.xml', 1 : 'backgroundScenes/BeachScene.xml'};
+    for(sceneNumber in filenames){
+        myScene.graphs[sceneNumber] = new MySceneGraph(filenames[sceneNumber], myScene, false);
+    }
+
 	// create and load graph, and associate it to scene. 
 	// Check console for loading errors
-	var myGraph = new MySceneGraph(filename, myScene);
-	
+	var myGraph = new MySceneGraph(filename, myScene, true);
+    
 	// start
     app.run();
 }

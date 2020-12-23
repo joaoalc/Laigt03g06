@@ -64,12 +64,18 @@ class MyInterface extends CGFinterface {
         cameras.closed = false;
         var camera = cameras.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));
         camera.setValue(activeCamera);
-
         var lights = this.gui.addFolder("Lights");
         lights.closed = false;
         for(var i = 0; i < this.scene.lights.length; i++) {
             if(this.scene.lightsStatus["light"+i] != null) 
                 lights.add(this.scene.lightsStatus, 'light' + i).onChange(this.scene.updateLights.bind(this.scene));
         }
+    }
+
+    addSceneSelectors(currentScene){
+        var backgroundScenes = this.gui.addFolder("backgroundScenes");
+        backgroundScenes.closed = false;
+        var backgroundScene = backgroundScenes.add(this.scene, 'activeBackgroundScene', Object.keys(this.scene.sceneNames)).name('Current Scene').onChange(this.scene.updateBackgroundScene.bind(this.scene));
+        backgroundScene.setValue(currentScene);
     }
 }

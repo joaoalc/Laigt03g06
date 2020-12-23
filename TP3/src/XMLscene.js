@@ -52,6 +52,12 @@ class XMLscene extends CGFscene {
 
         this.setPickEnabled(true);
 
+        this.graphs = {}; //scene's graphs
+        this.activeBackgroundScene = 0; //Starting scene's id
+        this.sceneNames = []; //Dictionary whose keys are the scene's ids and values are their names
+        
+        this.motorcycle = new CGFOBJModel(this, 'models/bad_motorcycle.obj');
+
         //this.testBoard = new MyGameBoard(this);
         //this.testBoard.create();
 
@@ -135,10 +141,11 @@ class XMLscene extends CGFscene {
      * Updated the currently active camera. Also resets it's attributes to the ones set to at the beggining.
      */
     updateCamera() {
-
         this.camera = this.cameras[Object.keys(this.cameras)[this.activeCamera]];
         this.camera.resetCamera();
         this.interface.setActiveCamera(this.camera);
+    }
+    updateBackgroundScene() {
     }
 
     logPicking() {
@@ -238,6 +245,7 @@ class XMLscene extends CGFscene {
         this.sceneInited = true;
         this.initCameras();
         this.interface.addGUIelements(this.cameraIds[this.activeCamera]);
+        this.interface.addSceneSelectors(0);
     }
 
     update(time) {
@@ -321,7 +329,7 @@ class XMLscene extends CGFscene {
 
             // Displays the scene (MySceneGraph function).
             this.graph.displayScene();
-            
+            this.graphs[this.activeBackgroundScene].displayScene();
         }
         else
         {
