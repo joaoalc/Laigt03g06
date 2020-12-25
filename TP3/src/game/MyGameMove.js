@@ -8,7 +8,7 @@ class MyGameMove {
 
         var keyframes = this.getKeyframes();
 
-        this.piece.animation = new KeyframeAnimation(scene, 0, keyframes);
+        this.piece.animation = new PieceAnimation(scene, 0, keyframes);
     }
 
     getKeyframes() {
