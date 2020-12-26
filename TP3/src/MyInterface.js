@@ -60,6 +60,11 @@ class MyInterface extends CGFinterface {
      * @param activeCamera - currently active camera's ID 
      */
     addGUIelements(activeCamera){
+
+        var game = this.gui.addFolder("Game controls");
+        game.closed = false;
+        game.add(this.scene, 'undo').name('Undo');
+
         var cameras = this.gui.addFolder("Cameras");
         cameras.closed = false;
         var camera = cameras.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));

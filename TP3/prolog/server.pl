@@ -120,6 +120,8 @@ parse_input(player_move(_, _, _), invalid_move).
 parse_input(getBotMove(GameState, Player, Level, [Row, Diagonal, Colour]), Row-Diagonal-Colour) :-
 	choose_move(GameState, Player, Level, [Row, Diagonal, Colour]).
 
+parse_input(updateColours(GameState, Nplayer), Colours) :-
+	updateColours(GameState, _-Colours, Nplayer).
 
 test(_,[],N) :- N =< 0.
 test(A,[A|Bs],N) :- N1 is N-1, test(A,Bs,N1).

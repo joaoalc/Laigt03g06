@@ -1,8 +1,7 @@
 class MyGameMove {
     constructor(scene, gamestate, piece, tile) {
         this.scene = scene;
-        this.gamestate = new MyGameBoard(scene); //gameboard state before the move
-        Object.assign(this.gamestate, gamestate);
+        this.gamestate = gamestate;
         this.piece = piece;
         this.tile = tile;
 
@@ -34,5 +33,9 @@ class MyGameMove {
 
     animate(t) {
         this.piece.animation.update(t);
+    }
+
+    undo() {
+        this.tile.setPiece(null);
     }
 }

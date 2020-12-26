@@ -12,13 +12,8 @@ class MyAnimator {
 
     }
 
-    undo() { //DOESNT WORK
-        if(this.sequence.length > 1) {
-            return this.sequence.getUndoState();
-        } else {
-            this.sequence.removeMove();
-            return -1;
-        }
+    undo() { 
+        return this.sequence.undo();
     }
 
     addMove(move) {

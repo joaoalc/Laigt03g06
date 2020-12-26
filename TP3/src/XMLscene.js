@@ -240,6 +240,11 @@ class XMLscene extends CGFscene {
         this.interface.addGUIelements(this.cameraIds[this.activeCamera]);
     }
 
+    undo() {
+        console.log("UNDO");
+        this.gameOrchestrator.undo();
+    }
+
     update(time) {
         if(this.sceneInited){
             for(var key in this.graph.animations) {

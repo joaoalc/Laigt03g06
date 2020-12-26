@@ -11,7 +11,6 @@ class MyGameOrchestrator {
         this.animator = new MyAnimator(scene, this);
         this.interface = new MyGameInterface(scene, this);
         this.currentPlayer = -1;
-        this.playing = false;
     }
 
     startGame(firstPlayer){
@@ -57,22 +56,26 @@ class MyGameOrchestrator {
         }
     }
 
-    undo() { //DOESNT WORKKK
-        var undoState = this.animator.undo();
-        if(undoState == -1) {
-            this.gameboard = new MyGameBoard(this.scene);
-        } else this.gameboard = undoState;
+    undo() { 
+        var undoResult = this.animator.undo();
+        if(undoResult != -1) {
+            this.coloursWon = undoResult;
+            this.currentPlayer = this.currentPlayer % 2 + 1;
+            var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
+            this.prolog.makeRequest("updateColours("+ gameState + "," + this.currentPlayer+")", this.prolog.parseUpdateColours);
+        }
     }
 
     userPlay(tile, coords) {
         this.state = PLAY;
         this.pickedTile = tile;
         var newPiece = new MyPiece(this.scene, this.pickedColor);
+        var coloursWonMove = this.coloursWon.slice();
+        this.animator.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile));
         this.onMove(coords, this.pickedColor);
         this.gameboard.getPieceBox(this.pickedColor).nPieces--;
         tile.setPiece(newPiece);
-        this.gameboard.updateColoursWon(this.coloursWon);
-        this.animator.addMove(new MyGameMove(this.scene, this.gameboard, newPiece, tile));
+        //this.gameboard.updateColoursWon(this.coloursWon);
         this.pickedColor = null;
         this.pickedTile = null;
     }
