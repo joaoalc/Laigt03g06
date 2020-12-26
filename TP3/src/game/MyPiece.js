@@ -17,7 +17,7 @@ class MyPiece extends CGFobject {
 
     display(orange, green, purple) { //TODO : melhorar isto (ta bastante mau)
 
-        if(this.animation != null && this.animation.started) {
+        if(this.animation != null && this.animation.checkVisibility()) {
             if(this.colour == "orange"){
                 orange.bind();
             }

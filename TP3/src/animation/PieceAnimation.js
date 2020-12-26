@@ -14,6 +14,12 @@ class PieceAnimation extends Animation {
         this.scene = scene;
         this.keyframes = keyframes; //Keyframes is an array of Keyframe objects sorted by their instant in ascending order
         
+        this.initAnim();
+    }
+
+    initAnim() {
+        this.initial = this.keyframes[0];
+        this.end = this.keyframes[1];
         this.currentKeyframeIndex = null;
         this.nextKeyframeIndex = null;
 
@@ -31,6 +37,10 @@ class PieceAnimation extends Animation {
 
     checkVisibility() { //Returns true if it's visible
         return this.started;
+    }
+
+    reset() {
+        this.initAnim();
     }
 
     update(time){ 

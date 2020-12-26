@@ -1,13 +1,16 @@
 class MyGameMove {
-    constructor(scene, gamestate, piece, tile) {
+    constructor(scene, gamestate, piece, tile, ) {
         this.scene = scene;
         this.gamestate = gamestate;
         this.piece = piece;
         this.tile = tile;
 
-        var keyframes = this.getKeyframes();
+        this.initAnimation();
+    }
 
-        this.piece.animation = new PieceAnimation(scene, 0, keyframes);
+    initAnimation() {
+        var keyframes = this.getKeyframes();
+        this.piece.animation = new PieceAnimation(this.scene, 0, keyframes);
     }
 
     getKeyframes() {
@@ -31,8 +34,16 @@ class MyGameMove {
         return keyframes;
     }
 
+    resetAnim() {
+        this.piece.animation.reset();
+    }
+
     animate(t) {
         this.piece.animation.update(t);
+    }
+
+    animationFinished() {
+        return this.piece.animation.finished;
     }
 
     undo() {

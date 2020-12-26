@@ -13,10 +13,6 @@ class MyGameBoard extends CGFobject {
         this.orange = new CGFtexture(this.scene, "images/orange.png");
         this.green = new CGFtexture(this.scene, "images/green.png");
 
-        this.purpleWon = 0;
-        this.orangeWon = 0;
-        this.greenWon = 0;
-
         this.pieceBoxes = [];
         this.pieceBoxes["purple"] = new MyPieceBox(this.scene, "regular", "purple");
         this.pieceBoxes["orange"] = new MyPieceBox(this.scene, "regular", "orange");
@@ -35,11 +31,7 @@ class MyGameBoard extends CGFobject {
         // this.addPiece(testPiece3, 23, 13);
     }
 
-    create() {
-        this.purpleWon = 0;
-        this.orangeWon = 0;
-        this.greenWon = 0;
-        
+    create() { 
         for(var line = 1; line <= 23; ++line) {
             var startDiag = this.startDiagonals[line - 1];
 

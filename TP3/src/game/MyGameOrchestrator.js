@@ -3,6 +3,7 @@ const PLAYING = 1;
 const PICKED_COLOUR = 2;
 const PLAY = 3;
 const END_GAME = 4;
+const MOVIE = 5;
 
 class MyGameOrchestrator {
     constructor(scene, gameboardPos) {
@@ -52,6 +53,11 @@ class MyGameOrchestrator {
 
         if(this.checkOver())
             return;
+
+        if(this.state == MOVIE) {
+            this.playMovie();
+            return;
+        }
 
         if(playerType == 'C') {
             if(this.state == PLAYING) {
@@ -187,6 +193,16 @@ class MyGameOrchestrator {
         return [this.gameboard.getPieceBox("purple").nPieces, 
                 this.gameboard.getPieceBox("orange").nPieces, 
                 this.gameboard.getPieceBox("green").nPieces];
+    }
+
+    startMovie() {
+        this.state = MOVIE;
+        this.coloursWonMovie = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
+        this.animator.start();
+    }
+
+    playMovie() {
+
     }
 
     display() {
