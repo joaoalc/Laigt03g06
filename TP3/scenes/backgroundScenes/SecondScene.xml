@@ -3,100 +3,36 @@
         <reference length="3"/>
         <root id="RootNode"/>
     </initials>
-    <views default="defaultCamera"> 
-        <perspective id="defaultCamera" near="0.1" far="500" angle="45">
+    <views default="defaulteCamera1"> 
+        <perspective id="defaulteCamera1" near="0.1" far="500" angle="45">
             <from x="0" y="10" z="10"/>
             <to x="0" y="0" z="0"/>
         </perspective>
-        <perspective id="Overview" near="0.1" far="500" angle="45">
-            <from x="18" y="5" z="15"/>
-            <to x="0" y="0" z="0"/>
-        </perspective>
-        <perspective id="Back" near="0.1" far="500" angle="45">
-            <from x="-15" y="5" z="-3"/>
-            <to x="0" y="0" z="0"/>
-        </perspective>
-        <perspective id="Train" near="0.1" far="500" angle="45">
-            <from x="7" y="1" z="5"/>
-            <to x="0" y="0.5" z="0"/>
-        </perspective>
-        <ortho id="Side View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
-            <from x="5" y="0" z="10"/>
-            <to x="0" y="0" z="0"/>
-        </ortho>
-        <ortho id="Front View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
-            <from x="10" y="0" z="0"/>
-            <to x="0" y="0" z="0"/>
-        </ortho>
     </views>
     <illumination>
-        <ambient r="0.9" g="0.9" b="0.9" a="1.0"/>
+        <ambient r="0.1" g="0.9" b="0.9" a="1.0"/>
         <background r="0.1" g="0.7" b="1.0" a="1.0"/>
     </illumination>
     <lights>
-        <light id="headlight">
+        <light id="specialLight1">
             <enable value="1"/>
-            <position x="2.4127" y="1.086" z="0" w="1.0" />
-            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                   
+            <position x="0" y="0" z="0" w="1.0" />
+            <ambient r="1" g="0.1" b="0.1" a="1.0" />                   
             <diffuse r="0.8" g="0.8" b="0.8" a="0.8" />             
             <specular r="0.8" g="0.8" b="0.8" a="1.0" />            
         </light>
-        <light id="furnace">
-            <enable value="1"/>
-            <position x="-1.3" y="-0.2" z="0" w="1.0" />
-            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                   
-            <diffuse r="0.8" g="0.8" b="0.8" a="0.8" />             
-            <specular r="0.8" g="0.8" b="0.8" a="1.0" />  
-        </light>
-        <light id="sun">
-            <enable value="1"/>
-            <position x="10" y="10" z="10" w="1.0" />
-            <ambient r="0.25" g="0.25" b="0.25" a="1.0" />                   
-            <diffuse r="0.7" g="0.7" b="0.7" a="1.0" />             
-            <specular r="0.7" g="0.7" b="0.7" a="1.0" />            
-        </light>
     </lights>
     <textures>
-        <texture id="testTex" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_left.png"/>
+        <texture id="testTexture" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/Pose.png"/>
     </textures>
     <spritesheets>
-        <spritesheet id="spriteanim_test" path="scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_spritesheet.png" sizeM="8" sizeN="4"/>
-        <spritesheet id="furnace_sprite" path="scenes/textures_LAIG_TP2_XML_T3_G06_v1/furnace_spritesheet.png" sizeM="5" sizeN="3"/>
     </spritesheets>
     <materials>
-        <material id="Generic">
+        <material id="hello_world">
             <shininess value="10.0"/>
             <ambient r="0.5" g="0.5" b="0.5" a="1.0"/>
             <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
             <specular r="0.2" g="0.2" b="0.2" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="board">
-            <shininess value="5.0"/>
-            <ambient r="0.15" g="0.25" b="0.55" a="1.0"/>
-            <diffuse r="0.35" g="0.55" b="0.75" a="1.0"/>
-            <specular r="0.05" g="0.1" b="0.2" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="box_orange">
-            <shininess value="5.0"/>
-            <ambient r="0.7" g="0.5" b="0.0" a="1.0"/>
-            <diffuse r="0.5" g="0.3" b="0" a="1.0"/>
-            <specular r="0.25" g="0.15" b="0" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="box_green">
-            <shininess value="5.0"/>
-            <ambient r="0.15" g="0.9" b="0.25" a="1.0"/>
-            <diffuse r="0.15" g="0.5" b="0.3" a="1.0"/>
-            <specular r="0.0" g="0.25" b="0.1" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="box_purple">
-            <shininess value="5.0"/>
-            <ambient r="0.3" g="0.05" b="0.55" a="1.0"/>
-            <diffuse r="0.45" g="0.1" b="0.75" a="1.0"/>
-            <specular r="0.1" g="0" b="0.2" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
     </materials>
@@ -104,29 +40,27 @@
     </animations>
     <nodes>
         <node id="RootNode">
-            <material id="Generic"/>
+            <material id="null"/>
             <texture id="clear">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
+                <translation x="8" y="0" z="0"/>
             </transformations>
             <descendants>
-                <noderef id="game_board"/>
-                <!-- <noderef id="orange_box"/>
-                <noderef id="green_box"/>
-                <noderef id="purple_box"/> -->
+                <noderef id="game_boord"/>
             </descendants>
         </node>
         <!-- Game board -->
-        <node id="game_board">
-            <material id="board"/>
-            <texture id="testTex">
+        <node id="game_boord">
+            <material id="hello_world"/>
+            <texture id="testTexture">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
             </transformations>
             <descendants>
-                <leaf type="gameboard" base = "1" middle = "1" height = "1" stacks = "1" slices = "1"/>
+                <leaf type="cylinder" bottomRadius = "5" topRadius = "3" slices = "5" stacks = "7" height = "5"/>
             </descendants>
         </node>
     </nodes>

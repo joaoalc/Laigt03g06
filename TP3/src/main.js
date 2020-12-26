@@ -38,8 +38,8 @@ main=function()
 	
     var filename=getUrlVars()['file'] || "LAIG_TP2_XML_T3_G06_v1.xml";
 
-    myScene.sceneNames = {"Train" : 0};//, 1 : "Beach"};
-    var filenames = {0 : 'backgroundScenes/OGScene.xml'};
+    myScene.sceneNames = {"Train" : 0, "Beach" : 1};
+    var filenames = {0 : 'backgroundScenes/OGScene.xml', 1: 'backgroundScenes/SecondScene.xml'};
     for(sceneNumber in filenames){
         myScene.graphs[sceneNumber] = new MySceneGraph(filenames[sceneNumber], myScene, sceneNumber);
     }
