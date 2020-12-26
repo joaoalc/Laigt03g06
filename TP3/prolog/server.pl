@@ -117,7 +117,7 @@ parse_input(player_move(GameState, Move, Nplayer), Colours) :-
 parse_input(player_move(_, _, _), invalid_move).
 
 
-parse_input(getBotMove(GameState, Player, Level, [Row, Diagonal, Colour]), Row-Diagonal-Colour) :-
+parse_input(getBotMove(GameState, Player, Level), Row-Diagonal-Colour) :-
 	choose_move(GameState, Player, Level, [Row, Diagonal, Colour]).
 
 parse_input(updateColours(GameState, Nplayer), Colours) :-

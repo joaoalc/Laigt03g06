@@ -125,7 +125,7 @@
             <transformations>
             </transformations>
             <descendants>
-                <leaf type="gameboard" base = "1" middle = "1" height = "1" stacks = "1" slices = "1"/>
+                <leaf type="gameboard" x="0" y="0" z="0"/>
             </descendants>
         </node>
     </nodes>

@@ -760,7 +760,9 @@ class MySceneGraph {
                         }
                         leaves.push(leaf);
                     } else {
-                        this.scene.gameboardPos = transfMatrix;
+                        this.scene.gameboardPos = [this.reader.getString(grandgrandChildren[n], 'x'),
+                            this.reader.getString(grandgrandChildren[n], 'y'),
+                            this.reader.getString(grandgrandChildren[n], 'z')];
                     }
 
                 } else {

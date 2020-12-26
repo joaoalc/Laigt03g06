@@ -1,3 +1,4 @@
+const START = 0;
 const PLAYING = 1;
 const PICKED_COLOUR = 2;
 const PLAY = 3;
@@ -12,15 +13,24 @@ class MyGameOrchestrator {
         this.animator = new MyAnimator(scene, this);
         this.interface = new MyGameInterface(scene, this);
         this.currentPlayer = -1;
+        this.firstPlayer = 1;
+        this.state = START;
 
+        this.players = {'Player 1' : 1, 'Player 2': 2};
+        this.modes = {'Human/Human' : ['H','H'], 'Human/Computer' : ['H', 'C'], 'Computer/Human' : ['C', 'H'], 'Computer/Computer' : ['C', 'C']};
+
+        this.mode = ['H','H'];
+        this.chooseMode = ['H','H'];
     }
 
-    startGame(firstPlayer){
+    startGame(){
         //this.prolog.makeRequest("play");
         this.gameboard.create();
         this.state = PLAYING;
         this.coloursWon = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
-        this.currentPlayer = firstPlayer;
+        this.currentPlayer = this.firstPlayer;
+        this.mode = this.chooseMode;
+        console.log("START");
     }
 
     update(time) {
@@ -30,14 +40,33 @@ class MyGameOrchestrator {
         this.interface.update(time);
     }
 
+    play() {
+        var playerType = this.mode[this.currentPlayer - 1];
+
+        switch(playerType) {
+            case 'H':
+                if(this.state == PLAY) {
+                    
+                }
+                break;
+            case 'C':
+                if(this.state == PLAYING) {
+                    this.botPlay();
+                } 
+                break;
+        }
+    }
+
     managePick(results) {
-        if(this.currentPlayer != -1 && (this.state == PLAYING || this.state == PICKED_COLOUR)) {
-            if(results != null && results.length > 0) {
-                for(var i = 0; i < results.length; ++i) {
-                    var obj = results[i][0];
-                    if(obj) {
-                        var id = results[i][1];
-                        this.onObjectSelected(obj, id);
+        if(this.state == PLAYING || this.state == PICKED_COLOUR) {
+            if(this.currentPlayer != -1 && this.mode[this.currentPlayer-1] != 'C') {
+                if(results != null && results.length > 0) {
+                    for(var i = 0; i < results.length; ++i) {
+                        var obj = results[i][0];
+                        if(obj) {
+                            var id = results[i][1];
+                            this.onObjectSelected(obj, id);
+                        }
                     }
                 }
             }
@@ -68,6 +97,7 @@ class MyGameOrchestrator {
             var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
             this.prolog.makeRequest("updateColours("+ gameState + "," + this.currentPlayer+")", this.prolog.parseUpdateColours);
         }
+        this.state = PLAYING;
     }
 
     userPlay(tile, coords) {
@@ -88,6 +118,12 @@ class MyGameOrchestrator {
         var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
         this.prolog.makeRequest("player_move("+ gameState + ",[" + coords[0]+","+
             coords[1]+","+colour+"],"+this.currentPlayer+")", this.prolog.parseColoursWon);
+    }
+
+    botPlay() {
+        var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
+        this.prolog.makeRequest("getBotMove("+ gameState + "," + this.currentPlayer +","+
+            this.level+")", this.prolog.parseBotMove);
     }
 
     updateColours(coloursWon) {
@@ -117,8 +153,17 @@ class MyGameOrchestrator {
     }
 
     display() {
-        this.scene.multMatrix(this.gameboardPos);
+
+        if(this.state != START && this.state != END_GAME) {
+            this.play();
+        }
+
+        this.scene.pushMatrix();
+        this.scene.translate(this.gameboardPos[0],this.gameboardPos[1],this.gameboardPos[2])
+
         this.gameboard.display();
         this.interface.display();
+
+        this.scene.popMatrix();
     }
 }

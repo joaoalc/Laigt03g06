@@ -62,7 +62,7 @@ class XMLscene extends CGFscene {
         //this.testBoard.addPiece(this.testPiece2, 3, 4);
         //this.testBoard.addPiece(this.testPiece3, 23, 13);
 
-        this.gameboardPos = mat4.create(); //GAMEBOARD POSITION
+        this.gameboardPos = [0,0,0]; //GAMEBOARD POSITION
     }
 
     initMaterials(){
@@ -230,16 +230,11 @@ class XMLscene extends CGFscene {
         this.initTextures();
         
         this.gameOrchestrator = new MyGameOrchestrator(this, this.gameboardPos);
-        this.gameOrchestrator.startGame(1);
+        //this.gameOrchestrator.startGame(1, 0);
 
         this.sceneInited = true;
         this.initCameras();
         this.interface.addGUIelements(this.cameraIds[this.activeCamera]);
-    }
-
-    undo() {
-        console.log("UNDO");
-        this.gameOrchestrator.undo();
     }
 
     update(time) {

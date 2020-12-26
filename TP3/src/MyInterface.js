@@ -63,7 +63,11 @@ class MyInterface extends CGFinterface {
 
         var game = this.gui.addFolder("Game controls");
         game.closed = false;
-        game.add(this.scene, 'undo').name('Undo');
+
+        game.add(this.scene.gameOrchestrator, 'undo').name('Undo');
+        game.add(this.scene.gameOrchestrator, 'chooseMode', this.scene.gameOrchestrator.modes).name('Game mode');
+        game.add(this.scene.gameOrchestrator, 'firstPlayer', this.scene.gameOrchestrator.players).name('Starting player');
+        game.add(this.scene.gameOrchestrator, 'startGame').name('Start Game');
 
         var cameras = this.gui.addFolder("Cameras");
         cameras.closed = false;

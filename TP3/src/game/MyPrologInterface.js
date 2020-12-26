@@ -56,6 +56,10 @@ class MyPrologInterface {
         orchestrator.updateColours(reply.split('-'));
     }
     
+    parseBotMove(data, orchestrator) {
+        
+    }
+
     //Handle the Reply
     handleReply(data){
         console.log(data.target.response);
