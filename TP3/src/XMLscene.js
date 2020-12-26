@@ -68,6 +68,8 @@ class XMLscene extends CGFscene {
         //this.testBoard.addPiece(this.testPiece2, 3, 4);
         //this.testBoard.addPiece(this.testPiece3, 23, 13);
         this.textures = [];
+        this.backgroundTextures = {};
+        this.backgroundMaterials = {};
         this.materials = [];
 
         this.gameboard = null; //GAMEBOARD
@@ -92,6 +94,37 @@ class XMLscene extends CGFscene {
         }
 
         for(var graphKey in this.graphs){
+            let tmpMat = {}
+            for(var key in this.graphs[graphKey].materials) {
+                var info = this.graphs[graphKey].materials[key];
+            
+                var mat = new CGFappearance(this);
+                mat.setShininess(info[0]);
+                mat.setSpecular(info[1][0], info[1][1], info[1][2], 1);
+                mat.setDiffuse(info[2][0], info[2][1], info[2][2], 1);
+                mat.setAmbient(info[3][0], info[3][1], info[3][2], 1);
+                mat.setEmission(info[4][0], info[4][1], info[4][2], 1);
+                
+                tmpMat[key] = mat;
+            }
+            this.backgroundMaterials[graphKey] = tmpMat;
+        }
+
+        /*
+        for(var graphKey in this.graphs){
+            let tmpText = {}
+            for(var key in this.graphs[graphKey].textures){
+                var info = this.graphs[graphKey].textures[key];
+                if(info != 0) {
+                    var tex = new CGFtexture(this, info);
+                    tmpText[key] = tex;
+                }
+            }
+            this.backgroundTextures[graphKey] = tmpText;
+        }*/
+
+        /*
+        for(var graphKey in this.graphs){
             for(var key in this.graphs[graphKey].materials) {
                 var info = this.graphs[graphKey].materials[key];
             
@@ -104,7 +137,7 @@ class XMLscene extends CGFscene {
 
                 this.materials[key] = mat;
             }
-        }
+        }*/
     }
 
     initTextures(){
@@ -119,6 +152,20 @@ class XMLscene extends CGFscene {
         }
 
         for(var graphKey in this.graphs){
+            let tmpText = {}
+            for(var key in this.graphs[graphKey].textures){
+                var info = this.graphs[graphKey].textures[key];
+                if(info != 0) {
+                    var tex = new CGFtexture(this, info);
+                    tmpText[key] = tex;
+                }
+            }
+            this.backgroundTextures[graphKey] = tmpText;
+        }
+        //console.log(this.backgroundTextures);
+
+        /*
+        for(var graphKey in this.graphs){
             for(var key in this.graphs[graphKey].textures){
                 var info = this.graphs[graphKey].textures[key];
                 if(info != 0) {
@@ -126,7 +173,7 @@ class XMLscene extends CGFscene {
                     this.textures[key] = tex;
                 }
             }
-        }
+        }*/
     }
 
     /**

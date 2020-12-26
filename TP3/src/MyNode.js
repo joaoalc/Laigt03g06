@@ -86,6 +86,62 @@ class MyNode {
         }
 
         this.scene.popMatrix();
-        
+
+    }
+    displayBackground(mainGraph) {
+        this.scene.pushMatrix();
+        this.scene.multMatrix(this.transfMatrix); /*Add the new transformation matrix to this node 
+                                                        and all its descendants*/
+
+        /*if this node is keyframe animated and the animation has not started yet, node cannot be displayed*/
+        if((this.animation != null && (this.animation.checkVisibility() == true)) || this.animation == null) {
+            if(this.animation != null) {
+                this.animation.apply(this.scene);
+            }
+            
+            if(this.material != "null") { //Adicionar o material se não for "null"
+                materialStack.push(this.material);
+            }
+
+            if(this.scene.backgroundMaterials[mainGraph][materialStack[materialStack.length - 1]] != null)
+                this.scene.backgroundMaterials[mainGraph][materialStack[materialStack.length - 1]].apply();
+
+                
+            if(this.texture == "clear") {
+                if(this.scene.backgroundTextures[mainGraph][textureStack[textureStack.length - 1]] != null) 
+                    this.scene.backgroundTextures[mainGraph][textureStack[textureStack.length - 1]].unbind();  
+                textureStack.push(0);
+            } else if(this.texture == "null") {
+                if(this.scene.backgroundTextures[mainGraph][textureStack[textureStack.length - 1]] != null) {
+                    if(this.scene.backgroundTextures[mainGraph][textureStack[textureStack.length - 1]] != 0)
+                        this.scene.backgroundTextures[mainGraph][textureStack[textureStack.length - 1]].bind();
+                }
+            } else {
+                if(this.scene.backgroundTextures[mainGraph][this.texture] != 0 && this.scene.backgroundTextures[mainGraph][this.texture] != null) {
+                    textureStack.push(this.texture);
+                    this.scene.backgroundTextures[mainGraph][textureStack[textureStack.length - 1]].bind();
+                }
+            }
+
+            //Display leaves if they exist
+            for(var i = 0; i < this.leaves.length; i++) {
+                if(this.leaves[i] != null)
+                    this.leaves[i].display();
+            }
+
+            //Recursively run this code for all the children nodes
+            for(var j = 0; j < this.descendants.length; j++) {
+                this.descendants[j].displayBackground(mainGraph);
+            }
+
+            if(this.texture != "null"){
+                textureStack.pop();
+            }
+
+            if(this.material != "null")
+                materialStack.pop();
+        }
+
+        this.scene.popMatrix();
     }
 }

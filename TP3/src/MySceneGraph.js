@@ -1505,7 +1505,12 @@ class MySceneGraph {
      * Displays the scene, processing each node recursively, starting by the root node.
      */
     displayScene() {
-        this.nodes[this.idRoot].display();
+        if(this.mainGraph == -1){
+            this.nodes[this.idRoot].display();
+        }
+        else{
+            this.nodes[this.idRoot].displayBackground(this.mainGraph);
+        }
         textureStack = [];
         materialStack = [];
     }
