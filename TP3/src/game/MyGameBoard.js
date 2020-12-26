@@ -31,11 +31,21 @@ class MyGameBoard extends CGFobject {
     }
 
     create() {
+        this.purpleWon = 0;
+        this.orangeWon = 0;
+        this.greenWon = 0;
+        
         for(var line = 1; line <= 23; ++line) {
             var startDiag = this.startDiagonals[line - 1];
+
+            var lineLength = this.lineLengths[line-1];
+            var position1 = [(10 - (lineLength + (lineLength-1)*0.5))/2, -this.vertShift * (line-1), 0];
+
             for(var col = 1; col <= this.lineLengths[line-1]; ++col) {
                 var diagonal = startDiag + col - 1;
-                this.tiles[[line, diagonal]] = new MyTile(this.scene, this);
+
+                var position2 = [position1[0] + this.horShift * (col - 1), position1[1], position1[2]];
+                this.tiles[[line, diagonal]] = new MyTile(this.scene, this, position2);
             }
         }
     }
@@ -69,13 +79,33 @@ class MyGameBoard extends CGFobject {
         this.tiles[[line, diagonal]].setPiece(piece);
     }
 
-    updateColoursWon(purple1, orange1, green1, purple2, orange2, green2) {
-        if(purple1 || purple2) 
+    updateColoursWon(coloursWon) {
+        if(coloursWon[0] || coloursWon[3]) 
             this.purpleWon = 1;
-        if(orange1 || orange2) 
+        if(coloursWon[1] || coloursWon[4]) 
             this.orangeWon = 1;
-        if(green1 || green2) 
+        if(coloursWon[2] || coloursWon[5]) 
             this.greenWon = 1;
+    }
+
+    boardString() {
+        var result = "["
+        for(var line = 1; line <= 23; ++line) {
+            var lineArr = [];
+            var startDiag = this.startDiagonals[line - 1];
+            for(var col = 1; col <= this.lineLengths[line-1]; ++col) {
+                var diagonal = startDiag + col - 1;
+                var cellValue;
+                if(this.tiles[[line, diagonal]].piece != null)
+                    cellValue = this.tiles[[line, diagonal]].piece.colour;
+                else cellValue = "empty";
+                lineArr.push(cellValue);
+            }
+            result += "[" + lineArr.join() + "]";
+            if(line < 23)
+                result += ",";
+        }
+        return result + "]";
     }
 
     display() {

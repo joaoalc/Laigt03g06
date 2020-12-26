@@ -1,4 +1,4 @@
-class KeyframeAnimation extends Animation {
+class PieceAnimation extends Animation {
     /**
 	 * KeyframeAnimation
 	 * @constructor
@@ -67,26 +67,33 @@ class KeyframeAnimation extends Animation {
     interpolate(startKey, endKey, elapsed) {
         this.matrix = mat4.create();
 
+        var x = (1-elapsed);
+
+        var progress = x < 0.5 ? 16 * x * x * x * x * x : 1 - Math.pow(-2 * x + 2, 5) / 2;
+
         //Interpoltate transformations and multiply to matrix
-        var translationX = startKey.translation[1] * (1-elapsed) + endKey.translation[1] * elapsed;
-        var translationY = startKey.translation[2] * (1-elapsed) + endKey.translation[2] * elapsed;
-        var translationZ = startKey.translation[3] * (1-elapsed) + endKey.translation[3] * elapsed;
+        var translationX = startKey.translation[1] * progress + endKey.translation[1] * (1-progress);
+        var translationY = startKey.translation[2] * progress + endKey.translation[2] * (1-progress); 
+        var translationZ = startKey.translation[3] * progress + endKey.translation[3] * (1-progress)+ this.pieceHeight(progress);
 
         mat4.translate(this.matrix, this.matrix, [translationX, translationY, translationZ]);
 
-        var rotationX = startKey.rotationX * (1-elapsed) + endKey.rotationX * elapsed;
-        var rotationY = startKey.rotationY * (1-elapsed) + endKey.rotationY * elapsed;
-        var rotationZ = startKey.rotationZ * (1-elapsed) + endKey.rotationZ * elapsed;
+        var rotationX = startKey.rotationX * progress + endKey.rotationX * (1-progress);
+        var rotationY = startKey.rotationY * progress + endKey.rotationY * (1-progress);
+        var rotationZ = startKey.rotationZ * progress + endKey.rotationZ * (1-progress);
 
         mat4.rotate(this.matrix, this.matrix, DEGREE_TO_RAD * rotationX, [1,0,0]);
         mat4.rotate(this.matrix, this.matrix, DEGREE_TO_RAD * rotationY, [0,1,0]);
         mat4.rotate(this.matrix, this.matrix, DEGREE_TO_RAD * rotationZ, [0,0,1]);
 
-        var scaleX = startKey.scale[1] * (1-elapsed) + endKey.scale[1] * elapsed;
-        var scaleY = startKey.scale[2] * (1-elapsed) + endKey.scale[2] * elapsed;
-        var scaleZ = startKey.scale[3] * (1-elapsed) + endKey.scale[3] * elapsed;
+        var scaleX = startKey.scale[1] * progress + endKey.scale[1] * (1-progress);
+        var scaleY = startKey.scale[2] * progress + endKey.scale[2] * (1-progress);
+        var scaleZ = startKey.scale[3] * progress + endKey.scale[3] * (1-progress);
 
         mat4.scale(this.matrix, this.matrix, [scaleX, scaleY, scaleZ]);
     }
     
+    pieceHeight(progress) {
+        return -8*Math.pow(progress-1, 2) - 8*progress + 8;    
+    }
 }

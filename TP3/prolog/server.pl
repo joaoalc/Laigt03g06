@@ -109,13 +109,19 @@ parse_input(test(C,N), Res) :- test(C,Res,N).
 parse_input(quit, goodbye).
 parse_input(bruh, xd) :- write('wow').
 parse_input(play, 0) :- play.
+
+parse_input(player_move(GameState, Move, Nplayer), Colours) :-
+	move(GameState, Move, NewGameStateBoard),
+	updateColours(NewGameStateBoard, _-Colours, Nplayer).
+
+parse_input(player_move(_, _, _), invalid_move).
+
+
+parse_input(getBotMove(GameState, Player, Level, [Row, Diagonal, Colour]), Row-Diagonal-Colour) :-
+	choose_move(GameState, Player, Level, [Row, Diagonal, Colour]).
+
+
 test(_,[],N) :- N =< 0.
 test(A,[A|Bs],N) :- N1 is N-1, test(A,Bs,N1).
 
-
-parse_input(player_move(GameState, Move, Nplayer), Response) :-
-	move(GameState, Move, NewGameStateBoard),
-	updateColours(NewGameStateBoard, Response, Nplayer).
-
-parse_input(player_move(_, _, _), invalid_move).
 	
