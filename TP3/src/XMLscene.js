@@ -53,7 +53,7 @@ class XMLscene extends CGFscene {
         this.setPickEnabled(true);
 
         this.graphs = {}; //scene's graphs
-        this.activeBackgroundScene = 0; //Starting scene's id
+        this.activeBackgroundSceneName = ""; //Starting scene's id
         this.sceneNames = []; //Dictionary whose keys are the scene's ids and values are their names
         
         this.motorcycle = new CGFOBJModel(this, 'models/bad_motorcycle.obj');
@@ -67,6 +67,8 @@ class XMLscene extends CGFscene {
         //this.testBoard.addPiece(this.testPiece1, 1, 1);
         //this.testBoard.addPiece(this.testPiece2, 3, 4);
         //this.testBoard.addPiece(this.testPiece3, 23, 13);
+        this.textures = [];
+        this.materials = [];
 
         this.gameboard = null; //GAMEBOARD
         this.boxes = [];
@@ -75,7 +77,6 @@ class XMLscene extends CGFscene {
     }
 
     initMaterials(){
-        this.materials = [];
 
         for(var key in this.graph.materials) {
             var info = this.graph.materials[key];
@@ -89,10 +90,24 @@ class XMLscene extends CGFscene {
 
             this.materials[key] = mat;
         }
+
+        for(var graphKey in this.graphs){
+            for(var key in this.graphs[graphKey].materials) {
+                var info = this.graphs[graphKey].materials[key];
+            
+                var mat = new CGFappearance(this);
+                mat.setShininess(info[0]);
+                mat.setSpecular(info[1][0], info[1][1], info[1][2], 1);
+                mat.setDiffuse(info[2][0], info[2][1], info[2][2], 1);
+                mat.setAmbient(info[3][0], info[3][1], info[3][2], 1);
+                mat.setEmission(info[4][0], info[4][1], info[4][2], 1);
+
+                this.materials[key] = mat;
+            }
+        }
     }
 
     initTextures(){
-        this.textures = [];
 
         
         for(var key in this.graph.textures){
@@ -100,6 +115,16 @@ class XMLscene extends CGFscene {
             if(info != 0) {
                 var tex = new CGFtexture(this, info);
                 this.textures[key] = tex;
+            }
+        }
+
+        for(var graphKey in this.graphs){
+            for(var key in this.graphs[graphKey].textures){
+                var info = this.graphs[graphKey].textures[key];
+                if(info != 0) {
+                    var tex = new CGFtexture(this, info);
+                    this.textures[key] = tex;
+                }
             }
         }
     }
@@ -206,7 +231,33 @@ class XMLscene extends CGFscene {
             }
         }
 
+        for(var graphkey in this.graphs){
+            for (var key in this.graphs[graphkey].lights) {
+                if (i >= 8)
+                    break;              // Only eight lights allowed by WebCGF on default shaders.
 
+                if (this.graphs[graphkey].lights.hasOwnProperty(key)) {
+                    var graphLight = this.graphs[graphkey].lights[key];
+
+                    this.lights[i].setPosition(...graphLight[1]);
+                    this.lights[i].setAmbient(...graphLight[2]);
+                    this.lights[i].setDiffuse(...graphLight[3]);
+                    this.lights[i].setSpecular(...graphLight[4]);
+
+                    this.lights[i].setVisible(true);
+                    if (graphLight[0])
+                        this.lights[i].enable();
+                    else
+                        this.lights[i].disable();
+
+                    this.lights[i].update();
+
+                    this.lightsStatus["light" + i] = graphLight[0];
+
+                    i++;
+                }
+            }
+        }
     }
 
     /**
@@ -245,7 +296,7 @@ class XMLscene extends CGFscene {
         this.sceneInited = true;
         this.initCameras();
         this.interface.addGUIelements(this.cameraIds[this.activeCamera]);
-        this.interface.addSceneSelectors(0);
+        this.interface.addSceneSelectors(this.activeBackgroundSceneName);
     }
 
     update(time) {
@@ -258,8 +309,20 @@ class XMLscene extends CGFscene {
                 this.graph.spriteAnimations[i].update(time/1000);
             }
 
+            for(var graphKey in this.graphs){
+                for(var key in this.graphs[graphKey].animations) {
+                    this.graphs[graphKey].animations[key].update(time/1000);
+                }
+
+                for(var i = 0; i <  this.graphs[graphKey].spriteAnimations.length; ++i) {
+                    this.graphs[graphKey].spriteAnimations[i].update(time/1000);
+                }
+            }
+
+
             this.gameOrchestrator.update(time);
         }
+        
     }
 
     logPicking() {
@@ -329,7 +392,7 @@ class XMLscene extends CGFscene {
 
             // Displays the scene (MySceneGraph function).
             this.graph.displayScene();
-            this.graphs[this.activeBackgroundScene].displayScene();
+            this.graphs[this.sceneNames[this.activeBackgroundSceneName]].displayScene();
         }
         else
         {

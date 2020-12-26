@@ -57,6 +57,7 @@
         </light>
     </lights>
     <textures>
+        <texture id="skybox_left" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_left.png"/>
         <texture id="skybox_right" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_right.png"/>
         <texture id="skybox_front" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_front.png"/>
         <texture id="skybox_top" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_top.png"/>
@@ -86,6 +87,7 @@
         <texture id="brick_wall" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/brick_wall.jpg"/>
         <texture id="roof" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/roof.jpg"/>
         <texture id="clock" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/clock.jpg"/>
+        <texture id="station_roof" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/roof2.jpg"/>
         <texture id="station_roof_sides" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/roof_sides.jpg"/>
         <texture id="bricks_texture" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/bricks_texture.png"/>
         <texture id="wood_pillar" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/woodPillar.jpg"/>
@@ -154,13 +156,13 @@
             <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
-        <!--<material id="plastic_shiny">
+        <material id="plastic_shiny">
             <shininess value="10.0"/>
             <ambient r="0.35" g="0.35" b="0.35" a="1.0"/>
             <diffuse r="0.6" g="0.6" b="0.6" a="1.0"/>
             <specular r="0.7" g="0.7" b="0.7" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>-->
+        </material>
         <material id="plastic">
             <shininess value="5.0"/>
             <ambient r="0.35" g="0.35" b="0.35" a="1.0"/>
@@ -541,7 +543,7 @@
                 <noderef id="skybox"/>
                 <noderef id="trees"/>
                 <noderef id="ground"/>
-                <!--<noderef id="train_station"/>-->
+                <noderef id="train_station"/>
             </descendants>
         </node>
 
@@ -611,7 +613,7 @@
 
         <node id="skybox_left">
             <material id="null"/>
-            <texture id="null">
+            <texture id="skybox_left">
                 <amplification afs="20.0" aft="20.0"/>
             </texture>
             <transformations>
@@ -1100,7 +1102,9 @@
             </transformations>
             <descendants>
                 <noderef id="station_sign"/>
+                <noderef id="station_ceiling"/>
                 <noderef id="station_pillars"/>
+                <noderef id="station_ground"/>
                 <noderef id="station_building"/>
                 <noderef id="station_barrels"/>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
@@ -1689,6 +1693,115 @@
             </transformations>
             <descendants>
                 <noderef id="pyramid"/>
+            </descendants>
+        </node>
+        <node id="station_ceiling">
+            <material id="plastic_shiny"/>
+            <texture id="station_roof">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1.5" y="0.9" z="0"/>
+                <rotation axis="y" angle="90"/>
+                <scale sx="5" sy="5" sz="5"/>
+            </transformations>
+            <descendants>
+                <leaf type="patch" npointsU="4" npointsV="3" npartsU="16" npartsV="12">
+                    <controlpoint x="0.465" y="0" z="-0.5"/>
+                    <controlpoint x="0.465" y="0" z="0"/>
+                    <controlpoint x="0.465" y="0" z="0.5"/>
+                    <controlpoint x="0.1" y="0.5" z="-0.5"/>
+                    <controlpoint x="0.1" y="0.7" z="0"/>
+                    <controlpoint x="0.1" y="0.5" z="0.5"/>
+                    <controlpoint x="-0.2" y="0.1" z="-0.5"/>
+                    <controlpoint x="-0.2" y="0.1" z="0"/>
+                    <controlpoint x="-0.2" y="0.1" z="0.5"/>
+                    <controlpoint x="-0.5" y="0" z="-0.5"/>
+                    <controlpoint x="-0.5" y="0" z="0"/>
+                    <controlpoint x="-0.5" y="0" z="0.5"/>
+                </leaf>
+                <leaf type="patch" npointsU="4" npointsV="3" npartsU="16" npartsV="12">
+                    <controlpoint x="0.465" y="0" z="0.5"/>
+                    <controlpoint x="0.465" y="0" z="0"/>
+                    <controlpoint x="0.465" y="0" z="-0.5"/>
+                    <controlpoint x="0.1" y="0.5" z="0.5"/>
+                    <controlpoint x="0.1" y="0.7" z="0"/>
+                    <controlpoint x="0.1" y="0.5" z="-0.5"/>
+                    <controlpoint x="-0.2" y="0.1" z="0.5"/>
+                    <controlpoint x="-0.2" y="0.1" z="0"/>
+                    <controlpoint x="-0.2" y="0.1" z="-0.5"/>
+                    <controlpoint x="-0.5" y="0" z="0.5"/>
+                    <controlpoint x="-0.5" y="0" z="0"/>
+                    <controlpoint x="-0.5" y="0" z="-0.5"/>
+                </leaf>
+                <noderef id="station_ceiling_sides"/>
+            </descendants>
+        </node>
+        <node id="station_ceiling_sides">
+            <material id="plastic_shiny"/>
+            <texture id="station_roof_sides">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="0"/>
+            </transformations>
+            <descendants>
+                <leaf type="patch" npointsU="4" npointsV="2" npartsU="16" npartsV="8">
+                    <controlpoint x="0.465" y="0" z="0.4"/>
+                    <controlpoint x="0.465" y="0" z="0.4"/>
+                    <controlpoint x="0.1" y="0.53" z="0.4"/>
+                    <controlpoint x="0.1" y="0.0" z="0.4"/>
+                    <controlpoint x="-0.2" y="0.1" z="0.4"/>
+                    <controlpoint x="-0.2" y="0.0" z="0.4"/>
+                    <controlpoint x="-0.5" y="0" z="0.4"/>
+                    <controlpoint x="-0.5" y="0" z="0.4"/>
+                </leaf>
+                <leaf type="patch" npointsU="4" npointsV="2" npartsU="16" npartsV="8">
+                    <controlpoint x="0.465" y="0" z="0.4"/>
+                    <controlpoint x="0.465" y="0" z="0.4"/>
+                    <controlpoint x="0.1" y="0.0" z="0.4"/>
+                    <controlpoint x="0.1" y="0.53" z="0.4"/>
+                    <controlpoint x="-0.2" y="0.0" z="0.4"/>
+                    <controlpoint x="-0.2" y="0.1" z="0.4"/>
+                    <controlpoint x="-0.5" y="0" z="0.4"/>
+                    <controlpoint x="-0.5" y="0" z="0.4"/>
+                </leaf>
+                <leaf type="patch" npointsU="4" npointsV="2" npartsU="16" npartsV="8">
+                    <controlpoint x="0.465" y="0" z="-0.4"/>
+                    <controlpoint x="0.465" y="0" z="-0.4"/>
+                    <controlpoint x="0.1" y="0.0" z="-0.4"/>
+                    <controlpoint x="0.1" y="0.53" z="-0.4"/>
+                    <controlpoint x="-0.2" y="0.0" z="-0.4"/>
+                    <controlpoint x="-0.2" y="0.1" z="-0.4"/>
+                    <controlpoint x="-0.5" y="0" z="-0.4"/>
+                    <controlpoint x="-0.5" y="0" z="-0.4"/>
+                </leaf>
+                <leaf type="patch" npointsU="4" npointsV="2" npartsU="16" npartsV="8">
+                    <controlpoint x="0.465" y="0" z="-0.4"/>
+                    <controlpoint x="0.465" y="0" z="-0.4"/>
+                    <controlpoint x="0.1" y="0.53" z="-0.4"/>
+                    <controlpoint x="0.1" y="0.0" z="-0.4"/>
+                    <controlpoint x="-0.2" y="0.1" z="-0.4"/>
+                    <controlpoint x="-0.2" y="0.0" z="-0.4"/>
+                    <controlpoint x="-0.5" y="0" z="-0.4"/>
+                    <controlpoint x="-0.5" y="0" z="-0.4"/>
+                </leaf>
+            </descendants>
+        </node>
+        <node id="station_ground">
+            <material id="plastic_shiny"/>
+            <texture id="stone_floor">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-2" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="station_ground_front"/>
+                <noderef id="station_ground_left"/>
+                <noderef id="station_ground_back"/>
+                <noderef id="station_ground_right"/>
+                <noderef id="station_ground_top"/>
             </descendants>
         </node>
         <node id="station_ground_top">

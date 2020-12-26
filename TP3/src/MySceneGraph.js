@@ -29,8 +29,11 @@ class MySceneGraph {
         // Establish bidirectional references between scene and graph.
         this.scene = scene;
         //Main graph contains essential game elements and such
-        if(mainGraph){
+        if(mainGraph == -1){
             scene.graph = this;
+        }
+        else{
+            scene.graphs[mainGraph] = this;
         }
         
 
@@ -72,7 +75,7 @@ class MySceneGraph {
         this.loadedOk = true;
 
         // As the graph loaded ok, signal the scene so that any additional initialization depending on the graph can take place
-        if(this.mainGraph){
+        if(this.mainGraph == 0){
             this.scene.onGraphLoaded();
         }
     }
@@ -1503,5 +1506,7 @@ class MySceneGraph {
      */
     displayScene() {
         this.nodes[this.idRoot].display();
+        textureStack = [];
+        materialStack = [];
     }
 }

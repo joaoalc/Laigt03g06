@@ -75,7 +75,7 @@ class MyInterface extends CGFinterface {
     addSceneSelectors(currentScene){
         var backgroundScenes = this.gui.addFolder("backgroundScenes");
         backgroundScenes.closed = false;
-        var backgroundScene = backgroundScenes.add(this.scene, 'activeBackgroundScene', Object.keys(this.scene.sceneNames)).name('Current Scene').onChange(this.scene.updateBackgroundScene.bind(this.scene));
+        var backgroundScene = backgroundScenes.add(this.scene, 'activeBackgroundSceneName', Object.keys(this.scene.sceneNames)).name('Current Scene').onChange(this.scene.updateBackgroundScene.bind(this.scene));
         backgroundScene.setValue(currentScene);
     }
 }

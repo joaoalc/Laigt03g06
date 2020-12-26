@@ -38,15 +38,17 @@ main=function()
 	
     var filename=getUrlVars()['file'] || "LAIG_TP2_XML_T3_G06_v1.xml";
 
-    myScene.sceneNames = {0 : "Train", 1 : "Beach"};
-    var filenames = {0 : 'backgroundScenes/TrainScene.xml', 1 : 'backgroundScenes/BeachScene.xml'};
+    myScene.sceneNames = {"Train" : 0};//, 1 : "Beach"};
+    var filenames = {0 : 'backgroundScenes/OGScene.xml'};
     for(sceneNumber in filenames){
-        myScene.graphs[sceneNumber] = new MySceneGraph(filenames[sceneNumber], myScene, false);
+        myScene.graphs[sceneNumber] = new MySceneGraph(filenames[sceneNumber], myScene, sceneNumber);
     }
 
+    
+    myScene.activeBackgroundSceneName = "Train";
 	// create and load graph, and associate it to scene. 
 	// Check console for loading errors
-	var myGraph = new MySceneGraph(filename, myScene, true);
+	var myGraph = new MySceneGraph(filename, myScene, -1);
     
 	// start
     app.run();

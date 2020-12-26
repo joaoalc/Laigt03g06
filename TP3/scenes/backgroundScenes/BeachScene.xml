@@ -57,43 +57,7 @@
         </light>
     </lights>
     <textures>
-        <texture id="skybox_left" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_left.png"/>
-        <texture id="skybox_right" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_right.png"/>
-        <texture id="skybox_front" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_front.png"/>
-        <texture id="skybox_top" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_top.png"/>
-        <texture id="skybox_back" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_back.png"/>
-        <texture id="skybox_bottom" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_bottom.png"/>
-        <texture id="tree_trunk" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/tree_trunk.png"/>
-        <texture id="tree_leaves" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/tree_leaves.jpg"/>
-        <texture id="wood" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wood.jpg"/>
-        <texture id="grass" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/grass.jpg"/>
-        <texture id="train_furnace" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/furnace.jpg"/>
-        <texture id="glass" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/glass.png"/>
-        <texture id="main_cylinder" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/main_cylinder.png"/>
-        <texture id="train_inside" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_inside.jpg"/>
-        <texture id="metal_grip" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/metal_grip.jpg"/>
-        <texture id="train_side_1" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_side_1.png"/>
-        <texture id="train_side_2" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_side_2.png"/>
-        <texture id="train_side_1_2" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_side_1_2.png"/>
-        <texture id="train_side_2_2" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_side_2_2.png"/>
-        <texture id="train_front_1" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_front_1.png"/>
-        <texture id="pebbles" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/pebbles.jpg"/>
-        <texture id="headlight" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/headlight1.jpg"/>
-        <texture id="main_sphere" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/main_sphere.png"/>
-        <texture id="metal" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/metal.jpg"/>
-        <texture id="rock" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/rock.jpg"/>
-        <texture id="grass_blade" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/grass_blade.jpg"/>
-        <texture id="golden" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/golden.jpg"/>
-        <texture id="brick_wall" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/brick_wall.jpg"/>
-        <texture id="roof" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/roof.jpg"/>
-        <texture id="clock" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/clock.jpg"/>
         <texture id="station_roof" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/roof2.jpg"/>
-        <texture id="station_roof_sides" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/roof_sides.jpg"/>
-        <texture id="bricks_texture" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/bricks_texture.png"/>
-        <texture id="wood_pillar" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/woodPillar.jpg"/>
-        <texture id="stone_floor" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/stone_floor.jpg"/>
-        <texture id="wood_barrel" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wood_planks.jpg"/>
-        <texture id="wooden_planks" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wooden_planks.png"/>
     </textures>
     <spritesheets>
         <spritesheet id="spriteanim_test" path="scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_spritesheet.png" sizeM="8" sizeN="4"/>
@@ -228,307 +192,6 @@
         </material>
     </materials>
     <animations>
-        <animation id="train_animation">
-            <keyframe instant="0">
-                <translation x="-5" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="4">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="6.25">
-                <translation x="2.5" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="7">
-                <translation x="3" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-        </animation>
-
-        <animation id="bell_animation">
-            <keyframe instant="0">
-                <translation x="0.25" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="20"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="0.5">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="1">
-                <translation x="-0.25" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-20"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="1.5">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="2">
-                <translation x="0.25" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="20"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="2.5">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="3">
-                <translation x="-0.25" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-20"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="3.5">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="4">
-                <translation x="0.25" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="20"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="4.5">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="5">
-                <translation x="-0.25" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-20"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="5.5">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="6">
-                <translation x="0.25" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="20"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="6.5">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="7">
-                <translation x="-0.25" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-20"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="7.5">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="8">
-                <translation x="0.25" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="20"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="9">
-                <translation x="-0.12" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-10"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="9.5">
-                <translation x="0.06" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="5"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="10">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-        </animation>
-
-        <animation id="wheels_animation">
-            <keyframe instant="0">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="7">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-800"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-        </animation>
-
-        <animation id="wheels_bar_animation">
-            <keyframe instant="0">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="7">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="800"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-        </animation>
-
-        <animation id="clock_seconds">
-            <keyframe instant="0">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="3600">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-21600"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-        </animation>
-
-        <animation id="clock_minutes">
-            <keyframe instant="0">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-96"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="3600">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-456"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-        </animation>
-        <animation id="grass">
-            <keyframe instant="0">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="1">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="2.5">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-15"/>
-                <scale sx="1" sy="0.75" sz="1.25"/>
-            </keyframe>
-            <keyframe instant="4">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-15"/>
-                <scale sx="1" sy="0.75" sz="1.25"/>
-            </keyframe>
-            <keyframe instant="5">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-10"/>
-                <scale sx="1" sy="0.8" sz="1.2"/>
-            </keyframe>
-            <keyframe instant="7">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-        </animation>
-        <animation id="clock_hours">
-            <keyframe instant="0">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="29.6"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="3600">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-0.4"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-        </animation>
     </animations>
     <nodes>
         <node id="RootNode">
@@ -613,7 +276,7 @@
 
         <node id="skybox_left">
             <material id="null"/>
-            <texture id="skybox_left">
+            <texture id="null">
                 <amplification afs="20.0" aft="20.0"/>
             </texture>
             <transformations>
@@ -851,7 +514,6 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
-            <animationref id="grass"/>
             <transformations>
                 <translation x="-6" y="0" z="4"/>
                 <scale sx="2" sy="2" sz="2"/>
@@ -866,7 +528,6 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
-            <animationref id="grass"/>
             <transformations>
                 <translation x="0" y="0" z="8"/>
                 <scale sx="3" sy="1.5" sz="3"/>
@@ -881,7 +542,6 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
-            <animationref id="grass"/>
             <transformations>
                 <translation x="5" y="0" z="3"/>
                 <scale sx="2" sy="2" sz="2"/>
@@ -896,7 +556,6 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
-            <animationref id="grass"/>
             <transformations>
                 <translation x="-7" y="0" z="7"/>
                 <scale sx="2.5" sy="3" sz="2.5"/>
@@ -911,7 +570,6 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
-            <animationref id="grass"/>
             <transformations>
                 <translation x="-5" y="0" z="-6.5"/>
                 <scale sx="2.5" sy="4" sz="2.5"/>
@@ -926,7 +584,6 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
-            <animationref id="grass"/>
             <transformations>
                 <translation x="-2" y="0" z="3"/>
                 <scale sx="3" sy="1" sz="3"/>
@@ -941,7 +598,6 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
-            <animationref id="grass"/>
             <transformations>
                 <translation x="-4" y="0" z="-3"/>
                 <scale sx="4" sy="3" sz="4"/>
@@ -956,7 +612,6 @@
             <texture id="clear">
                 <amplification afs="1" aft="1"/>
             </texture>
-            <animationref id="grass"/>
             <transformations>
                 <translation x="6" y="0" z="-5.5"/>
                 <scale sx="2" sy="1" sz="2"/>
@@ -1511,9 +1166,6 @@
             <texture id="clear">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-
-            <animationref id="clock_seconds"/>
-
             <transformations>
                 <scale sx="1.0" sy="1.0" sz="1.0"/>
             </transformations>
@@ -1527,9 +1179,6 @@
             <texture id="clear">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-
-            <animationref id="clock_minutes"/>
-
             <transformations>
                 <scale sx="1.0" sy="1" sz="1.0"/>
             </transformations>
@@ -1543,9 +1192,6 @@
             <texture id="clear">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-
-            <animationref id="clock_hours"/>
-
             <transformations>
                 <scale sx="1.0" sy="1" sz="1.0"/>
             </transformations>
@@ -1876,7 +1522,6 @@
             <transformations>
                 <translation x="0" y="-0.05" z="0"/>
             </transformations>
-            <animationref id="train_animation"/>
             <descendants>
                 <noderef id="train_cab"/>
                 <noderef id="train_bottom"/>
@@ -2293,7 +1938,6 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-            <animationref id="wheels_animation"/>
             <transformations>
                 <translation x="-2" y="0" z="-0.625"/>
             </transformations>
@@ -2308,7 +1952,6 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-            <animationref id="wheels_animation"/>
 
             <transformations>
                 <translation x="-2" y="0.0" z="0.625"/>
@@ -2325,8 +1968,6 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-            <animationref id="wheels_bar_animation"/>
-
             <transformations>
                 <translation x="0.45" y="0" z="0.12"/>
             </transformations>
@@ -2340,8 +1981,6 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-            <animationref id="wheels_bar_animation"/>
-
             <transformations>
                 <translation x="-0.45" y="0" z="0.12"/>
             </transformations>
@@ -2355,8 +1994,6 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-            <animationref id="wheels_bar_animation"/>
-
             <transformations>
                 <translation x="0.45" y="0" z="-0.12"/>
             </transformations>
@@ -2370,8 +2007,6 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-            <animationref id="wheels_bar_animation"/>
-
             <transformations>
                 <translation x="-0.45" y="0" z="-0.12"/>
             </transformations>
@@ -2398,8 +2033,6 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-            <animationref id="wheels_animation"/>
-
             <transformations>
                 <translation x="0" y="0" z="-0.625"/>
             </transformations>
@@ -2412,8 +2045,6 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-            <animationref id="wheels_animation"/>
-
             <transformations>
                 <translation x="0" y="0.0" z="0.625"/>
             </transformations>
@@ -2428,8 +2059,6 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-            <animationref id="wheels_animation"/>
-
             <transformations>
                 <translation x="2" y="0" z="-0.625"/>
             </transformations>
@@ -2442,8 +2071,6 @@
             <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-            <animationref id="wheels_animation"/>
-
             <transformations>
                 <translation x="2" y="0" z="0.625"/>
             </transformations>
@@ -3247,9 +2874,6 @@
             <texture id="golden">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
-
-            <animationref id="bell_animation"/>
-
             <transformations>
                 <scale sx="0.5" sy="0.5" sz="0.5"/>
             </transformations>
