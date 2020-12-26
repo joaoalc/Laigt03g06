@@ -54,11 +54,11 @@ class MyPrologInterface {
     parseUpdateColours(data, orchestrator) {
         var reply = data.target.response;
         orchestrator.updateColours(reply.split('-'));
+        orchestrator.setPlaying();
     }
     
     parseBotMove(data, orchestrator) {
         var move = data.target.response.split('-');
-        console.log(move);
         orchestrator.botMove(move);
     }
 

@@ -94,11 +94,9 @@ class MyGameOrchestrator {
         var undoResult = this.animator.undo();
         if(undoResult != -1) {
             this.coloursWon = undoResult;
-            this.currentPlayer = this.currentPlayer % 2 + 1;
             var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
             this.prolog.makeRequest("updateColours("+ gameState + "," + this.currentPlayer+")", this.prolog.parseUpdateColours);
         }
-        this.state = PLAYING;
     }
 
     userPlay(tile, coords) {
