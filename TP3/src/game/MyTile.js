@@ -15,6 +15,11 @@ class MyTile extends CGFobject {
         this.piece = piece;
     }
 
+    removePiece() {
+        this.board.getPieceBox(this.piece.colour).nPieces++;
+        this.piece = null;
+    }
+
     display(line, diagonal) {
         //if(this.piece == null){
             this.scene.registerForPick(diagonal + line * 100, this);

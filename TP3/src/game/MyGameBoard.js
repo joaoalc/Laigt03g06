@@ -22,6 +22,11 @@ class MyGameBoard extends CGFobject {
         this.pieceBoxes["orange"] = new MyPieceBox(this.scene, "regular", "orange");
         this.pieceBoxes["green"] = new MyPieceBox(this.scene, "regular", "green");
 
+        this.pieceCounters = [];
+        this.pieceCounters["purple"] = new MySpriteText(this.scene, this.pieceBoxes["purple"].nPieces.toString());
+        this.pieceCounters["orange"] = new MySpriteText(this.scene, this.pieceBoxes["orange"].nPieces.toString());
+        this.pieceCounters["green"] = new MySpriteText(this.scene, this.pieceBoxes["green"].nPieces.toString());
+
         // var testPiece1 = new MyPiece(this.scene, "purple");
         // var testPiece2 = new MyPiece(this.scene, "green");
         // var testPiece3 = new MyPiece(this.scene, "purple");
@@ -108,6 +113,12 @@ class MyGameBoard extends CGFobject {
         return result + "]";
     }
 
+    update(time) {
+        this.pieceCounters["purple"].setText(this.pieceBoxes["purple"].nPieces.toString());
+        this.pieceCounters["orange"].setText(this.pieceBoxes["orange"].nPieces.toString());
+        this.pieceCounters["green"].setText(this.pieceBoxes["green"].nPieces.toString());
+    }
+
     display() {
         this.scene.pushMatrix();
 
@@ -140,10 +151,27 @@ class MyGameBoard extends CGFobject {
         this.scene.pushMatrix();
             this.scene.translate(0, 3, 0);
             this.pieceBoxes["purple"].display();
+            this.scene.pushMatrix();
+            this.scene.translate(0, 0, 1);
+            this.scene.rotate(DEGREE_TO_RAD*90, 1,0,0);
+            this.pieceCounters["purple"].display();
+            this.scene.popMatrix();
+
             this.scene.translate(4.5, 0, 0);
             this.pieceBoxes["orange"].display();
+            this.scene.pushMatrix();
+            this.scene.translate(0, 0, 1);
+            this.scene.rotate(DEGREE_TO_RAD*90, 1,0,0);
+            this.pieceCounters["orange"].display();
+            this.scene.popMatrix();
+
             this.scene.translate(4.5, 0, 0);
             this.pieceBoxes["green"].display();
+            this.scene.pushMatrix();
+            this.scene.translate(0, 0, 1);
+            this.scene.rotate(DEGREE_TO_RAD*90, 1,0,0);
+            this.pieceCounters["green"].display();
+            this.scene.popMatrix();
         this.scene.popMatrix();
 
 

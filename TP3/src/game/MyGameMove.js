@@ -36,6 +36,6 @@ class MyGameMove {
     }
 
     undo() {
-        this.tile.setPiece(null);
+        this.tile.removePiece();
     }
 }

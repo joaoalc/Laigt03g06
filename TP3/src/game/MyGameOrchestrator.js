@@ -11,6 +11,7 @@ class MyGameOrchestrator {
         this.animator = new MyAnimator(scene, this);
         this.interface = new MyGameInterface(scene, this);
         this.currentPlayer = -1;
+
     }
 
     startGame(firstPlayer){
@@ -24,6 +25,8 @@ class MyGameOrchestrator {
     update(time) {
         time /= 1000;
         this.animator.update(time);
+        this.gameboard.update(time);
+        //this.interface.update(time);
     }
 
     managePick(results) {
@@ -106,7 +109,14 @@ class MyGameOrchestrator {
         return result;
     }
 
+    getPieceNumbers() {
+        return [this.gameboard.getPieceBox("purple").nPieces, 
+                this.gameboard.getPieceBox("orange").nPieces, 
+                this.gameboard.getPieceBox("green").nPieces];
+    }
+
     display() {
-        this.gameboard.display();
+        //this.gameboard.display();
+        // this.interface.display();
     }
 }

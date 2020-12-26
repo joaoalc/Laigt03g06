@@ -30,6 +30,10 @@ class MySpriteText {
         return code;
     }
 
+    setText(text) {
+        this.text = text;
+    }
+
     display() {
         this.appearance.apply();
         this.textSprite.bind();
