@@ -25,7 +25,7 @@ class MyGameOrchestrator {
         this.mode = "HH";
         this.chooseMode = "HH";
 
-        this.bot_move = null;
+        this.winner = 0;
     }
 
     startGame(){
@@ -50,11 +50,35 @@ class MyGameOrchestrator {
     play() {
         var playerType = this.mode[this.currentPlayer - 1];
 
+        if(this.checkOver())
+            return;
+
         if(playerType == 'C') {
             if(this.state == PLAYING) {
                 this.botPlay();
             } 
         }
+    }
+
+    checkOver() {
+        if( (this.coloursWon[0]=='TRUE' && this.coloursWon[1]=='TRUE') || 
+            (this.coloursWon[0]=='TRUE' && this.coloursWon[2]=='TRUE') ||
+            (this.coloursWon[1]=='TRUE' && this.coloursWon[2]=='TRUE')) {
+                this.state = END_GAME;
+                this.winner = 1;
+                this.interface.setWinner(this.winner);
+                return true;
+        }
+        else 
+            if( (this.coloursWon[3]=='TRUE' && this.coloursWon[4]=='TRUE') || 
+            (this.coloursWon[3]=='TRUE' && this.coloursWon[5]=='TRUE') ||
+            (this.coloursWon[4]=='TRUE' && this.coloursWon[5]=='TRUE')) {
+                this.state = END_GAME;
+                this.winner = 2;
+                this.interface.setWinner(this.winner);
+                return true;
+        }
+        return false;
     }
 
     managePick(results) {
@@ -166,7 +190,6 @@ class MyGameOrchestrator {
     }
 
     display() {
-
         if(this.state != START && this.state != END_GAME) {
             this.play();
         }

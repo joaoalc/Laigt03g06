@@ -22,6 +22,13 @@ class MySpriteText {
         this.sheetSize = 16*16;
     }
 
+    initRectangles() {
+        this.objects = [];
+        for(var i = 0; i < this.text.length; ++i) {
+            this.objects[i] = new MyRectangle(this.scene, 0, 0, 1, 1);
+        }
+    }
+
     getCharacterPosition(character) {
         var code = character.charCodeAt();
         if(code >= this.sheetSize) 
@@ -32,6 +39,7 @@ class MySpriteText {
 
     setText(text) {
         this.text = text;
+        this.initRectangles();
     }
 
     display() {

@@ -48,7 +48,8 @@ class MyPrologInterface {
     parseColoursWon(data, orchestrator) {
         var reply = data.target.response;
         orchestrator.updateColours(reply.split('-'));
-        orchestrator.setPlaying();
+        if(!orchestrator.checkOver())
+            orchestrator.setPlaying();
     }
 
     parseUpdateColours(data, orchestrator) {
