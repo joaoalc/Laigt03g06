@@ -57,7 +57,9 @@ class MyPrologInterface {
     }
     
     parseBotMove(data, orchestrator) {
-        
+        var move = data.target.response.split('-');
+        console.log(move);
+        orchestrator.botMove(move);
     }
 
     //Handle the Reply

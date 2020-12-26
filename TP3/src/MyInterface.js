@@ -66,6 +66,7 @@ class MyInterface extends CGFinterface {
 
         game.add(this.scene.gameOrchestrator, 'undo').name('Undo');
         game.add(this.scene.gameOrchestrator, 'chooseMode', this.scene.gameOrchestrator.modes).name('Game mode');
+        game.add(this.scene.gameOrchestrator, 'chooseLevel', this.scene.gameOrchestrator.levels).name('Difficulty');
         game.add(this.scene.gameOrchestrator, 'firstPlayer', this.scene.gameOrchestrator.players).name('Starting player');
         game.add(this.scene.gameOrchestrator, 'startGame').name('Start Game');
 

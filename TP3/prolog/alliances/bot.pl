@@ -7,7 +7,7 @@ choose_move(GameState, Player, Level, Move) :-
     getMove(GameState, Level, ListOfMoves, Move, Player).
 
 getMove(_, random, ListOfMoves, Move, _) :- 
-    sleep(2),
+    %sleep(2),
     random_member(Move, ListOfMoves).
 
 getMove(Board-(PurpleWon1-OrangeWon1-GreenWon1-PurpleWon2-OrangeWon2-GreenWon2), Level, ListOfMoves, Move, Player) :-

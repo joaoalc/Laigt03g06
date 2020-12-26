@@ -13,14 +13,19 @@ class MyGameOrchestrator {
         this.animator = new MyAnimator(scene, this);
         this.interface = new MyGameInterface(scene, this);
         this.currentPlayer = -1;
-        this.firstPlayer = 1;
         this.state = START;
 
+        this.firstPlayer = 1;
         this.players = {'Player 1' : 1, 'Player 2': 2};
-        this.modes = {'Human/Human' : ['H','H'], 'Human/Computer' : ['H', 'C'], 'Computer/Human' : ['C', 'H'], 'Computer/Computer' : ['C', 'C']};
 
-        this.mode = ['H','H'];
-        this.chooseMode = ['H','H'];
+        this.chooseLevel = "random";
+        this.levels = {'Easy' : "random", 'Medium' : "greedy", 'Hard' : "greedy_hard"};
+
+        this.modes = {'Human/Human' : "HH", 'Human/Computer' : "HC", 'Computer/Human' : "CH", 'Computer/Computer' : "CC"};
+        this.mode = "HH";
+        this.chooseMode = "HH";
+
+        this.bot_move = null;
     }
 
     startGame(){
@@ -30,6 +35,8 @@ class MyGameOrchestrator {
         this.coloursWon = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
         this.currentPlayer = this.firstPlayer;
         this.mode = this.chooseMode;
+        this.level = this.chooseLevel;
+        console.log(this.mode);
         console.log("START");
     }
 
@@ -43,23 +50,16 @@ class MyGameOrchestrator {
     play() {
         var playerType = this.mode[this.currentPlayer - 1];
 
-        switch(playerType) {
-            case 'H':
-                if(this.state == PLAY) {
-                    
-                }
-                break;
-            case 'C':
-                if(this.state == PLAYING) {
-                    this.botPlay();
-                } 
-                break;
+        if(playerType == 'C') {
+            if(this.state == PLAYING) {
+                this.botPlay();
+            } 
         }
     }
 
     managePick(results) {
         if(this.state == PLAYING || this.state == PICKED_COLOUR) {
-            if(this.currentPlayer != -1 && this.mode[this.currentPlayer-1] != 'C') {
+            if(this.currentPlayer != -1 && this.mode[this.currentPlayer-1] == 'H') {
                 if(results != null && results.length > 0) {
                     for(var i = 0; i < results.length; ++i) {
                         var obj = results[i][0];
@@ -90,6 +90,7 @@ class MyGameOrchestrator {
     }
 
     undo() { 
+        console.log("UNDO");
         var undoResult = this.animator.undo();
         if(undoResult != -1) {
             this.coloursWon = undoResult;
@@ -121,9 +122,23 @@ class MyGameOrchestrator {
     }
 
     botPlay() {
+        this.state = PLAY;
         var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
         this.prolog.makeRequest("getBotMove("+ gameState + "," + this.currentPlayer +","+
             this.level+")", this.prolog.parseBotMove);
+    }
+
+    botMove(move) {
+        var row = move[0];
+        var diagonal = move[1];
+        var colour = move[2];
+        var tile = this.gameboard.getTileCoords(row, diagonal);
+        var newPiece = new MyPiece(this.scene, colour);
+        var coloursWonMove = this.coloursWon.slice();
+        this.animator.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile));
+        this.onMove([row, diagonal], colour);
+        this.gameboard.getPieceBox(colour).nPieces--;
+        tile.setPiece(newPiece);
     }
 
     updateColours(coloursWon) {
