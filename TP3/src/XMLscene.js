@@ -62,10 +62,7 @@ class XMLscene extends CGFscene {
         //this.testBoard.addPiece(this.testPiece2, 3, 4);
         //this.testBoard.addPiece(this.testPiece3, 23, 13);
 
-        this.gameboard = null; //GAMEBOARD
-        this.boxes = [];
-
-    
+        this.gameboardPos = mat4.create(); //GAMEBOARD POSITION
     }
 
     initMaterials(){
@@ -232,7 +229,7 @@ class XMLscene extends CGFscene {
         this.initMaterials();
         this.initTextures();
         
-        this.gameOrchestrator = new MyGameOrchestrator(this, this.gameboard);
+        this.gameOrchestrator = new MyGameOrchestrator(this, this.gameboardPos);
         this.gameOrchestrator.startGame(1);
 
         this.sceneInited = true;

@@ -4,9 +4,10 @@ const PLAY = 3;
 const END_GAME = 4;
 
 class MyGameOrchestrator {
-    constructor(scene, gameboard) {
+    constructor(scene, gameboardPos) {
         this.scene = scene;
-        this.gameboard = gameboard;
+        this.gameboard = new MyGameBoard(this.scene);
+        this.gameboardPos = gameboardPos;
         this.prolog = new MyPrologInterface(this);
         this.animator = new MyAnimator(scene, this);
         this.interface = new MyGameInterface(scene, this);
@@ -26,7 +27,7 @@ class MyGameOrchestrator {
         time /= 1000;
         this.animator.update(time);
         this.gameboard.update(time);
-        //this.interface.update(time);
+        this.interface.update(time);
     }
 
     managePick(results) {
@@ -116,7 +117,8 @@ class MyGameOrchestrator {
     }
 
     display() {
-        //this.gameboard.display();
-        // this.interface.display();
+        this.scene.multMatrix(this.gameboardPos);
+        this.gameboard.display();
+        this.interface.display();
     }
 }

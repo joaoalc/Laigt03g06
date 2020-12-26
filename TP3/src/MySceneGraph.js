@@ -753,11 +753,15 @@ class MySceneGraph {
                     descendants.push(descendantID);
 
                 } else if(grandgrandChildren[n].nodeName == "leaf") {
-                    var leaf = this.parseLeaf(grandgrandChildren[n], " on node ID " + nodeID, amplification);
-                    if(typeof leaf == 'string') {
-                        return leaf;
+                    if(this.reader.getString(grandgrandChildren[n], 'type') != "gameboard") {
+                        var leaf = this.parseLeaf(grandgrandChildren[n], " on node ID " + nodeID, amplification);
+                        if(typeof leaf == 'string') {
+                            return leaf;
+                        }
+                        leaves.push(leaf);
+                    } else {
+                        this.scene.gameboardPos = transfMatrix;
                     }
-                    leaves.push(leaf);
 
                 } else {
                     this.onXMLMinorError("unknown tag <" + grandgrandChildren[n].nodeName + ">");
@@ -1017,56 +1021,56 @@ class MySceneGraph {
 
             return new Barrel(this.scene, info[0], info[1], info[2], info[3], info[4]);
         }
-        else if(type == "gameboard") {
+        // else if(type == "gameboard") {
 
-             var children = node.children;
-             attributeNames = ["base", "middle", "height", "stacks", "slices"];
-             attributeTypes = ["float", "float", "float", "integer", "integer"];
+        //      var children = node.children;
+        //      attributeNames = ["base", "middle", "height", "stacks", "slices"];
+        //      attributeTypes = ["float", "float", "float", "integer", "integer"];
 
-             for(var i = 0; i < attributeNames.length; i++) {
-                 if(attributeTypes[i] == "float") {
-                     var attribute = this.reader.getFloat(node, attributeNames[i]);
-                     if (!(attribute != null && !isNaN(attribute)))
-                         return "unable to identify '" + attributeNames[i] + "' attribute on gameboard " + messageError;
-                 } else if(attributeTypes[i] == "integer") {
-                     var attribute = this.reader.getInteger(node, attributeNames[i]);
-                     if (!(attribute != null && !isNaN(attribute)))
-                         return "unable to identify '" + attributeNames[i] + "' attribute on gameboard " + messageError;
-                 } else {
-                     var attribute = this.reader.getString(node, attributeNames[i]);
-                     if (attribute == null || attribute == "")
-                         return "unable to identify '" + attributeNames[i] + "' attribute on gameboard " + messageError;
-                 }
-                 info.push(attribute);
-             }
+        //      for(var i = 0; i < attributeNames.length; i++) {
+        //          if(attributeTypes[i] == "float") {
+        //              var attribute = this.reader.getFloat(node, attributeNames[i]);
+        //              if (!(attribute != null && !isNaN(attribute)))
+        //                  return "unable to identify '" + attributeNames[i] + "' attribute on gameboard " + messageError;
+        //          } else if(attributeTypes[i] == "integer") {
+        //              var attribute = this.reader.getInteger(node, attributeNames[i]);
+        //              if (!(attribute != null && !isNaN(attribute)))
+        //                  return "unable to identify '" + attributeNames[i] + "' attribute on gameboard " + messageError;
+        //          } else {
+        //              var attribute = this.reader.getString(node, attributeNames[i]);
+        //              if (attribute == null || attribute == "")
+        //                  return "unable to identify '" + attributeNames[i] + "' attribute on gameboard " + messageError;
+        //          }
+        //          info.push(attribute);
+        //      }
             
-            this.scene.gameboard = new MyGameBoard(this.scene);
-            return this.scene.gameboard;
-        }
-        else if(type == "piecebox"){
-            var children = node.children;
-            attributeNames = ["style", "color"];
-            attributeTypes = ["string", "string"];
-            for(var i = 0; i < attributeNames.length; i++) {
-                if(attributeTypes[i] == "float") {
-                    var attribute = this.reader.getFloat(node, attributeNames[i]);
-                    if (!(attribute != null && !isNaN(attribute)))
-                        return "unable to identify '" + attributeNames[i] + "' attribute on piecebox " + messageError;
-                } else if(attributeTypes[i] == "integer") {
-                    var attribute = this.reader.getInteger(node, attributeNames[i]);
-                    if (!(attribute != null && !isNaN(attribute)))
-                        return "unable to identify '" + attributeNames[i] + "' attribute on piecebox " + messageError;
-                } else {
-                    var attribute = this.reader.getString(node, attributeNames[i]);
-                    if (attribute == null || attribute == "")
-                        return "unable to identify '" + attributeNames[i] + "' attribute on piecebox " + messageError;
-                }
-                info.push(attribute);
-            }
-            var newBox = new MyPieceBox(this.scene, info[0], info[1]);
-            this.scene.boxes.push(newBox);
-            return newBox;
-        }
+        //     this.scene.gameboardPos = new MyGameBoard(this.scene);
+        //     return this.scene.gameboard;
+        // }
+        // else if(type == "piecebox"){
+        //     var children = node.children;
+        //     attributeNames = ["style", "color"];
+        //     attributeTypes = ["string", "string"];
+        //     for(var i = 0; i < attributeNames.length; i++) {
+        //         if(attributeTypes[i] == "float") {
+        //             var attribute = this.reader.getFloat(node, attributeNames[i]);
+        //             if (!(attribute != null && !isNaN(attribute)))
+        //                 return "unable to identify '" + attributeNames[i] + "' attribute on piecebox " + messageError;
+        //         } else if(attributeTypes[i] == "integer") {
+        //             var attribute = this.reader.getInteger(node, attributeNames[i]);
+        //             if (!(attribute != null && !isNaN(attribute)))
+        //                 return "unable to identify '" + attributeNames[i] + "' attribute on piecebox " + messageError;
+        //         } else {
+        //             var attribute = this.reader.getString(node, attributeNames[i]);
+        //             if (attribute == null || attribute == "")
+        //                 return "unable to identify '" + attributeNames[i] + "' attribute on piecebox " + messageError;
+        //         }
+        //         info.push(attribute);
+        //     }
+        //     var newBox = new MyPieceBox(this.scene, info[0], info[1]);
+        //     this.scene.boxes.push(newBox);
+        //     return newBox;
+        // }
         else 
             return "invalid leaf type";
     }
