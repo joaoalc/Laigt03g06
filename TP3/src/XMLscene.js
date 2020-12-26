@@ -222,7 +222,7 @@ class XMLscene extends CGFscene {
     onGraphLoaded() {
         this.axis = new CGFaxis(this, this.graph.referenceLength);
 
-        this.setUpdatePeriod(40);
+        this.setUpdatePeriod(10);
 
         this.gl.clearColor(...this.graph.background);
 
@@ -233,7 +233,7 @@ class XMLscene extends CGFscene {
         this.initTextures();
         
         this.gameOrchestrator = new MyGameOrchestrator(this, this.gameboard);
-        this.gameOrchestrator.startGame(0);
+        this.gameOrchestrator.startGame(1);
 
         this.sceneInited = true;
         this.initCameras();

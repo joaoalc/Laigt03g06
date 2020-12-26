@@ -1,19 +1,23 @@
-const PICK_PIECE = 0;
-const PICK_TILE = 1;
+const PLAYING = 1;
+const PICKED_COLOUR = 2;
+const PLAY = 3;
+const END_GAME = 4;
 
 class MyGameOrchestrator {
     constructor(scene, gameboard) {
         this.scene = scene;
         this.gameboard = gameboard;
-        this.prolog = new MyPrologInterface();
+        this.prolog = new MyPrologInterface(this);
         this.animator = new MyAnimator(scene, this);
+        this.interface = new MyGameInterface(scene, this);
         this.currentPlayer = -1;
+        this.playing = false;
     }
 
     startGame(firstPlayer){
         //this.prolog.makeRequest("play");
         this.gameboard.create();
-        this.state = PICK_PIECE;
+        this.state = PLAYING;
         this.coloursWon = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
         this.currentPlayer = firstPlayer;
     }
@@ -24,7 +28,7 @@ class MyGameOrchestrator {
     }
 
     managePick(results) {
-        if(this.currentPlayer != -1) {
+        if(this.currentPlayer != -1 && (this.state == PLAYING || this.state == PICKED_COLOUR)) {
             if(results != null && results.length > 0) {
                 for(var i = 0; i < results.length; ++i) {
                     var obj = results[i][0];
@@ -41,11 +45,11 @@ class MyGameOrchestrator {
         if(object instanceof MyPieceBox) {
             if(object.nPieces > 0) {
                 this.pickedColor = object.color;
-                this.state = PICK_TILE;
+                this.state = PICKED_COLOUR;
             }
         }
         else if(object instanceof MyTile) {
-            if(object.piece == null && this.state == PICK_TILE) {
+            if(object.piece == null && this.state == PICKED_COLOUR) {
                 this.userPlay(object, [Math.floor(id/100), id%100]);
             }
         } else {
@@ -61,6 +65,7 @@ class MyGameOrchestrator {
     }
 
     userPlay(tile, coords) {
+        this.state = PLAY;
         this.pickedTile = tile;
         var newPiece = new MyPiece(this.scene, this.pickedColor);
         this.onMove(coords, this.pickedColor);
@@ -70,20 +75,22 @@ class MyGameOrchestrator {
         this.animator.addMove(new MyGameMove(this.scene, this.gameboard, newPiece, tile));
         this.pickedColor = null;
         this.pickedTile = null;
-        
-        this.state = PICK_PIECE;
-        this.currentPlayer = (this.currentPlayer + 1) % 2;
     }
 
     onMove(coords, colour) {
         var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
         this.prolog.makeRequest("player_move("+ gameState + ",[" + coords[0]+","+
-            coords[1]+","+colour+"],"+this.currentPlayer+")", this.parseColoursWon);
+            coords[1]+","+colour+"],"+this.currentPlayer+")", this.prolog.parseColoursWon);
     }
 
-    parseColoursWon(data) {
-        var reply = data.target.response;
-        this.coloursWon = reply.split('-');
+    updateColours(coloursWon) {
+        this.coloursWon = coloursWon;
+        console.log(this.coloursWon);
+    }
+
+    setPlaying() {
+        this.state = PLAYING;
+        this.currentPlayer = (this.currentPlayer) % 2 + 1;
     }
 
     coloursWonString() {
