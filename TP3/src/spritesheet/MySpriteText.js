@@ -16,9 +16,10 @@ class MySpriteText {
 
         this.appearance = new CGFappearance(this.scene);
 
-        this.textSprite = new CGFtexture(this.scene, "images/fonts/font3.png"); //text sprite
+        this.textSprite = new CGFtexture(this.scene, "images/fonts/font5_1.png"); //text sprite
 
-        this.spritesheet = new MySpriteSheet(this.scene, this.textSprite, 16, 16); // font sheet
+        //this.spritesheet = new MySpriteSheet(this.scene, this.textSprite, 15, 8); // font sheet
+        this.spritesheet = new MySpriteSheet(this.scene, this.textSprite, 16, 16);
         this.sheetSize = 16*16;
     }
 
@@ -31,6 +32,7 @@ class MySpriteText {
 
     getCharacterPosition(character) {
         var code = character.charCodeAt();
+        // var code = character.charCodeAt() - 32;
         if(code >= this.sheetSize) 
             return 1;
         
