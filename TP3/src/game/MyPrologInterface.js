@@ -14,7 +14,7 @@ class MyPrologInterface {
 
             if(onSuccess) {
                 request.addEventListener("load", function(data) {
-                    onSuccess(data, orchestrator);
+                    onSuccess(data);
                     // resolve();
                 });
             }
@@ -45,23 +45,7 @@ class MyPrologInterface {
         await this.getPrologRequest(requestString, onSuccess, this.handleError);
     }
 
-    parseColoursWon(data, orchestrator) {
-        var reply = data.target.response;
-        orchestrator.updateColours(reply.split('-'));
-        if(!orchestrator.checkOver())
-            orchestrator.setPlaying();
-    }
-
-    parseUpdateColours(data, orchestrator) {
-        var reply = data.target.response;
-        orchestrator.updateColours(reply.split('-'));
-        orchestrator.setPlaying();
-    }
     
-    parseBotMove(data, orchestrator) {
-        var move = data.target.response.split('-');
-        orchestrator.botMove(move);
-    }
 
     //Handle the Reply
     handleReply(data){

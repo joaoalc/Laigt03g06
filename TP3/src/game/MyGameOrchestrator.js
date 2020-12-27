@@ -125,7 +125,7 @@ class MyGameOrchestrator {
         if(undoResult != -1) {
             this.coloursWon = undoResult;
             var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
-            this.prolog.makeRequest("updateColours("+ gameState + "," + this.currentPlayer+")", this.prolog.parseUpdateColours);
+            this.prolog.makeRequest("updateColours("+ gameState + "," + this.currentPlayer+")", this.parseUpdateColours.bind(this));
         }
     }
 
@@ -146,14 +146,32 @@ class MyGameOrchestrator {
     onMove(coords, colour) {
         var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
         this.prolog.makeRequest("player_move("+ gameState + ",[" + coords[0]+","+
-            coords[1]+","+colour+"],"+this.currentPlayer+")", this.prolog.parseColoursWon);
+            coords[1]+","+colour+"],"+this.currentPlayer+")", this.parseColoursWon.bind(this));
+    }
+    
+    parseColoursWon(data) {
+        var reply = data.target.response;
+        this.updateColours(reply.split('-'));
+        if(!this.checkOver())
+            this.setPlaying();
+    }
+
+    parseUpdateColours(data) {
+        var reply = data.target.response;
+        this.updateColours(reply.split('-'));
+        this.setPlaying();
+    }
+    
+    parseBotMove(data) {
+        var move = data.target.response.split('-');
+        this.botMove(move);
     }
 
     botPlay() {
         this.state = PLAY;
         var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
         this.prolog.makeRequest("getBotMove("+ gameState + "," + this.currentPlayer +","+
-            this.level+")", this.prolog.parseBotMove);
+            this.level+")", this.parseBotMove.bind(this));
     }
 
     botMove(move) {
