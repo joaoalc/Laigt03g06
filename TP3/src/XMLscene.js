@@ -53,15 +53,6 @@ class XMLscene extends CGFscene {
         this.setPickEnabled(true);
 
         this.cameraAnimation = null;
-        //this.testBoard = new MyGameBoard(this);
-        //this.testBoard.create();
-
-        //this.testPiece1 = new MyPiece(this, "purple");
-        //this.testPiece2 = new MyPiece(this, "green");
-        //this.testPiece3 = new MyPiece(this, "purple");
-        //this.testBoard.addPiece(this.testPiece1, 1, 1);
-        //this.testBoard.addPiece(this.testPiece2, 3, 4);
-        //this.testBoard.addPiece(this.testPiece3, 23, 13);
 
         this.gameboardPos = mat4.create(); //GAMEBOARD POSITION
     }
@@ -269,7 +260,6 @@ class XMLscene extends CGFscene {
 
             this.gameOrchestrator.update(time);
 
-            //console.log(this.cameraAnimation);
             if(this.cameraAnimation != null){
                 let position = this.cameraAnimation.getInterpolatedPos(time);
                 let target = this.cameraAnimation.getInterpolatedTarget(time);
@@ -289,7 +279,6 @@ class XMLscene extends CGFscene {
                     this.interface.setActiveCamera(this.camera);
                 }
             }
-            console.log(this.camera);
         }
     }
 

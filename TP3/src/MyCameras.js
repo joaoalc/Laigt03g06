@@ -5,17 +5,7 @@ The resetCamera function is called whenever a camera is changed and resets the p
 Otherwise, they are exactly like CGFcamera and CGFcameraOrtho, the classes they extend, respectively.
 */
 
-/*
-//set first time this is executed
-if(this.firstTime == -1 && this.initial == this.keyframes[0])
-    this.firstTime = time;
 
-time -= this.firstTime; //current time
-
-if(this.initial.instant > time) { // first keyframe hasnt been reached yet - no display
-    return;
-} else this.started = true;
-*/
 
 class CameraInterpolator{
 
