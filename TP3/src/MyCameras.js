@@ -19,7 +19,7 @@ if(this.initial.instant > time) { // first keyframe hasnt been reached yet - no 
 
 class CameraInterpolator{
 
-    constructor(startPos, endPos, startTarget, endTarget, startNear, endNear, startFar, endFar, startAngle, endAngle, duration){
+    constructor(startPos, endPos, startTarget, endTarget, startNear, endNear, startFar, endFar, startAngle, endAngle, startUp, endUp, duration){
         this.startPos = startPos;
         this.endPos = endPos;
         this.startTarget = startTarget;
@@ -30,6 +30,8 @@ class CameraInterpolator{
         this.endFar = endFar;
         this.startAngle = startAngle;
         this.endAngle = endAngle;
+        this.startUp = startUp;
+        this.endUp = endUp;
         this.duration = duration * 1000;
         this.firstTime = -1;
         this.ended = false;
@@ -107,6 +109,27 @@ class CameraInterpolator{
         }
     }
 
+    getInterpolatedUp(time){
+        if(this.firstTime == -1 || this.firstTime == time){
+            this.firstTime = time;
+            return this.startUp;
+        }
+        else if(time < this.firstTime + this.duration){
+            let arr = [0, 0, 0];
+            for(let i = 0; i < 3; i++){
+                arr[i] = this.startUp[i] + (this.endUp[i] - this.startUp[i]) * (time - this.firstTime) / this.duration;
+            }
+            return arr;
+        }
+        else if(this.ended){
+            return -1;
+        }
+        else{
+            this.ended = true;
+            return null;
+        }
+    }
+
     getInterpolatedTarget(time){
         if(this.firstTime == -1 || this.firstTime == time){
             this.firstTime = time;
@@ -143,11 +166,11 @@ class CGFcameraResettable extends CGFcamera{
         this.originalN = n;
     }
 
-    updateCam(position, target, near, far, angle){
+    updateCam(position, target, near, far, angle, up){
         this.near = near;
         this.far = far;
         this.fov = angle;
-        console.log(angle);
+        this._up = up;
         this.position = vec4.fromValues(position[0], position[1], position[2], 0);
         this.target = vec4.fromValues(target[0], target[1], target[2], 0);
         this.direction = this.calculateDirection();
