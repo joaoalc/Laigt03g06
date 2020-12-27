@@ -5,6 +5,145 @@ The resetCamera function is called whenever a camera is changed and resets the p
 Otherwise, they are exactly like CGFcamera and CGFcameraOrtho, the classes they extend, respectively.
 */
 
+
+
+class CameraInterpolator{
+
+    constructor(startPos, endPos, startTarget, endTarget, startNear, endNear, startFar, endFar, startAngle, endAngle, startUp, endUp, duration){
+        this.startPos = startPos;
+        this.endPos = endPos;
+        this.startTarget = startTarget;
+        this.endTarget = endTarget;
+        this.startNear = startNear;
+        this.endNear = endNear;
+        this.startFar = startFar;
+        this.endFar = endFar;
+        this.startAngle = startAngle;
+        this.endAngle = endAngle;
+        this.startUp = startUp;
+        this.endUp = endUp;
+        this.duration = duration * 1000;
+        this.firstTime = -1;
+        this.ended = false;
+    }
+
+    getInterpolatedPos(time){
+        if(this.firstTime == -1 || this.firstTime == time){
+            this.firstTime = time;
+            return this.startPos;
+        }
+        else if(time < this.firstTime + this.duration){
+            let arr = [0, 0, 0];
+            for(let i = 0; i < 3; i++){
+                arr[i] = this.startPos[i] + (this.endPos[i] - this.startPos[i]) * (time - this.firstTime) / this.duration;
+            }
+            return arr;
+        }
+        else if(this.ended){
+            return -1;
+        }
+        else{
+            this.ended = true;
+            return null;
+        }
+    }
+
+    getInterpolatedNear(time){
+        if(this.firstTime == -1 || this.firstTime == time){
+            this.firstTime = time;
+            return this.startNear;
+        }
+        else if(time < this.firstTime + this.duration){
+            return this.startNear + (this.endNear - this.startNear) * (time - this.firstTime) / this.duration;
+        }
+        else if(this.ended){
+            return -1;
+        }
+        else{
+            this.ended = true;
+            return null;
+        }
+    }
+
+    getInterpolatedFar(time){
+        if(this.firstTime == -1 || this.firstTime == time){
+            this.firstTime = time;
+            return this.startFar;
+        }
+        else if(time < this.firstTime + this.duration){
+            return this.startFar + (this.endFar - this.startFar) * (time - this.firstTime) / this.duration;
+        }
+        else if(this.ended){
+            return -1;
+        }
+        else{
+            this.ended = true;
+            return null;
+        }
+    }
+
+    getInterpolatedAngle(time){
+        if(this.firstTime == -1 || this.firstTime == time){
+            this.firstTime = time;
+            return this.startAngle;
+        }
+        else if(time < this.firstTime + this.duration){
+            return this.startAngle + (this.endAngle - this.startAngle) * (time - this.firstTime) / this.duration;
+        }
+        else if(this.ended){
+            return -1;
+        }
+        else{
+            this.ended = true;
+            return null;
+        }
+    }
+
+    getInterpolatedUp(time){
+        if(this.firstTime == -1 || this.firstTime == time){
+            this.firstTime = time;
+            return this.startUp;
+        }
+        else if(time < this.firstTime + this.duration){
+            let arr = [0, 0, 0];
+            for(let i = 0; i < 3; i++){
+                arr[i] = this.startUp[i] + (this.endUp[i] - this.startUp[i]) * (time - this.firstTime) / this.duration;
+            }
+            return arr;
+        }
+        else if(this.ended){
+            return -1;
+        }
+        else{
+            this.ended = true;
+            return null;
+        }
+    }
+
+    getInterpolatedTarget(time){
+        if(this.firstTime == -1 || this.firstTime == time){
+            this.firstTime = time;
+            return this.startTarget;
+        }
+        else if(time < this.firstTime + this.duration){
+            let arr = [0, 0, 0];
+            for(let i = 0; i < 3; i++){
+                arr[i] = this.startTarget[i] + (this.endTarget[i] - this.startTarget[i]) * (time - this.firstTime) / this.duration;
+            }
+            return arr;
+        }
+        else if(this.ended){
+            return -1;
+        }
+        else{
+            this.ended = true;
+            return null;
+        }
+    }
+
+
+}
+
 class CGFcameraResettable extends CGFcamera{
     constructor(t, e, i, r, n) {
         super(t, e, i, r, n);
@@ -17,9 +156,19 @@ class CGFcameraResettable extends CGFcamera{
         this.originalN = n;
     }
 
+    updateCam(position, target, near, far, angle, up){
+        this.near = near;
+        this.far = far;
+        this.fov = angle;
+        this._up = up;
+        this.position = vec4.fromValues(position[0], position[1], position[2], 0);
+        this.target = vec4.fromValues(target[0], target[1], target[2], 0);
+        this.direction = this.calculateDirection();
+    }
+
     resetCamera(){
         this.fov = this.originalFov;
-        this.nera = this.originalNear;
+        this.near = this.originalNear;
         this.far = this.originalFar;
         this.r = this.originalR;
         this.n = this.originalN;
@@ -45,6 +194,12 @@ class CGFcameraOrthoResettable extends CGFcameraOrtho{
         this.originalO = o;
         this.originalA = a;
         this.originalC = c;
+    }
+
+    updateCamera(){ //TODO: Testing function, user resetCamera instead
+        this.position = vec4.fromValues(this.originalO[0], this.originalO[1], this.originalO[2], 0);
+        this.target = vec4.fromValues(this.originalA[0], this.originalA[1], this.originalA[2], 0);
+        this.direction = this.calculateDirection();
     }
 
     resetCamera(){

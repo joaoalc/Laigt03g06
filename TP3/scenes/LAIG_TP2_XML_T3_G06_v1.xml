@@ -4,13 +4,17 @@
         <root id="RootNode"/>
     </initials>
     <views default="defaultCamera"> 
-        <perspective id="defaultCamera" near="0.1" far="500" angle="45">
+        <perspective id="defaultCamera" near="5" far="55" angle="45">
             <from x="0" y="10" z="10"/>
             <to x="0" y="0" z="0"/>
         </perspective>
-        <perspective id="Overview" near="0.1" far="500" angle="45">
+        <perspective id="Overview" near="20" far="25" angle="45">
             <from x="18" y="5" z="15"/>
             <to x="0" y="0" z="0"/>
+        </perspective>
+        <perspective id="TargetTest" near="0.1" far="500" angle="45">
+            <from x="18" y="5" z="15"/>
+            <to x="18" y="-5" z="5"/>
         </perspective>
         <perspective id="Back" near="0.1" far="500" angle="45">
             <from x="-15" y="5" z="-3"/>
