@@ -274,7 +274,7 @@ class XMLscene extends CGFscene {
                     this.camera = this.nextCamera;
                     this.interface.setActiveCamera(this.camera);
                 }
-                console.log(this.camera.position);
+                //console.log(this.camera.position);
             }
         }
     }
