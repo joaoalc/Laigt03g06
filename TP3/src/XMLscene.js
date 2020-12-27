@@ -124,24 +124,25 @@ class XMLscene extends CGFscene {
      * Updated the currently active camera. Also resets it's attributes to the ones set to at the beggining.
      */
     updateCamera() {
+        let startCamPos = [this.camera.position[0], this.camera.position[1], this.camera.position[2]];
+        let startCamTarget = [this.camera.target[0], this.camera.target[1], this.camera.target[2]];
+        let startCamUp = [this.camera._up[0], this.camera._up[1], this.camera._up[2]];
+        let startCamAngle = this.camera.fov;
+        let startCamFar = this.camera.far;
+        let startCamNear = this.camera.near;
+        
         this.nextCamera = this.cameras[Object.keys(this.cameras)[this.activeCamera]];
         this.nextCamera.resetCamera();
         this.interface.setActiveCamera(this.camera);
-        let startCamPos = [this.camera.position[0], this.camera.position[1], this.camera.position[2]];
         let endCamPos = [this.nextCamera.position[0], this.nextCamera.position[1], this.nextCamera.position[2]];
-        let startCamTarget = [this.camera.target[0], this.camera.target[1], this.camera.target[2]];
         let endCamTarget = [this.nextCamera.target[0], this.nextCamera.target[1], this.nextCamera.target[2]];
-        let startCamNear = this.camera.near;
         let endCamNear = this.nextCamera.near;
-        let startCamFar = this.camera.far;
         let endCamFar = this.nextCamera.far;
-        let startCamAngle = this.camera.fov;
         let endCamAngle = this.nextCamera.fov;
-        let startCamUp = [this.camera._up[0], this.camera._up[1], this.camera._up[2]];
         let endCamUp = [this.nextCamera._up[0], this.nextCamera._up[1], this.nextCamera._up[2]];
         let time =  Math.sqrt(Math.pow(endCamPos[0] - startCamPos[0], 2) + Math.pow(endCamPos[1] - startCamPos[1], 2) + Math.pow(endCamPos[2] - startCamPos[2], 2));
 
-        this.cameraAnimation = new CameraInterpolator(startCamPos, endCamPos, startCamTarget, endCamTarget, startCamNear, endCamNear, startCamFar, endCamFar, startCamAngle, endCamAngle, startCamUp, endCamUp, time / 20);
+        this.cameraAnimation = new CameraInterpolator(startCamPos, endCamPos, startCamTarget, endCamTarget, startCamNear, endCamNear, startCamFar, endCamFar, startCamAngle, endCamAngle, startCamUp, endCamUp, time / 10);
     }
 
     // logPicking() {
@@ -278,6 +279,7 @@ class XMLscene extends CGFscene {
                     this.camera = this.nextCamera;
                     this.interface.setActiveCamera(this.camera);
                 }
+                console.log(this.camera.position);
             }
         }
     }
