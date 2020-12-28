@@ -129,6 +129,7 @@
             <transformations>
             </transformations>
             <descendants>
+                <leaf type="customobj" path="" wireframe="0"/>
                 <leaf type="gameboard" x="0" y="0" z="0"/>
             </descendants>
         </node>

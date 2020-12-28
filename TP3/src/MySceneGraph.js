@@ -1022,6 +1022,31 @@ class MySceneGraph {
             }
 
             return new Barrel(this.scene, info[0], info[1], info[2], info[3], info[4]);
+        } else if(type == "customobj") {
+            attributeNames = ["path", "wireframe"];
+            attributeTypes = ["string", "int"];
+
+            for(var i = 0; i < attributeNames.length; i++) {
+                if(attributeTypes[i] == "float") {
+                    var attribute = this.reader.getFloat(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on defbarrel " + messageError;
+                } else if(attributeTypes[i] == "integer") {
+                    var attribute = this.reader.getInteger(node, attributeNames[i]);
+                    if (!(attribute != null && !isNaN(attribute)))
+                        return "unable to identify '" + attributeNames[i] + "' attribute on defbarrel " + messageError;
+                } else {
+                    var attribute = this.reader.getString(node, attributeNames[i]);
+                    if (attribute == null || attribute == "")
+                        return "unable to identify '" + attributeNames[i] + "' attribute on defbarrel " + messageError;
+                }
+                info.push(attribute);
+            }
+
+            if(info[1] != 0 && info[1] != 1){
+                return " wireframe in leaf customobj has to be 0 or 1";
+            }
+            return new CGFOBJModel(this.scene, info[0], info[i]);
         }
         // else if(type == "gameboard") {
 
