@@ -156,8 +156,10 @@ class CGFOBJModel extends CGFobject{
 	  }
 	  console.log("Loaded mesh "+ this.url +" with " + this.vcount + " vertices / "+ this.fcount + " faces");
 
-		if (this.texcoords.length==0)
+		if (this.texcoords.length==0) {
+			console.log("WTFFFF");
 			this.texcoords=null;
+		} else console.log(this.texcoords);
 			
 		if (!this.wireframe)
 			this.primitiveType = this.scene.gl.TRIANGLES;
