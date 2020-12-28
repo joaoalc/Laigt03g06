@@ -1026,7 +1026,7 @@ class MySceneGraph {
             attributeNames = ["path", "wireframe"];
             attributeTypes = ["string", "int"];
 
-            for(var i = 0; i < attributeNames.length; i++) {
+            for(let i = 0; i < attributeNames.length; i++) {
                 if(attributeTypes[i] == "float") {
                     var attribute = this.reader.getFloat(node, attributeNames[i]);
                     if (!(attribute != null && !isNaN(attribute)))
@@ -1046,7 +1046,8 @@ class MySceneGraph {
             if(info[1] != 0 && info[1] != 1){
                 return " wireframe in leaf customobj has to be 0 or 1";
             }
-            return new CGFOBJModel(this.scene, info[0], info[i]);
+            info[1] = info[1] == 1 ? true : false;
+            return new CGFOBJModel(this.scene, info[0], info[1]);
         }
         // else if(type == "gameboard") {
 
