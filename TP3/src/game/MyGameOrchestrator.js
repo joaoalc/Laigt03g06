@@ -16,6 +16,7 @@ class MyGameOrchestrator {
         this.currentPlayer = -1;
         this.state = START;
 
+
         this.firstPlayer = 1;
         this.players = {'Player 1' : 1, 'Player 2': 2};
 
@@ -234,7 +235,6 @@ class MyGameOrchestrator {
         this.scene.rotate(this.gameboardPos[3], 1,0,0);
         this.scene.rotate(this.gameboardPos[4], 0,1,0);
         this.scene.rotate(this.gameboardPos[5], 0,0,1);
-        console.log(this.gameboardPos[6]);
         this.scene.scale(this.gameboardPos[6],this.gameboardPos[6],this.gameboardPos[6]);
 
         this.gameboard.display();

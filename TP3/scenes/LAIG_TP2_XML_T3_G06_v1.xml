@@ -3,7 +3,7 @@
         <reference length="3"/>
         <root id="RootNode"/>
     </initials>
-    <views default="defaultCamera"> 
+    <views default="board_1"> 
         <perspective id="defaultCamera" near="1" far="500" angle="45">
             <from x="0" y="10" z="10"/>
             <to x="0" y="0" z="0"/>
