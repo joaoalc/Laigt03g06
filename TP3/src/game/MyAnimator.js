@@ -1,7 +1,7 @@
 class MyAnimator {
-    constructor(orchestrator) {
+    constructor(orchestrator, sequence) {
         this.orchestrator = orchestrator;
-        this.sequence = new MyGameSequence();
+        this.sequence = sequence;
     }
 
     reset() {
@@ -18,14 +18,29 @@ class MyAnimator {
         return this.sequence.undo();
     }
 
+    setSequence(sequence) {
+        this.sequence = sequence;
+    }
+
     addMove(move) {
         this.sequence.addMove(move);
     }
 
-    update(time) {
-        for(var i = 0; i < this.sequence.moves.length; ++i) {
-            if(!this.sequence.moves[i].animationFinished())
-                this.sequence.moves[i].animate(time);
+    update(time, movie) {
+        if(!movie) {
+            for(var i = 0; i < this.sequence.moves.length; ++i) {
+                if(!this.sequence.moves[i].animationFinished())
+                    this.sequence.moves[i].animate(time);
+            }
+        } else {
+            for(var i = 0; i < this.sequence.moves.length; ++i) {
+                if(i > 0) {
+                    if(!this.sequence.moves[i-1].animationFinished())
+                        return;
+                }
+                if(!this.sequence.moves[i].animationFinished())
+                    this.sequence.moves[i].animate(time);
+            }
         }
     }
 }

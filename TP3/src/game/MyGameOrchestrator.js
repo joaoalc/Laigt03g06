@@ -11,11 +11,15 @@ class MyGameOrchestrator {
         this.gameboard = new MyGameBoard(this.scene);
         this.gameboardPos = gameboardPos;
         this.prolog = new MyPrologInterface(this);
-        this.animator = new MyAnimator(scene, this);
+        this.sequence = new MyGameSequence();
+        this.animator = new MyAnimator(this, this.sequence);
         this.interface = new MyGameInterface(scene, this);
         this.currentPlayer = -1;
         this.state = START;
 
+        this.movieMove = [0, 0];
+        this.stateMovie = PLAYING;
+        this.beforeMovie = [];
 
         this.firstPlayer = 1;
         this.players = {'Player 1' : 1, 'Player 2': 2};
@@ -44,7 +48,7 @@ class MyGameOrchestrator {
 
     update(time) {
         time /= 1000;
-        this.animator.update(time);
+        this.animator.update(time, this.state==MOVIE);
         this.gameboard.update(time);
         this.interface.update(time);
     }
@@ -64,6 +68,34 @@ class MyGameOrchestrator {
             if(this.state == PLAYING) {
                 this.botPlay();
             } 
+        }
+    }
+
+    startMovie() {
+        this.movieMove = [0,0];
+        Object.assign(this.stateMovie, this.state);
+        Object.assign(this.beforeMovie, this.coloursWon);
+        this.gameboard.resetBoxes();
+        this.state = MOVIE;
+        this.animator.start();
+    }
+
+    playMovie() {
+        if(this.movieMove[0] == this.sequence.moves.length) {
+            console.log(this.stateMovie);
+            this.state = this.stateMovie;
+            // Object.assign(this.state, this.stateMovie);
+            Object.assign(this.coloursWon, this.beforeMovie);
+            console.log(this.state);
+        } else {
+            if(this.movieMove[1] == 0) {
+                this.gameboard.getPieceBox(this.sequence.moves[this.movieMove[0]].getColour()).nPieces--;
+                this.movieMove[1] = 1;
+            }         
+            if(this.sequence.moves[this.movieMove[0]].animationFinished()) {
+                this.movieMove[0]++;
+                this.movieMove[1] = 0;
+            }
         }
     }
 
@@ -136,7 +168,7 @@ class MyGameOrchestrator {
         var newPiece = new MyPiece(this.scene, this.pickedColor);
         var coloursWonMove = this.coloursWon.slice();
         this.animator.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile));
-        this.onMove(coords, this.pickedColor);
+        this.onMoveRequest(coords, this.pickedColor);
         this.gameboard.getPieceBox(this.pickedColor).nPieces--;
         tile.setPiece(newPiece);
         //this.gameboard.updateColoursWon(this.coloursWon);
@@ -144,7 +176,11 @@ class MyGameOrchestrator {
         this.pickedTile = null;
     }
 
-    onMove(coords, colour) {
+    move() {
+
+    }
+
+    onMoveRequest(coords, colour) {
         var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
         this.prolog.makeRequest("player_move("+ gameState + ",[" + coords[0]+","+
             coords[1]+","+colour+"],"+this.currentPlayer+")", this.parseColoursWon.bind(this));
@@ -183,7 +219,7 @@ class MyGameOrchestrator {
         var newPiece = new MyPiece(this.scene, colour);
         var coloursWonMove = this.coloursWon.slice();
         this.animator.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile));
-        this.onMove([row, diagonal], colour);
+        this.onMoveRequest([row, diagonal], colour);
         this.gameboard.getPieceBox(colour).nPieces--;
         tile.setPiece(newPiece);
     }
@@ -212,16 +248,6 @@ class MyGameOrchestrator {
         return [this.gameboard.getPieceBox("purple").nPieces, 
                 this.gameboard.getPieceBox("orange").nPieces, 
                 this.gameboard.getPieceBox("green").nPieces];
-    }
-
-    startMovie() {
-        this.state = MOVIE;
-        this.coloursWonMovie = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
-        this.animator.start();
-    }
-
-    playMovie() {
-
     }
 
     display() {

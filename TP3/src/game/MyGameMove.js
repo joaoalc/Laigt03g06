@@ -1,5 +1,5 @@
 class MyGameMove {
-    constructor(scene, gamestate, piece, tile, ) {
+    constructor(scene, gamestate, piece, tile) {
         this.scene = scene;
         this.gamestate = gamestate;
         this.piece = piece;
@@ -44,6 +44,14 @@ class MyGameMove {
 
     animationFinished() {
         return this.piece.animation.finished;
+    }
+
+    animationStated() {
+        return this.piece.animation.started;
+    }
+
+    getColour() {
+        return this.piece.colour;
     }
 
     undo() {

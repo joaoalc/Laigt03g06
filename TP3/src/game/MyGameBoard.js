@@ -115,6 +115,12 @@ class MyGameBoard extends CGFobject {
         return result + "]";
     }
 
+    resetBoxes() {
+        this.pieceBoxes["purple"].reset();
+        this.pieceBoxes["orange"].reset();
+        this.pieceBoxes["green"].reset();
+    }
+
     update(time) {
         this.pieceCounters["purple"].setText(this.pieceBoxes["purple"].nPieces.toString());
         this.pieceCounters["orange"].setText(this.pieceBoxes["orange"].nPieces.toString());
