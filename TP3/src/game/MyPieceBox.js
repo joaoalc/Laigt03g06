@@ -51,18 +51,19 @@ class MyPieceBox extends CGFobject{
 
     display(){
         
-        this.piecesText.bind();
-
-        this.scene.pushMatrix();
-        this.scene.translate(0, 0, 0.7);
-        this.scene.scale(2.9,2,1);
         if(this.nPieces > 0) {
-            this.scene.registerForPick(this.id, this);
-        }
-        else this.scene.registerForPick(0, null);
+            this.piecesText.bind();
 
-        this.rectangle.display();
-        this.scene.popMatrix();
+            
+            this.scene.pushMatrix();
+            this.scene.translate(0, 0, 0.7);
+            this.scene.scale(2.9,2,1);
+ 
+            this.scene.registerForPick(this.id, this);
+
+            this.rectangle.display();
+            this.scene.popMatrix();
+        }
 
         this.scene.pushMatrix();
         this.scene.scale(2,2,2);

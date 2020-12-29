@@ -25,14 +25,17 @@ class MyGameBoard extends CGFobject {
         this.create();
 
         this.boardPlane = new MyRectangle(this.scene, 0, -10.5, 12, 0, 12, 10.5);
-        this.boardTexture = new CGFtexture(this.scene, "images/board_clear.png");
+        this.boardFrame = new MyTorus(this.scene, 0.1, 8.485, 4, 4);
+        this.boardTexture = new CGFtexture(this.scene, "images/board_clear3.png");
+        this.frameTexture = new CGFtexture(this.scene, "./scenes/textures_LAIG_TP2_XML_T3_G06_v1/golden.jpg");
         this.tileTexture = new CGFtexture(this.scene, "images/tile.png");
-        // var testPiece1 = new MyPiece(this.scene, "purple");
-        // var testPiece2 = new MyPiece(this.scene, "green");
-        // var testPiece3 = new MyPiece(this.scene, "purple");
-        // this.addPiece(testPiece1, 1, 1);
-        // this.addPiece(testPiece2, 3, 4);
-        // this.addPiece(testPiece3, 23, 13);
+
+        this.boardMat = new CGFappearance(this.scene);
+        this.boardMat.setShininess(10.0);
+        this.boardMat.setSpecular(0.4, 0.4, 0.4, 1);
+        this.boardMat.setDiffuse(0.6, 0.6, 0.6, 1);
+        this.boardMat.setAmbient(0.2, 0.2, 0.2, 1);
+        this.boardMat.setEmission(0, 0, 0, 1);
     }
 
     create() { 
@@ -119,11 +122,19 @@ class MyGameBoard extends CGFobject {
     }
 
     display() {
-
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
+
+        this.frameTexture.bind();
+        this.scene.pushMatrix();
+        this.scene.translate(0, 0, -1.3);
+        this.scene.scale(1, 0.875, 1);
+        this.scene.rotate(Math.PI/4, 0, 0, 1);
+        this.boardFrame.display();
+        this.scene.popMatrix();
 
         this.scene.translate(-3.5 * this.horShift + this.horShift/2, 11.5 * this.vertShift - this.vertShift/2, -1.3);
 
+        this.boardMat.apply();
         this.scene.pushMatrix();
         this.scene.translate(-1.5, 0.5, 0);
         this.boardTexture.bind();

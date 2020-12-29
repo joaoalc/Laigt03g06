@@ -108,6 +108,7 @@
         <texture id="stone_floor" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/stone_floor.jpg"/>
         <texture id="wood_barrel" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wood_planks.jpg"/>
         <texture id="wooden_planks" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wooden_planks.png"/>
+        <texture id="wood_planks" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wood_planks.jpg"/>
         <texture id="towel" path="./images/picnic2.jpg"/>
     </textures>
     <spritesheets>
@@ -587,7 +588,7 @@
 
         <node id="table">
             <material id="wood"/>
-            <texture id="wooden_planks">
+            <texture id="wood_planks">
                 <amplification afs="1" aft="1"/>
             </texture>
             <transformations>
