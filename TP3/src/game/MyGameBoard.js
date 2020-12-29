@@ -22,8 +22,11 @@ class MyGameBoard extends CGFobject {
         this.pieceCounters["orange"] = new MySpriteText(this.scene, this.pieceBoxes["orange"].nPieces.toString());
         this.pieceCounters["green"] = new MySpriteText(this.scene, this.pieceBoxes["green"].nPieces.toString());
 
-
         this.create();
+
+        this.boardPlane = new MyRectangle(this.scene, 0, -10.5, 12, 0, 12, 10.5);
+        this.boardTexture = new CGFtexture(this.scene, "images/board_clear.png");
+        this.tileTexture = new CGFtexture(this.scene, "images/tile.png");
         // var testPiece1 = new MyPiece(this.scene, "purple");
         // var testPiece2 = new MyPiece(this.scene, "green");
         // var testPiece3 = new MyPiece(this.scene, "purple");
@@ -116,12 +119,19 @@ class MyGameBoard extends CGFobject {
     }
 
     display() {
-        this.scene.pushMatrix();
 
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
 
-        this.scene.translate(-3.5 * this.horShift + this.horShift/2, 11.5 * this.vertShift - this.vertShift/2, 0);
+        this.scene.translate(-3.5 * this.horShift + this.horShift/2, 11.5 * this.vertShift - this.vertShift/2, -1.3);
 
+        this.scene.pushMatrix();
+        this.scene.translate(-1.5, 0.5, 0);
+        this.boardTexture.bind();
+        this.boardPlane.display();
+        this.scene.popMatrix();
+        this.scene.pushMatrix();
+
+        this.tileTexture.bind();
         for(var line = 1; line <= 23; ++line) {
             this.scene.pushMatrix();
             var lineLength = this.lineLengths[line-1];
@@ -145,7 +155,7 @@ class MyGameBoard extends CGFobject {
         }
 
         this.scene.pushMatrix();
-            this.scene.translate(0, 3, 0);
+            this.scene.translate(0, 3, 0.9);
             this.pieceBoxes["purple"].display();
             this.scene.pushMatrix();
             this.scene.translate(0, 0, 1.2);

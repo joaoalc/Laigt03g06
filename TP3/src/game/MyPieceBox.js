@@ -22,6 +22,8 @@ class MyPieceBox extends CGFobject{
         }
         // this.findStyle();
         this.rectangle = new MyRectangle(this.scene, -0.5, -0.5, 0.5, 0.5, 1, 1);
+
+        this.boxText = new CGFtexture(this.scene, "./images/basket_text.jpg");
         this.obj = new CGFOBJModel(this.scene, "./images/basket.obj", 0);
     }
 
@@ -66,7 +68,7 @@ class MyPieceBox extends CGFobject{
         this.scene.scale(2,2,2);
         this.scene.rotate(Math.PI/2, 0,0,1);
         this.scene.rotate(Math.PI/2, 1,0,0);
-        
+        this.boxText.bind();
         this.obj.display();
         this.scene.popMatrix();
     } 

@@ -587,7 +587,7 @@
 
         <node id="table">
             <material id="wood"/>
-            <texture id="glass">
+            <texture id="wooden_planks">
                 <amplification afs="1" aft="1"/>
             </texture>
             <transformations>
