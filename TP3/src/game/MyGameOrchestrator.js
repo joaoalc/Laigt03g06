@@ -36,13 +36,18 @@ class MyGameOrchestrator {
 
     startGame(){
         //this.prolog.makeRequest("play");
+        this.sequence = new MyGameSequence();
+        this.animator.setSequence(this.sequence);
         this.gameboard.create();
         this.state = PLAYING;
         this.coloursWon = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
         this.currentPlayer = this.firstPlayer;
         this.mode = this.chooseMode;
         this.level = this.chooseLevel;
-        console.log(this.mode);
+        this.winner = 0;
+        this.movieMove = [0, 0];
+        this.stateMovie = PLAYING;
+        this.beforeMovie = [];
         console.log("START");
     }
 
@@ -72,12 +77,31 @@ class MyGameOrchestrator {
     }
 
     startMovie() {
-        this.movieMove = [0,0];
-        Object.assign(this.stateMovie, this.state);
-        Object.assign(this.beforeMovie, this.coloursWon);
-        this.gameboard.resetBoxes();
-        this.state = MOVIE;
-        this.animator.start();
+        if(this.state == PLAYING || this.state == END_GAME) {
+            this.movieMove = [0,0];
+            Object.assign(this.stateMovie, this.state);
+            Object.assign(this.beforeMovie, this.coloursWon);
+            this.gameboard.resetBoxes();
+            this.state = MOVIE;
+            this.animator.start();
+        }
+    }
+
+    stopMovie() {
+        if(this.state == MOVIE) {
+            var i;
+            if(this.movieMove[1] == 0)
+                i = this.movieMove[0];
+            else i = this.movieMove[0] + 1;
+
+            for(; i < this.sequence.moves.length; ++i) {
+                this.gameboard.getPieceBox(this.sequence.moves[i].getColour()).nPieces--;
+            }
+            this.movieMove = [0,0];
+
+            this.state = this.stateMovie;
+            Object.assign(this.coloursWon, this.beforeMovie);
+        }
     }
 
     playMovie() {
@@ -87,6 +111,7 @@ class MyGameOrchestrator {
             // Object.assign(this.state, this.stateMovie);
             Object.assign(this.coloursWon, this.beforeMovie);
             console.log(this.state);
+            this.movieMove = [0,0];
         } else {
             if(this.movieMove[1] == 0) {
                 this.gameboard.getPieceBox(this.sequence.moves[this.movieMove[0]].getColour()).nPieces--;
@@ -167,7 +192,7 @@ class MyGameOrchestrator {
         this.pickedTile = tile;
         var newPiece = new MyPiece(this.scene, this.pickedColor);
         var coloursWonMove = this.coloursWon.slice();
-        this.animator.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile));
+        this.sequence.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile));
         this.onMoveRequest(coords, this.pickedColor);
         this.gameboard.getPieceBox(this.pickedColor).nPieces--;
         tile.setPiece(newPiece);
@@ -218,7 +243,7 @@ class MyGameOrchestrator {
         var tile = this.gameboard.getTileCoords(row, diagonal);
         var newPiece = new MyPiece(this.scene, colour);
         var coloursWonMove = this.coloursWon.slice();
-        this.animator.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile));
+        this.sequence.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile));
         this.onMoveRequest([row, diagonal], colour);
         this.gameboard.getPieceBox(colour).nPieces--;
         tile.setPiece(newPiece);
@@ -251,7 +276,7 @@ class MyGameOrchestrator {
     }
 
     display() {
-        if(this.state != START && this.state != END_GAME) {
+        if(this.state != START) {
             this.play();
         }
 
