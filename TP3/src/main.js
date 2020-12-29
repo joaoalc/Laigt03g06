@@ -39,9 +39,23 @@ main=function()
 	
     var filename=getUrlVars()['file'] || "LAIG_TP2_XML_T3_G06_v1.xml";
 
+    myScene.activeScene = "Train";
+
+    var filenames = {"Train" : 'LAIG_TP2_XML_T3_G06_v1.xml'};//, "OtherScene": 'SecondScene.xml'};
+    for(sceneName in filenames){
+        myScene.sceneGraphs[sceneName] = new MySceneGraph(filenames[sceneName], myScene);
+    }
+
+    if(myScene.sceneGraphs[myScene.activeScene]){
+        // As the graph loaded ok, signal the scene so that any additional initialization depending on the graph can take place
+        //myScene.onGraphLoaded();
+    }
+
+    //myScene.onGraphLoaded();
+
 	// create and load graph, and associate it to scene. 
 	// Check console for loading errors
-	var myGraph = new MySceneGraph(filename, myScene);
+	//var myGraph = new MySceneGraph(filename, myScene);
 	
 	// start
     app.run();

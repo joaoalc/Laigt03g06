@@ -55,14 +55,15 @@ class XMLscene extends CGFscene {
         this.cameraAnimation = null;
 
         this.gameboardPos = [0,0,0]; //GAMEBOARD POSITION
-        this.activeSceneName = "";
+        this.activeScene = "";
+        this.sceneGraphs = {};
     }
 
     initMaterials(){
         this.materials = [];
 
-        for(var key in this.graph.materials) {
-            var info = this.graph.materials[key];
+        for(var key in this.sceneGraphs[this.activeScene].materials) {
+            var info = this.sceneGraphs[this.activeScene].materials[key];
         
             var mat = new CGFappearance(this);
             mat.setShininess(info[0]);
@@ -79,8 +80,8 @@ class XMLscene extends CGFscene {
         this.textures = [];
 
         
-        for(var key in this.graph.textures){
-            var info = this.graph.textures[key];
+        for(var key in this.sceneGraphs[this.activeScene].textures){
+            var info = this.sceneGraphs[this.activeScene].textures[key];
             if(info != 0) {
                 var tex = new CGFtexture(this, info);
                 this.textures[key] = tex;
@@ -95,8 +96,8 @@ class XMLscene extends CGFscene {
         var i = 0;
         this.cameras = [];
         if(this.sceneInited) {
-            for(var key in this.graph.views) {
-                var info = this.graph.views[key];
+            for(var key in this.sceneGraphs[this.activeScene].views) {
+                var info = this.sceneGraphs[this.activeScene].views[key];
                 
                 if(info[0] == "p") {
                     this.cameras[key] = new CGFcameraResettable(info[1],info[2],info[3],vec3.fromValues(info[4][0],info[4][1],info[4][2]),
@@ -108,7 +109,7 @@ class XMLscene extends CGFscene {
                                         vec3.fromValues(info[9][0],info[9][1],info[9][2]));
                 }
 
-                if (key == this.graph.defaultView) {
+                if (key == this.sceneGraphs[this.activeScene].defaultView) {
                     this.activeCamera = key;
                     this.camera = this.cameras[key];
                     this.interface.setActiveCamera(this.camera);
@@ -182,12 +183,12 @@ class XMLscene extends CGFscene {
         var i = 0;
 
         // Reads the lights from the scene graph.
-        for (var key in this.graph.lights) {
+        for (var key in this.sceneGraphs[this.activeScene].lights) {
             if (i >= 8)
                 break;              // Only eight lights allowed by WebCGF on default shaders.
 
-            if (this.graph.lights.hasOwnProperty(key)) {
-                var graphLight = this.graph.lights[key];
+            if (this.sceneGraphs[this.activeScene].lights.hasOwnProperty(key)) {
+                var graphLight = this.sceneGraphs[this.activeScene].lights[key];
 
                 this.lights[i].setPosition(...graphLight[1]);
                 this.lights[i].setAmbient(...graphLight[2]);
@@ -229,13 +230,13 @@ class XMLscene extends CGFscene {
      * As loading is asynchronous, this may be called already after the application has started the run loop
      */
     onGraphLoaded() {
-        this.axis = new CGFaxis(this, this.graph.referenceLength);
+        this.axis = new CGFaxis(this, this.sceneGraphs[this.activeScene].referenceLength);
 
         this.setUpdatePeriod(10);
 
-        this.gl.clearColor(...this.graph.background);
+        this.gl.clearColor(...this.sceneGraphs[this.activeScene].background);
 
-        this.setGlobalAmbientLight(...this.graph.ambient);
+        this.setGlobalAmbientLight(...this.sceneGraphs[this.activeScene].ambient);
 
         this.initLights();
         this.initMaterials();
@@ -250,14 +251,17 @@ class XMLscene extends CGFscene {
         this.interface.addSceneSelectors(this.activeSceneName);
     }
 
-    update(time) {
+    update(time) {/*
+        console.log(this.sceneGraphs);
+        console.log(this.sceneGraphs[this.activeScene]);
+        console.log(this.sceneGraphs[this.activeScene].animations);*/
         if(this.sceneInited){
-            for(var key in this.graph.animations) {
-                this.graph.animations[key].update(time/1000);
+            for(var key in this.sceneGraphs[this.activeScene].animations) {
+                this.sceneGraphs[this.activeScene].animations[key].update(time/1000);
             }
 
-            for(var i = 0; i <  this.graph.spriteAnimations.length; ++i) {
-                this.graph.spriteAnimations[i].update(time/1000);
+            for(var i = 0; i <  this.sceneGraphs[this.activeScene].spriteAnimations.length; ++i) {
+                this.sceneGraphs[this.activeScene].spriteAnimations[i].update(time/1000);
             }
 
             this.gameOrchestrator.update(time);
@@ -335,11 +339,11 @@ class XMLscene extends CGFscene {
                 this.axis.display();
 
             if(this.displayNormals && !this.displayNormals_before) {
-                this.graph.enableNormals();
+                this.sceneGraphs[this.activeScene].enableNormals();
                 this.displayNormals_before = true;
             }
             else if(!this.displayNormals && this.displayNormals_before) {
-                this.graph.disableNormals();
+                this.sceneGraphs[this.activeScene].disableNormals();
                 this.displayNormals_before = false;
             }
 
@@ -351,7 +355,7 @@ class XMLscene extends CGFscene {
             //this.testBoard.display();
 
             // Displays the scene (MySceneGraph function).
-            this.graph.displayScene();
+            this.sceneGraphs[this.activeScene].displayScene();
             this.gameOrchestrator.display();
             
         }
