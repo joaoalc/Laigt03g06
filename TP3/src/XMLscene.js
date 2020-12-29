@@ -55,6 +55,7 @@ class XMLscene extends CGFscene {
         this.cameraAnimation = null;
 
         this.gameboardPos = [0,0,0]; //GAMEBOARD POSITION
+        this.activeSceneName = "";
     }
 
     initMaterials(){
@@ -143,6 +144,10 @@ class XMLscene extends CGFscene {
         let time =  Math.sqrt(Math.pow(endCamPos[0] - startCamPos[0], 2) + Math.pow(endCamPos[1] - startCamPos[1], 2) + Math.pow(endCamPos[2] - startCamPos[2], 2));
 
         this.cameraAnimation = new CameraInterpolator(startCamPos, endCamPos, startCamTarget, endCamTarget, startCamNear, endCamNear, startCamFar, endCamFar, startCamAngle, endCamAngle, startCamUp, endCamUp, time / 10);
+    }
+
+    updateScene(){
+
     }
 
     // logPicking() {
@@ -242,6 +247,7 @@ class XMLscene extends CGFscene {
         this.sceneInited = true;
         this.initCameras();
         this.interface.addGUIelements(this.cameraIds[this.activeCamera]);
+        this.interface.addSceneSelectors(this.activeSceneName);
     }
 
     update(time) {

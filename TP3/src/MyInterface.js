@@ -83,4 +83,12 @@ class MyInterface extends CGFinterface {
                 lights.add(this.scene.lightsStatus, 'light' + i).onChange(this.scene.updateLights.bind(this.scene));
         }
     }
+
+    addSceneSelectors(currentScene){
+        var backgroundScenes = this.gui.addFolder("backgroundScenes");
+        backgroundScenes.closed = false;
+
+        var backgroundScene = backgroundScenes.add(this.scene, 'activeSceneName', Object.keys(this.scene.sceneNames)).name('Current Scene').onChange(this.scene.updateScene.bind(this.scene));
+        backgroundScene.setValue(currentScene);
+    }
 }
