@@ -760,9 +760,14 @@ class MySceneGraph {
                         }
                         leaves.push(leaf);
                     } else {
-                        this.scene.gameboardPos = [this.reader.getString(grandgrandChildren[n], 'x'),
-                            this.reader.getString(grandgrandChildren[n], 'y'),
-                            this.reader.getString(grandgrandChildren[n], 'z')];
+                        this.scene.gameboardPos = [this.reader.getFloat(grandgrandChildren[n], 'x'),
+                            this.reader.getFloat(grandgrandChildren[n], 'y'),
+                            this.reader.getFloat(grandgrandChildren[n], 'z'),
+                            this.reader.getFloat(grandgrandChildren[n], 'rx')*DEGREE_TO_RAD,
+                            this.reader.getFloat(grandgrandChildren[n], 'ry')*DEGREE_TO_RAD,
+                            this.reader.getFloat(grandgrandChildren[n], 'rz')*DEGREE_TO_RAD,
+                            this.reader.getFloat(grandgrandChildren[n], 's'),
+                        ];
                     }
 
                 } else {

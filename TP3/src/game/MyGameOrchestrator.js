@@ -16,6 +16,7 @@ class MyGameOrchestrator {
         this.currentPlayer = -1;
         this.state = START;
 
+
         this.firstPlayer = 1;
         this.players = {'Player 1' : 1, 'Player 2': 2};
 
@@ -229,7 +230,12 @@ class MyGameOrchestrator {
         }
 
         this.scene.pushMatrix();
-        this.scene.translate(this.gameboardPos[0],this.gameboardPos[1],this.gameboardPos[2])
+
+        this.scene.translate(this.gameboardPos[0],this.gameboardPos[1],this.gameboardPos[2]);
+        this.scene.rotate(this.gameboardPos[3], 1,0,0);
+        this.scene.rotate(this.gameboardPos[4], 0,1,0);
+        this.scene.rotate(this.gameboardPos[5], 0,0,1);
+        this.scene.scale(this.gameboardPos[6],this.gameboardPos[6],this.gameboardPos[6]);
 
         this.gameboard.display();
         this.interface.display();

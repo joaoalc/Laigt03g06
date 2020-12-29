@@ -7,14 +7,23 @@ class MyGameBoard extends CGFobject {
         this.lineLengths = [2,3,4,5,6,5,6,7,6,7,6,7,6,7,6,7,6,5,6,5,4,3,2];
         this.horShift = 1.5;
         this.vertShift = Math.sin(Math.PI/3)/2;
-        this.create();
 
         this.purple = new CGFtexture(this.scene, "images/purple.png");
         this.orange = new CGFtexture(this.scene, "images/orange.png");
         this.green = new CGFtexture(this.scene, "images/green.png");
 
-        
+        this.pieceBoxes = [];
+        this.pieceBoxes["purple"] = new MyPieceBox(this.scene, "purple");
+        this.pieceBoxes["orange"] = new MyPieceBox(this.scene, "orange");
+        this.pieceBoxes["green"] = new MyPieceBox(this.scene, "green");
 
+        this.pieceCounters = [];
+        this.pieceCounters["purple"] = new MySpriteText(this.scene, this.pieceBoxes["purple"].nPieces.toString());
+        this.pieceCounters["orange"] = new MySpriteText(this.scene, this.pieceBoxes["orange"].nPieces.toString());
+        this.pieceCounters["green"] = new MySpriteText(this.scene, this.pieceBoxes["green"].nPieces.toString());
+
+
+        this.create();
         // var testPiece1 = new MyPiece(this.scene, "purple");
         // var testPiece2 = new MyPiece(this.scene, "green");
         // var testPiece3 = new MyPiece(this.scene, "purple");
@@ -37,15 +46,9 @@ class MyGameBoard extends CGFobject {
                 this.tiles[[line, diagonal]] = new MyTile(this.scene, this, position2);
             }
         }
-        this.pieceBoxes = [];
-        this.pieceBoxes["purple"] = new MyPieceBox(this.scene, "regular", "purple");
-        this.pieceBoxes["orange"] = new MyPieceBox(this.scene, "regular", "orange");
-        this.pieceBoxes["green"] = new MyPieceBox(this.scene, "regular", "green");
-
-        this.pieceCounters = [];
-        this.pieceCounters["purple"] = new MySpriteText(this.scene, this.pieceBoxes["purple"].nPieces.toString());
-        this.pieceCounters["orange"] = new MySpriteText(this.scene, this.pieceBoxes["orange"].nPieces.toString());
-        this.pieceCounters["green"] = new MySpriteText(this.scene, this.pieceBoxes["green"].nPieces.toString());
+        this.pieceBoxes["purple"].reset();
+        this.pieceBoxes["orange"].reset();
+        this.pieceBoxes["green"].reset();
     }
 
     getPieceBox(colour) {
@@ -145,7 +148,7 @@ class MyGameBoard extends CGFobject {
             this.scene.translate(0, 3, 0);
             this.pieceBoxes["purple"].display();
             this.scene.pushMatrix();
-            this.scene.translate(0, 0, 1);
+            this.scene.translate(0, 0, 1.2);
             this.scene.rotate(DEGREE_TO_RAD*90, 1,0,0);
             this.pieceCounters["purple"].display();
             this.scene.popMatrix();
@@ -153,7 +156,7 @@ class MyGameBoard extends CGFobject {
             this.scene.translate(4.5, 0, 0);
             this.pieceBoxes["orange"].display();
             this.scene.pushMatrix();
-            this.scene.translate(0, 0, 1);
+            this.scene.translate(0, 0, 1.2);
             this.scene.rotate(DEGREE_TO_RAD*90, 1,0,0);
             this.pieceCounters["orange"].display();
             this.scene.popMatrix();
@@ -161,7 +164,7 @@ class MyGameBoard extends CGFobject {
             this.scene.translate(4.5, 0, 0);
             this.pieceBoxes["green"].display();
             this.scene.pushMatrix();
-            this.scene.translate(0, 0, 1);
+            this.scene.translate(0, 0, 1.2);
             this.scene.rotate(DEGREE_TO_RAD*90, 1,0,0);
             this.pieceCounters["green"].display();
             this.scene.popMatrix();
