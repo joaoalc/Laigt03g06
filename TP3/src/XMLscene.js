@@ -43,7 +43,7 @@ class XMLscene extends CGFscene {
         this.displayNormals = false;
         this.displayNormals_before = false;
 
-        this.setUpdatePeriod(100);
+        this.setUpdatePeriod(10);
 
         this.loadingProgressObject=new MyRectangle(this, -1, -.1, 1, .1, 1, 1);
         this.loadingProgress=0;
@@ -55,8 +55,7 @@ class XMLscene extends CGFscene {
         this.cameraAnimation = null;
 
         this.gameboardPos = [0,0,0]; //GAMEBOARD POSITION
-        this.activeScene = "";
-        this.sceneGraphs = {};
+        this.gameOrchestrator = new MyGameOrchestrator(this, this.gameboardPos);
     }
 
     initMaterials(){
@@ -120,12 +119,16 @@ class XMLscene extends CGFscene {
         } else {
             this.camera = new CGFcameraResettable(0.4, 0.1, 500, vec3.fromValues(20, 10, 20), vec3.fromValues(0, 0, 0));
         }
+        console.log(this.cameras);
+        console.log(this.camera);
     }
 
     /**
      * Updated the currently active camera. Also resets it's attributes to the ones set to at the beggining.
      */
     updateCamera() {
+        console.log(this.nextCamera != this.camera);
+        console.log(this.nextCamera == this.camera);
         let startCamPos = [this.camera.position[0], this.camera.position[1], this.camera.position[2]];
         let startCamTarget = [this.camera.target[0], this.camera.target[1], this.camera.target[2]];
         let startCamUp = [this.camera._up[0], this.camera._up[1], this.camera._up[2]];
@@ -148,7 +151,10 @@ class XMLscene extends CGFscene {
     }
 
     updateScene(){
-
+        this.onSceneSelect();
+        //if(this.n != 1){
+        //    this.updateCamera();
+        //}
     }
 
     // logPicking() {
@@ -230,31 +236,52 @@ class XMLscene extends CGFscene {
      * As loading is asynchronous, this may be called already after the application has started the run loop
      */
     onGraphLoaded() {
-        this.axis = new CGFaxis(this, this.sceneGraphs[this.activeScene].referenceLength);
+        this.axis = new CGFaxis(this, this.sceneGraphs[this.activeScene].referenceLength); //Only once
+        //this.gameOrchestrator.setGameBoardPosition(this.sceneGraphs[this.activeScene].gameboardPos); //Each time
+        //this.setUpdatePeriod(10); //Only once
 
-        this.setUpdatePeriod(10);
+        /*console.log(this.activeScene);
+        console.log(this.sceneGraphs[this.activeScene]);
+        console.log(this.sceneGraphs[this.activeScene].background);*/
+        //this.gl.clearColor(...this.sceneGraphs[this.activeScene].background); //Each time
 
-        this.gl.clearColor(...this.sceneGraphs[this.activeScene].background);
+        //this.setGlobalAmbientLight(...this.sceneGraphs[this.activeScene].ambient); //Each time
 
-        this.setGlobalAmbientLight(...this.sceneGraphs[this.activeScene].ambient);
-
-        this.initLights();
-        this.initMaterials();
-        this.initTextures();
+        //this.initLights(); //Each time
+        //this.initMaterials(); //Each time
+        //this.initTextures(); //Each time
         
-        this.gameOrchestrator = new MyGameOrchestrator(this, this.gameboardPos);
-        //this.gameOrchestrator.startGame(1, 0);
 
-        this.sceneInited = true;
-        this.initCameras();
-        this.interface.addGUIelements(this.cameraIds[this.activeCamera]);
-        this.interface.addSceneSelectors(this.activeSceneName);
+        //this.sceneInited = true; //Each time; Also set to false in the scene change function
+        //this.initCameras(); //Each time
+        this.onSceneSelect();
+        
+
+        console.log(this.cameras);
+
+        this.interface.addGUIelements(this.cameraIds[this.activeCamera]); //Only once
+        this.interface.addSceneSelector(this.activeScene); //Only once
+        this.sceneInited = true; //Each time; Also set to false in the scene change function
     }
 
-    update(time) {/*
-        console.log(this.sceneGraphs);
-        console.log(this.sceneGraphs[this.activeScene]);
-        console.log(this.sceneGraphs[this.activeScene].animations);*/
+    onSceneSelect() {
+        this.sceneInited = false; 
+        this.gameOrchestrator.setGameBoardPosition(this.sceneGraphs[this.activeScene].gameboardPos); //Each time
+
+        this.gl.clearColor(...this.sceneGraphs[this.activeScene].background); //Each time
+
+        this.setGlobalAmbientLight(...this.sceneGraphs[this.activeScene].ambient); //Each time
+        
+        this.initLights(); //Each time
+        this.initMaterials(); //Each time
+        this.initTextures(); //Each time
+        this.sceneInited = true;
+        this.initCameras(); //Each time
+
+        
+    }
+
+    update(time) {
         if(this.sceneInited){
             for(var key in this.sceneGraphs[this.activeScene].animations) {
                 this.sceneGraphs[this.activeScene].animations[key].update(time/1000);
@@ -284,7 +311,6 @@ class XMLscene extends CGFscene {
                     this.camera = this.nextCamera;
                     this.interface.setActiveCamera(this.camera);
                 }
-                //console.log(this.camera.position);
             }
         }
     }
@@ -297,7 +323,6 @@ class XMLscene extends CGFscene {
 					if (obj) {
 						var customId = this.pickResults[i][1];
                         console.log("Picked object: " + obj + ", with pick id " + customId);
-                        //this.gameOrchestrator.prolog.makeRequest("bruh");
 					}
                 }
                 this.gameOrchestrator.managePick(this.pickResults);
@@ -368,6 +393,12 @@ class XMLscene extends CGFscene {
             
             this.loadingProgressObject.display();
             this.loadingProgress++;
+            
+            if(this.sceneGraphs[this.activeScene] != undefined){
+                if(this.sceneGraphs[this.activeScene].loadedOk){
+                    this.sceneGraphs[this.activeScene].onGraphLoaded();
+                }
+            }
         }
 
         this.popMatrix();

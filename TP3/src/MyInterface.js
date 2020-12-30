@@ -84,7 +84,7 @@ class MyInterface extends CGFinterface {
         }
     }
 
-    addSceneSelectors(currentScene){
+    addSceneSelector(currentScene){
         var backgroundScenes = this.gui.addFolder("backgroundScenes");
         backgroundScenes.closed = false;
 

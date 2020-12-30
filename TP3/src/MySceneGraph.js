@@ -22,14 +22,15 @@ class MySceneGraph {
      * @param {string} filename - File that defines the 3D scene
      * @param {XMLScene} scene
      */
-    constructor(filename, scene) {
+    constructor(filename, scene, name) {
         this.loadedOk = null;
 
         // Establish bidirectional references between scene and graph.
         this.scene = scene;
-        scene.graph = this;
+        this.name = name;
 
         this.nodes = [];
+        scene.sceneGraphs[name] = this;
 
         this.idRoot = null; // The id of the root element.
 
@@ -66,8 +67,14 @@ class MySceneGraph {
 
         this.loadedOk = true;
 
-        // As the graph loaded ok, signal the scene so that any additional initialization depending on the graph can take place
-        this.scene.onGraphLoaded();
+        console.log(this.name);
+        console.log(this.scene.activeScene);
+        console.log(this.name == this.scene.activeScene);
+        console.log(this.scene.sceneGraphs[this.activeScene]);
+        if(this.name == this.scene.activeScene){
+            // As the graph loaded ok, signal the scene so that any additional initialization depending on the graph can take place
+            this.scene.onGraphLoaded();
+        }
     }
 
     /*
@@ -760,7 +767,7 @@ class MySceneGraph {
                         }
                         leaves.push(leaf);
                     } else {
-                        this.scene.gameboardPos = [this.reader.getFloat(grandgrandChildren[n], 'x'),
+                        this.gameboardPos = [this.reader.getFloat(grandgrandChildren[n], 'x'),
                             this.reader.getFloat(grandgrandChildren[n], 'y'),
                             this.reader.getFloat(grandgrandChildren[n], 'z'),
                             this.reader.getFloat(grandgrandChildren[n], 'rx')*DEGREE_TO_RAD,
