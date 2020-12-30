@@ -176,6 +176,8 @@ class XMLscene extends CGFscene {
             //    this.updateCamera();
             //}
         }
+        
+        this.interface.addCameraAndLightGUI(this.cameraIds[this.activeCamera]);
     }
 
     // logPicking() {
@@ -261,7 +263,7 @@ class XMLscene extends CGFscene {
         
         this.onSceneSelect();
         
-        this.interface.addGUIelements(this.cameraIds[this.activeCamera]);
+        this.interface.addGUIelements();
         this.interface.addSceneSelector(this.activeScene);
         this.sceneInited = true;
     }
@@ -279,6 +281,9 @@ class XMLscene extends CGFscene {
         this.initTextures(); 
         this.sceneInited = true;
         this.initCameras(); 
+
+        
+        
         
     }
 
