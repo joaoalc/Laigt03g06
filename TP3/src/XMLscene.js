@@ -10,6 +10,7 @@ class XMLscene extends CGFscene {
         super();
 
         this.interface = myinterface;
+        this.n = 0;
     }
 
     /**
@@ -119,16 +120,12 @@ class XMLscene extends CGFscene {
         } else {
             this.camera = new CGFcameraResettable(0.4, 0.1, 500, vec3.fromValues(20, 10, 20), vec3.fromValues(0, 0, 0));
         }
-        console.log(this.cameras);
-        console.log(this.camera);
     }
 
     /**
      * Updated the currently active camera. Also resets it's attributes to the ones set to at the beggining.
      */
     updateCamera() {
-        console.log(this.nextCamera != this.camera);
-        console.log(this.nextCamera == this.camera);
         let startCamPos = [this.camera.position[0], this.camera.position[1], this.camera.position[2]];
         let startCamTarget = [this.camera.target[0], this.camera.target[1], this.camera.target[2]];
         let startCamUp = [this.camera._up[0], this.camera._up[1], this.camera._up[2]];
@@ -145,16 +142,40 @@ class XMLscene extends CGFscene {
         let endCamFar = this.nextCamera.far;
         let endCamAngle = this.nextCamera.fov;
         let endCamUp = [this.nextCamera._up[0], this.nextCamera._up[1], this.nextCamera._up[2]];
-        let time =  Math.sqrt(Math.pow(endCamPos[0] - startCamPos[0], 2) + Math.pow(endCamPos[1] - startCamPos[1], 2) + Math.pow(endCamPos[2] - startCamPos[2], 2));
-
-        this.cameraAnimation = new CameraInterpolator(startCamPos, endCamPos, startCamTarget, endCamTarget, startCamNear, endCamNear, startCamFar, endCamFar, startCamAngle, endCamAngle, startCamUp, endCamUp, time / 10);
+        let positionTime =  Math.sqrt(Math.pow(endCamPos[0] - startCamPos[0], 2) + Math.pow(endCamPos[1] - startCamPos[1], 2) + Math.pow(endCamPos[2] - startCamPos[2], 2));
+        let targetTime = Math.sqrt(Math.pow(endCamTarget[0] - startCamTarget[0], 2) + Math.pow(endCamTarget[1] - startCamTarget[1], 2) + Math.pow(endCamTarget[2] - startCamTarget[2], 2));
+        this.cameraAnimation = new CameraInterpolator(startCamPos, endCamPos, startCamTarget, endCamTarget, startCamNear, endCamNear, startCamFar, endCamFar, startCamAngle, endCamAngle, startCamUp, endCamUp, (positionTime + targetTime) / 15);
     }
 
     updateScene(){
+        this.n++;
+        if(this.n != 1){
+            var startCamPos = [this.camera.position[0], this.camera.position[1], this.camera.position[2]];
+            var startCamTarget = [this.camera.target[0], this.camera.target[1], this.camera.target[2]];
+            var startCamUp = [this.camera._up[0], this.camera._up[1], this.camera._up[2]];
+            var startCamAngle = this.camera.fov;
+            var startCamFar = this.camera.far;
+            var startCamNear = this.camera.near;
+        }
         this.onSceneSelect();
-        //if(this.n != 1){
-        //    this.updateCamera();
-        //}
+        if(this.n != 1){
+            this.nextCamera = this.cameras[this.activeCamera];
+            this.nextCamera.resetCamera();
+            this.interface.setActiveCamera(this.camera);
+            let endCamPos = [this.nextCamera.position[0], this.nextCamera.position[1], this.nextCamera.position[2]];
+            let endCamTarget = [this.nextCamera.target[0], this.nextCamera.target[1], this.nextCamera.target[2]];
+            let endCamNear = this.nextCamera.near;
+            let endCamFar = this.nextCamera.far;
+            let endCamAngle = this.nextCamera.fov;
+            let endCamUp = [this.nextCamera._up[0], this.nextCamera._up[1], this.nextCamera._up[2]];
+            let positionTime =  Math.sqrt(Math.pow(endCamPos[0] - startCamPos[0], 2) + Math.pow(endCamPos[1] - startCamPos[1], 2) + Math.pow(endCamPos[2] - startCamPos[2], 2));
+            let targetTime = Math.sqrt(Math.pow(endCamTarget[0] - startCamTarget[0], 2) + Math.pow(endCamTarget[1] - startCamTarget[1], 2) + Math.pow(endCamTarget[2] - startCamTarget[2], 2));
+            this.cameraAnimation = new CameraInterpolator(startCamPos, endCamPos, startCamTarget, endCamTarget, startCamNear, endCamNear, startCamFar, endCamFar, startCamAngle, endCamAngle, startCamUp, endCamUp, (positionTime + targetTime) / 15);
+            //this.updateCamera();
+            //if(this.n != 1){
+            //    this.updateCamera();
+            //}
+        }
     }
 
     // logPicking() {
@@ -237,31 +258,12 @@ class XMLscene extends CGFscene {
      */
     onGraphLoaded() {
         this.axis = new CGFaxis(this, this.sceneGraphs[this.activeScene].referenceLength); //Only once
-        //this.gameOrchestrator.setGameBoardPosition(this.sceneGraphs[this.activeScene].gameboardPos); //Each time
-        //this.setUpdatePeriod(10); //Only once
-
-        /*console.log(this.activeScene);
-        console.log(this.sceneGraphs[this.activeScene]);
-        console.log(this.sceneGraphs[this.activeScene].background);*/
-        //this.gl.clearColor(...this.sceneGraphs[this.activeScene].background); //Each time
-
-        //this.setGlobalAmbientLight(...this.sceneGraphs[this.activeScene].ambient); //Each time
-
-        //this.initLights(); //Each time
-        //this.initMaterials(); //Each time
-        //this.initTextures(); //Each time
         
-
-        //this.sceneInited = true; //Each time; Also set to false in the scene change function
-        //this.initCameras(); //Each time
         this.onSceneSelect();
         
-
-        console.log(this.cameras);
-
-        this.interface.addGUIelements(this.cameraIds[this.activeCamera]); //Only once
-        this.interface.addSceneSelector(this.activeScene); //Only once
-        this.sceneInited = true; //Each time; Also set to false in the scene change function
+        this.interface.addGUIelements(this.cameraIds[this.activeCamera]);
+        this.interface.addSceneSelector(this.activeScene);
+        this.sceneInited = true;
     }
 
     onSceneSelect() {
@@ -272,12 +274,11 @@ class XMLscene extends CGFscene {
 
         this.setGlobalAmbientLight(...this.sceneGraphs[this.activeScene].ambient); //Each time
         
-        this.initLights(); //Each time
-        this.initMaterials(); //Each time
-        this.initTextures(); //Each time
+        this.initLights();
+        this.initMaterials();
+        this.initTextures(); 
         this.sceneInited = true;
-        this.initCameras(); //Each time
-
+        this.initCameras(); 
         
     }
 

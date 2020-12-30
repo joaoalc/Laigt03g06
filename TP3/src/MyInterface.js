@@ -71,6 +71,7 @@ class MyInterface extends CGFinterface {
         game.add(this.scene.gameOrchestrator, 'firstPlayer', this.scene.gameOrchestrator.players).name('Starting player');
         game.add(this.scene.gameOrchestrator, 'startGame').name('Start Game');
 
+        
         var cameras = this.gui.addFolder("Cameras");
         cameras.closed = false;
         var camera = cameras.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));
@@ -83,6 +84,7 @@ class MyInterface extends CGFinterface {
                 lights.add(this.scene.lightsStatus, 'light' + i).onChange(this.scene.updateLights.bind(this.scene));
         }
     }
+
 
     addSceneSelector(currentScene){
         var backgroundScenes = this.gui.addFolder("backgroundScenes");

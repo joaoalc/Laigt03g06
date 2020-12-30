@@ -67,10 +67,6 @@ class MySceneGraph {
 
         this.loadedOk = true;
 
-        console.log(this.name);
-        console.log(this.scene.activeScene);
-        console.log(this.name == this.scene.activeScene);
-        console.log(this.scene.sceneGraphs[this.activeScene]);
         if(this.name == this.scene.activeScene){
             // As the graph loaded ok, signal the scene so that any additional initialization depending on the graph can take place
             this.scene.onGraphLoaded();
