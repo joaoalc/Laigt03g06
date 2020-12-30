@@ -16,6 +16,10 @@ class MyGameOrchestrator {
         this.interface = new MyGameInterface(scene, this);
         this.currentPlayer = -1;
         this.state = START;
+        
+        this.firstTime = -1;
+        this.playTime = 0;
+        this.timer = 0;
 
         this.movieMove = [0, 0];
         this.stateMovie = PLAYING;
@@ -49,6 +53,8 @@ class MyGameOrchestrator {
             this.movieMove = [0, 0];
             this.stateMovie = PLAYING;
             this.beforeMovie = [];
+            this.firstTime = -1;
+            this.timer = 0;
             console.log("START");
         }
     }
@@ -58,6 +64,26 @@ class MyGameOrchestrator {
         this.animator.update(time, this.state==MOVIE);
         this.gameboard.update(time);
         this.interface.update(time);
+
+        if(this.firstTime == -1)
+            this.firstTime = time;
+
+        if((this.state == PLAYING || this.state == PICKED_COLOUR) && this.mode[this.currentPlayer-1] == 'H') {
+            if(this.playTime > 0) {
+                this.timer = this.playTime - (time - this.firstTime);
+                if(this.timer <= 0) {
+                    this.timer = 0;
+                    this.state = END_GAME;
+                    if(this.sequence.moves.length > 0) //if it's the first move there is no winner
+                        this.interface.setWinner(this.currentPlayer % 2 + 1);
+                }
+            }
+        }
+    }
+
+    resetTimer() {
+        this.timer = this.playTime;
+        this.firstTime = -1;
     }
 
     play() {
@@ -83,6 +109,7 @@ class MyGameOrchestrator {
             this.movieMove = [0,0];
             Object.assign(this.stateMovie, this.state);
             Object.assign(this.beforeMovie, this.coloursWon);
+            this.coloursWon = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
             this.gameboard.resetBoxes();
             this.state = MOVIE;
             this.animator.start();
@@ -177,16 +204,19 @@ class MyGameOrchestrator {
     }
 
     undo() { 
-        console.log("UNDO");
-        var undoResult = this.animator.undo();
-        if(undoResult != -1) {
-            this.coloursWon = undoResult;
-            var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
-            this.prolog.makeRequest("updateColours("+ gameState + "," + this.currentPlayer+")", this.parseUpdateColours.bind(this));
+        if(this.state != PLAY && this.state != START) {
+            console.log("UNDO");
+            var undoResult = this.animator.undo();
+            if(undoResult != -1) {
+                this.coloursWon = undoResult;
+                var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
+                this.prolog.makeRequest("updateColours("+ gameState + "," + this.currentPlayer+")", this.parseUpdateColours.bind(this));
+            }
         }
     }
 
     userPlay(tile, coords) {
+        this.resetTimer();
         this.state = PLAY;
         this.pickedTile = tile;
         var newPiece = new MyPiece(this.scene, this.pickedColor);
@@ -231,6 +261,7 @@ class MyGameOrchestrator {
     }
 
     botPlay() {
+        this.timer = 0;
         this.state = PLAY;
         var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
         this.prolog.makeRequest("getBotMove("+ gameState + "," + this.currentPlayer +","+
@@ -257,7 +288,7 @@ class MyGameOrchestrator {
 
     setPlaying() {
         this.state = PLAYING;
-        this.currentPlayer = (this.currentPlayer) % 2 + 1;
+        this.currentPlayer = this.currentPlayer % 2 + 1;
     }
 
     coloursWonString() {
