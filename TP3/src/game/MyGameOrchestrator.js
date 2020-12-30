@@ -35,20 +35,22 @@ class MyGameOrchestrator {
     }
 
     startGame(){
-        //this.prolog.makeRequest("play");
-        this.sequence = new MyGameSequence();
-        this.animator.setSequence(this.sequence);
-        this.gameboard.create();
-        this.state = PLAYING;
-        this.coloursWon = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
-        this.currentPlayer = this.firstPlayer;
-        this.mode = this.chooseMode;
-        this.level = this.chooseLevel;
-        this.winner = 0;
-        this.movieMove = [0, 0];
-        this.stateMovie = PLAYING;
-        this.beforeMovie = [];
-        console.log("START");
+        if(this.state != PLAY) {
+            //this.prolog.makeRequest("play");
+            this.sequence = new MyGameSequence();
+            this.animator.setSequence(this.sequence);
+            this.gameboard.create();
+            this.state = PLAYING;
+            this.coloursWon = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
+            this.currentPlayer = this.firstPlayer;
+            this.mode = this.chooseMode;
+            this.level = this.chooseLevel;
+            this.winner = 0;
+            this.movieMove = [0, 0];
+            this.stateMovie = PLAYING;
+            this.beforeMovie = [];
+            console.log("START");
+        }
     }
 
     update(time) {
@@ -106,11 +108,8 @@ class MyGameOrchestrator {
 
     playMovie() {
         if(this.movieMove[0] == this.sequence.moves.length) {
-            console.log(this.stateMovie);
             this.state = this.stateMovie;
-            // Object.assign(this.state, this.stateMovie);
             Object.assign(this.coloursWon, this.beforeMovie);
-            console.log(this.state);
             this.movieMove = [0,0];
         } else {
             if(this.movieMove[1] == 0) {
@@ -225,8 +224,10 @@ class MyGameOrchestrator {
     }
     
     parseBotMove(data) {
-        var move = data.target.response.split('-');
-        this.botMove(move);
+        if(this.state == PLAY && this.mode[this.currentPlayer-1] == 'C') { 
+            var move = data.target.response.split('-');
+            this.botMove(move);
+        }
     }
 
     botPlay() {

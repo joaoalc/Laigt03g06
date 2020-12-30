@@ -4,7 +4,7 @@ class MySpriteText {
      * @scene - Reference to MyScene object
      * @text - The string contiaining the text to be represented
      */
-    constructor(scene, text) {
+    constructor(scene, text, font) {
         this.scene = scene;
         this.text = text;
 
@@ -15,8 +15,9 @@ class MySpriteText {
         }
 
         this.appearance = new CGFappearance(this.scene);
-
-        this.textSprite = new CGFtexture(this.scene, "images/fonts/font5_1.png"); //text sprite
+        var fontPath;
+        font == null ? fontPath = "images/fonts/font5_1.png" : fontPath = font;
+        this.textSprite = new CGFtexture(this.scene, fontPath); //text sprite
 
         //this.spritesheet = new MySpriteSheet(this.scene, this.textSprite, 15, 8); // font sheet
         this.spritesheet = new MySpriteSheet(this.scene, this.textSprite, 16, 16);

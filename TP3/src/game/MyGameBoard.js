@@ -128,6 +128,7 @@ class MyGameBoard extends CGFobject {
     }
 
     display() {
+        this.scene.pushMatrix();
         this.scene.rotate(-Math.PI/2, 1, 0, 0);
 
         this.frameTexture.bind();
@@ -146,6 +147,7 @@ class MyGameBoard extends CGFobject {
         this.boardTexture.bind();
         this.boardPlane.display();
         this.scene.popMatrix();
+
         this.scene.pushMatrix();
 
         this.tileTexture.bind();
@@ -197,7 +199,7 @@ class MyGameBoard extends CGFobject {
             this.scene.popMatrix();
         this.scene.popMatrix();
 
-
+        this.scene.popMatrix();
         this.scene.popMatrix();
     }
 }

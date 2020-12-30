@@ -3,8 +3,8 @@ class MyGameInterface {
         this.scene = scene;
         this.orchestrator = orchestrator;
 
-        this.gameOver = new MySpriteText(this.scene, "Game Over");
-        this.winner = new MySpriteText(this.scene, "");
+        this.gameOver = new MySpriteText(this.scene, "Game Over", "./images/fonts/font5_2.png");
+        this.winner = new MySpriteText(this.scene, "", "./images/fonts/font5_2.png");
         //  this.pieceCounters = [];
         //  this.initPieceCounters();
     }

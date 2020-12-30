@@ -33,7 +33,6 @@ class MyAnimator {
                     this.sequence.moves[i].animate(time);
             }
         } else {
-            console.log(movie);
             for(var i = 0; i < this.sequence.moves.length; ++i) {
                 if(i > 0) {
                     if(!this.sequence.moves[i-1].animationFinished())
