@@ -6,7 +6,17 @@ class MyGameInterface {
         this.gameOver = new MySpriteText(this.scene, "Game Over", "./images/fonts/font5_2.png");
         this.winner = new MySpriteText(this.scene, "", "./images/fonts/font5_2.png");
 
+        this.timerTime = 0;
         this.timerDisplay = new MySpriteText(this.scene, "00:00");
+        this.timerHand = new MyCylinder(this.scene, 0.9, 0.03, 0.01, 5, 5);
+        this.timerFace = new MyCylinder(this.scene, 0.02, 1.15, 1.15, 30, 1);
+        this.timerBody1 = new MyCylinder(this.scene, 1, 0.5, 0.5, 4, 1);
+        this.timerBody3 = new MyCylinder(this.scene, 1, 0.5, 0.5, 30, 30);
+        this.timerBody2 = new MyTorus(this.scene, 0.25, 1.25, 30, 30);
+        this.timerHandText = new CGFtexture(this.scene, "./images/hand.png");
+        this.timerFaceText = new CGFtexture(this.scene, "./images/timerFace.png");
+        this.timerBodyText1 = new CGFtexture(this.scene, "./images/timerBody1.jpg");
+        this.timerBodyText2 = new CGFtexture(this.scene, "./images/timerBody2.jpg");
 
         this.coloursFrame = new MyTorus(this.scene, 0.03, Math.sqrt(2)/2, 4, 4);
         this.frameTexture = new CGFtexture(this.scene, "./scenes/textures_LAIG_TP2_XML_T3_G06_v1/golden.jpg");
@@ -37,9 +47,10 @@ class MyGameInterface {
 
     setTimer(time) {
         var minutes = Math.floor(time / 60);
-        var seconds = Math.ceil(time % 60);
+        var seconds = Math.ceil(Math.ceil(time) % 60);
         var timerFormatted = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
         this.timerDisplay.setText(timerFormatted);
+        this.timerTime = time;
     }
 
     update(time) {
@@ -77,8 +88,64 @@ class MyGameInterface {
         }
         //timer
         this.scene.pushMatrix();
-        this.scene.translate(-9, 2, -1);
+        this.scene.translate(-9, 5, -1);
+        this.scene.rotate(Math.PI/6, 0,0,1);
+
+        this.scene.pushMatrix();
+        this.scene.rotate(Math.PI/2.0, 1,0,0);
+        this.scene.scale(0.5, 0.5, 0.5);
         this.timerDisplay.display();
+        this.scene.popMatrix();
+
+        //body
+        this.timerBodyText2.bind();
+        this.scene.pushMatrix();
+        this.scene.translate(0, 0.4, -0.3);
+        this.scene.scale(4, 1, 2);
+        this.scene.rotate(Math.PI/4 , 0,0,1);
+        this.timerBody1.display();
+        this.scene.popMatrix();
+
+        this.timerBodyText1.bind();
+        this.scene.pushMatrix();
+        this.scene.translate(0, 0.4, 1.8);
+        this.scene.scale(1, 2.55, 1);
+        this.scene.rotate(Math.PI/2 , 1,0,0);
+        this.timerBody2.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(-1.35, 0.4, -0.5);
+
+        this.scene.pushMatrix();
+        this.scene.scale(0.3, 1, 2.3);
+        this.timerBody3.display();
+        this.scene.popMatrix();
+
+        this.scene.translate(2.7, 0, 0);
+        this.scene.scale(0.3, 1, 2.3);
+        this.timerBody3.display();
+        
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(0, 0, 1.8);
+        //face
+        this.scene.pushMatrix();
+        this.scene.rotate(Math.PI/2 , 1,0,0);
+        this.timerFaceText.bind();
+        this.timerFace.display();
+        this.scene.popMatrix();
+        //hand
+        this.scene.pushMatrix();
+        this.scene.translate(0, -0.05, 0);
+        this.scene.rotate((this.timerTime*Math.PI*2)/60 ,0,1,0);
+        this.timerHandText.bind();
+        this.timerHand.display();
+        this.scene.popMatrix();
+
+        this.scene.popMatrix();
+
         this.scene.popMatrix();
 
         //colors scores
