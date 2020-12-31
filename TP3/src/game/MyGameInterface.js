@@ -130,10 +130,16 @@ class MyGameInterface {
 
         this.scene.pushMatrix();
         this.scene.translate(0, 0, 1.8);
-        //face
-        this.scene.pushMatrix();
         this.scene.rotate(Math.PI/2 , 1,0,0);
+        //face and back
+        this.scene.pushMatrix();
         this.timerFaceText.bind();
+        this.timerFace.display();
+        this.scene.popMatrix();
+
+        this.scene.pushMatrix();
+        this.scene.translate(0, 0, -0.7);
+        this.timerBodyText2.bind();
         this.timerFace.display();
         this.scene.popMatrix();
         //hand
