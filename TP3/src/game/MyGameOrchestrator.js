@@ -21,6 +21,8 @@ class MyGameOrchestrator {
         this.playTime = 0;
         this.timer = 0;
 
+        this.lastUpdate = -1;
+
         this.movieMove = [0, 0];
         this.stateMovie = PLAYING;
         this.beforeMovie = [];
@@ -61,6 +63,9 @@ class MyGameOrchestrator {
 
     update(time) {
         time /= 1000;
+        if(this.lastUpdate == -1)
+            this.lastUpdate = time;
+
         this.animator.update(time, this.state==MOVIE);
         this.gameboard.update(time);
         this.interface.update(time);
@@ -77,8 +82,13 @@ class MyGameOrchestrator {
                     if(this.sequence.moves.length > 0) //if it's the first move there is no winner
                         this.interface.setWinner(this.currentPlayer % 2 + 1);
                 }
+                this.interface.setTimer(this.timer);
             }
+        } else if(this.state == MOVIE) {
+            this.firstTime += time - this.lastUpdate;
         }
+        
+        this.lastUpdate = time;
     }
 
     resetTimer() {

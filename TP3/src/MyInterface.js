@@ -24,10 +24,10 @@ class MyInterface extends CGFinterface {
 
         this.initKeys();
 
-        var axis_normals = this.gui.addFolder("Axis/Normals");
-        axis_normals.add(this.scene, 'displayAxis').name("Display Axis");
-        axis_normals.add(this.scene, 'displayNormals').name("Display Normals");
-        axis_normals.closed = false;
+        //var axis_normals = this.gui.addFolder("Axis/Normals");
+        //axis_normals.add(this.scene, 'displayAxis').name("Display Axis");
+        //axis_normals.add(this.scene, 'displayNormals').name("Display Normals");
+        //axis_normals.closed = false;
         
         return true;
     }
