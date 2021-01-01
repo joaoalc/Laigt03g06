@@ -46,8 +46,11 @@ class MyGameInterface {
     }
 
     setTimer(time) {
-        var minutes = Math.floor(time / 60);
         var seconds = Math.ceil(Math.ceil(time) % 60);
+        var minutes;
+        if(seconds != 0)
+            minutes = Math.floor(time / 60);
+        else minutes = Math.round(time / 60);
         var timerFormatted = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
         this.timerDisplay.setText(timerFormatted);
         this.timerTime = time;
@@ -145,7 +148,8 @@ class MyGameInterface {
         //hand
         this.scene.pushMatrix();
         this.scene.translate(0, -0.05, 0);
-        this.scene.rotate((this.timerTime*Math.PI*2)/60 ,0,1,0);
+        this.scene.rotate(-(this.timerTime*Math.PI*2)/60 ,0,0,1);
+        this.scene.rotate(-Math.PI/2 , 1,0,0);
         this.timerHandText.bind();
         this.timerHand.display();
         this.scene.popMatrix();
