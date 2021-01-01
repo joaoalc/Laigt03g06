@@ -561,11 +561,6 @@
                 <!-- <noderef id="orange_box"/>
                 <noderef id="green_box"/>
                 <noderef id="purple_box"/> -->
-                <noderef id="train"/>
-                <noderef id="skybox"/>
-                <noderef id="trees"/>
-                <noderef id="ground"/>
-                <noderef id="train_station"/>
             </descendants>
         </node>
 

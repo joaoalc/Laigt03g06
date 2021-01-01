@@ -39,7 +39,7 @@ class XMLscene extends CGFscene {
         this.gl.depthFunc(this.gl.LEQUAL);
 
         this.axis = new CGFaxis(this);
-        this.displayAxis = false;
+        this.displayAxis = true;
         this.displayNormals = false;
         this.displayNormals_before = false;
 
