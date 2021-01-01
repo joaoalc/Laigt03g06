@@ -8,7 +8,7 @@ class MyGameInterface {
 
         this.timerTime = 0;
         this.timerDisplay = new MySpriteText(this.scene, "00:00");
-        this.timerHand = new MyCylinder(this.scene, 0.9, 0.03, 0.01, 5, 5);
+        this.timerHand = new MyCylinder(this.scene, 0.9, 0.05, 0.02, 5, 5);
         this.timerFace = new MyCylinder(this.scene, 0.02, 1.15, 1.15, 30, 1);
         this.timerBody1 = new MyCylinder(this.scene, 1, 0.5, 0.5, 4, 1);
         this.timerBody3 = new MyCylinder(this.scene, 1, 0.5, 0.5, 30, 30);
@@ -147,7 +147,7 @@ class MyGameInterface {
         this.scene.popMatrix();
         //hand
         this.scene.pushMatrix();
-        this.scene.translate(0, -0.05, 0);
+        this.scene.translate(0, 0, 0.07);
         this.scene.rotate(-(this.timerTime*Math.PI*2)/60 ,0,0,1);
         this.scene.rotate(-Math.PI/2 , 1,0,0);
         this.timerHandText.bind();

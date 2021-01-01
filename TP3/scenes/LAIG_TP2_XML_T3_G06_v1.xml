@@ -244,30 +244,23 @@
         </material>
     </materials>
     <animations>
-        <animation id="train_animation">
+        <animation id="train_animation" loop="1">
             <keyframe instant="0">
-                <translation x="-5" y="0" z="0"/>
+                <translation x="-15" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
                 <rotation axis="z" angle="0"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
-            <keyframe instant="4">
-                <translation x="0" y="0" z="0"/>
+            <keyframe instant="10">
+                <translation x="-15" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
                 <rotation axis="z" angle="0"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
-            <keyframe instant="6.25">
-                <translation x="2.5" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="7">
-                <translation x="3" y="0" z="0"/>
+            <keyframe instant="18">
+                <translation x="15" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
                 <rotation axis="z" angle="0"/>
@@ -275,7 +268,7 @@
             </keyframe>
         </animation>
 
-        <animation id="bell_animation">
+        <animation id="bell_animation" loop="1">
             <keyframe instant="0">
                 <translation x="0.25" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
@@ -418,7 +411,7 @@
             </keyframe>
         </animation>
 
-        <animation id="wheels_animation">
+        <animation id="wheels_animation" loop="1">
             <keyframe instant="0">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
@@ -430,12 +423,12 @@
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-800"/>
+                <rotation axis="z" angle="-1080"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
         </animation>
 
-        <animation id="wheels_bar_animation">
+        <animation id="wheels_bar_animation" loop="1">
             <keyframe instant="0">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
@@ -447,7 +440,7 @@
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="800"/>
+                <rotation axis="z" angle="1080"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
         </animation>
@@ -485,19 +478,12 @@
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
         </animation>
-        <animation id="grass">
+        <animation id="grass" loop="1">
             <keyframe instant="0">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="1">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
+                <rotation axis="z" angle="7"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
             <keyframe instant="2.5">
@@ -507,25 +493,18 @@
                 <rotation axis="z" angle="-15"/>
                 <scale sx="1" sy="0.75" sz="1.25"/>
             </keyframe>
-            <keyframe instant="4">
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="-15"/>
-                <scale sx="1" sy="0.75" sz="1.25"/>
-            </keyframe>
-            <keyframe instant="5">
+            <keyframe instant="3.5">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
                 <rotation axis="z" angle="-10"/>
                 <scale sx="1" sy="0.8" sz="1.2"/>
             </keyframe>
-            <keyframe instant="7">
+            <keyframe instant="5">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
+                <rotation axis="z" angle="7"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
         </animation>

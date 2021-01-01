@@ -1134,6 +1134,11 @@ class MySceneGraph {
             if (this.animations[animID] != null)
                 return "ID must be unique for each animation (conflict: ID = " + animID + ")";
 
+            var loopAnimation = false;
+            if(this.reader.hasAttribute(children[i], "loop")) {
+                loopAnimation = this.reader.getBoolean(children[i], 'loop');
+            }
+
             grandChildren = children[i].children; 
 
             var keyframes = [];
@@ -1212,7 +1217,10 @@ class MySceneGraph {
             for(var k = 0; k < keyframes.length - 1; ++k) {
                 keyframes[k].setNext(keyframes[k+1]);
             }
-            this.animations[animID] = new KeyframeAnimation(this.scene, animID, keyframes);
+            if(!loopAnimation)
+                this.animations[animID] = new KeyframeAnimation(this.scene, animID, keyframes);
+            else 
+                this.animations[animID] = new KeyframeLoopAnimation(this.scene, animID, keyframes);
         }
 
         this.log("Parsed Animations");
