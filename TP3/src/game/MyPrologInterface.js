@@ -53,7 +53,7 @@ class MyPrologInterface {
         this.send = true;
         //console.log(requestString);
         // Make Request
-        await new Promise(r => setTimeout(r, 1500));
+        await new Promise(r => setTimeout(r, 500));
         console.log("sending request " + requestString);
         await this.getPrologRequest(requestString, onSuccess, this.handleError);
     }

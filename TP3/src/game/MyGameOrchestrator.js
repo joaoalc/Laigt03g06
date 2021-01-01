@@ -221,12 +221,15 @@ class MyGameOrchestrator {
     }
 
     undo() { 
-        if(this.state != START && this.state != PLAY_HUMAN) {
+        if(this.state != START && this.state != PLAY_HUMAN && this.sequence.moves.length > 0) {
             console.log("UNDO");
             if(this.state == PLAY_BOT)
                 this.prolog.stopRequest();
             var undoResult = this.animator.undo();
             if(undoResult != -1) {
+                if(this.state == END_GAME) {
+                    this.currentPlayer = this.currentPlayer % 2 + 1;
+                }
                 this.coloursWon = undoResult;
                 this.setPlaying();
                 //var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
