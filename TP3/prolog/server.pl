@@ -117,10 +117,14 @@ parse_input(player_move(GameState, Move, Nplayer), Colours) :-
 parse_input(player_move(_, _, _), invalid_move).
 
 
-parse_input(getBotMove(GameState, Player, Level), Row-Diagonal-Colour) :-
-	choose_move(GameState, Player, Level, [Row, Diagonal, Colour]).
+parse_input(botMove(GameState, Player, Level), Row-Diagonal-Colour-Colours) :-
+	choose_move(GameState, Player, Level, [Row, Diagonal, Colour]),
+	move(GameState, [Row, Diagonal, Colour], NewGameStateBoard),
+	updateColours(NewGameStateBoard, _-Colours, Player).
 
-parse_input(getBotMove(_, _, _), finish).
+parse_input(botMove(_, _, _), bot_error).
+
+
 
 
 parse_input(updateColours(GameState, Nplayer), Colours) :-

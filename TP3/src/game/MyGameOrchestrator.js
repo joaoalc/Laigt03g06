@@ -1,9 +1,10 @@
 const START = 0;
 const PLAYING = 1;
 const PICKED_COLOUR = 2;
-const PLAY = 3;
-const END_GAME = 4;
-const MOVIE = 5;
+const PLAY_HUMAN = 3;
+const PLAY_BOT = 4;
+const END_GAME = 5;
+const MOVIE = 6;
 
 class MyGameOrchestrator {
     constructor(scene, gameboardPos) {
@@ -41,27 +42,28 @@ class MyGameOrchestrator {
     }
 
     startGame(){
-        if(this.state != PLAY) {
-            //this.prolog.makeRequest("play");
-            this.sequence = new MyGameSequence();
-            this.animator.setSequence(this.sequence);
-            this.gameboard.create();
-            this.state = PLAYING;
-            this.coloursWon = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
-            this.currentPlayer = this.firstPlayer;
-            this.mode = this.chooseMode;
-            this.level = this.chooseLevel;
-            this.winner = 0;
-            this.movieMove = [0, 0];
-            this.stateMovie = PLAYING;
-            this.beforeMovie = [];
-            this.firstTime = -1;
-            this.timer = 0;
-            console.log("START");
-        }
+        this.prolog.stopRequest();
+
+        this.sequence = new MyGameSequence();
+        this.animator.setSequence(this.sequence);
+        this.gameboard.create();
+        this.state = PLAYING;
+        this.coloursWon = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
+        this.currentPlayer = this.firstPlayer;
+        this.mode = this.chooseMode;
+        this.level = this.chooseLevel;
+        this.winner = 0;
+        this.movieMove = [0, 0];
+        this.stateMovie = PLAYING;
+        this.beforeMovie = [];
+        this.firstTime = -1;
+        this.timer = 0;
+        console.log("START");
     }
 
     update(time) {
+        console.log(this.currentPlayer);
+        console.log(this.prolog.requests);
         time /= 1000;
         if(this.lastUpdate == -1)
             this.lastUpdate = time;
@@ -96,26 +98,31 @@ class MyGameOrchestrator {
         this.firstTime = -1;
     }
 
-    play() {
-        var playerType = this.mode[this.currentPlayer - 1];
+    
+    orchestrate() {
+        if(this.state != START) {
+            var playerType = this.mode[this.currentPlayer - 1];
 
-        if(this.checkOver())
-            return;
+            if(this.checkOver())
+                return;
 
-        if(this.state == MOVIE) {
-            this.playMovie();
-            return;
-        }
+            if(this.state == MOVIE) {
+                this.playMovie();
+                return;
+            }
 
-        if(playerType == 'C') {
-            if(this.state == PLAYING) {
-                this.botPlay();
-            } 
+            if(playerType == 'C') {
+                if(this.state == PLAYING) {
+                    this.botPlay();
+                } 
+            }
         }
     }
 
     startMovie() {
-        if(this.state == PLAYING || this.state == END_GAME) {
+        if(this.state == PLAYING || this.state == END_GAME || this.state == PLAY_BOT) {
+            if(this.state == PLAY_BOT)
+                this.prolog.stopRequest();
             this.movieMove = [0,0];
             Object.assign(this.stateMovie, this.state);
             Object.assign(this.beforeMovie, this.coloursWon);
@@ -214,20 +221,23 @@ class MyGameOrchestrator {
     }
 
     undo() { 
-        if(this.state != PLAY && this.state != START) {
+        if(this.state != START && this.state != PLAY_HUMAN) {
             console.log("UNDO");
+            if(this.state == PLAY_BOT)
+                this.prolog.stopRequest();
             var undoResult = this.animator.undo();
             if(undoResult != -1) {
                 this.coloursWon = undoResult;
-                var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
-                this.prolog.makeRequest("updateColours("+ gameState + "," + this.currentPlayer+")", this.parseUpdateColours.bind(this));
+                this.setPlaying();
+                //var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
+                //this.prolog.makeRequest("updateColours("+ gameState + "," + this.currentPlayer+")", this.parseUpdateColours.bind(this));
             }
         }
     }
 
     userPlay(tile, coords) {
         this.resetTimer();
-        this.state = PLAY;
+        this.state = PLAY_HUMAN;
         this.pickedTile = tile;
         var newPiece = new MyPiece(this.scene, this.pickedColor);
         var coloursWonMove = this.coloursWon.slice();
@@ -238,10 +248,6 @@ class MyGameOrchestrator {
         //this.gameboard.updateColoursWon(this.coloursWon);
         this.pickedColor = null;
         this.pickedTile = null;
-    }
-
-    move() {
-
     }
 
     onMoveRequest(coords, colour) {
@@ -263,32 +269,36 @@ class MyGameOrchestrator {
         this.setPlaying();
     }
     
-    parseBotMove(data) {
-        if(this.state == PLAY && this.mode[this.currentPlayer-1] == 'C') { 
-            var move = data.target.response.split('-');
-            this.botMove(move);
-        }
-    }
-
     botPlay() {
         this.timer = 0;
-        this.state = PLAY;
+        this.state = PLAY_BOT;
         var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
-        this.prolog.makeRequest("getBotMove("+ gameState + "," + this.currentPlayer +","+
+        this.prolog.makeRequest("botMove("+ gameState + "," + this.currentPlayer +","+
             this.level+")", this.parseBotMove.bind(this));
     }
 
-    botMove(move) {
-        var row = move[0];
-        var diagonal = move[1];
-        var colour = move[2];
-        var tile = this.gameboard.getTileCoords(row, diagonal);
-        var newPiece = new MyPiece(this.scene, colour);
-        var coloursWonMove = this.coloursWon.slice();
-        this.sequence.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile));
-        this.onMoveRequest([row, diagonal], colour);
-        this.gameboard.getPieceBox(colour).nPieces--;
-        tile.setPiece(newPiece);
+    parseBotMove(data) {
+        var reply = data.target.response;
+        if(reply != 'bot_error') {
+            if(this.state == PLAY_BOT && this.mode[this.currentPlayer-1] == 'C') { 
+                reply = data.target.response.split('-');
+
+                var row = reply[0];
+                var diagonal = reply[1];
+                var colour = reply[2];
+                var tile = this.gameboard.getTileCoords(row, diagonal);
+                var newPiece = new MyPiece(this.scene, colour);
+                var coloursWonMove = this.coloursWon.slice();
+                var coloursNew = [reply[3].substr(1), reply[4], reply[5], reply[6], reply[7], reply[8].substr(0, reply[8].length-1)];
+                this.sequence.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile));
+                this.updateColours(coloursNew);
+                this.gameboard.getPieceBox(colour).nPieces--;
+                tile.setPiece(newPiece);
+
+                if(!this.checkOver())
+                    this.setPlaying();
+            }
+        }
     }
 
     updateColours(coloursWon) {
@@ -318,9 +328,6 @@ class MyGameOrchestrator {
     }
 
     display() {
-        if(this.state != START) {
-            this.play();
-        }
 
         this.scene.pushMatrix();
 
