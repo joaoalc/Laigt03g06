@@ -557,10 +557,6 @@
             </transformations>
             <descendants>
                 <noderef id="game_board"/>
-                <!--<leaf type="customobj" path="scenes/objects/test_object.obj" wireframe="0"/>-->
-                <!-- <noderef id="orange_box"/>
-                <noderef id="green_box"/>
-                <noderef id="purple_box"/> -->
             </descendants>
         </node>
 
