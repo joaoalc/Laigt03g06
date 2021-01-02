@@ -79,13 +79,6 @@
             <diffuse r="0.5" g="0.4" b="0.3" a="0.8" />             
             <specular r="0.45" g="0.3" b="0.15" a="0.8" />           
         </light>
-        <light id="wall_torch_3">
-            <enable value="1"/>
-            <position x="-1.65" y="4.5" z="-1.65" w="1.0" />
-            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                  
-            <diffuse r="0.5" g="0.4" b="0.3" a="0.8" />             
-            <specular r="0.45" g="0.3" b="0.15" a="0.8" />          
-        </light>
         <light id="wall_torch_4">
             <enable value="1"/>
             <position x="1.65" y="4.5" z="-1.65" w="1.0" />
@@ -1014,7 +1007,6 @@
                 <rotation angle="180" axis="y"/>
             </transformations>
             <descendants>
-                <noderef id="wall_torch_flame"/>
                 <noderef id="wall_torch_top"/>
                 <noderef id="wall_torch_bottom"/>
             </descendants>
