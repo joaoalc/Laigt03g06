@@ -13,7 +13,7 @@ class MyGameOrchestrator {
         this.prolog = new MyPrologInterface(this);
         this.sequence = new MyGameSequence();
         this.animator = new MyAnimator(this, this.sequence);
-        this.interface = new MyGameInterface(scene, this);
+        this.interface = new MyGameElements(scene, this);
         this.currentPlayer = -1;
         this.state = START;
         
@@ -22,7 +22,7 @@ class MyGameOrchestrator {
         this.timer = 0;
 
         this.lastUpdate = -1;
-        scene.activeScene = "Train";
+        scene.activeScene = "Aztec Temple";
 
         this.movieMove = [0, 0];
         this.stateMovie = PLAYING;
@@ -30,7 +30,7 @@ class MyGameOrchestrator {
 
 
         scene.sceneGraphs = {};
-        var filenames = {"Train" : 'train.xml', "OtherScene": 'Scene.xml'};
+        var filenames = {"Train Station" : 'train.xml', "Aztec Temple": 'Scene.xml'};
         for(let sceneName in filenames){
             //scene.sceneGraphs[scene.activeScene] = new MySceneGraph(filenames[sceneName], scene, sceneName);
             new MySceneGraph(filenames[sceneName], scene, sceneName);
@@ -372,6 +372,8 @@ class MyGameOrchestrator {
             this.interface.display();
 
             this.scene.popMatrix();
+
+            this.scene.sceneGraphs[this.scene.activeScene].displayScene();
         }
     }
 }

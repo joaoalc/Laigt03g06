@@ -212,6 +212,7 @@ class XMLscene extends CGFscene {
 
         // {light : enabled/disabled, ...}
         this.lightsStatus = {};
+        this.lightsIds = {};
 
         // Lights index.
         var i = 0;
@@ -237,7 +238,9 @@ class XMLscene extends CGFscene {
 
                 this.lights[i].update();
 
-                this.lightsStatus["light" + i] = graphLight[0];
+                this.lightsIds[i] = key;
+
+                this.lightsStatus[i] = graphLight[0];
 
                 i++;
             }
@@ -251,7 +254,7 @@ class XMLscene extends CGFscene {
      */
     updateLights() {
         for (var i = 0; i < this.lights.length; i++) {
-            if(this.lightsStatus["light" + i]) {
+            if(this.lightsStatus[i]) {
                 this.lights[i].enable();
                 this.lights[i].setVisible(false);
             }
@@ -271,8 +274,7 @@ class XMLscene extends CGFscene {
         
         this.onSceneSelect();
         
-        this.interface.addGUIelements();
-        this.interface.addSceneSelector(this.activeScene);
+        this.interface.addGUIelements(this.activeScene);
         this.sceneInited = true;
     }
 
@@ -396,7 +398,6 @@ class XMLscene extends CGFscene {
 
             // Displays the scene (MySceneGraph function).
             this.gameOrchestrator.orchestrate();
-            this.sceneGraphs[this.activeScene].displayScene();
             this.gameOrchestrator.display();
             
         }

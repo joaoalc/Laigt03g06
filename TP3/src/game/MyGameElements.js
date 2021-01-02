@@ -1,4 +1,4 @@
-class MyGameInterface {
+class MyGameElements {
     constructor(scene, orchestrator) {
         this.scene = scene;
         this.orchestrator = orchestrator;
@@ -43,7 +43,7 @@ class MyGameInterface {
         this.boardMat.setShininess(10.0);
         this.boardMat.setSpecular(0.4, 0.4, 0.4, 1);
         this.boardMat.setDiffuse(0.7, 0.7, 0.7, 1);
-        this.boardMat.setAmbient(0.8, 0.8, 0.8, 1);
+        this.boardMat.setAmbient(0.3, 0.3, 0.3, 1);
         this.boardMat.setEmission(0, 0, 0, 1);
     }
 
@@ -174,7 +174,7 @@ class MyGameInterface {
         //colors scores
         this.boardMat.apply();
         this.scene.pushMatrix();
-        this.scene.translate(-7, 0, -1);
+        this.scene.translate(-7, 0, -1.35);
 
         this.frameTexture.bind();
         this.scene.pushMatrix();

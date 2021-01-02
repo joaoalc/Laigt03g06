@@ -14,7 +14,8 @@ class MySpriteText {
             this.objects[i] = new MyRectangle(this.scene, 0, 0, 1, 1);
         }
 
-        this.appearance = new CGFappearance(this.scene);
+        this.appearance = this.scene.defaultAppearance;
+
         var fontPath;
         font == null ? fontPath = "images/fonts/font5_1.png" : fontPath = font;
         this.textSprite = new CGFtexture(this.scene, fontPath); //text sprite
