@@ -9,7 +9,7 @@ const MOVIE = 6;
 class MyGameOrchestrator {
     constructor(scene){
         this.scene = scene;
-        this.gameboard = new MyGameBoard(this.scene);
+        this.gameboard = new MyGameBoard(this.scene, this);
         this.prolog = new MyPrologInterface(this);
         this.sequence = new MyGameSequence();
         this.animator = new MyAnimator(this, this.sequence);
@@ -69,6 +69,8 @@ class MyGameOrchestrator {
         this.beforeMovie = [];
         this.firstTime = -1;
         this.timer = 0;
+        this.pickedColor = null;
+        this.pickedTile = null;
         console.log("START");
     }
 
@@ -357,8 +359,14 @@ class MyGameOrchestrator {
         this.gameboardPos = pos;
     }
 
+    getPickedColour() {
+        return this.pickedColor;
+    }
+
     display() {
         if(this.scene.sceneGraphs[this.scene.activeScene].loadedOk){
+
+            this.scene.sceneGraphs[this.scene.activeScene].displayScene();
 
             this.scene.pushMatrix();
 
@@ -372,8 +380,6 @@ class MyGameOrchestrator {
             this.interface.display();
 
             this.scene.popMatrix();
-
-            this.scene.sceneGraphs[this.scene.activeScene].displayScene();
         }
     }
 }
