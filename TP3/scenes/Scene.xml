@@ -50,7 +50,7 @@
     <lights>
         <light id="moon">
             <enable value="1"/>
-            <position x="0" y="10" z="0" w="1.0" />
+            <position x="-9.9" y="19.9" z="-9.9" w="1.0" />
             <ambient r="0.1" g="0.1" b="0.7" a="1.0" />                   
             <diffuse r="0.3" g="0.3" b="0.7" a="0.8" />             
             <specular r="0.3" g="0.3" b="0.7" a="1.0" />            
@@ -134,6 +134,7 @@
         <texture id="bricks_texture" path="./scenes/textures_Scene/bricks_texture.png"/>
         <texture id="wood_small" path="./scenes/textures_Scene/wood_small.png"/>
         <texture id="metal_pillar" path="./scenes/textures_Scene/metal_pillar.png"/>
+        <texture id="fire" path="./scenes/textures_Scene/fire.png"/>
     </textures>
     <spritesheets>
     </spritesheets>
@@ -147,72 +148,9 @@
         </material>
         <material id="sky">
             <shininess value="10.0"/>
-            <ambient r="0.9" g="0.9" b="0.9" a="1.0"/>
-            <diffuse r="0.2" g="0.2" b="0.2" a="1.0"/>
-            <specular r="0.2" g="0.2" b="0.2" a="1.0"/>
-            <emissive r="0.6" g="0.6" b="0.6" a="1.0"/>
-        </material>
-        <material id="groundMat">
-            <shininess value="10.0"/>
-            <ambient r="0.7" g="0.7" b="0.7" a="1.0"/>
-            <diffuse r="0.8" g="0.8" b="0.8" a="1.0"/>
-            <specular r="0.1" g="0.1" b="0.1" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="metal">
-            <shininess value="10.0"/>
-            <ambient r="0.3" g="0.3" b="0.3" a="1.0"/>
-            <diffuse r="0.7" g="0.7" b="0.7" a="1.0"/>
-            <specular r="0.7" g="0.7" b="0.7" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="metal_body">
-            <shininess value="10.0"/>
-            <ambient r="0.3" g="0.3" b="0.3" a="1.0"/>
-            <diffuse r="0.9" g="0.7" b="0.7" a="1.0"/>
-            <specular r="0.8" g="0.7" b="0.7" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="metal_bell">
-            <shininess value="10.0"/>
-            <ambient r="0.22" g="0.15" b="0.06" a="1.0"/>
-            <diffuse r="0.82" g="0.71" b="0.23" a="1.0"/>
-            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="metal_wheels">
-            <shininess value="10.0"/>
-            <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
-            <diffuse r="0.2" g="0.2" b="0.2" a="1.0"/>
-            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="metal_axles">
-            <shininess value="10.0"/>
-            <ambient r="0.1" g="0.1" b="0.1" a="1.0"/>
-            <diffuse r="0.1" g="0.1" b="0.1" a="1.0"/>
-            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="plastic_shiny">
-            <shininess value="10.0"/>
-            <ambient r="0.35" g="0.35" b="0.35" a="1.0"/>
-            <diffuse r="0.6" g="0.6" b="0.6" a="1.0"/>
-            <specular r="0.7" g="0.7" b="0.7" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="plastic">
-            <shininess value="5.0"/>
-            <ambient r="0.35" g="0.35" b="0.35" a="1.0"/>
-            <diffuse r="0.6" g="0.6" b="0.6" a="1.0"/>
-            <specular r="0.1" g="0.1" b="0.1" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="bricks_bright">
-            <shininess value="10.0"/>
-            <ambient r="0.5" g="0.5" b="0.5" a="1.0"/>
-            <diffuse r="0.4" g="0.4" b="0.4" a="1.0"/>
-            <specular r="0.25" g="0.25" b="0.25" a="1.0"/>
+            <ambient r="0.45" g="0.8" b="0.3" a="1.0"/>
+            <diffuse r="0.12" g="0.3" b="0.08" a="1.0"/>
+            <specular r="0.00" g="0.1" b="0.00" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
         <material id="bricks_regular">
@@ -222,46 +160,25 @@
             <specular r="0.25" g="0.25" b="0.25" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
-        <material id="glass">
-            <shininess value="20.0"/>
-            <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
-            <diffuse r="0.3" g="0.3" b="0.3" a="1.0"/>
-            <specular r="1" g="1" b="1" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="black_metal">
-            <shininess value="15.0"/>
-            <ambient r="0.05" g="0.05" b="0.05" a="1.0"/>
-            <diffuse r="0" g="0" b="0" a="1.0"/>
-            <specular r="0.5" g="0.5" b="0.5" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="grey_metal">
-            <shininess value="10.0"/>
-            <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
-            <diffuse r="0" g="0" b="0" a="1.0"/>
-            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="black_hole">
-            <shininess value="10.0"/>
-            <ambient r="0" g="0" b="0" a="1.0"/>
-            <diffuse r="0" g="0" b="0" a="1.0"/>
-            <specular r="0" g="0" b="0" a="1.0"/>
-            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
-        </material>
-        <material id="glass_headlight">
-            <shininess value="10.0"/>
-            <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
-            <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
-            <specular r="0.8" g="0.8" b="0.8" a="1.0"/>
-            <emissive r="0.9" g="0.9" b="0.9" a="1.0"/>
-        </material>
         <material id="wood">
             <shininess value="10.0"/>
-            <ambient r="0.1" g="0.1" b="0.1" a="1.0"/>
-            <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
-            <specular r="0.1" g="0.1" b="0.1" a="1.0"/>
+            <ambient r="0.2" g="0.25" b="0.25" a="1.0"/>
+            <diffuse r="0.4" g="0.5" b="0.5" a="1.0"/>
+            <specular r="0.08" g="0.15" b="0.15" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="leaves">
+            <shininess value="10.0"/>
+            <ambient r="0.2" g="0.45" b="0.5" a="1.0"/>
+            <diffuse r="0.25" g="0.45" b="0.5" a="1.0"/>
+            <specular r="0.07" g="0.15" b="0.15" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="fire">
+            <shininess value="10.0"/>
+            <ambient r="1" g="0.95" b="0.6" a="1.0"/>
+            <diffuse r="0.25" g="0.45" b="0.5" a="1.0"/>
+            <specular r="0.07" g="0.15" b="0.15" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
     </materials>
@@ -1066,6 +983,7 @@
             <transformations>
             </transformations>
             <descendants>
+                <noderef id="wall_torch_flame"/>
                 <noderef id="wall_torch_top"/>
                 <noderef id="wall_torch_bottom"/>
             </descendants>
@@ -1079,6 +997,7 @@
                 <rotation angle="90" axis="y"/>
             </transformations>
             <descendants>
+                <noderef id="wall_torch_flame"/>
                 <noderef id="wall_torch_top"/>
                 <noderef id="wall_torch_bottom"/>
             </descendants>
@@ -1092,6 +1011,7 @@
                 <rotation angle="180" axis="y"/>
             </transformations>
             <descendants>
+                <noderef id="wall_torch_flame"/>
                 <noderef id="wall_torch_top"/>
                 <noderef id="wall_torch_bottom"/>
             </descendants>
@@ -1105,8 +1025,24 @@
                 <rotation angle="-90" axis="y"/>
             </transformations>
             <descendants>
+                <noderef id="wall_torch_flame"/>
                 <noderef id="wall_torch_top"/>
                 <noderef id="wall_torch_bottom"/>
+            </descendants>
+        </node>
+        <node id="wall_torch_flame">
+            <material id="fire"/>
+            <texture id="fire">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="1.6125" y="4.455" z="1.6125"/>
+                <rotation axis="x" angle="90"/>
+                <rotation angle="-20" axis="z"/>
+                <rotation angle="-20" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.125" topRadius="0.05" bottomRadius="0.0125" stacks="1" slices="6"/>
             </descendants>
         </node>
         <node id="wall_torch_top">
@@ -1195,10 +1131,25 @@
             <transformations>
             </transformations>
             <descendants>
+                <noderef id="torch_flame"/>
                 <noderef id="torch_top"/>
                 <noderef id="torch_top_2"/>
                 <noderef id="torch_middle"/>
                 <noderef id="torch_base"/>
+            </descendants>
+        </node>
+
+        <node id="torch_flame">
+            <material id="fire"/>
+            <texture id="fire">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1.75" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.5" topRadius="0.2" bottomRadius="0.05" stacks="1" slices="8"/>
             </descendants>
         </node>
 
@@ -1751,7 +1702,7 @@
         </node>
 
         <node id="tree">
-            <material id="null"/>
+            <material id="wood"/>
             <texture id="clear">
                 <amplification afs="1.0" aft="1.0" />
             </texture>
@@ -1777,7 +1728,7 @@
         </node>
 
         <node id="tree_leaves">
-            <material id="null"/>
+            <material id="leaves"/>
             <texture id="tree_leaves">
                 <amplification afs="1.0" aft="1.0" />
             </texture>

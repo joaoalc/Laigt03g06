@@ -226,7 +226,7 @@ class XMLscene extends CGFscene {
     onGraphLoaded() {
         this.axis = new CGFaxis(this, this.graph.referenceLength);
 
-        this.setUpdatePeriod(10);
+        this.setUpdatePeriod(32);
 
         this.gl.clearColor(...this.graph.background);
 
