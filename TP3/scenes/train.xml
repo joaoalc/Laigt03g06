@@ -3,41 +3,20 @@
         <reference length="3"/>
         <root id="RootNode"/>
     </initials>
-    <views default="board_1"> 
-        <perspective id="defaultCamera" near="1" far="500" angle="45">
-            <from x="0" y="10" z="10"/>
-            <to x="0" y="0" z="0"/>
-        </perspective>
+    <views default="Board_1"> 
         <perspective id="Overview" near="1" far="100" angle="45">
             <from x="18" y="5" z="15"/>
             <to x="0" y="0" z="0"/>
         </perspective>
-        <perspective id="TargetTest" near="0.1" far="500" angle="45">
-            <from x="18" y="5" z="15"/>
-            <to x="18" y="-5" z="5"/>
-        </perspective>
-        <perspective id="Back" near="0.1" far="500" angle="45">
-            <from x="-15" y="5" z="-3"/>
-            <to x="0" y="0" z="0"/>
-        </perspective>
-        <perspective id="Train" near="0.1" far="500" angle="45">
-            <from x="7" y="1" z="5"/>
-            <to x="0" y="0.5" z="0"/>
-        </perspective>
-        <ortho id="Side View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
-            <from x="5" y="0" z="10"/>
-            <to x="0" y="0" z="0"/>
-        </ortho>
-        <ortho id="Front View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
-            <from x="10" y="0" z="0"/>
-            <to x="0" y="0" z="0"/>
-        </ortho>
-
-        <perspective id="board_1" near="0.1" far="50" angle="35">
+        <perspective id="Board_1" near="0.1" far="50" angle="35">
             <from x="6.5" y="0.5" z="6.5"/>
             <to x="5.5" y="-1" z="5.5"/>
         </perspective>
-        <perspective id="board_2" near="0.1" far="50" angle="35">
+        <perspective id="Board_2" near="0.1" far="50" angle="25">
+            <from x="5.2" y="2" z="5.2"/>
+            <to x="5.1" y="-1.2" z="5.1"/>
+        </perspective>
+        <perspective id="Board_3" near="0.1" far="50" angle="40">
             <from x="5.3" y="-0.7" z="7.5"/>
             <to x="5.2" y="-1" z="5.5"/>
         </perspective>
