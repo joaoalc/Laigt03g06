@@ -35,9 +35,23 @@ class MyGameBoard extends CGFobject {
         this.boardMat = new CGFappearance(this.scene);
         this.boardMat.setShininess(10.0);
         this.boardMat.setSpecular(0.4, 0.4, 0.4, 1);
-        this.boardMat.setDiffuse(0.6, 0.6, 0.6, 1);
-        this.boardMat.setAmbient(0.2, 0.2, 0.2, 1);
+        this.boardMat.setDiffuse(0.7, 0.7, 0.7, 1);
+        this.boardMat.setAmbient(0.8, 0.8, 0.8, 1);
         this.boardMat.setEmission(0, 0, 0, 1);
+
+        this.boxMat = new CGFappearance(this.scene);
+        this.boxMat.setShininess(10.0);
+        this.boxMat.setSpecular(0.1, 0.1, 0.1, 1);
+        this.boxMat.setDiffuse(0.6, 0.6, 0.6, 1);
+        this.boxMat.setAmbient(0.3, 0.3, 0.3, 1);
+        this.boxMat.setEmission(0, 0, 0, 1);
+
+        this.pieceMat = new CGFappearance(this.scene);
+        this.pieceMat.setShininess(5.0);
+        this.pieceMat.setSpecular(0.1, 0.1, 0.1, 1);
+        this.pieceMat.setDiffuse(0.6, 0.6, 0.6, 1);
+        this.pieceMat.setAmbient(0.3, 0.3, 0.3, 1);
+        this.pieceMat.setEmission(0, 0, 0, 1);
     }
 
     create() { 
@@ -153,6 +167,7 @@ class MyGameBoard extends CGFobject {
         this.scene.pushMatrix();
 
         this.tileTexture.bind();
+
         for(var line = 1; line <= 23; ++line) {
             this.scene.pushMatrix();
             var lineLength = this.lineLengths[line-1];
@@ -170,12 +185,15 @@ class MyGameBoard extends CGFobject {
             this.scene.popMatrix();
         }
 
+        this.pieceMat.apply();
         for(var tile in this.tiles) {
             if(this.tiles[tile].piece != null)
                 this.tiles[tile].piece.display(this.colourTexts);
         }
 
         this.scene.pushMatrix();
+            this.boxMat.apply();
+
             this.scene.translate(0, 3, 0.9);
             this.pieceBoxes["purple"].display();
             this.scene.pushMatrix();
@@ -184,6 +202,7 @@ class MyGameBoard extends CGFobject {
             this.pieceCounters["purple"].display();
             this.scene.popMatrix();
 
+            this.boxMat.apply();
             this.scene.translate(4.5, 0, 0);
             this.pieceBoxes["orange"].display();
             this.scene.pushMatrix();
@@ -192,6 +211,7 @@ class MyGameBoard extends CGFobject {
             this.pieceCounters["orange"].display();
             this.scene.popMatrix();
 
+            this.boxMat.apply();
             this.scene.translate(4.5, 0, 0);
             this.pieceBoxes["green"].display();
             this.scene.pushMatrix();

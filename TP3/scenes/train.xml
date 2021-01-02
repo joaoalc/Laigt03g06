@@ -27,14 +27,14 @@
     </illumination>
     <lights>
         <light id="headlight">
-            <enable value="1"/>
+            <enable value="0"/>
             <position x="2.4127" y="1.086" z="0" w="1.0" />
             <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                   
             <diffuse r="0.8" g="0.8" b="0.8" a="0.8" />             
             <specular r="0.8" g="0.8" b="0.8" a="1.0" />            
         </light>
         <light id="furnace">
-            <enable value="1"/>
+            <enable value="0"/>
             <position x="-1.3" y="-0.2" z="0" w="1.0" />
             <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                   
             <diffuse r="0.8" g="0.8" b="0.8" a="0.8" />             
@@ -42,10 +42,10 @@
         </light>
         <light id="sun">
             <enable value="1"/>
-            <position x="10" y="10" z="10" w="1.0" />
-            <ambient r="0.25" g="0.25" b="0.25" a="1.0" />                   
-            <diffuse r="0.7" g="0.7" b="0.7" a="1.0" />             
-            <specular r="0.7" g="0.7" b="0.7" a="1.0" />            
+            <position x="10" y="10" z="0" w="0.0" />
+            <ambient r="1" g="1" b="1" a="1.0" />                   
+            <diffuse r="1" g="1" b="1" a="1.0" />             
+            <specular r="1" g="1" b="1" a="1.0" />            
         </light>
     </lights>
     <textures>
@@ -158,21 +158,21 @@
         </material>
         <material id="plastic">
             <shininess value="5.0"/>
-            <ambient r="0.35" g="0.35" b="0.35" a="1.0"/>
+            <ambient r="0.4" g="0.4" b="0.4" a="1.0"/>
             <diffuse r="0.6" g="0.6" b="0.6" a="1.0"/>
             <specular r="0.1" g="0.1" b="0.1" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
         <material id="bricks_bright">
             <shininess value="10.0"/>
-            <ambient r="0.5" g="0.5" b="0.5" a="1.0"/>
+            <ambient r="0.4" g="0.4" b="0.4" a="1.0"/>
             <diffuse r="0.4" g="0.4" b="0.4" a="1.0"/>
             <specular r="0.25" g="0.25" b="0.25" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
         </material>
         <material id="bricks_regular">
             <shininess value="10.0"/>
-            <ambient r="0.3" g="0.3" b="0.3" a="1.0"/>
+            <ambient r="0.4" g="0.4" b="0.4" a="1.0"/>
             <diffuse r="0.25" g="0.25" b="0.25" a="1.0"/>
             <specular r="0.25" g="0.25" b="0.25" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
@@ -214,7 +214,7 @@
         </material>
         <material id="wood">
             <shininess value="10.0"/>
-            <ambient r="0.1" g="0.1" b="0.1" a="1.0"/>
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0"/>
             <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
             <specular r="0.1" g="0.1" b="0.1" a="1.0"/>
             <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
@@ -1169,7 +1169,7 @@
             </descendants>
         </node>
         <node id="station_building">
-            <material id="grey_metal"/>
+            <material id="bricks_regular"/>
             <texture id="wood">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
@@ -1182,7 +1182,7 @@
             </descendants>
         </node>
         <node id="station_tower">
-            <material id="grey_metal"/>
+            <material id="bricks_regular"/>
             <texture id="brick_wall">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
