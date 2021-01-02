@@ -7,10 +7,9 @@ const END_GAME = 5;
 const MOVIE = 6;
 
 class MyGameOrchestrator {
-    constructor(scene, gameboardPos) {
+    constructor(scene){
         this.scene = scene;
         this.gameboard = new MyGameBoard(this.scene);
-        this.gameboardPos = gameboardPos;
         this.prolog = new MyPrologInterface(this);
         this.sequence = new MyGameSequence();
         this.animator = new MyAnimator(this, this.sequence);
@@ -23,10 +22,20 @@ class MyGameOrchestrator {
         this.timer = 0;
 
         this.lastUpdate = -1;
+        scene.activeScene = "Train";
 
         this.movieMove = [0, 0];
         this.stateMovie = PLAYING;
         this.beforeMovie = [];
+
+
+        scene.sceneGraphs = {};
+        var filenames = {"Train" : 'LAIG_TP2_XML_T3_G06_v1.xml', "OtherScene": 'SecondScene.xml'};
+        for(let sceneName in filenames){
+            //scene.sceneGraphs[scene.activeScene] = new MySceneGraph(filenames[sceneName], scene, sceneName);
+            new MySceneGraph(filenames[sceneName], scene, sceneName);
+        }
+
 
         this.firstPlayer = 1;
         this.players = {'Player 1' : 1, 'Player 2': 2};
@@ -339,18 +348,23 @@ class MyGameOrchestrator {
     }
 
     display() {
+        if(this.scene.sceneGraphs[this.scene.activeScene].loadedOk){
+            if(this.state != START && this.state != END_GAME) {
+                this.play();
+            }
 
-        this.scene.pushMatrix();
+            this.scene.pushMatrix();
 
-        this.scene.translate(this.gameboardPos[0],this.gameboardPos[1],this.gameboardPos[2]);
-        this.scene.rotate(this.gameboardPos[3], 1,0,0);
-        this.scene.rotate(this.gameboardPos[4], 0,1,0);
-        this.scene.rotate(this.gameboardPos[5], 0,0,1);
-        this.scene.scale(this.gameboardPos[6],this.gameboardPos[6],this.gameboardPos[6]);
+            this.scene.translate(this.gameboardPos[0],this.gameboardPos[1],this.gameboardPos[2]);
+            this.scene.rotate(this.gameboardPos[3], 1,0,0);
+            this.scene.rotate(this.gameboardPos[4], 0,1,0);
+            this.scene.rotate(this.gameboardPos[5], 0,0,1);
+            this.scene.scale(this.gameboardPos[6],this.gameboardPos[6],this.gameboardPos[6]);
 
-        this.gameboard.display();
-        this.interface.display();
+            this.gameboard.display();
+            this.interface.display();
 
-        this.scene.popMatrix();
+            this.scene.popMatrix();
+        }
     }
 }

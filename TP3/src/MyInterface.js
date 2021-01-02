@@ -7,6 +7,8 @@ class MyInterface extends CGFinterface {
      */
     constructor() {
         super();
+        this.cameras = null;
+        this.lights = null;
     }
 
     /**
@@ -59,8 +61,7 @@ class MyInterface extends CGFinterface {
      * Adds the camera selection and lights enable/disable options to the interface
      * @param activeCamera - currently active camera's ID 
      */
-    addGUIelements(activeCamera){
-
+    addGUIelements(){
         var game = this.gui.addFolder("Game controls");
         game.closed = false;
 
@@ -72,17 +73,36 @@ class MyInterface extends CGFinterface {
         game.add(this.scene.gameOrchestrator, 'firstPlayer', this.scene.gameOrchestrator.players).name('Starting player');
         game.add(this.scene.gameOrchestrator, 'playTime', 0).name('Play Time (s)');
         game.add(this.scene.gameOrchestrator, 'startGame').name('Start Game');
+    }
 
-        var cameras = this.gui.addFolder("Cameras");
-        cameras.closed = false;
-        var camera = cameras.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));
+    addCameraAndLightGUI(activeCamera){
+        console.log(this.cameras);
+        console.log(this.scene.cameras);
+        console.log(this.scene.cameraIds);
+        if(this.cameras != null){
+            this.gui.removeFolder(this.cameras);
+        }
+        this.cameras = this.gui.addFolder("Cameras");
+        this.cameras.closed = false;
+        var camera = this.cameras.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));
         camera.setValue(activeCamera);
 
-        var lights = this.gui.addFolder("Lights");
-        lights.closed = false;
+        if(this.lights != null){
+            this.gui.removeFolder(this.lights);
+        }
+        this.lights = this.gui.addFolder("Lights");
+        this.lights.closed = false;
         for(var i = 0; i < this.scene.lights.length; i++) {
             if(this.scene.lightsStatus["light"+i] != null) 
-                lights.add(this.scene.lightsStatus, 'light' + i).onChange(this.scene.updateLights.bind(this.scene));
+                this.lights.add(this.scene.lightsStatus, 'light' + i).onChange(this.scene.updateLights.bind(this.scene));
         }
+    }
+
+    addSceneSelector(currentScene){
+        var backgroundScenes = this.gui.addFolder("backgroundScenes");
+        backgroundScenes.closed = false;
+
+        var backgroundScene = backgroundScenes.add(this.scene, 'activeScene', Object.keys(this.scene.sceneGraphs)).name('Current Scene').onChange(this.scene.updateScene.bind(this.scene));
+        backgroundScene.setValue(currentScene);
     }
 }
