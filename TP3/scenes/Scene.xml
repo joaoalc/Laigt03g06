@@ -117,6 +117,7 @@
         <texture id="wood_small" path="./scenes/textures_Scene/wood_small.png"/>
         <texture id="metal_pillar" path="./scenes/textures_Scene/metal_pillar.png"/>
         <texture id="fire" path="./scenes/textures_Scene/fire.png"/>
+        <texture id="carpet" path="./scenes/textures_Scene/carpet.jpg"/>
     </textures>
     <spritesheets>
     </spritesheets>
@@ -225,10 +226,30 @@
             <transformations>
             </transformations>
             <descendants>
+                <noderef id="carpet"/>
                 <!--<leaf type="customobj" path="scenes/objects/test_object.obj" wireframe="1"/> -->
                 <leaf type="gameboard" x="0.0" y="3.15" z="0.0" s="0.1" rx="0" ry="-90" rz="0"/>
             </descendants>
         </node>
+
+        <node id="carpet">
+            <material id="Generic"/>
+            <texture id="carpet">
+                <amplification afs="1.5" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="3.01" z="0.025"/>
+                <scale sx="2" sy="1" sz="2"/>
+                <rotation axis="y" angle="90"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.75" y1="0.5" x2="0.75" y2="-0.5"/>
+                <!--<leaf type="customobj" path="scenes/objects/test_object.obj" wireframe="1"/> -->
+                <leaf type="gameboard" x="0.0" y="3.15" z="0.0" s="0.1" rx="0" ry="-90" rz="0"/>
+            </descendants>
+        </node>
+
         <node id="pyramid">
             <material id="bricks_regular"/>
             <texture id="null">

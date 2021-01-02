@@ -174,7 +174,7 @@ class MyGameInterface {
         //colors scores
         this.boardMat.apply();
         this.scene.pushMatrix();
-        this.scene.translate(-7, 0, -1);
+        this.scene.translate(-7, 0, -1.35);
 
         this.frameTexture.bind();
         this.scene.pushMatrix();
