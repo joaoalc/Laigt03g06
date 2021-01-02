@@ -4,10 +4,6 @@
         <root id="RootNode"/>
     </initials>
     <views default="Board_1"> 
-        <perspective id="Overview" near="1" far="100" angle="45">
-            <from x="18" y="5" z="15"/>
-            <to x="0" y="0" z="0"/>
-        </perspective>
         <perspective id="Board_1" near="0.1" far="50" angle="35">
             <from x="6.5" y="0.5" z="6.5"/>
             <to x="5.5" y="-1" z="5.5"/>
@@ -20,7 +16,10 @@
             <from x="5.3" y="-0.7" z="7.5"/>
             <to x="5.2" y="-1" z="5.5"/>
         </perspective>
-
+        <perspective id="Scene_Overview" near="1" far="100" angle="45">
+            <from x="18" y="5" z="15"/>
+            <to x="0" y="0" z="0"/>
+        </perspective>
     </views>
     <illumination>
         <ambient r="0.9" g="0.9" b="0.9" a="1.0"/>

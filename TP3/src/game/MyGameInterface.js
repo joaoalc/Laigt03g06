@@ -61,25 +61,26 @@ class MyGameInterface {
         this.timerTime = time;
     }
 
-    update(time) {
-        var coloursWon = this.orchestrator.coloursWon;
-        if(coloursWon != null) {
-            this.colours1 = [];
-            this.colours2 = [];
-            for(var i = 0; i < coloursWon.length; ++i) {
-                if(i < 3) {
-                    if(coloursWon[i] == 'TRUE') {
-                        this.colours1[i] = this.colours[i];
-                        this.colours2[i] = "grey";
-                    }
-                } else {
-                    if(coloursWon[i] == 'TRUE') {
-                        this.colours2[i-3] = this.colours[i-3];
-                        this.colours1[i-3] = "grey";
-                    }
+    setColoursWon(coloursWon) {
+        this.colours1 = [];
+        this.colours2 = [];
+        for(var i = 0; i < coloursWon.length; ++i) {
+            if(i < 3) {
+                if(coloursWon[i] == 'TRUE') {
+                    this.colours1[i] = this.colours[i];
+                    this.colours2[i] = "grey";
+                }
+            } else {
+                if(coloursWon[i] == 'TRUE') {
+                    this.colours2[i-3] = this.colours[i-3];
+                    this.colours1[i-3] = "grey";
                 }
             }
         }
+    }
+
+    update(time) {
+        
     }
 
     display() {

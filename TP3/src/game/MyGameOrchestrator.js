@@ -59,6 +59,7 @@ class MyGameOrchestrator {
         this.gameboard.create();
         this.state = PLAYING;
         this.coloursWon = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
+        this.interface.setColoursWon(this.coloursWon);
         this.currentPlayer = this.firstPlayer;
         this.mode = this.chooseMode;
         this.level = this.chooseLevel;
@@ -138,6 +139,7 @@ class MyGameOrchestrator {
             Object.assign(this.stateMovie, this.state);
             Object.assign(this.beforeMovie, this.coloursWon);
             this.coloursWon = ['FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'FALSE'];
+            this.interface.setColoursWon(this.coloursWon);
             this.gameboard.resetBoxes();
             this.state = MOVIE;
             this.animator.start();
@@ -158,6 +160,7 @@ class MyGameOrchestrator {
 
             this.state = this.stateMovie;
             Object.assign(this.coloursWon, this.beforeMovie);
+            this.interface.setColoursWon(this.coloursWon);
         }
     }
 
@@ -165,6 +168,7 @@ class MyGameOrchestrator {
         if(this.movieMove[0] == this.sequence.moves.length) {
             this.state = this.stateMovie;
             Object.assign(this.coloursWon, this.beforeMovie);
+            this.interface.setColoursWon(this.coloursWon);
             this.movieMove = [0,0];
         } else {
             if(this.movieMove[1] == 0) {
@@ -243,6 +247,7 @@ class MyGameOrchestrator {
                 // }
                 this.resetTimer();
                 this.coloursWon = undoResult[0];
+                this.interface.setColoursWon(this.coloursWon);
 
                 this.setPlaying(undoResult[1]);
                 //var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
@@ -320,6 +325,7 @@ class MyGameOrchestrator {
 
     updateColours(coloursWon) {
         this.coloursWon = coloursWon;
+        this.interface.setColoursWon(this.coloursWon);
         console.log(this.coloursWon);
     }
 
