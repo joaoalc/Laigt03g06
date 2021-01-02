@@ -1,6 +1,7 @@
 class MyGameBoard extends CGFobject {
-    constructor(scene) {
+    constructor(scene, orchestrator) {
         super(scene);
+        this.orchestrator = orchestrator;
         this.tiles = [];
         this.startDiagonals = [1,1,1,1,1,2,2,2,3,3,4,4,5,5,6,6,7,8,8,9,10,11,12];
         this.startLines = [1,1,1,1,1,2,2,2,3,3,4,4,5,5,6,6,7,8,8,9,10,11,12];
@@ -13,6 +14,12 @@ class MyGameBoard extends CGFobject {
         var green = new CGFtexture(this.scene, "images/green.png");
 
         this.colourTexts = {"purple": purple, "orange": orange, "green": green};
+
+        var purpleHighlight = new CGFtexture(this.scene, "images/purpleTile.png");
+        var orangeHighlight = new CGFtexture(this.scene, "images/orangeTile.png");
+        var greenHighlight = new CGFtexture(this.scene, "images/greenTile.png");
+
+        this.tileHighlight = {"purple": purpleHighlight, "orange": orangeHighlight, "green": greenHighlight};
 
         this.pieceBoxes = [];
         this.pieceBoxes["purple"] = new MyPieceBox(this.scene, "purple");
@@ -166,8 +173,6 @@ class MyGameBoard extends CGFobject {
 
         this.scene.pushMatrix();
 
-        this.tileTexture.bind();
-
         for(var line = 1; line <= 23; ++line) {
             this.scene.pushMatrix();
             var lineLength = this.lineLengths[line-1];
@@ -179,6 +184,12 @@ class MyGameBoard extends CGFobject {
                 this.scene.pushMatrix();
                 this.scene.translate(this.horShift * (col - 1), 0, 0);
                 var diagonal = startDiagonal + col - 1;
+                var pickedColour = this.orchestrator.getPickedColour();
+                if(this.tiles[[line, diagonal]].piece != null || pickedColour == null)
+                    this.tileTexture.bind();
+                else 
+                    this.tileHighlight[pickedColour].bind();
+
                 this.tiles[[line, diagonal]].display(line, diagonal);
                 this.scene.popMatrix();
             }
