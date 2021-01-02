@@ -250,11 +250,14 @@ class XMLscene extends CGFscene {
      */
     updateLights() {
         for (var i = 0; i < this.lights.length; i++) {
-            if(this.lightsStatus["light" + i])
+            if(this.lightsStatus["light" + i]) {
                 this.lights[i].enable();
-            else
+                this.lights[i].setVisible(false);
+            }
+            else {
                 this.lights[i].disable();
-            this.lights[i].setVisible(false);
+                this.lights[i].setVisible(false);       
+            }
             this.lights[i].update();
         }
     }
@@ -276,6 +279,7 @@ class XMLscene extends CGFscene {
         this.cameraIds = {};
         this.sceneInited = false; 
         this.gameOrchestrator.setGameBoardPosition(this.sceneGraphs[this.activeScene].gameboardPos); //Each time
+        this.setUpdatePeriod(32);
 
         this.gl.clearColor(...this.sceneGraphs[this.activeScene].background); //Each time
 

@@ -30,7 +30,7 @@ class MyGameOrchestrator {
 
 
         scene.sceneGraphs = {};
-        var filenames = {"Train" : 'train.xml', "OtherScene": 'SecondScene.xml'};
+        var filenames = {"Train" : 'train.xml', "OtherScene": 'Scene.xml'};
         for(let sceneName in filenames){
             //scene.sceneGraphs[scene.activeScene] = new MySceneGraph(filenames[sceneName], scene, sceneName);
             new MySceneGraph(filenames[sceneName], scene, sceneName);

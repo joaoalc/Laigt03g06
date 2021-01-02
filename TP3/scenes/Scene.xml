@@ -1,0 +1,1934 @@
+<lsf>
+    <initials>
+        <reference length="3"/>
+        <root id="RootNode"/>
+    </initials>
+    <views default="board_1"> 
+        <perspective id="defaultCamera" near="1" far="500" angle="45">
+            <from x="0" y="10" z="10"/>
+            <to x="0" y="0" z="0"/>
+        </perspective>
+        <perspective id="Overview" near="1" far="100" angle="45">
+            <from x="18" y="5" z="15"/>
+            <to x="0" y="0" z="0"/>
+        </perspective>
+        <perspective id="TargetTest" near="0.1" far="500" angle="45">
+            <from x="18" y="5" z="15"/>
+            <to x="18" y="-5" z="5"/>
+        </perspective>
+        <perspective id="Back" near="0.1" far="500" angle="45">
+            <from x="-15" y="5" z="-3"/>
+            <to x="0" y="0" z="0"/>
+        </perspective>
+        <perspective id="Train" near="0.1" far="500" angle="45">
+            <from x="7" y="1" z="5"/>
+            <to x="0" y="0.5" z="0"/>
+        </perspective>
+        <ortho id="Side View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
+            <from x="5" y="0" z="10"/>
+            <to x="0" y="0" z="0"/>
+        </ortho>
+        <ortho id="Front View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
+            <from x="10" y="0" z="0"/>
+            <to x="0" y="0" z="0"/>
+        </ortho>
+
+        <perspective id="board_1" near="0.1" far="100" angle="45">
+            <from x="3" y="10" z="0"/>
+            <to x="0" y="0" z="0"/>
+        </perspective>
+        <perspective id="board_2" near="0.1" far="50" angle="35">
+            <from x="5.3" y="-0.7" z="7.5"/>
+            <to x="5.2" y="-1" z="5.5"/>
+        </perspective>
+
+    </views>
+    <illumination>
+        <ambient r="0.4" g="0.2" b="1" a="1.0"/>
+        <background r="0.3" g="0.5" b="1.0" a="1.0"/>
+    </illumination>
+    <lights>
+        <light id="moon">
+            <enable value="1"/>
+            <position x="-9.9" y="19.9" z="-9.9" w="1.0" />
+            <ambient r="0.1" g="0.1" b="0.7" a="1.0" />                   
+            <diffuse r="0.3" g="0.3" b="0.7" a="0.8" />             
+            <specular r="0.3" g="0.3" b="0.7" a="1.0" />            
+        </light>
+        <light id="torch_1">
+            <enable value="1"/>
+            <position x="7" y="1.5" z="-1.5" w="1.0" />
+            <ambient r="0.0" g="0.0" b="0.0" a="1.0" />                   
+            <diffuse r="0.5" g="0.2" b="0.0" a="0.8" />             
+            <specular r="0.8" g="0.2" b="0.0" a="1.0" />            
+        </light>
+        <light id="torch_2">
+            <enable value="1"/>
+            <position x="8.5" y="1.5" z="-1.5" w="1.0" />
+            <ambient r="0.0" g="0.0" b="0.0" a="1.0" />                   
+            <diffuse r="0.5" g="0.2" b="0.0" a="0.8" />             
+            <specular r="0.8" g="0.2" b="0.0" a="1.0" />            
+        </light>
+        <light id="torch_3">
+            <enable value="1"/>
+            <position x="7" y="1.5" z="1.5" w="1.0" />
+            <ambient r="0.0" g="0.0" b="0.0" a="1.0" />                   
+            <diffuse r="0.5" g="0.2" b="0.0" a="0.8" />             
+            <specular r="0.8" g="0.2" b="0.0" a="1.0" />            
+        </light>
+        <light id="torch_4">
+            <enable value="1"/>
+            <position x="8.5" y="1.5" z="1.5" w="1.0" />
+            <ambient r="0.0" g="0.0" b="0.0" a="1.0" />                   
+            <diffuse r="0.5" g="0.2" b="0.0" a="0.8" />             
+            <specular r="0.8" g="0.2" b="0.0" a="1.0" />            
+        </light>
+        <light id="wall_torch_1">
+            <enable value="1"/>
+            <position x="1.65" y="4.5" z="1.65" w="1.0" />
+            <ambient r="0.0" g="0.0" b="0.0" a="1.0" />                   
+            <diffuse r="0.3" g="0.15" b="0.0" a="0.8" />             
+            <specular r="0.4" g="0.15" b="0.0" a="0.8" />            
+        </light>
+        <light id="wall_torch_2">
+            <enable value="1"/>
+            <position x="-1.65" y="4.5" z="1.65" w="1.0" />
+            <ambient r="0.0" g="0.0" b="0.0" a="1.0" />                   
+            <diffuse r="0.3" g="0.15" b="0.0" a="0.8" />             
+            <specular r="0.4" g="0.15" b="0.0" a="0.8" />            
+        </light>
+        <light id="wall_torch_3">
+            <enable value="1"/>
+            <position x="-1.65" y="4.5" z="-1.65" w="1.0" />
+            <ambient r="0.0" g="0.0" b="0.0" a="1.0" />                   
+            <diffuse r="0.3" g="0.15" b="0.0" a="0.8" />             
+            <specular r="0.4" g="0.15" b="0.0" a="0.8" />            
+        </light>
+        <light id="wall_torch_4">
+            <enable value="1"/>
+            <position x="1.65" y="4.5" z="-1.65" w="1.0" />
+            <ambient r="0.0" g="0.0" b="0.0" a="1.0" />                   
+            <diffuse r="0.3" g="0.15" b="0.0" a="0.8" />             
+            <specular r="0.4" g="0.15" b="0.0" a="0.8" />            
+        </light>
+    </lights>
+    <textures>
+        <texture id="skybox_left" path="./scenes/textures_Scene/skybox/png2jpg/skybox_left.jpg"/>
+        <texture id="skybox_right" path="./scenes/textures_Scene/skybox/png2jpg/skybox_right.jpg"/>
+        <texture id="skybox_front" path="./scenes/textures_Scene/skybox/png2jpg/skybox_front.jpg"/>
+        <texture id="skybox_top" path="./scenes/textures_Scene/skybox/png2jpg/skybox_top.jpg"/>
+        <texture id="skybox_back" path="./scenes/textures_Scene/skybox/png2jpg/skybox_back.jpg"/>
+        <texture id="grass" path="./scenes/textures_Scene/grass.jpg"/>
+        <texture id="pyramid_base" path="./scenes/textures_Scene/pyramid_base.png"/>
+        <texture id="pyramid_path" path="./scenes/textures_Scene/pyramid_path.png"/>
+        <texture id="pyramid_floor_top" path="./scenes/textures_Scene/pyramid_floor_top.png"/>
+        <texture id="pyramid_top" path="./scenes/textures_Scene/pyramid_top.png"/>
+        <texture id="pyramid_side" path="./scenes/textures_Scene/pyramid_side.png"/>
+        <texture id="pyramid_front_left" path="./scenes/textures_Scene/pyramid_front_left.png"/>
+        <texture id="pyramid_front_right" path="./scenes/textures_Scene/pyramid_front_right.png"/>
+        <texture id="pyramid_middle" path="./scenes/textures_Scene/pyramid_middle.png"/>
+        <texture id="pyramid_stair_front" path="./scenes/textures_Scene/pyramid_stair_front.png"/>
+        <texture id="pyramid_stair_top" path="./scenes/textures_Scene/pyramid_stair_top.png"/>
+        <texture id="tree_trunk" path="./scenes/textures_Scene/tree_trunk.png"/>
+        <texture id="tree_leaves" path="./scenes/textures_Scene/tree_leaves.jpg"/>
+        <texture id="bricks_texture" path="./scenes/textures_Scene/bricks_texture.png"/>
+        <texture id="wood_small" path="./scenes/textures_Scene/wood_small.png"/>
+        <texture id="metal_pillar" path="./scenes/textures_Scene/metal_pillar.png"/>
+        <texture id="fire" path="./scenes/textures_Scene/fire.png"/>
+    </textures>
+    <spritesheets>
+    </spritesheets>
+    <materials>
+        <material id="Generic">
+            <shininess value="10.0"/>
+            <ambient r="0.5" g="0.5" b="0.5" a="1.0"/>
+            <diffuse r="0.5" g="0.5" b="0.5" a="1.0"/>
+            <specular r="0.2" g="0.2" b="0.2" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="sky">
+            <shininess value="10.0"/>
+            <ambient r="0.45" g="0.8" b="0.3" a="1.0"/>
+            <diffuse r="0.12" g="0.3" b="0.08" a="1.0"/>
+            <specular r="0.00" g="0.1" b="0.00" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="bricks_regular">
+            <shininess value="10.0"/>
+            <ambient r="0.3" g="0.3" b="0.3" a="1.0"/>
+            <diffuse r="0.25" g="0.25" b="0.25" a="1.0"/>
+            <specular r="0.25" g="0.25" b="0.25" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="wood">
+            <shininess value="10.0"/>
+            <ambient r="0.2" g="0.25" b="0.25" a="1.0"/>
+            <diffuse r="0.4" g="0.5" b="0.5" a="1.0"/>
+            <specular r="0.08" g="0.15" b="0.15" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="leaves">
+            <shininess value="10.0"/>
+            <ambient r="0.2" g="0.45" b="0.5" a="1.0"/>
+            <diffuse r="0.25" g="0.45" b="0.5" a="1.0"/>
+            <specular r="0.07" g="0.15" b="0.15" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+        <material id="fire">
+            <shininess value="10.0"/>
+            <ambient r="1" g="0.95" b="0.6" a="1.0"/>
+            <diffuse r="0.25" g="0.45" b="0.5" a="1.0"/>
+            <specular r="0.07" g="0.15" b="0.15" a="1.0"/>
+            <emissive r="0.0" g="0.0" b="0.0" a="1.0"/>
+        </material>
+    </materials>
+    <animations>
+        <animation id="train_animation">
+            <keyframe instant="0">
+                <translation x="-5" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="4">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="6.25">
+                <translation x="2.5" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="7">
+                <translation x="3" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+    </animation>
+    </animations>
+    <nodes>
+        <node id="RootNode">
+            <material id="Generic"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <scale sx="1" sy="1" sz="1"/>
+            </transformations>
+            <descendants>
+                <noderef id="pyramid"/>
+                <noderef id="skybox"/>
+                <noderef id="floor"/>
+                <noderef id="game_board"/>
+                <noderef id="trees"/>
+                <!--<leaf type="customobj" path="scenes/objects/test_object.obj" wireframe="0"/>-->
+                <!-- <noderef id="orange_box"/>
+                <noderef id="green_box"/>
+                <noderef id="purple_box"/> -->
+            </descendants>
+        </node>
+        <node id="game_board">
+            <material id="Generic"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <!--<leaf type="customobj" path="scenes/objects/test_object.obj" wireframe="1"/> -->
+                <leaf type="gameboard" x="0.0" y="3.15" z="0.0" s="0.1" rx="0" ry="45" rz="0"/>
+            </descendants>
+        </node>
+        <node id="pyramid">
+            <material id="bricks_regular"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="pyramid_base"/>
+                <noderef id="pyramid_floor_1"/>
+                <noderef id="pyramid_floor_2"/>
+                <noderef id="pyramid_floor_3"/>
+                <noderef id="pyramid_top"/>
+                <noderef id="pyramid_path"/>
+                <noderef id="pyramid_top_structure"/>
+                <noderef id="pyramid_torches"/>
+            </descendants>
+        </node>
+        <node id="pyramid_top_structure">
+            <material id="Generic"/>
+            <texture id="bricks_texture">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.0" y="3.0" z="0.0"/>
+            </transformations>
+            <descendants>
+                <noderef id="pyramid_top_supports"/>
+                <noderef id="pyramid_top_frame"/>
+                <leaf type="customobj" path="scenes/temple_top_structure.obj" wireframe="0"/>
+            </descendants>
+        </node>
+        <node id="pyramid_top_supports">
+            <material id="Generic"/>
+            <texture id="metal_pillar">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <leaf type="customobj" path="scenes/temple_top_supports.obj" wireframe="0"/>
+            </descendants>
+        </node>
+        <node id="pyramid_top_frame">
+            <material id="Generic"/>
+            <texture id="wood_small">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <leaf type="customobj" path="scenes/temple_top_frame.obj" wireframe="0"/>
+            </descendants>
+        </node>
+
+        <node id="pyramid_floor_1">
+            <material id="Generic"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="pyramidf1l"/>
+                <noderef id="pyramidf1r"/>
+                <noderef id="pyramidf1b"/>
+                <noderef id="pyramidf1fl"/>
+                <noderef id="pyramidf1fr"/>
+                <noderef id="pyramidf1ml"/>
+                <noderef id="pyramidf1mr"/>
+                <noderef id="pyramidf1tl"/>
+                <noderef id="pyramidf1tr"/>
+                <noderef id="pyramidf1tb"/>
+                <noderef id="pyramidf1tf1"/>
+                <noderef id="pyramidf1tf2"/>
+                <noderef id="pyramid_stairs_floor_1"/>
+                <!-- 
+                <noderef id="pyramidf1st1"/>
+                <noderef id="pyramidf1st2"/>
+                <noderef id="pyramidf1sb1"/>
+                <noderef id="pyramidf1sb2"/>-->
+            </descendants>
+        </node>
+        <node id="pyramid_floor_2">
+            <material id="Generic"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="pyramid_stairs_floor_2"/>
+                <noderef id="pyramidf2l"/>
+                <noderef id="pyramidf2r"/>
+                <noderef id="pyramidf2b"/>
+                <noderef id="pyramidf2fl"/>
+                <noderef id="pyramidf2fr"/>
+                <noderef id="pyramidf2ml"/>
+                <noderef id="pyramidf2mr"/>
+                <noderef id="pyramidf2tl"/>
+                <noderef id="pyramidf2tr"/>
+                <noderef id="pyramidf2tb"/>
+                <noderef id="pyramidf2tf1"/>
+                <noderef id="pyramidf2tf2"/>
+            </descendants>
+        </node>
+        <node id="pyramid_floor_3">
+            <material id="Generic"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="pyramid_stairs_floor_3"/>
+                <noderef id="pyramidf3l"/>
+                <noderef id="pyramidf3r"/>
+                <noderef id="pyramidf3b"/>
+                <noderef id="pyramidf3fl"/>
+                <noderef id="pyramidf3fr"/>
+                <noderef id="pyramidf3ml"/>
+                <noderef id="pyramidf3mr"/>
+                <noderef id="pyramidf3tl"/>
+                <noderef id="pyramidf3tr"/>
+                <noderef id="pyramidf3tb"/>
+                <noderef id="pyramidf3tf1"/>
+                <noderef id="pyramidf3tf2"/>
+            </descendants>
+        </node>
+        <node id="pyramid_stairs_floor_1">
+            <material id="Generic"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="pyramidf1st2"/>
+                <noderef id="pyramidf1sb1"/>
+                <noderef id="pyramidf1sb2"/>
+            </descendants>
+        </node>
+        <node id="pyramid_stairs_floor_2">
+            <material id="Generic"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1" y="1" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="pyramidf1st1"/>
+                <noderef id="pyramidf1st2"/>
+                <noderef id="pyramidf1sb1"/>
+                <noderef id="pyramidf1sb2"/>
+            </descendants>
+        </node>
+        <node id="pyramid_stairs_floor_3">
+            <material id="Generic"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-2" y="2" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="pyramidf1st1"/>
+                <noderef id="pyramidf1st2"/>
+                <noderef id="pyramidf1sb1"/>
+                <noderef id="pyramidf1sb2"/>
+            </descendants>
+        </node>
+        <node id="pyramid_base">
+            <material id="Generic"/>
+            <texture id="pyramid_base">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-5" y1="5" x2="5" y2="-5"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1l">
+            <material id="Generic"/>
+            <texture id="pyramid_side">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-5" y1="0" x2="5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1r">
+            <material id="Generic"/>
+            <texture id="pyramid_side">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="0" x2="-5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1b">
+            <material id="Generic"/>
+            <texture id="pyramid_side">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-5" y="0" z="0"/>
+                <rotation angle="90" axis="y"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="0" x2="-5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1fl">
+            <material id="Generic"/>
+            <texture id="pyramid_front_left">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="5" y="0" z="0"/>
+                <rotation angle="90" axis="y"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-5" y1="0" x2="-1.5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1fr">
+            <material id="Generic"/>
+            <texture id="pyramid_front_right">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="5" y="0" z="0"/>
+                <rotation angle="90" axis="y"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="1.5" y1="0" x2="5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1ml">
+            <material id="Generic"/>
+            <texture id="pyramid_middle">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="1.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="0" x2="4" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1mr">
+            <material id="Generic"/>
+            <texture id="pyramid_middle">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-1.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="4" y1="0" x2="5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1tl">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="-4" x2="-5" y2="-5"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1tr">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="5" x2="-5" y2="4"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1tb">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-4" y1="4" x2="-5" y2="-4"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1tf1">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="-1.5" x2="4" y2="-4"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1tf2">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="4" x2="4" y2="1.5"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1st1">
+            <material id="Generic"/>
+            <texture id="pyramid_stair_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="1.5" x2="4.5" y2="-1.5"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1st2">
+            <material id="Generic"/>
+            <texture id="pyramid_stair_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0.5" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="4.5" y1="1.5" x2="4" y2="-1.5"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1sb1">
+            <material id="Generic"/>
+            <texture id="pyramid_stair_front">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="4.5" y="0" z="0"/>
+                <rotation angle="90" axis="y"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="1.5" y1="0.5" x2="-1.5" y2="0"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf1sb2">
+            <material id="Generic"/>
+            <texture id="pyramid_stair_front">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="4" y="0.5" z="0"/>
+                <rotation angle="90" axis="y"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="1.5" y1="0.5" x2="-1.5" y2="0"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf2l">
+            <material id="Generic"/>
+            <texture id="pyramid_side">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1" z="4"/>
+                <scale sx="0.8" sy="1" sz="0.8"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-5" y1="0" x2="5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf2r">
+            <material id="Generic"/>
+            <texture id="pyramid_side">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1" z="-4"/>
+                <scale sx="0.8" sy="1" sz="0.8"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="0" x2="-5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf2b">
+            <material id="Generic"/>
+            <texture id="pyramid_side">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-4" y="1" z="0"/>
+                <rotation angle="90" axis="y"/>
+                <scale sx="0.8" sy="1" sz="0.8"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="0" x2="-5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf2fl">
+            <material id="Generic"/>
+            <texture id="pyramid_front_left">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="4" y="1" z="0"/>
+                <rotation angle="90" axis="y"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-4" y1="0" x2="-1.5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf2fr">
+            <material id="Generic"/>
+            <texture id="pyramid_front_right">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="4" y="1" z="0"/>
+                <rotation angle="90" axis="y"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="1.5" y1="0" x2="4" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf2ml">
+            <material id="Generic"/>
+            <texture id="pyramid_middle">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1" y="1" z="1.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="0" x2="4" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf2mr">
+            <material id="Generic"/>
+            <texture id="pyramid_middle">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1" y="1" z="-1.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="4" y1="0" x2="5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf2tl">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="2" z="-1"/>
+                <rotation angle="270" axis="x"/>
+                <scale sx="0.8" sy="1" sz="0.8"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="-4" x2="-5" y2="-5"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf2tr">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="2" z="1"/>
+                <rotation angle="270" axis="x"/>
+                <scale sx="0.8" sy="1" sz="0.8"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="5" x2="-5" y2="4"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf2tb">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="1" y="2" z="0"/>
+                <rotation angle="270" axis="x"/>
+                <scale sx="1" sy="1" sz="0.8"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-4" y1="3" x2="-5" y2="-3"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf2tf1">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1" y="2" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="-1.5" x2="4" y2="-3"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf2tf2">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-1" y="2" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="3" x2="4" y2="1.5"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf3l">
+            <material id="Generic"/>
+            <texture id="pyramid_side">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="2" z="3"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-3" y1="0" x2="3" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf3r">
+            <material id="Generic"/>
+            <texture id="pyramid_side">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="2" z="-3"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="3" y1="0" x2="-3" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf3b">
+            <material id="Generic"/>
+            <texture id="pyramid_side">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-3" y="2" z="0"/>
+                <rotation angle="90" axis="y"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="3" y1="0" x2="-3" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf3fl">
+            <material id="Generic"/>
+            <texture id="pyramid_front_left">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="3" y="2" z="0"/>
+                <rotation angle="90" axis="y"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-3" y1="0" x2="-1.5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf3fr">
+            <material id="Generic"/>
+            <texture id="pyramid_front_right">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="3" y="2" z="0"/>
+                <rotation angle="90" axis="y"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="1.5" y1="0" x2="3" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf3ml">
+            <material id="Generic"/>
+            <texture id="pyramid_middle">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-2" y="2" z="1.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="0" x2="4" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf3mr">
+            <material id="Generic"/>
+            <texture id="pyramid_middle">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-2" y="2" z="-1.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="4" y1="0" x2="5" y2="1"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf3tl">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="3" z="-2"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="3" y1="-4" x2="-3" y2="-5"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf3tr">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="3" z="2"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="3" y1="5" x2="-3" y2="4"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf3tb">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="2" y="3" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-4" y1="2" x2="-5" y2="-2"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf3tf1">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-2" y="3" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="-1.5" x2="4" y2="-2"/> 
+            </descendants>
+        </node>
+        <node id="pyramidf3tf2">
+            <material id="Generic"/>
+            <texture id="pyramid_floor_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="-2" y="3" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="5" y1="2" x2="4" y2="1.5"/> 
+            </descendants>
+        </node>
+        <node id="pyramid_top">
+            <material id="Generic"/>
+            <texture id="pyramid_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="3" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-2" y1="-2" x2="2" y2="2"/> 
+            </descendants>
+        </node>
+        <node id="pyramid_torches">
+            <material id="Generic"/>
+            <texture id="pyramid_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="pyramid_wall_torch_1"/>
+                <noderef id="pyramid_wall_torch_2"/>
+                <noderef id="pyramid_wall_torch_3"/>
+                <noderef id="pyramid_wall_torch_4"/>
+                <noderef id="pyramid_torch_1"/>
+                <noderef id="pyramid_torch_2"/>
+                <noderef id="pyramid_torch_3"/>
+                <noderef id="pyramid_torch_4"/>
+            </descendants>
+        </node>
+        <node id="pyramid_wall_torch_1">
+            <material id="Generic"/>
+            <texture id="pyramid_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="wall_torch_flame"/>
+                <noderef id="wall_torch_top"/>
+                <noderef id="wall_torch_bottom"/>
+            </descendants>
+        </node>
+        <node id="pyramid_wall_torch_2">
+            <material id="Generic"/>
+            <texture id="pyramid_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <rotation angle="90" axis="y"/>
+            </transformations>
+            <descendants>
+                <noderef id="wall_torch_flame"/>
+                <noderef id="wall_torch_top"/>
+                <noderef id="wall_torch_bottom"/>
+            </descendants>
+        </node>
+        <node id="pyramid_wall_torch_3">
+            <material id="Generic"/>
+            <texture id="pyramid_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <rotation angle="180" axis="y"/>
+            </transformations>
+            <descendants>
+                <noderef id="wall_torch_flame"/>
+                <noderef id="wall_torch_top"/>
+                <noderef id="wall_torch_bottom"/>
+            </descendants>
+        </node>
+        <node id="pyramid_wall_torch_4">
+            <material id="Generic"/>
+            <texture id="pyramid_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <rotation angle="-90" axis="y"/>
+            </transformations>
+            <descendants>
+                <noderef id="wall_torch_flame"/>
+                <noderef id="wall_torch_top"/>
+                <noderef id="wall_torch_bottom"/>
+            </descendants>
+        </node>
+        <node id="wall_torch_flame">
+            <material id="fire"/>
+            <texture id="fire">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="1.6125" y="4.455" z="1.6125"/>
+                <rotation axis="x" angle="90"/>
+                <rotation angle="-20" axis="z"/>
+                <rotation angle="-20" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.125" topRadius="0.05" bottomRadius="0.0125" stacks="1" slices="6"/>
+            </descendants>
+        </node>
+        <node id="wall_torch_top">
+            <material id="Generic"/>
+            <texture id="pyramid_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="1.66" y="4.25" z="1.66"/>
+                <rotation angle="270" axis="x"/>
+                <rotation angle="-10" axis="x"/>
+                <rotation angle="-10" axis="y"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.1" topRadius="0.1" bottomRadius="0.1" stacks="1" slices="6"/>
+            </descendants>
+        </node>
+        <node id="wall_torch_bottom">
+            <material id="Generic"/>
+            <texture id="pyramid_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="1.73" y="4.1" z="1.73"/>
+                <rotation angle="270" axis="x"/>
+                <rotation angle="-20" axis="x"/>
+                <rotation angle="-20" axis="y"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.2" topRadius="0.07" bottomRadius="0.035" stacks="1" slices="6"/>
+            </descendants>
+        </node>
+        <node id="pyramid_torch_1">
+            <material id="Generic"/>
+            <texture id="pyramid_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="7" y="0" z="1.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="torch"/>
+            </descendants>
+        </node>
+        <node id="pyramid_torch_2">
+            <material id="Generic"/>
+            <texture id="pyramid_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="8.5" y="0" z="1.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="torch"/>
+            </descendants>
+        </node>
+        <node id="pyramid_torch_3">
+            <material id="Generic"/>
+            <texture id="pyramid_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="7" y="0" z="-1.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="torch"/>
+            </descendants>
+        </node>
+        <node id="pyramid_torch_4">
+            <material id="Generic"/>
+            <texture id="pyramid_top">
+                <amplification afs="2.0" aft="2.0"/>
+            </texture>
+            <transformations>
+                <translation x="8.5" y="0" z="-1.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="torch"/>
+            </descendants>
+        </node>
+        <node id="torch">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="torch_flame"/>
+                <noderef id="torch_top"/>
+                <noderef id="torch_top_2"/>
+                <noderef id="torch_middle"/>
+                <noderef id="torch_base"/>
+            </descendants>
+        </node>
+
+        <node id="torch_flame">
+            <material id="fire"/>
+            <texture id="fire">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1.75" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.5" topRadius="0.2" bottomRadius="0.05" stacks="1" slices="8"/>
+            </descendants>
+        </node>
+
+        <node id="torch_top">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1.375" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.25" topRadius="0.25" bottomRadius="0.25" stacks="1" slices="8"/>
+            </descendants>
+        </node>
+
+        <node id="torch_top_2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1.125" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="0.125" topRadius="0.05" bottomRadius="0.25" stacks="1" slices="8"/>
+            </descendants>
+        </node>
+
+        <node id="torch_middle">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="1.125" z="0"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="1" topRadius="0.05" bottomRadius="0.05" stacks="1" slices="4"/>
+            </descendants>
+        </node>
+
+        <node id="torch_base">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <scale sx="0.5" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <noderef id="torch_rectangle"/>
+                <noderef id="torch_triangle_1"/>
+                <noderef id="torch_triangle_2"/>
+                <noderef id="torch_triangle_3"/>
+                <noderef id="torch_triangle_4"/>
+                <noderef id="torch_triangle_5"/>
+                <noderef id="torch_triangle_6"/>
+                <noderef id="torch_triangle_7"/>
+                <noderef id="torch_triangle_8"/>
+                <noderef id="torch_triangle_9"/>
+                <noderef id="torch_triangle_10"/>
+                <noderef id="torch_triangle_11"/>
+                <noderef id="torch_triangle_12"/>
+            </descendants>
+        </node>
+
+        <node id="torch_rectangle">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0.25" z="0"/>
+                <rotation axis="x" angle="270"/>
+                <scale sx="0.5" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+            </descendants>
+        </node>
+
+        <node id="torch_triangle_1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0.125" z="-0.375"/>
+                <rotation axis="x" angle="225"/>
+                <scale sx="0.5" sy="0.375" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+            </descendants>
+        </node>
+
+        <node id="torch_triangle_2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.375" y="0.125" z="0"/>
+                <rotation axis="x" angle="270"/>
+                <rotation axis="y" angle="45"/>
+                <scale sx="0.375" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+            </descendants>
+        </node>
+
+        <node id="torch_triangle_3">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0.125" z="0.375"/>
+                <rotation axis="x" angle="315"/>
+                <scale sx="0.5" sy="0.375" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+            </descendants>
+        </node>
+
+        <node id="torch_triangle_4">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-0.375" y="0.125" z="0"/>
+                <rotation axis="x" angle="270"/>
+                <rotation axis="y" angle="-45"/>
+                <scale sx="0.375" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="-0.5" y1="-0.5" x2="0.5" y2="0.5"/> 
+            </descendants>
+        </node>
+
+        <node id="torch_triangle_5">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.25" y="0" z="0.25"/>
+                <scale sx="0.5" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="0.5" y2="0" x3="0" y3="0.5"/>
+            </descendants>
+        </node>
+
+        <node id="torch_triangle_6">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.25" y="0" z="0.5"/>
+                <rotation axis="y" angle="90"/>
+                <scale sx="0.5" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="0.5" y2="0" x3="0.5" y3="0.5"/>
+            </descendants>
+        </node>
+
+        <node id="torch_triangle_7">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-0.5" y="0" z="0.25"/>
+                <scale sx="0.5" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="0.5" y2="0" x3="0.5" y3="0.5"/>
+            </descendants>
+        </node>
+
+        <node id="torch_triangle_8">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-0.25" y="0" z="0.25"/>
+                <rotation axis="y" angle="270"/>
+                <scale sx="0.5" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="0.5" y2="0" x3="0" y3="0.5"/>
+            </descendants>
+        </node>
+
+        <node id="torch_triangle_9">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-0.25" y="0" z="-0.25"/>
+                <rotation axis="y" angle="180"/>
+                <scale sx="0.5" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="0.5" y2="0" x3="0" y3="0.5"/>
+            </descendants>
+        </node>
+
+        <node id="torch_triangle_10">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-0.25" y="0" z="-0.5"/>
+                <rotation axis="y" angle="270"/>
+                <scale sx="0.5" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="0.5" y2="0" x3="0.5" y3="0.5"/>
+            </descendants>
+        </node>
+
+        <node id="torch_triangle_11">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.5" y="0" z="-0.25"/>
+                <rotation axis="y" angle="180"/>
+                <scale sx="0.5" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="0.5" y2="0" x3="0.5" y3="0.5"/>
+            </descendants>
+        </node>
+
+        <node id="torch_triangle_12">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0.25" y="0" z="-0.25"/>
+                <rotation axis="y" angle="90"/>
+                <scale sx="0.5" sy="0.5" sz="0.5"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="0.5" y2="0" x3="0" y3="0.5"/>
+            </descendants>
+        </node>
+
+        <node id="pyramid_path">
+            <material id="Generic"/>
+            <texture id="pyramid_path">
+                <amplification afs="5.5" aft="3.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0.002" z="0"/>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1="10" y1="1.5" x2="4.5" y2="-1.5"/> 
+            </descendants>
+        </node>
+
+        <node id="skybox">
+            <material id="sky"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="10" z="0"/>
+            </transformations>
+            <descendants>
+                <noderef id="skybox_top"/>    
+                <noderef id="skybox_front"/>  
+                <noderef id="skybox_right"/>  
+                <noderef id="skybox_left"/> 
+                <noderef id="skybox_back"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_top">
+            <material id="null"/>
+            <texture id="skybox_top">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="10" z="0"/>
+                <rotation axis="x" angle="180"/>
+                <scale sx="20" sy="20" sz="20"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_front">
+            <material id="null"/>
+            <texture id="skybox_front">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="-10" y="0" z="0"/>
+                <rotation axis="y" angle="90"/>
+                <rotation axis="x" angle="90"/>
+                <scale sx="20" sy="20" sz="20"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_right">
+            <material id="null"/>
+            <texture id="skybox_right">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-10"/>
+                <rotation axis="x" angle="90"/>
+                <scale sx="20" sy="20" sz="20"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_left">
+            <material id="null"/>
+            <texture id="skybox_left">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="10"/>
+                <rotation axis="y" angle="180"/>
+                <rotation axis="x" angle="90"/>
+                <scale sx="20" sy="20" sz="20"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
+            </descendants>
+        </node>
+
+        <node id="skybox_back">
+            <material id="null"/>
+            <texture id="skybox_back">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="10" y="0" z="0"/>
+                <rotation axis="y" angle="-90"/>
+                <rotation axis="x" angle="90"/>
+                <scale sx="20" sy="20" sz="20"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
+            </descendants>
+        </node>
+        <node id="floor">
+            <material id="Generic"/>
+            <texture id="grass">
+                <amplification afs="0.25" aft="0.25"/>
+            </texture>
+            <transformations>
+                <rotation angle="270" axis="x"/>
+                <scale sx="20" sy="20" sz="20"/>
+            </transformations>
+            <descendants>
+                <leaf type="rectangle" x1 = "-0.5" y1 = "-0.5" x2 = "0.5" y2 = "0.5"/>
+            </descendants>
+        </node>
+
+
+
+
+        <!-- Trees -->
+        <node id="trees">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="tree_1"/>
+                <noderef id="tree_2"/>
+                <noderef id="tree_3"/>
+                <noderef id="tree_4"/>
+                <noderef id="tree_5"/>
+                <noderef id="tree_6"/>
+                <noderef id="tree_7"/>
+                <noderef id="tree_8"/>
+                <noderef id="tree_9"/>
+                <noderef id="tree_10"/>
+            </descendants>
+        </node>
+
+        <node id="tree_1">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-6" y="0" z="8"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_2">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-8" y="0" z="3.5"/>
+                <scale sx="1.3" sy="1.75" sz="1.3"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_3">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-2" y="0" z="-7.5"/>
+                <scale sx="1.3" sy="0.9" sz="1.3"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_4">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-7" y="0" z="-7"/>
+                <scale sx="1.6" sy="2" sz="1.6"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_5">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-6.5" y="0" z="-3"/>
+                <scale sx="1" sy="1.3" sz="1"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_6">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="3" y="0" z="-6.5"/>
+                <scale sx="0.8" sy="1.1" sz="0.8"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_7">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="-1.5" y="0" z="7"/>
+                <scale sx="1" sy="1.1" sz="1"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree_8">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="2.5" y="0" z="7.75"/>
+                <scale sx="1.2" sy="1.5" sz="1.2"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+        
+        <node id="tree_9">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="7" y="0" z="7"/>
+                <scale sx="1.6" sy="2" sz="1.6"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+        
+        <node id="tree_10">
+            <material id="null"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <translation x="7" y="0" z="-7.5"/>
+                <scale sx="1.4" sy="1.8" sz="1.4"/>
+            </transformations> 
+            <descendants>
+                <noderef id="tree"/>
+            </descendants>
+        </node>
+
+        <node id="tree">
+            <material id="wood"/>
+            <texture id="clear">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation angle="270" axis="x"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_trunk"/>
+                <noderef id="tree_leaves"/>
+            </descendants>
+        </node>
+
+        <node id="tree_trunk">
+            <material id="null"/>
+            <texture id="tree_trunk">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <leaf type="cylinder" height="5.5" topRadius="0" bottomRadius="0.420" stacks="30" slices="30"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves">
+            <material id="leaves"/>
+            <texture id="tree_leaves">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_1"/>
+                <noderef id="tree_leaves_2"/>
+                <noderef id="tree_leaves_3"/>
+                <noderef id="tree_leaves_4"/>
+                <noderef id="tree_leaves_5"/>
+                <noderef id="tree_leaves_6"/>
+                <noderef id="tree_leaves_7"/>
+                <noderef id="tree_leaves_8"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="45"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_3">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="90"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_4">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="135"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_5">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="180"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_6">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="225"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_7">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="270"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_8">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0" />
+            </texture>
+            <transformations>
+                <rotation axis="z" angle="315"/>
+            </transformations>
+            <descendants>
+                <noderef id="tree_leaves_base"/>
+            </descendants>
+        </node>
+
+        <node id="tree_leaves_base">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="2.5" aft="3.5" />
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="1"/>
+                <rotation axis="x" angle="90"/>
+            </transformations>
+            <descendants>
+                <leaf type="triangle" x1="0" y1="0" x2="1.7" y2="0" x3="0" y3="4.5"/>
+                <leaf type="triangle" x1="0" y1="0" x2="0" y2="4.5" x3="1.7" y3="0"/>
+            </descendants>
+        </node>
+        <!--<node id="floor_1">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="20.0" aft="20.0"/>
+            </texture>
+            <transformations>
+                <translation x="7.5" y="0" z="0"/>
+                <scale sx="5" sy="20" sz="20"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
+            </descendants>
+        </node>
+        <node id="floor_2">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="20.0" aft="20.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="7.5"/>
+                <scale sx="10" sy="10" sz="5"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
+            </descendants>
+        </node>
+        <node id="floor_3">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="20.0" aft="20.0"/>
+            </texture>
+            <transformations>
+                <translation x="-7.5" y="0" z="0"/>
+                <scale sx="5" sy="20" sz="20"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
+            </descendants>
+        </node>
+        <node id="floor_4">
+            <material id="null"/>
+            <texture id="null">
+                <amplification afs="20.0" aft="20.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="0" z="-7.5"/>
+                <scale sx="10" sy="10" sz="5"/>
+            </transformations>
+            <descendants>
+                <leaf type="plane" npartsU="40" npartsV="40"/>
+            </descendants>
+        </node>-->
+    </nodes>
+    
+    <!-- Example of node insides: 
+        <material id="null"/>
+            <texture id="null">
+                <amplification afs="1.0" aft="1.0"/>
+            </texture>
+            <transformations>
+                <translation x="0" y="-0.2" z="0.3"/>
+                <rotation axis="x" angle="-90"/>
+            </transformations>
+            <descendants>
+                <noderef id="train_bell_support_top"/>
+                <leaf type="cylinder" height="0.6" bottomRadius="0.04" topRadius="0.04" stacks="1" slices="20"/>
+            </descendants>-->
+        
+</lsf>
