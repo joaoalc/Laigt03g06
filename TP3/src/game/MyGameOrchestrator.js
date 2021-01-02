@@ -13,7 +13,7 @@ class MyGameOrchestrator {
         this.prolog = new MyPrologInterface(this);
         this.sequence = new MyGameSequence();
         this.animator = new MyAnimator(this, this.sequence);
-        this.interface = new MyGameInterface(scene, this);
+        this.interface = new MyGameElements(scene, this);
         this.currentPlayer = -1;
         this.state = START;
         
@@ -372,6 +372,8 @@ class MyGameOrchestrator {
             this.interface.display();
 
             this.scene.popMatrix();
+
+            this.scene.sceneGraphs[this.scene.activeScene].displayScene();
         }
     }
 }

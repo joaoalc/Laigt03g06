@@ -1,4 +1,4 @@
-class MyGameInterface {
+class MyGameElements {
     constructor(scene, orchestrator) {
         this.scene = scene;
         this.orchestrator = orchestrator;
