@@ -25,6 +25,25 @@ class CameraInterpolator{
         this.duration = duration * 1000;
         this.firstTime = -1;
         this.ended = false;
+        this.easingProgress = 0;
+    }
+
+    isOver(time){
+        let returnVal = false;
+
+        if(this.firstTime == -1 || this.firstTime == time){
+            this.firstTime = time;
+            returnVal = false;
+        }
+        if(time >= this.firstTime + this.duration){
+            this.ended = true;
+            returnVal = true;
+        }
+        else returnVal = false;
+        
+        let easingProgress = (time - this.firstTime) / this.duration;
+        this.easingProgress = this.easingFunction(easingProgress);
+        return returnVal;
     }
 
     getInterpolatedPos(time){
@@ -35,16 +54,12 @@ class CameraInterpolator{
         else if(time < this.firstTime + this.duration){
             let arr = [0, 0, 0];
             for(let i = 0; i < 3; i++){
-                arr[i] = this.startPos[i] + (this.endPos[i] - this.startPos[i]) * (time - this.firstTime) / this.duration;
+                arr[i] = this.startPos[i] + (this.endPos[i] - this.startPos[i]) * this.easingProgress;//(time - this.firstTime) / this.duration;
             }
             return arr;
         }
-        else if(this.ended){
-            return -1;
-        }
         else{
-            this.ended = true;
-            return null;
+            return this.endPos;
         }
     }
 
@@ -54,14 +69,10 @@ class CameraInterpolator{
             return this.startNear;
         }
         else if(time < this.firstTime + this.duration){
-            return this.startNear + (this.endNear - this.startNear) * (time - this.firstTime) / this.duration;
-        }
-        else if(this.ended){
-            return -1;
+            return this.startNear + (this.endNear - this.startNear) * this.easingProgress;//* (time - this.firstTime) / this.duration;
         }
         else{
-            this.ended = true;
-            return null;
+            return this.endNear;
         }
     }
 
@@ -71,14 +82,10 @@ class CameraInterpolator{
             return this.startFar;
         }
         else if(time < this.firstTime + this.duration){
-            return this.startFar + (this.endFar - this.startFar) * (time - this.firstTime) / this.duration;
-        }
-        else if(this.ended){
-            return -1;
+            return this.startFar + (this.endFar - this.startFar) * this.easingProgress;//* (time - this.firstTime) / this.duration;
         }
         else{
-            this.ended = true;
-            return null;
+            return this.endFar;
         }
     }
 
@@ -88,14 +95,10 @@ class CameraInterpolator{
             return this.startAngle;
         }
         else if(time < this.firstTime + this.duration){
-            return this.startAngle + (this.endAngle - this.startAngle) * (time - this.firstTime) / this.duration;
-        }
-        else if(this.ended){
-            return -1;
+            return this.startAngle + (this.endAngle - this.startAngle) * this.easingProgress;//* (time - this.firstTime) / this.duration;
         }
         else{
-            this.ended = true;
-            return null;
+            return this.endAngle;
         }
     }
 
@@ -107,16 +110,12 @@ class CameraInterpolator{
         else if(time < this.firstTime + this.duration){
             let arr = [0, 0, 0];
             for(let i = 0; i < 3; i++){
-                arr[i] = this.startUp[i] + (this.endUp[i] - this.startUp[i]) * (time - this.firstTime) / this.duration;
+                arr[i] = this.startUp[i] + (this.endUp[i] - this.startUp[i]) * this.easingProgress;//* (time - this.firstTime) / this.duration;
             }
             return arr;
         }
-        else if(this.ended){
-            return -1;
-        }
         else{
-            this.ended = true;
-            return null;
+            return this.endUp;
         }
     }
 
@@ -128,19 +127,18 @@ class CameraInterpolator{
         else if(time < this.firstTime + this.duration){
             let arr = [0, 0, 0];
             for(let i = 0; i < 3; i++){
-                arr[i] = this.startTarget[i] + (this.endTarget[i] - this.startTarget[i]) * (time - this.firstTime) / this.duration;
+                arr[i] = this.startTarget[i] + (this.endTarget[i] - this.startTarget[i]) * this.easingProgress;//* (time - this.firstTime) / this.duration;
             }
             return arr;
         }
-        else if(this.ended){
-            return -1;
-        }
         else{
-            this.ended = true;
-            return null;
+            return this.endTarget;
         }
     }
 
+    easingFunction(x){
+        return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+    }
 
 }
 
