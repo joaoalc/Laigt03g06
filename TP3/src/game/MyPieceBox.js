@@ -25,6 +25,8 @@ class MyPieceBox extends CGFobject{
 
         this.boxText = new CGFtexture(this.scene, "./images/basket_text.jpg");
         this.obj = new CGFOBJModel(this.scene, "./images/basket.obj", 0);
+
+        
     }
 
     reset() {
@@ -64,7 +66,7 @@ class MyPieceBox extends CGFobject{
             this.rectangle.display();
             this.scene.popMatrix();
         }
-
+        
         this.scene.pushMatrix();
         this.scene.scale(2,2,2);
         this.scene.rotate(Math.PI/2, 0,0,1);

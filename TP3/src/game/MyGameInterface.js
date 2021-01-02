@@ -38,6 +38,13 @@ class MyGameInterface {
 
         this.scoreColours = {"purple": purple, "orange": orange, "green": green, "grey": grey};
         this.scorePiece = new MyCylinder(this.scene, 0.2, 0.4, 0.4, 20, 5);
+
+        this.boardMat = new CGFappearance(this.scene);
+        this.boardMat.setShininess(10.0);
+        this.boardMat.setSpecular(0.4, 0.4, 0.4, 1);
+        this.boardMat.setDiffuse(0.7, 0.7, 0.7, 1);
+        this.boardMat.setAmbient(0.8, 0.8, 0.8, 1);
+        this.boardMat.setEmission(0, 0, 0, 1);
     }
 
     reset() {
@@ -165,6 +172,7 @@ class MyGameInterface {
         this.scene.popMatrix();
 
         //colors scores
+        this.boardMat.apply();
         this.scene.pushMatrix();
         this.scene.translate(-7, 0, -1);
 
