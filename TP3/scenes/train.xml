@@ -71,49 +71,48 @@
         </light>
     </lights>
     <textures>
-        <texture id="skybox_left" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_left.png"/>
-        <texture id="skybox_right" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_right.png"/>
-        <texture id="skybox_front" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_front.png"/>
-        <texture id="skybox_top" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_top.png"/>
-        <texture id="skybox_back" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_back.png"/>
-        <texture id="skybox_bottom" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_bottom.png"/>
-        <texture id="tree_trunk" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/tree_trunk.png"/>
-        <texture id="tree_leaves" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/tree_leaves.jpg"/>
-        <texture id="wood" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wood.jpg"/>
-        <texture id="grass" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/grass.jpg"/>
-        <texture id="train_furnace" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/furnace.jpg"/>
-        <texture id="glass" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/glass.png"/>
-        <texture id="main_cylinder" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/main_cylinder.png"/>
-        <texture id="train_inside" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_inside.jpg"/>
-        <texture id="metal_grip" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/metal_grip.jpg"/>
-        <texture id="train_side_1" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_side_1.png"/>
-        <texture id="train_side_2" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_side_2.png"/>
-        <texture id="train_side_1_2" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_side_1_2.png"/>
-        <texture id="train_side_2_2" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_side_2_2.png"/>
-        <texture id="train_front_1" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_front_1.png"/>
-        <texture id="pebbles" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/pebbles.jpg"/>
-        <texture id="headlight" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/headlight1.jpg"/>
-        <texture id="main_sphere" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/main_sphere.png"/>
-        <texture id="metal" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/metal.jpg"/>
-        <texture id="rock" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/rock.jpg"/>
-        <texture id="grass_blade" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/grass_blade.jpg"/>
-        <texture id="golden" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/golden.jpg"/>
-        <texture id="brick_wall" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/brick_wall.jpg"/>
-        <texture id="roof" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/roof.jpg"/>
-        <texture id="clock" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/clock.jpg"/>
-        <texture id="station_roof" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/roof2.jpg"/>
-        <texture id="station_roof_sides" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/roof_sides.jpg"/>
-        <texture id="bricks_texture" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/bricks_texture.png"/>
-        <texture id="wood_pillar" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/woodPillar.jpg"/>
-        <texture id="stone_floor" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/stone_floor.jpg"/>
-        <texture id="wood_barrel" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wood_planks.jpg"/>
-        <texture id="wooden_planks" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wooden_planks.png"/>
-        <texture id="wood_planks" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wood_planks.jpg"/>
+        <texture id="skybox_left" path="./scenes/textures_train/skybox/skybox_left.jpg"/>
+        <texture id="skybox_right" path="./scenes/textures_train/skybox/skybox_right.jpg"/>
+        <texture id="skybox_front" path="./scenes/textures_train/skybox/skybox_front.jpg"/>
+        <texture id="skybox_top" path="./scenes/textures_train/skybox/skybox_top.jpg"/>
+        <texture id="skybox_back" path="./scenes/textures_train/skybox/skybox_back.jpg"/>
+        <texture id="skybox_bottom" path="./scenes/textures_train/skybox/skybox_bottom.jpg"/>
+        <texture id="tree_trunk" path="./scenes/textures_train/tree_trunk.png"/>
+        <texture id="tree_leaves" path="./scenes/textures_train/tree_leaves.jpg"/>
+        <texture id="wood" path="./scenes/textures_train/wood.jpg"/>
+        <texture id="grass" path="./scenes/textures_train/grass.jpg"/>
+        <texture id="train_furnace" path="./scenes/textures_train/furnace.jpg"/>
+        <texture id="glass" path="./scenes/textures_train/glass.png"/>
+        <texture id="main_cylinder" path="./scenes/textures_train/main_cylinder.png"/>
+        <texture id="train_inside" path="./scenes/textures_train/train_inside.jpg"/>
+        <texture id="metal_grip" path="./scenes/textures_train/metal_grip.jpg"/>
+        <texture id="train_side_1" path="./scenes/textures_train/train_side_1.png"/>
+        <texture id="train_side_2" path="./scenes/textures_train/train_side_2.png"/>
+        <texture id="train_side_1_2" path="./scenes/textures_train/train_side_1_2.png"/>
+        <texture id="train_side_2_2" path="./scenes/textures_train/train_side_2_2.png"/>
+        <texture id="train_front_1" path="./scenes/textures_train/train_front_1.png"/>
+        <texture id="pebbles" path="./scenes/textures_train/pebbles.jpg"/>
+        <texture id="headlight" path="./scenes/textures_train/headlight1.jpg"/>
+        <texture id="main_sphere" path="./scenes/textures_train/main_sphere.png"/>
+        <texture id="metal" path="./scenes/textures_train/metal.jpg"/>
+        <texture id="rock" path="./scenes/textures_train/rock.jpg"/>
+        <texture id="grass_blade" path="./scenes/textures_train/grass_blade.jpg"/>
+        <texture id="golden" path="./scenes/textures_train/golden.jpg"/>
+        <texture id="brick_wall" path="./scenes/textures_train/brick_wall.jpg"/>
+        <texture id="roof" path="./scenes/textures_train/roof.jpg"/>
+        <texture id="clock" path="./scenes/textures_train/clock.jpg"/>
+        <texture id="station_roof" path="./scenes/textures_train/roof2.jpg"/>
+        <texture id="station_roof_sides" path="./scenes/textures_train/roof_sides.jpg"/>
+        <texture id="wood_pillar" path="./scenes/textures_train/woodPillar.jpg"/>
+        <texture id="stone_floor" path="./scenes/textures_train/stone_floor.jpg"/>
+        <texture id="wood_barrel" path="./scenes/textures_train/wood_planks.jpg"/>
+        <texture id="wooden_planks" path="./scenes/textures_train/wooden_planks.png"/>
+        <texture id="wood_planks" path="./scenes/textures_train/wood_planks.jpg"/>
         <texture id="towel" path="./images/picnic2.jpg"/>
     </textures>
     <spritesheets>
-        <spritesheet id="spriteanim_test" path="scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_spritesheet.png" sizeM="8" sizeN="4"/>
-        <spritesheet id="furnace_sprite" path="scenes/textures_LAIG_TP2_XML_T3_G06_v1/furnace_spritesheet.png" sizeM="5" sizeN="3"/>
+        <!-- <spritesheet id="spriteanim_test" path="scenes/textures_train/train_spritesheet.png" sizeM="8" sizeN="4"/>
+        <spritesheet id="furnace_sprite" path="scenes/textures_train/furnace_spritesheet.png" sizeM="5" sizeN="3"/> -->
     </spritesheets>
     <materials>
         <material id="Generic">
@@ -514,11 +513,12 @@
             </texture>
             <transformations>
                 <translation x="0" y="10" z="0"/>
-                <rotation axis="x" angle="180"/>
-                <scale sx="20" sy="20" sz="20"/>
+                <rotation axis="x" angle="90"/>
+                <!-- <scale sx="20" sy="20" sz="20"/> -->
             </transformations>
             <descendants>
-                <leaf type="plane" npartsU="40" npartsV="40"/>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+                <!-- <leaf type="plane" npartsU="40" npartsV="40"/> -->
             </descendants>
         </node>
 
@@ -530,11 +530,12 @@
             <transformations>
                 <translation x="-10" y="0" z="0"/>
                 <rotation axis="y" angle="90"/>
-                <rotation axis="x" angle="90"/>
-                <scale sx="20" sy="20" sz="20"/>
+                <!-- <rotation axis="x" angle="90"/> -->
+                <!-- <scale sx="20" sy="20" sz="20"/> -->
             </transformations>
             <descendants>
-                <leaf type="plane" npartsU="40" npartsV="40"/>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+                <!-- <leaf type="plane" npartsU="40" npartsV="40"/> -->
             </descendants>
         </node>
 
@@ -545,11 +546,12 @@
             </texture>
             <transformations>
                 <translation x="0" y="0" z="-10"/>
-                <rotation axis="x" angle="90"/>
-                <scale sx="20" sy="20" sz="20"/>
+                <!-- <rotation axis="x" angle="90"/> -->
+                <!-- <scale sx="20" sy="20" sz="20"/> -->
             </transformations>
             <descendants>
-                <leaf type="plane" npartsU="40" npartsV="40"/>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+                <!-- <leaf type="plane" npartsU="40" npartsV="40"/> -->
             </descendants>
         </node>
 
@@ -561,11 +563,12 @@
             <transformations>
                 <translation x="0" y="0" z="10"/>
                 <rotation axis="y" angle="180"/>
-                <rotation axis="x" angle="90"/>
-                <scale sx="20" sy="20" sz="20"/>
+                <!-- <rotation axis="x" angle="90"/> -->
+                <!-- <scale sx="20" sy="20" sz="20"/> -->
             </transformations>
             <descendants>
-                <leaf type="plane" npartsU="40" npartsV="40"/>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+                <!-- <leaf type="plane" npartsU="40" npartsV="40"/> -->
             </descendants>
         </node>
 
@@ -577,11 +580,12 @@
             <transformations>
                 <translation x="10" y="0" z="0"/>
                 <rotation axis="y" angle="-90"/>
-                <rotation axis="x" angle="90"/>
-                <scale sx="20" sy="20" sz="20"/>
+                <!-- <rotation axis="x" angle="90"/> -->
+                <!-- <scale sx="20" sy="20" sz="20"/> -->
             </transformations>
             <descendants>
-                <leaf type="plane" npartsU="40" npartsV="40"/>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+                <!-- <leaf type="plane" npartsU="40" npartsV="40"/> -->
             </descendants>
         </node>
 
@@ -592,10 +596,12 @@
             </texture>
             <transformations>
                 <translation x="0" y="-10" z="0"/>
-                <scale sx="20" sy="20" sz="20"/>
+                <rotation axis="x" angle="-90"/>
+                <!-- <scale sx="20" sy="20" sz="20"/> -->
             </transformations>
             <descendants>
-                <leaf type="plane" npartsU="40" npartsV="40"/>
+                <leaf type="rectangle" x1="-10" y1="-10" x2="10" y2="10"/>
+                <!-- <leaf type="plane" npartsU="40" npartsV="40"/> -->
             </descendants>
         </node>
 
@@ -631,7 +637,6 @@
                 <noderef id="ground_rock_1"/>
                 <noderef id="ground_rock_2"/>
                 <noderef id="ground_rock_3"/>
-                <noderef id="ground_rock_4"/>
             </descendants>
         </node>
 
@@ -674,23 +679,6 @@
                 <translation x="3.3" y="0" z="7.5"/>
                 <rotation axis="z" angle="40"/>
                 <rotation axis="x" angle="10"/>
-                <scale sx="1.5" sy="1" sz="1.5"/>
-            </transformations>
-            <descendants>
-                <leaf type="sphere" radius="0.3" slices="5" stacks="3"/>
-            </descendants>
-        </node>
-
-        <node id="ground_rock_4">
-            <material id="null"/>
-            <texture id="null">
-                <amplification afs="1" aft="1"/>
-            </texture>
-            <transformations>
-                <translation x="-3.3" y="0" z="-7.5"/>
-                <rotation axis="z" angle="30"/>
-                <rotation axis="x" angle="20"/>
-                <rotation axis="y" angle="10"/>
                 <scale sx="1.5" sy="1" sz="1.5"/>
             </transformations>
             <descendants>
@@ -913,7 +901,7 @@
         <node id="ground_base">
             <material id="null"/>
             <texture id="grass">
-                <amplification afs="5" aft="5"/>
+                <amplification afs="2.5" aft="2.5"/>
             </texture>
             <transformations>
                 <rotation axis="x" angle="90"/>
@@ -1049,7 +1037,6 @@
                 <noderef id="station_pillars"/>
                 <noderef id="station_ground"/>
                 <noderef id="station_building"/>
-                <noderef id="station_barrels"/>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>
         </node>
@@ -1107,7 +1094,7 @@
                 <translation x="2" y="0.75" z="-2.25"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="4.5" topRadius="0.25" bottomRadius="0.25" stacks="24" slices="24"/>
+                <leaf type="cylinder" height="4.5" topRadius="0.25" bottomRadius="0.25" stacks="5" slices="15"/>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>
         </node>
@@ -1120,7 +1107,7 @@
                 <translation x="-2" y="0.75" z="-2.25"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="4.5" topRadius="0.25" bottomRadius="0.25" stacks="24" slices="24"/>
+                <leaf type="cylinder" height="4.5" topRadius="0.25" bottomRadius="0.25" stacks="5" slices="15"/>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>
         </node>
@@ -1134,7 +1121,7 @@
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="3.0" topRadius="0.25" bottomRadius="0.25" stacks="24" slices="24"/>
+                <leaf type="cylinder" height="3.0" topRadius="0.25" bottomRadius="0.25" stacks="5" slices="15"/>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>
         </node>
@@ -1148,7 +1135,7 @@
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="3.0" topRadius="0.25" bottomRadius="0.25" stacks="24" slices="24"/>
+                <leaf type="cylinder" height="3.0" topRadius="0.25" bottomRadius="0.25" stacks="5" slices="15"/>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>
         </node>
@@ -1162,7 +1149,7 @@
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="3.0" topRadius="0.25" bottomRadius="0.25" stacks="24" slices="24"/>
+                <leaf type="cylinder" height="3.0" topRadius="0.25" bottomRadius="0.25" stacks="5" slices="15"/>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>
         </node>
@@ -1176,7 +1163,7 @@
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="3.0" topRadius="0.25" bottomRadius="0.25" stacks="24" slices="24"/>
+                <leaf type="cylinder" height="3.0" topRadius="0.25" bottomRadius="0.25" stacks="5" slices="15"/>
                 <!--<leaf type="plane" npartsU="5" npartsV="5"/>-->
             </descendants>
         </node>
@@ -1230,8 +1217,8 @@
                 <scale sx="1.5" sy="1.5" sz="1"/>
             </transformations>
             <descendants>
-                <noderef id="station_tower_screen_frame"/>
-                <leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="31"/>
+                <!-- <noderef id="station_tower_screen_frame"/> -->
+                <!-- <leaf type="spriteanim" ssid="spriteanim_test" duration="5" startCell="0" endCell="31"/> -->
             </descendants>
         </node>
 
@@ -1244,138 +1231,7 @@
                 <rotation axis="z" angle="45"/>
             </transformations>
             <descendants>
-                <leaf type="torus" inner="0.03" outer="0.73" slices="10" loops="4"/>
-            </descendants>
-        </node>
-
-        <node id="station_barrels">
-            <material id="grey_metal"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="5" y="-1" z="0"/>
-            </transformations>
-            <descendants>
-                <noderef id="station_barrel_1"/>
-                <noderef id="station_barrel_2"/>
-                <noderef id="station_barrel_3"/>
-            </descendants>
-        </node>
-        <node id="station_barrel_1">
-            <material id="grey_metal"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="0" y="0" z="1"/>
-                <rotation axis="x" angle="90"/>
-            </transformations>
-            <descendants>
-                <noderef id="full_barrel_inside"/>
-                <noderef id="full_barrel_hoops"/>
-            </descendants>
-        </node>
-        <node id="station_barrel_2">
-            <material id="grey_metal"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="0" y="0" z="0"/>
-                <rotation axis="x" angle="90"/>
-            </transformations>
-            <descendants>
-                <noderef id="full_barrel_inside"/>
-                <noderef id="full_barrel_hoops"/>
-            </descendants>
-        </node>
-        <node id="station_barrel_3">
-            <material id="grey_metal"/>
-            <texture id="wood">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="0" y="0.05" z="-1"/>
-                <rotation axis="x" angle="90"/>
-            </transformations>
-            <descendants>
-                <noderef id="full_barrel_inside"/>
-                <noderef id="full_barrel_hoops"/>
-            </descendants>
-        </node>
-        <node id="full_barrel_inside">
-            <material id="wood"/>
-            <texture id="wood_barrel">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-            </transformations>
-            <descendants>
-                <leaf type="cylinder" height="1" topRadius="0.4" bottomRadius="0.4" stacks="1" slices="40"/>
-                <leaf type="defbarrel" base="0.4" middle="0.5" height="1" slices="20" stacks="10"/>
-            </descendants>
-        </node>
-        <node id="full_barrel_hoops">
-            <material id="grey_metal"/>
-            <texture id="metal">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-            </transformations>
-            <descendants>
-                <noderef id="barrel_top_hoop"/>
-                <noderef id="barrel_top_mid_hoop"/>
-                <noderef id="barrel_bot_mid_hoop"/>
-                <noderef id="barrel_bot_hoop"/>
-            </descendants>
-        </node>
-        <node id="barrel_top_hoop">
-            <material id="null"/>
-            <texture id="null">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="0" y="0" z="0"/>
-            </transformations>
-            <descendants>
-                <leaf type="torus" inner="0.03" outer="0.4" slices="20" loops="40"/>
-            </descendants>
-        </node>
-        <node id="barrel_bot_hoop">
-            <material id="null"/>
-            <texture id="null">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="0" y="0" z="1"/>
-            </transformations>
-            <descendants>
-                <leaf type="torus" inner="0.03" outer="0.4" slices="20" loops="40"/>
-            </descendants>
-        </node>
-        <node id="barrel_top_mid_hoop">
-            <material id="null"/>
-            <texture id="null">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="0" y="0" z="0.2"/>
-            </transformations>
-            <descendants>
-                <leaf type="cylinder" height="0.08" topRadius="0.52" bottomRadius="0.5" stacks="1" slices="50"/>
-            </descendants>
-        </node>
-        <node id="barrel_bot_mid_hoop">
-            <material id="null"/>
-            <texture id="null">
-                <amplification afs="1.0" aft="1.0"/>
-            </texture>
-            <transformations>
-                <translation x="0" y="0" z="0.72"/>
-            </transformations>
-            <descendants>
-                <leaf type="cylinder" height="0.08" topRadius="0.5" bottomRadius="0.52" stacks="1" slices="50"/>
+                <leaf type="torus" inner="0.03" outer="0.73" slices="3" loops="4"/>
             </descendants>
         </node>
 
@@ -1400,10 +1256,10 @@
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
-                <translation x="0" y="0" z="0.45"/>
+                <translation x="0" y="0" z="0.47"/>
             </transformations>
             <descendants>
-                <leaf type="torus" inner="0.06" outer="0.7" slices="20" loops="50"/>
+                <leaf type="torus" inner="0.06" outer="0.7" slices="4" loops="40"/>
             </descendants>
         </node>
 
@@ -1430,7 +1286,7 @@
                 <translation x="0" y="0" z="0.48"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="0.05" topRadius="0.04" bottomRadius="0.04" stacks="1" slices="50"/>
+                <leaf type="cylinder" height="0.05" topRadius="0.04" bottomRadius="0.04" stacks="1" slices="7"/>
             </descendants>
         </node>
 
@@ -1508,7 +1364,7 @@
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="0.62" topRadius="0.02" bottomRadius="0.001" stacks="10" slices="10"/>
+                <leaf type="cylinder" height="0.62" topRadius="0.02" bottomRadius="0.001" stacks="1" slices="3"/>
             </descendants>
         </node>
 
@@ -1523,7 +1379,7 @@
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="0.55" topRadius="0.025" bottomRadius="0.001" stacks="10" slices="10"/>
+                <leaf type="cylinder" height="0.55" topRadius="0.025" bottomRadius="0.001" stacks="1" slices="3"/>
             </descendants>
         </node>
 
@@ -1538,7 +1394,7 @@
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="0.3" topRadius="0.02" bottomRadius="0.001" stacks="10" slices="10"/>
+                <leaf type="cylinder" height="0.3" topRadius="0.02" bottomRadius="0.001" stacks="1" slices="3"/>
             </descendants>
         </node>
 
@@ -1639,98 +1495,35 @@
             </descendants>
         </node>
         <node id="station_ceiling">
-            <material id="plastic_shiny"/>
-            <texture id="station_roof">
+            <material id="bricks_bright"/>
+            <texture id="roof">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
                 <translation x="-1.5" y="0.9" z="0"/>
                 <rotation axis="y" angle="90"/>
-                <scale sx="5" sy="5" sz="5"/>
+                <!-- <scale sx="5" sy="5" sz="5"/> -->
             </transformations>
             <descendants>
-                <leaf type="patch" npointsU="4" npointsV="3" npartsU="16" npartsV="12">
-                    <controlpoint x="0.465" y="0" z="-0.5"/>
-                    <controlpoint x="0.465" y="0" z="0"/>
-                    <controlpoint x="0.465" y="0" z="0.5"/>
-                    <controlpoint x="0.1" y="0.5" z="-0.5"/>
-                    <controlpoint x="0.1" y="0.7" z="0"/>
-                    <controlpoint x="0.1" y="0.5" z="0.5"/>
-                    <controlpoint x="-0.2" y="0.1" z="-0.5"/>
-                    <controlpoint x="-0.2" y="0.1" z="0"/>
-                    <controlpoint x="-0.2" y="0.1" z="0.5"/>
-                    <controlpoint x="-0.5" y="0" z="-0.5"/>
-                    <controlpoint x="-0.5" y="0" z="0"/>
-                    <controlpoint x="-0.5" y="0" z="0.5"/>
-                </leaf>
-                <leaf type="patch" npointsU="4" npointsV="3" npartsU="16" npartsV="12">
-                    <controlpoint x="0.465" y="0" z="0.5"/>
-                    <controlpoint x="0.465" y="0" z="0"/>
-                    <controlpoint x="0.465" y="0" z="-0.5"/>
-                    <controlpoint x="0.1" y="0.5" z="0.5"/>
-                    <controlpoint x="0.1" y="0.7" z="0"/>
-                    <controlpoint x="0.1" y="0.5" z="-0.5"/>
-                    <controlpoint x="-0.2" y="0.1" z="0.5"/>
-                    <controlpoint x="-0.2" y="0.1" z="0"/>
-                    <controlpoint x="-0.2" y="0.1" z="-0.5"/>
-                    <controlpoint x="-0.5" y="0" z="0.5"/>
-                    <controlpoint x="-0.5" y="0" z="0"/>
-                    <controlpoint x="-0.5" y="0" z="-0.5"/>
-                </leaf>
-                <noderef id="station_ceiling_sides"/>
+                
             </descendants>
         </node>
-        <node id="station_ceiling_sides">
-            <material id="plastic_shiny"/>
-            <texture id="station_roof_sides">
+
+        <node id="station_celing_part1">
+            <material id="null"/>
+            <texture id="null">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
             <transformations>
-                <translation x="0" y="0" z="0"/>
+                <translation x="-1.5" y="0.9" z="0"/>
+                <rotation axis="y" angle="90"/>
+                <!-- <scale sx="5" sy="5" sz="5"/> -->
             </transformations>
             <descendants>
-                <leaf type="patch" npointsU="4" npointsV="2" npartsU="16" npartsV="8">
-                    <controlpoint x="0.465" y="0" z="0.4"/>
-                    <controlpoint x="0.465" y="0" z="0.4"/>
-                    <controlpoint x="0.1" y="0.53" z="0.4"/>
-                    <controlpoint x="0.1" y="0.0" z="0.4"/>
-                    <controlpoint x="-0.2" y="0.1" z="0.4"/>
-                    <controlpoint x="-0.2" y="0.0" z="0.4"/>
-                    <controlpoint x="-0.5" y="0" z="0.4"/>
-                    <controlpoint x="-0.5" y="0" z="0.4"/>
-                </leaf>
-                <leaf type="patch" npointsU="4" npointsV="2" npartsU="16" npartsV="8">
-                    <controlpoint x="0.465" y="0" z="0.4"/>
-                    <controlpoint x="0.465" y="0" z="0.4"/>
-                    <controlpoint x="0.1" y="0.0" z="0.4"/>
-                    <controlpoint x="0.1" y="0.53" z="0.4"/>
-                    <controlpoint x="-0.2" y="0.0" z="0.4"/>
-                    <controlpoint x="-0.2" y="0.1" z="0.4"/>
-                    <controlpoint x="-0.5" y="0" z="0.4"/>
-                    <controlpoint x="-0.5" y="0" z="0.4"/>
-                </leaf>
-                <leaf type="patch" npointsU="4" npointsV="2" npartsU="16" npartsV="8">
-                    <controlpoint x="0.465" y="0" z="-0.4"/>
-                    <controlpoint x="0.465" y="0" z="-0.4"/>
-                    <controlpoint x="0.1" y="0.0" z="-0.4"/>
-                    <controlpoint x="0.1" y="0.53" z="-0.4"/>
-                    <controlpoint x="-0.2" y="0.0" z="-0.4"/>
-                    <controlpoint x="-0.2" y="0.1" z="-0.4"/>
-                    <controlpoint x="-0.5" y="0" z="-0.4"/>
-                    <controlpoint x="-0.5" y="0" z="-0.4"/>
-                </leaf>
-                <leaf type="patch" npointsU="4" npointsV="2" npartsU="16" npartsV="8">
-                    <controlpoint x="0.465" y="0" z="-0.4"/>
-                    <controlpoint x="0.465" y="0" z="-0.4"/>
-                    <controlpoint x="0.1" y="0.53" z="-0.4"/>
-                    <controlpoint x="0.1" y="0.0" z="-0.4"/>
-                    <controlpoint x="-0.2" y="0.1" z="-0.4"/>
-                    <controlpoint x="-0.2" y="0.0" z="-0.4"/>
-                    <controlpoint x="-0.5" y="0" z="-0.4"/>
-                    <controlpoint x="-0.5" y="0" z="-0.4"/>
-                </leaf>
+                
             </descendants>
         </node>
+        
         <node id="station_ground">
             <material id="plastic_shiny"/>
             <texture id="stone_floor">
@@ -2088,7 +1881,7 @@
                 <rotation axis="y" angle="-90"/>
             </transformations>
             <descendants>
-                <leaf type="spriteanim" ssid="furnace_sprite" duration="2" startCell="0" endCell="14"/>
+                <!-- <leaf type="spriteanim" ssid="furnace_sprite" duration="2" startCell="0" endCell="14"/> -->
             </descendants>
         </node>
 
@@ -2168,7 +1961,7 @@
                 <translation x="0.0" y="0" z="-0.75"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="5" slices="15"/>
             </descendants>
         </node>
         <node id="train_middle_axle">
@@ -2180,7 +1973,7 @@
                 <translation x="0.0" y="0" z="-0.75"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="5" slices="15"/>
             </descendants>
         </node>
         <node id="train_back_axle">
@@ -2193,7 +1986,7 @@
                 <translation x="0.0" y="0" z="-0.75"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+                <leaf type="cylinder" height="1.5" topRadius="0.05" bottomRadius="0.05" stacks="5" slices="15"/>
             </descendants>
         </node>
 
@@ -2208,7 +2001,7 @@
                 <translation x="0.0" y="0.0" z="-2.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="5" slices="15"/>
             </descendants>
         </node>
 
@@ -2332,7 +2125,7 @@
                 <rotation axis="y" angle="90.0"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+                <leaf type="cylinder" height="4.0" topRadius="0.05" bottomRadius="0.05" stacks="3" slices="15"/>
             </descendants>
         </node>
 
@@ -2465,7 +2258,7 @@
                 <translation x="0" y="0" z="0.04"/>
             </transformations>
             <descendants>
-                <leaf type="torus" inner="0.05" outer="0.5" slices="30" loops="30"/>
+                <leaf type="torus" inner="0.05" outer="0.5" slices="3" loops="20"/>
             </descendants>
         </node>
         <node id="wheel_torus_1">
@@ -2477,7 +2270,7 @@
                 <translation x="0" y="0" z="-0.04"/>
             </transformations>
             <descendants>
-                <leaf type="torus" inner="0.05" outer="0.5" slices="30" loops="30"/>
+                <leaf type="torus" inner="0.05" outer="0.5" slices="3" loops="20"/>
             </descendants>
         </node>
         <node id="wheel_spoke_0"> <!--em pé-->
@@ -2490,7 +2283,7 @@
                 <translation x="0" y="0" z="-0.5"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="1" slices="15"/>
             </descendants>
         </node>
         <node id="wheel_spoke_1"> <!--deitada-->
@@ -2503,7 +2296,7 @@
                 <translation x="0" y="0" z="-0.5"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="1" slices="15"/>
             </descendants>
         </node>
         <node id="wheel_spoke_2"> <!--inclinada esquerda-->
@@ -2517,7 +2310,7 @@
                 <translation x="0" y="0" z="-0.5"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="1" slices="15"/>
             </descendants>
         </node>
         <node id="wheel_spoke_3"> <!--inclinada direita-->
@@ -2531,7 +2324,7 @@
                 <translation x="0" y="0" z="-0.5"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="30" slices="30"/>
+                <leaf type="cylinder" height="1.0" topRadius="0.05" bottomRadius="0.05" stacks="1" slices="15"/>
             </descendants>
         </node>
 
@@ -2548,7 +2341,7 @@
                 <translation x="0.0" y="0" z="-1.5"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="3.0" topRadius="1.0" bottomRadius="1.0" stacks="20" slices="60"/>
+                <leaf type="cylinder" height="3.0" topRadius="1.0" bottomRadius="1.0" stacks="5" slices="40"/>
             </descendants>
         </node>
 
@@ -2564,7 +2357,7 @@
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
-                <leaf type="sphere" radius="1.0" slices="50" stacks="50"/>
+                <leaf type="sphere" radius="1.0" slices="30" stacks="30"/>
             </descendants>
         </node>
 
@@ -2577,7 +2370,7 @@
                 <translation x="2.5" y="0.0" z="0.0"/>
             </transformations>
             <descendants>
-                <leaf type="sphere" radius="0.1" slices="20" stacks="20"/>
+                <leaf type="sphere" radius="0.1" slices="10" stacks="10"/>
             </descendants>
         </node>
 
@@ -2593,7 +2386,7 @@
             </transformations>
             <descendants>
                 <noderef id="train_headlight_sphere"/>
-                <leaf type="cylinder" height="0.75" topRadius="0.16" bottomRadius="0.16" stacks="1" slices="40"/>
+                <leaf type="cylinder" height="0.75" topRadius="0.16" bottomRadius="0.16" stacks="1" slices="20"/>
             </descendants>
         </node>
 
@@ -2609,7 +2402,7 @@
                 <rotation axis="x" angle="-90"/>
             </transformations>
             <descendants>
-                <leaf type="sphere" radius="0.16" slices="20" stacks="20"/>
+                <leaf type="sphere" radius="0.16" slices="15" stacks="15"/>
             </descendants>
         </node>
 
@@ -2625,7 +2418,7 @@
             </transformations>
             <descendants>
                 <noderef id="train_smoke_top"/>
-                <leaf type="cylinder" height="0.9" topRadius="0.3" bottomRadius="0.4" stacks="50" slices="50"/>
+                <leaf type="cylinder" height="0.9" topRadius="0.3" bottomRadius="0.4" stacks="3" slices="20"/>
             </descendants>
         </node>
 
@@ -2638,7 +2431,7 @@
                 <translation x="0" y="0" z="-0.05"/>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="0.01" topRadius="0.4" bottomRadius="0.4" stacks="1" slices="30"/>
+                <leaf type="cylinder" height="0.01" topRadius="0.4" bottomRadius="0.4" stacks="1" slices="15"/>
             </descendants>
         </node>
 
@@ -2652,7 +2445,7 @@
                 <rotation axis="x" angle="90"/>
             </transformations>
             <descendants>
-                <leaf type="torus" inner="0.05" outer="0.4" slices="40" loops="40"/>
+                <leaf type="torus" inner="0.05" outer="0.4" slices="15" loops="15"/>
             </descendants>
         </node>
 
@@ -2765,7 +2558,7 @@
             <transformations>
             </transformations>
             <descendants>
-                <leaf type="cylinder" height="5.5" topRadius="0" bottomRadius="0.420" stacks="30" slices="30"/>
+                <leaf type="cylinder" height="5.5" topRadius="0" bottomRadius="0.420" stacks="10" slices="20"/>
             </descendants>
         </node>
 

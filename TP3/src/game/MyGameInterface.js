@@ -19,7 +19,7 @@ class MyGameInterface {
         this.timerBodyText2 = new CGFtexture(this.scene, "./images/timerBody2.jpg");
 
         this.coloursFrame = new MyTorus(this.scene, 0.03, Math.sqrt(2)/2, 4, 4);
-        this.frameTexture = new CGFtexture(this.scene, "./scenes/textures_LAIG_TP2_XML_T3_G06_v1/golden.jpg");
+        this.frameTexture = new CGFtexture(this.scene, "./images/golden.jpg");
 
         this.coloursScore = new MyRectangle(this.scene, 2.2, 0.5, -2.2, -0.5, 4.4, 1);
 

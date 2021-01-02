@@ -27,7 +27,7 @@ class MyGameBoard extends CGFobject {
         this.boardPlane = new MyRectangle(this.scene, 0, -10.5, 12, 0, 12, 10.5);
         this.boardFrame = new MyTorus(this.scene, 0.1, 8.485, 4, 4);
         this.boardTexture = new CGFtexture(this.scene, "images/board_clear3.png");
-        this.frameTexture = new CGFtexture(this.scene, "./scenes/textures_LAIG_TP2_XML_T3_G06_v1/golden.jpg");
+        this.frameTexture = new CGFtexture(this.scene, "./images/golden.jpg");
         this.tileTexture = new CGFtexture(this.scene, "images/tile.png");
 
         this.boardMat = new CGFappearance(this.scene);
