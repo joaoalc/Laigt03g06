@@ -146,8 +146,6 @@ class XMLscene extends CGFscene {
         let positionTime =  Math.sqrt(Math.pow(endCamPos[0] - startCamPos[0], 2) + Math.pow(endCamPos[1] - startCamPos[1], 2) + Math.pow(endCamPos[2] - startCamPos[2], 2));
         let targetTime = Math.sqrt(Math.pow(endCamTarget[0] - startCamTarget[0], 2) + Math.pow(endCamTarget[1] - startCamTarget[1], 2) + Math.pow(endCamTarget[2] - startCamTarget[2], 2));
         
-        console.log(positionTime);
-        console.log(targetTime);
         this.cameraAnimation = new CameraInterpolator(startCamPos, endCamPos, startCamTarget, endCamTarget, startCamNear, endCamNear, startCamFar, endCamFar, startCamAngle, endCamAngle, startCamUp, endCamUp, (positionTime + targetTime) / 25 + 1);
         }
     }
@@ -177,8 +175,6 @@ class XMLscene extends CGFscene {
             let endCamUp = [this.nextCamera._up[0], this.nextCamera._up[1], this.nextCamera._up[2]];
             let positionTime =  Math.sqrt(Math.pow(endCamPos[0] - startCamPos[0], 2) + Math.pow(endCamPos[1] - startCamPos[1], 2) + Math.pow(endCamPos[2] - startCamPos[2], 2));
             let targetTime = Math.sqrt(Math.pow(endCamTarget[0] - startCamTarget[0], 2) + Math.pow(endCamTarget[1] - startCamTarget[1], 2) + Math.pow(endCamTarget[2] - startCamTarget[2], 2));
-            console.log(positionTime);
-            console.log(targetTime);
             this.cameraAnimation = new CameraInterpolator(startCamPos, endCamPos, startCamTarget, endCamTarget, startCamNear, endCamNear, startCamFar, endCamFar, startCamAngle, endCamAngle, startCamUp, endCamUp, (positionTime + targetTime) / 25 + 1);
             //this.updateCamera();
             //if(this.n != 1){
@@ -286,7 +282,7 @@ class XMLscene extends CGFscene {
         this.cameraIds = {};
         this.sceneInited = false; 
         this.gameOrchestrator.setGameBoardPosition(this.sceneGraphs[this.activeScene].gameboardPos); //Each time
-        this.setUpdatePeriod(32);
+        this.setUpdatePeriod(10);
 
         this.gl.clearColor(...this.sceneGraphs[this.activeScene].background); //Each time
 
@@ -316,20 +312,19 @@ class XMLscene extends CGFscene {
             this.gameOrchestrator.update(time);
 
             if(this.cameraAnimation != null){
+                let isOver = this.cameraAnimation.isOver(time);
                 let position = this.cameraAnimation.getInterpolatedPos(time);
                 let target = this.cameraAnimation.getInterpolatedTarget(time);
                 let near = this.cameraAnimation.getInterpolatedNear(time);
                 let far = this.cameraAnimation.getInterpolatedFar(time);
                 let angle = this.cameraAnimation.getInterpolatedAngle(time);
                 let up = this.cameraAnimation.getInterpolatedUp(time);
-                if(position != null){
-                    if(position != -1){
-                        this.camera.updateCam(position, target, near, far, angle, up);
-                    }
-                    else{
-                    }
+
+                if(!isOver){
+                    this.camera.updateCam(position, target, near, far, angle, up);
                 }
                 else{
+                    this.cameraAnimation = null;
                     this.camera = this.nextCamera;
                     this.interface.setActiveCamera(this.camera);
                 }
