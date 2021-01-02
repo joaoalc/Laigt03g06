@@ -44,6 +44,7 @@ class MyGameOrchestrator {
     startGame(){
         this.prolog.stopRequest();
 
+        this.interface.reset();
         this.sequence = new MyGameSequence();
         this.animator.setSequence(this.sequence);
         this.gameboard.create();
@@ -63,7 +64,6 @@ class MyGameOrchestrator {
 
     update(time) {
         console.log(this.currentPlayer);
-        console.log(this.prolog.requests);
         time /= 1000;
         if(this.lastUpdate == -1)
             this.lastUpdate = time;
@@ -79,10 +79,12 @@ class MyGameOrchestrator {
             if(this.playTime > 0) {
                 this.timer = this.playTime - (time - this.firstTime);
                 if(this.timer <= 0) {
-                    this.timer = 0;
-                    this.state = END_GAME;
-                    if(this.sequence.moves.length > 0) //if it's the first move there is no winner
-                        this.interface.setWinner(this.currentPlayer % 2 + 1);
+                    if(this.sequence.moves.length > 0) {
+                        this.resetTimer();
+                        this.setPlaying();
+                    } else { //if it's the first move and timer ends, game ends
+                        this.state = END_GAME;
+                    }
                 }
                 this.interface.setTimer(this.timer);
             }
@@ -227,11 +229,13 @@ class MyGameOrchestrator {
                 this.prolog.stopRequest();
             var undoResult = this.animator.undo();
             if(undoResult != -1) {
-                if(this.state == END_GAME) {
-                    this.currentPlayer = this.currentPlayer % 2 + 1;
-                }
-                this.coloursWon = undoResult;
-                this.setPlaying();
+                // if(this.state == END_GAME) {
+                //     this.currentPlayer = this.currentPlayer % 2 + 1;
+                // }
+                this.resetTimer();
+                this.coloursWon = undoResult[0];
+
+                this.setPlaying(undoResult[1]);
                 //var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
                 //this.prolog.makeRequest("updateColours("+ gameState + "," + this.currentPlayer+")", this.parseUpdateColours.bind(this));
             }
@@ -239,12 +243,11 @@ class MyGameOrchestrator {
     }
 
     userPlay(tile, coords) {
-        this.resetTimer();
         this.state = PLAY_HUMAN;
         this.pickedTile = tile;
         var newPiece = new MyPiece(this.scene, this.pickedColor);
         var coloursWonMove = this.coloursWon.slice();
-        this.sequence.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile));
+        this.sequence.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile, this.currentPlayer));
         this.onMoveRequest(coords, this.pickedColor);
         this.gameboard.getPieceBox(this.pickedColor).nPieces--;
         tile.setPiece(newPiece);
@@ -262,6 +265,8 @@ class MyGameOrchestrator {
     parseColoursWon(data) {
         var reply = data.target.response;
         this.updateColours(reply.split('-'));
+        if(this.state == PLAY_HUMAN)
+            this.resetTimer();
         if(!this.checkOver())
             this.setPlaying();
     }
@@ -293,7 +298,7 @@ class MyGameOrchestrator {
                 var newPiece = new MyPiece(this.scene, colour);
                 var coloursWonMove = this.coloursWon.slice();
                 var coloursNew = [reply[3].substr(1), reply[4], reply[5], reply[6], reply[7], reply[8].substr(0, reply[8].length-1)];
-                this.sequence.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile));
+                this.sequence.addMove(new MyGameMove(this.scene, coloursWonMove, newPiece, tile, this.currentPlayer));
                 this.updateColours(coloursNew);
                 this.gameboard.getPieceBox(colour).nPieces--;
                 tile.setPiece(newPiece);
@@ -309,9 +314,12 @@ class MyGameOrchestrator {
         console.log(this.coloursWon);
     }
 
-    setPlaying() {
+    setPlaying(player) {
         this.state = PLAYING;
-        this.currentPlayer = this.currentPlayer % 2 + 1;
+
+        if(player != null)
+            this.currentPlayer = player;
+        else this.currentPlayer = this.currentPlayer % 2 + 1;
     }
 
     coloursWonString() {

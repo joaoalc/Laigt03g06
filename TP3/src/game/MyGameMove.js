@@ -1,9 +1,10 @@
 class MyGameMove {
-    constructor(scene, gamestate, piece, tile) {
+    constructor(scene, gamestate, piece, tile, player) {
         this.scene = scene;
         this.gamestate = gamestate;
         this.piece = piece;
         this.tile = tile;
+        this.player = player;
 
         this.initAnimation();
     }

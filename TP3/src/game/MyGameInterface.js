@@ -40,6 +40,11 @@ class MyGameInterface {
         this.scorePiece = new MyCylinder(this.scene, 0.2, 0.4, 0.4, 20, 5);
     }
 
+    reset() {
+        this.timerTime = 0;
+        this.timerDisplay.setText("00:00");
+    }
+
     setWinner(winner) {
         var text = "Player " + winner.toString() + " Wins!";
         this.winner.setText(text);

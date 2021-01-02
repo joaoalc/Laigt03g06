@@ -15,8 +15,9 @@ class MyGameSequence {
         if(this.moves.length > 0) {
             this.moves[this.moves.length - 1].undo();
             var old_gamestate = this.moves[this.moves.length - 1].gamestate;
+            var player = this.moves[this.moves.length - 1].player;
             this.removeMove();
-            return old_gamestate;
+            return [old_gamestate, player];
         }
         return -1;
     }
