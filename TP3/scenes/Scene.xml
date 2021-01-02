@@ -4,44 +4,22 @@
         <root id="RootNode"/>
     </initials>
     <views default="board_1"> 
-        <perspective id="defaultCamera" near="1" far="500" angle="45">
-            <from x="0" y="10" z="10"/>
-            <to x="0" y="0" z="0"/>
+        <perspective id="Overview" near="1" far="500" angle="55">
+            <from x="10" y="17" z="3"/>
+            <to x="0" y="3" z="0"/>
         </perspective>
-        <perspective id="Overview" near="1" far="100" angle="45">
-            <from x="18" y="5" z="15"/>
-            <to x="0" y="0" z="0"/>
+        <perspective id="Entrance" near="1" far="500" angle="45">
+            <from x="5" y="5.5" z="0"/>
+            <to x="0" y="3" z="0"/>
         </perspective>
-        <perspective id="TargetTest" near="0.1" far="500" angle="45">
-            <from x="18" y="5" z="15"/>
-            <to x="18" y="-5" z="5"/>
-        </perspective>
-        <perspective id="Back" near="0.1" far="500" angle="45">
-            <from x="-15" y="5" z="-3"/>
-            <to x="0" y="0" z="0"/>
-        </perspective>
-        <perspective id="Train" near="0.1" far="500" angle="45">
-            <from x="7" y="1" z="5"/>
-            <to x="0" y="0.5" z="0"/>
-        </perspective>
-        <ortho id="Side View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
-            <from x="5" y="0" z="10"/>
-            <to x="0" y="0" z="0"/>
-        </ortho>
-        <ortho id="Front View" near="0.2" far="100" left="-5" right="5" top="4" bottom="-2">
-            <from x="10" y="0" z="0"/>
-            <to x="0" y="0" z="0"/>
-        </ortho>
-
         <perspective id="board_1" near="0.1" far="100" angle="45">
-            <from x="3" y="10" z="0"/>
-            <to x="0" y="0" z="0"/>
+            <from x="1" y="4.5" z="1"/>
+            <to x="0" y="3" z="0"/>
         </perspective>
-        <perspective id="board_2" near="0.1" far="50" angle="35">
-            <from x="5.3" y="-0.7" z="7.5"/>
-            <to x="5.2" y="-1" z="5.5"/>
+        <perspective id="board_2" near="0.1" far="50" angle="60">
+            <from x="0.5" y="4" z="0.5"/>
+            <to x="0" y="3" z="0"/>
         </perspective>
-
     </views>
     <illumination>
         <ambient r="0.4" g="0.2" b="1" a="1.0"/>
@@ -86,30 +64,30 @@
         <light id="wall_torch_1">
             <enable value="1"/>
             <position x="1.65" y="4.5" z="1.65" w="1.0" />
-            <ambient r="0.0" g="0.0" b="0.0" a="1.0" />                   
-            <diffuse r="0.3" g="0.15" b="0.0" a="0.8" />             
-            <specular r="0.4" g="0.15" b="0.0" a="0.8" />            
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                   
+            <diffuse r="0.5" g="0.4" b="0.3" a="0.8" />            
+            <specular r="0.45" g="0.3" b="0.15" a="0.8" />         
         </light>
         <light id="wall_torch_2">
             <enable value="1"/>
             <position x="-1.65" y="4.5" z="1.65" w="1.0" />
-            <ambient r="0.0" g="0.0" b="0.0" a="1.0" />                   
-            <diffuse r="0.3" g="0.15" b="0.0" a="0.8" />             
-            <specular r="0.4" g="0.15" b="0.0" a="0.8" />            
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                   
+            <diffuse r="0.5" g="0.4" b="0.3" a="0.8" />             
+            <specular r="0.45" g="0.3" b="0.15" a="0.8" />           
         </light>
         <light id="wall_torch_3">
             <enable value="1"/>
             <position x="-1.65" y="4.5" z="-1.65" w="1.0" />
-            <ambient r="0.0" g="0.0" b="0.0" a="1.0" />                   
-            <diffuse r="0.3" g="0.15" b="0.0" a="0.8" />             
-            <specular r="0.4" g="0.15" b="0.0" a="0.8" />            
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                  
+            <diffuse r="0.5" g="0.4" b="0.3" a="0.8" />             
+            <specular r="0.45" g="0.3" b="0.15" a="0.8" />          
         </light>
         <light id="wall_torch_4">
             <enable value="1"/>
             <position x="1.65" y="4.5" z="-1.65" w="1.0" />
-            <ambient r="0.0" g="0.0" b="0.0" a="1.0" />                   
-            <diffuse r="0.3" g="0.15" b="0.0" a="0.8" />             
-            <specular r="0.4" g="0.15" b="0.0" a="0.8" />            
+            <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                  
+            <diffuse r="0.5" g="0.4" b="0.3" a="0.8" />             
+            <specular r="0.45" g="0.3" b="0.15" a="0.8" />          
         </light>
     </lights>
     <textures>
