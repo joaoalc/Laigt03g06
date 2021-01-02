@@ -36,7 +36,7 @@ class MyGameInterface {
         var green = new CGFtexture(this.scene, "images/green.png");
         var grey = new CGFtexture(this.scene, "images/grey.png");
 
-        this.scoreColours = {"purple":purple, "orange":orange, "green":green, "grey":grey};
+        this.scoreColours = {"purple": purple, "orange": orange, "green": green, "grey": grey};
         this.scorePiece = new MyCylinder(this.scene, 0.2, 0.4, 0.4, 20, 5);
     }
 
@@ -80,7 +80,7 @@ class MyGameInterface {
     }
 
     update(time) {
-        
+
     }
 
     display() {

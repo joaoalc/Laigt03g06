@@ -8,9 +8,11 @@ class MyGameBoard extends CGFobject {
         this.horShift = 1.5;
         this.vertShift = Math.sin(Math.PI/3)/2;
 
-        this.purple = new CGFtexture(this.scene, "images/purple.png");
-        this.orange = new CGFtexture(this.scene, "images/orange.png");
-        this.green = new CGFtexture(this.scene, "images/green.png");
+        var purple = new CGFtexture(this.scene, "images/purple.png");
+        var orange = new CGFtexture(this.scene, "images/orange.png");
+        var green = new CGFtexture(this.scene, "images/green.png");
+
+        this.colourTexts = {"purple": purple, "orange": orange, "green": green};
 
         this.pieceBoxes = [];
         this.pieceBoxes["purple"] = new MyPieceBox(this.scene, "purple");
@@ -170,7 +172,7 @@ class MyGameBoard extends CGFobject {
 
         for(var tile in this.tiles) {
             if(this.tiles[tile].piece != null)
-                this.tiles[tile].piece.display(this.orange, this.green, this.purple);
+                this.tiles[tile].piece.display(this.colourTexts);
         }
 
         this.scene.pushMatrix();

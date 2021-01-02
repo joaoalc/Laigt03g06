@@ -15,18 +15,11 @@ class MyPiece extends CGFobject {
         this.tile = tile;
     }
 
-    display(orange, green, purple) { //TODO : melhorar isto (ta bastante mau)
+    display(colours) {
 
         if(this.animation != null && this.animation.checkVisibility()) {
-            if(this.colour == "orange"){
-                orange.bind();
-            }
-            else if(this.colour == "green"){
-                green.bind();
-            }
-            else if(this.colour == "purple"){
-                purple.bind();
-            }
+            colours[this.colour].bind();
+
             this.scene.pushMatrix();
 
             if(this.animation != null) 
@@ -34,16 +27,6 @@ class MyPiece extends CGFobject {
                 
             this.obj.display();
             this.scene.popMatrix();
-
-            if(this.colour == "orange"){
-                orange.unbind();
-            }
-            else if(this.colour == "green"){
-                green.unbind();
-            }
-            else if(this.colour == "purple"){
-                purple.unbind();
-            }
         }
     }
 }
