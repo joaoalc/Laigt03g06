@@ -55,7 +55,7 @@
             <diffuse r="0.8" g="0.8" b="0.8" a="0.8" />             
             <specular r="0.8" g="0.8" b="0.8" a="1.0" />            
         </light>
-        <light id="loight2">
+        <!-- <light id="loight2">
             <enable value="1"/>
             <position x="-1.3" y="-0.2" z="0" w="1.0" />
             <ambient r="0.1" g="0.1" b="0.1" a="1.0" />                   
@@ -75,52 +75,51 @@
             <ambient r="0.25" g="0.25" b="0.25" a="1.0" />                   
             <diffuse r="0.7" g="0.7" b="0.7" a="1.0" />             
             <specular r="0.7" g="0.7" b="0.7" a="1.0" />            
-        </light>
+        </light> -->
     </lights>
     <textures>
-        <texture id="skybox_left" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_left.png"/>
-        <texture id="skybox_right" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_right.png"/>
-        <texture id="skybox_front" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_front.png"/>
-        <texture id="skybox_top" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_top.png"/>
-        <texture id="skybox_back" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_back.png"/>
-        <texture id="skybox_bottom" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/skybox/skybox_bottom.png"/>
-        <texture id="tree_trunk" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/tree_trunk.png"/>
-        <texture id="tree_leaves" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/tree_leaves.jpg"/>
-        <texture id="wood" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wood.jpg"/>
-        <texture id="grass" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/grass.jpg"/>
-        <texture id="train_furnace" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/furnace.jpg"/>
-        <texture id="glass" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/glass.png"/>
-        <texture id="main_cylinder" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/main_cylinder.png"/>
-        <texture id="train_inside" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_inside.jpg"/>
-        <texture id="metal_grip" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/metal_grip.jpg"/>
-        <texture id="train_side_1" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_side_1.png"/>
-        <texture id="train_side_2" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_side_2.png"/>
-        <texture id="train_side_1_2" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_side_1_2.png"/>
-        <texture id="train_side_2_2" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_side_2_2.png"/>
-        <texture id="train_front_1" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/train_front_1.png"/>
-        <texture id="pebbles" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/pebbles.jpg"/>
-        <texture id="headlight" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/headlight1.jpg"/>
-        <texture id="main_sphere" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/main_sphere.png"/>
-        <texture id="metal" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/metal.jpg"/>
-        <texture id="rock" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/rock.jpg"/>
-        <texture id="grass_blade" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/grass_blade.jpg"/>
-        <texture id="golden" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/golden.jpg"/>
-        <texture id="brick_wall" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/brick_wall.jpg"/>
-        <texture id="roof" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/roof.jpg"/>
-        <texture id="clock" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/clock.jpg"/>
-        <texture id="station_roof" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/roof2.jpg"/>
-        <texture id="station_roof_sides" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/roof_sides.jpg"/>
-        <texture id="bricks_texture" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/bricks_texture.png"/>
-        <texture id="wood_pillar" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/woodPillar.jpg"/>
-        <texture id="stone_floor" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/stone_floor.jpg"/>
-        <texture id="wood_barrel" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wood_planks.jpg"/>
-        <texture id="wooden_planks" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wooden_planks.png"/>
-        <texture id="wood_planks" path="./scenes/textures_LAIG_TP2_XML_T3_G06_v1/wood_planks.jpg"/>
+        <texture id="skybox_left" path="./scenes/textures_train/skybox/skybox_left.jpg"/>
+        <texture id="skybox_right" path="./scenes/textures_train/skybox/skybox_right.jpg"/>
+        <texture id="skybox_front" path="./scenes/textures_train/skybox/skybox_front.jpg"/>
+        <texture id="skybox_top" path="./scenes/textures_train/skybox/skybox_top.jpg"/>
+        <texture id="skybox_back" path="./scenes/textures_train/skybox/skybox_back.jpg"/>
+        <texture id="skybox_bottom" path="./scenes/textures_train/skybox/skybox_bottom.jpg"/>
+        <texture id="tree_trunk" path="./scenes/textures_train/tree_trunk.png"/>
+        <texture id="tree_leaves" path="./scenes/textures_train/tree_leaves.jpg"/>
+        <texture id="wood" path="./scenes/textures_train/wood.jpg"/>
+        <texture id="grass" path="./scenes/textures_train/grass.jpg"/>
+        <texture id="train_furnace" path="./scenes/textures_train/furnace.jpg"/>
+        <texture id="glass" path="./scenes/textures_train/glass.png"/>
+        <texture id="main_cylinder" path="./scenes/textures_train/main_cylinder.png"/>
+        <texture id="train_inside" path="./scenes/textures_train/train_inside.jpg"/>
+        <texture id="metal_grip" path="./scenes/textures_train/metal_grip.jpg"/>
+        <texture id="train_side_1" path="./scenes/textures_train/train_side_1.png"/>
+        <texture id="train_side_2" path="./scenes/textures_train/train_side_2.png"/>
+        <texture id="train_side_1_2" path="./scenes/textures_train/train_side_1_2.png"/>
+        <texture id="train_side_2_2" path="./scenes/textures_train/train_side_2_2.png"/>
+        <texture id="train_front_1" path="./scenes/textures_train/train_front_1.png"/>
+        <texture id="pebbles" path="./scenes/textures_train/pebbles.jpg"/>
+        <texture id="headlight" path="./scenes/textures_train/headlight1.jpg"/>
+        <texture id="main_sphere" path="./scenes/textures_train/main_sphere.png"/>
+        <texture id="metal" path="./scenes/textures_train/metal.jpg"/>
+        <texture id="rock" path="./scenes/textures_train/rock.jpg"/>
+        <texture id="grass_blade" path="./scenes/textures_train/grass_blade.jpg"/>
+        <texture id="golden" path="./scenes/textures_train/golden.jpg"/>
+        <texture id="brick_wall" path="./scenes/textures_train/brick_wall.jpg"/>
+        <texture id="roof" path="./scenes/textures_train/roof.jpg"/>
+        <texture id="clock" path="./scenes/textures_train/clock.jpg"/>
+        <texture id="station_roof" path="./scenes/textures_train/roof2.jpg"/>
+        <texture id="station_roof_sides" path="./scenes/textures_train/roof_sides.jpg"/>
+        <texture id="wood_pillar" path="./scenes/textures_train/woodPillar.jpg"/>
+        <texture id="stone_floor" path="./scenes/textures_train/stone_floor.jpg"/>
+        <texture id="wood_barrel" path="./scenes/textures_train/wood_planks.jpg"/>
+        <texture id="wooden_planks" path="./scenes/textures_train/wooden_planks.png"/>
+        <texture id="wood_planks" path="./scenes/textures_train/wood_planks.jpg"/>
         <texture id="towel" path="./images/picnic2.jpg"/>
     </textures>
     <spritesheets>
-        <spritesheet id="spriteanim_test" path="scenes/textures_LAIG_TP2_XML_T3_G06_v1/tmp.png" sizeM="1000" sizeN="1"/>
-        <spritesheet id="furnace_sprite" path="scenes/textures_LAIG_TP2_XML_T3_G06_v1/furnace_spritesheet.png" sizeM="5" sizeN="3"/>
+        <!-- <spritesheet id="spriteanim_test" path="scenes/textures_train/tmp.png" sizeM="1000" sizeN="1"/>
+        <spritesheet id="furnace_sprite" path="scenes/textures_train/furnace_spritesheet.png" sizeM="5" sizeN="3"/> -->
     </spritesheets>
     <materials>
         <material id="Generic">
@@ -1332,7 +1331,7 @@
             </transformations>
             <descendants>
                 <noderef id="station_tower_screen_frame"/>
-                <leaf type="spriteanim" ssid="spriteanim_test" duration="10" startCell="0" endCell="999"/>
+                <!-- <leaf type="spriteanim" ssid="spriteanim_test" duration="10" startCell="0" endCell="999"/> -->
             </descendants>
         </node>
 
@@ -2189,7 +2188,7 @@
                 <rotation axis="y" angle="-90"/>
             </transformations>
             <descendants>
-                <leaf type="spriteanim" ssid="furnace_sprite" duration="2" startCell="0" endCell="14"/>
+                <!-- <leaf type="spriteanim" ssid="furnace_sprite" duration="2" startCell="0" endCell="14"/> -->
             </descendants>
         </node>
 

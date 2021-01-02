@@ -30,7 +30,7 @@ class MyGameOrchestrator {
 
 
         scene.sceneGraphs = {};
-        var filenames = {"Train" : 'LAIG_TP2_XML_T3_G06_v1.xml', "OtherScene": 'SecondScene.xml'};
+        var filenames = {"Train" : 'train.xml', "OtherScene": 'SecondScene.xml'};
         for(let sceneName in filenames){
             //scene.sceneGraphs[scene.activeScene] = new MySceneGraph(filenames[sceneName], scene, sceneName);
             new MySceneGraph(filenames[sceneName], scene, sceneName);
@@ -347,11 +347,12 @@ class MyGameOrchestrator {
                 this.gameboard.getPieceBox("green").nPieces];
     }
 
+    setGameBoardPosition(pos){
+        this.gameboardPos = pos;
+    }
+
     display() {
         if(this.scene.sceneGraphs[this.scene.activeScene].loadedOk){
-            if(this.state != START && this.state != END_GAME) {
-                this.play();
-            }
 
             this.scene.pushMatrix();
 
