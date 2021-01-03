@@ -211,8 +211,6 @@ class MyGameBoard extends CGFobject {
             this.scene.translate(0, 0, 1.2);
             this.scene.rotate(DEGREE_TO_RAD*90, 1,0,0);
             this.pieceCounters["purple"].display();
-            this.scene.rotate(Math.PI, 0,1,0);
-            this.pieceCounters["purple"].display();
             this.scene.popMatrix();
 
             this.boxMat.apply();
@@ -222,8 +220,6 @@ class MyGameBoard extends CGFobject {
             this.scene.translate(0, 0, 1.2);
             this.scene.rotate(DEGREE_TO_RAD*90, 1,0,0);
             this.pieceCounters["orange"].display();
-            this.scene.rotate(Math.PI, 0,1,0);
-            this.pieceCounters["orange"].display();
             this.scene.popMatrix();
 
             this.boxMat.apply();
@@ -232,8 +228,6 @@ class MyGameBoard extends CGFobject {
             this.scene.pushMatrix();
             this.scene.translate(0, 0, 1.2);
             this.scene.rotate(DEGREE_TO_RAD*90, 1,0,0);
-            this.pieceCounters["green"].display();
-            this.scene.rotate(Math.PI, 0,1,0);
             this.pieceCounters["green"].display();
             this.scene.popMatrix();
         this.scene.popMatrix();
