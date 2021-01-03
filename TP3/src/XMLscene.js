@@ -181,10 +181,6 @@ class XMLscene extends CGFscene {
             let positionTime =  Math.sqrt(Math.pow(endCamPos[0] - startCamPos[0], 2) + Math.pow(endCamPos[1] - startCamPos[1], 2) + Math.pow(endCamPos[2] - startCamPos[2], 2));
             let targetTime = Math.sqrt(Math.pow(endCamTarget[0] - startCamTarget[0], 2) + Math.pow(endCamTarget[1] - startCamTarget[1], 2) + Math.pow(endCamTarget[2] - startCamTarget[2], 2));
             this.cameraAnimation = new CameraInterpolator(startCamPos, endCamPos, startCamTarget, endCamTarget, startCamNear, endCamNear, startCamFar, endCamFar, startCamAngle, endCamAngle, startCamUp, endCamUp, (positionTime + targetTime) / 25 + 1);
-            //this.updateCamera();
-            //if(this.n != 1){
-            //    this.updateCamera();
-            //}
         }
         this.interface.addCameraAndLightGUI(this.cameraIds[this.activeCamera]);
         this.n = 1;

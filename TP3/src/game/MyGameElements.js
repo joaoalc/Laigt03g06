@@ -295,7 +295,6 @@ class MyGameElements {
         else{
             this.p2Text.display();
         }
-        console.log(this.playerRectangle);
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
