@@ -4,8 +4,8 @@ class MyGameElements {
         this.orchestrator = orchestrator;
 
         this.gameOverRect = new MyRectangle(this.scene, 4.5, 0.5, -4.5, -0.5, 4.5, 1);
-        this.gameOver = new MySpriteText(this.scene, "Game Over", "./images/fonts/font5_2.png");
-        this.winnerText = new MySpriteText(this.scene, "Winner!", "./images/fonts/font5_3.png");
+        this.gameOver = new MySpriteText(this.scene, "Game Over", "./assets/images/fonts/font5_2.png");
+        this.winnerText = new MySpriteText(this.scene, "Winner!", "./assets/images/fonts/font5_3.png");
         this.winner = -1;
 
         this.timerTime = 0;
@@ -15,41 +15,41 @@ class MyGameElements {
         this.timerBody1 = new MyCylinder(this.scene, 1, 0.5, 0.5, 4, 1);
         this.timerBody3 = new MyCylinder(this.scene, 1, 0.5, 0.5, 30, 30);
         this.timerBody2 = new MyTorus(this.scene, 0.25, 1.25, 30, 30);
-        this.timerHandText = new CGFtexture(this.scene, "./images/hand.png");
-        this.timerFaceText = new CGFtexture(this.scene, "./images/timerFace.png");
-        this.timerBodyText1 = new CGFtexture(this.scene, "./images/timerBody1.jpg");
-        this.timerBodyText2 = new CGFtexture(this.scene, "./images/timerBody2.jpg");
+        this.timerHandText = new CGFtexture(this.scene, "./assets/images/hand.png");
+        this.timerFaceText = new CGFtexture(this.scene, "./assets/images/timerFace.png");
+        this.timerBodyText1 = new CGFtexture(this.scene, "./assets/images/timerBody1.jpg");
+        this.timerBodyText2 = new CGFtexture(this.scene, "./assets/images/timerBody2.jpg");
 
         this.coloursFrame = new MyTorus(this.scene, 0.03, Math.sqrt(2)/2, 4, 4);
-        this.frameTexture = new CGFtexture(this.scene, "./images/golden.jpg");
+        this.frameTexture = new CGFtexture(this.scene, "./assets/images/golden.jpg");
 
         this.coloursScore = new MyRectangle(this.scene, 2.2, 0.5, -2.2, -0.5, 4.4, 1);
 
-        this.colours1Text = new CGFtexture(this.scene, "./images/board1.png");
+        this.colours1Text = new CGFtexture(this.scene, "./assets/images/board1.png");
 
-        this.colours2Text = new CGFtexture(this.scene, "./images/board2.png");
+        this.colours2Text = new CGFtexture(this.scene, "./assets/images/board2.png");
 
 
         //this.playerRectangle = new MyRectangle(this.scene, -0.5, 0.5, -0.5, -0.5, 1, 1);
         this.playerRectangle = new MyRectangle(this.scene, -1.5, -0.5, 0.5, 0.5, 1, 1);
 
-        this.playerTex = new CGFtexture(this.scene, "./images/grey.png");
+        this.playerTex = new CGFtexture(this.scene, "./assets/images/grey.png");
 
         
-        this.p1Text = new MySpriteText(this.scene, "P1", "./images/fonts/font5_2.png");
-        this.p2Text = new MySpriteText(this.scene, "P2", "./images/fonts/font5_2.png");
+        this.p1Text = new MySpriteText(this.scene, "P1", "./assets/images/fonts/font5_2.png");
+        this.p2Text = new MySpriteText(this.scene, "P2", "./assets/images/fonts/font5_2.png");
 
-        this.p1Text_Selected = new MySpriteText(this.scene, "P1", "./images/fonts/font5_3.png");
-        this.p2Text_Selected = new MySpriteText(this.scene, "P2", "./images/fonts/font5_3.png");
+        this.p1Text_Selected = new MySpriteText(this.scene, "P1", "./assets/images/fonts/font5_3.png");
+        this.p2Text_Selected = new MySpriteText(this.scene, "P2", "./assets/images/fonts/font5_3.png");
 
         this.colours1 = [];
         this.colours2 = [];
         this.colours = ["purple", "orange", "green"];
 
-        var purple = new CGFtexture(this.scene, "images/purple.png");
-        var orange = new CGFtexture(this.scene, "images/orange.png");
-        var green = new CGFtexture(this.scene, "images/green.png");
-        var grey = new CGFtexture(this.scene, "images/grey.png");
+        var purple = new CGFtexture(this.scene, "assets/images/purple.png");
+        var orange = new CGFtexture(this.scene, "assets/images/orange.png");
+        var green = new CGFtexture(this.scene, "assets/images/green.png");
+        var grey = new CGFtexture(this.scene, "assets/images/grey.png");
 
         this.scoreColours = {"purple": purple, "orange": orange, "green": green, "grey": grey};
         this.scorePiece = new MyCylinder(this.scene, 0.2, 0.4, 0.4, 20, 5);
