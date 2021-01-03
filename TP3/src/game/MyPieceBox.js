@@ -34,7 +34,7 @@ class MyPieceBox extends CGFobject{
 
 
     display(){
-        
+        this.scene.clearPickRegistration();
         if(this.nPieces > 0) {
             this.piecesText.bind();
 
