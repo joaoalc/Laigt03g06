@@ -22,11 +22,13 @@ Our game features two environments, a train station and an aztec temple.
 	There can be a time limit per play.
 	Piece animations have easing.
 	Game over, winner, player and pieces left text/indicators.
+	The gamestate and game movie's state are maintained on scene change.
 - Scene:
 	Animated camera with easing that works between scene cameras AND between scenes:
 		The camera's animation time depends on the position and target of the cameras themselves (with a minimum time).
 		The camera animation works properly even if the camera is currently moving, no matter how fast or which cameras you select.
 	Both scenes are detailed, run well and are fairly light, memory and speed wise.
+		The first scene has been simplified and optimized to improve the framerate
 	
 ----
 ## Issues/Problems
