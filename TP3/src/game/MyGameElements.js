@@ -27,6 +27,19 @@ class MyGameElements {
 
         this.colours2Text = new CGFtexture(this.scene, "./images/board2.png");
 
+
+        //this.playerRectangle = new MyRectangle(this.scene, -0.5, 0.5, -0.5, -0.5, 1, 1);
+        this.playerRectangle = new MyRectangle(this.scene, -1.5, -0.5, 0.5, 0.5, 1, 1);
+
+        this.playerTex = new CGFtexture(this.scene, "./images/grey.png");
+
+        
+        this.p1Text = new MySpriteText(this.scene, "P1", "./images/fonts/font5_2.png");
+        this.p2Text = new MySpriteText(this.scene, "P2", "./images/fonts/font5_2.png");
+
+        this.p1Text_Selected = new MySpriteText(this.scene, "P1", "./images/fonts/font5_3.png");
+        this.p2Text_Selected = new MySpriteText(this.scene, "P2", "./images/fonts/font5_3.png");
+
         this.colours1 = [];
         this.colours2 = [];
         this.colours = ["purple", "orange", "green"];
@@ -88,6 +101,16 @@ class MyGameElements {
 
     update(time) {
 
+    }
+
+    selectedPlayer(player){
+        if(this.orchestrator.state == END_GAME){
+            return false;
+        }
+        if(player == this.orchestrator.currentPlayer){
+            return true;
+        }
+        return false;
     }
 
     display() {
@@ -189,6 +212,23 @@ class MyGameElements {
         this.coloursScore.display();
         this.scene.popMatrix();
 
+        this.playerTex.bind();
+        this.scene.pushMatrix();
+        this.scene.translate(0, 3.2, 0);
+        //this.scene.rotate(-Math.PI/2, 1,0,0);
+        this.playerRectangle.display();
+        //this.scene.rotate(-Math.PI, 1,0,0);
+        //this.playerRectangle.display();
+        this.scene.translate(-0.5, 0, 0.01);
+        if(this.selectedPlayer(1)){
+            this.p1Text_Selected.display();
+        }
+        else{
+            this.p1Text.display();
+        }
+        console.log(this.playerRectangle);
+        this.scene.popMatrix();
+
         this.scene.pushMatrix();
         this.scene.translate(0, -1.4, 0);
 
@@ -215,6 +255,23 @@ class MyGameElements {
         this.scene.pushMatrix();
         this.scene.rotate(-Math.PI/2, 0,0,1);
         this.coloursScore.display();
+        this.scene.popMatrix();
+
+        this.playerTex.bind();
+        this.scene.pushMatrix();
+        this.scene.translate(1, 3.2, 0);
+        //this.scene.rotate(-Math.PI/2, 1,0,0);
+        this.playerRectangle.display();
+        //this.scene.rotate(-Math.PI, 1,0,0);
+        //this.playerRectangle.display();
+        this.scene.translate(-0.5, 0, 0.01);
+        if(this.selectedPlayer(2)){
+            this.p2Text_Selected.display();
+        }
+        else{
+            this.p2Text.display();
+        }
+        console.log(this.playerRectangle);
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
