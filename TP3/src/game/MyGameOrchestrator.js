@@ -27,7 +27,7 @@ class MyGameOrchestrator {
         this.movieMove = [0, 0];
         this.stateMovie = PLAYING;
         this.beforeMovie = [];
-
+        this.movieCurrentPlayer = -1;
 
         scene.sceneGraphs = {};
         var filenames = {"Train Station" : 'train.xml', "Aztec Temple": 'Scene.xml'};
@@ -68,6 +68,7 @@ class MyGameOrchestrator {
         this.movieMove = [0, 0];
         this.stateMovie = PLAYING;
         this.beforeMovie = [];
+        this.movieCurrentPlayer = -1;
         this.firstTime = -1;
         this.timer = 0;
         this.pickedColor = null;
@@ -146,6 +147,7 @@ class MyGameOrchestrator {
             this.gameboard.resetBoxes();
             this.state = MOVIE;
             this.animator.start();
+            this.movieCurrentPlayer = this.firstPlayer;
         }
     }
 
@@ -174,6 +176,7 @@ class MyGameOrchestrator {
             this.interface.setColoursWon(this.coloursWon);
             this.movieMove = [0,0];
         } else {
+            this.movieCurrentPlayer = this.sequence.moves[this.movieMove[0]].getPlayer();
             if(this.movieMove[1] == 0) {
                 this.gameboard.getPieceBox(this.sequence.moves[this.movieMove[0]].getColour()).nPieces--;
                 this.movieMove[1] = 1;

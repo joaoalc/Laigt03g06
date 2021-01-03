@@ -55,6 +55,10 @@ class MyGameMove {
         return this.piece.colour;
     }
 
+    getPlayer() {
+        return this.player;
+    }
+
     undo() {
         this.tile.removePiece();
     }

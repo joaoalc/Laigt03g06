@@ -104,7 +104,12 @@ class MyGameElements {
     }
 
     selectedPlayer(player){
-        if(this.orchestrator.state == END_GAME){
+        if(this.orchestrator.state == END_GAME || this.orchestrator.state == START){
+            return false;
+        }
+        if(this.orchestrator.state == MOVIE) {
+            if(player == this.orchestrator.movieCurrentPlayer)
+                return true;
             return false;
         }
         if(player == this.orchestrator.currentPlayer){
