@@ -77,7 +77,7 @@ class MyInterface extends CGFinterface {
         game.add(this.scene.gameOrchestrator, 'startMovie').name('Play Game Movie');
         game.add(this.scene.gameOrchestrator, 'stopMovie').name('Stop Game Movie');
 
-        var backgroundScene = game.add(this.scene, 'activeScene', Object.keys(this.scene.sceneGraphs)).name('Theme').onChange(this.scene.updateScene.bind(this.scene));
+        var backgroundScene = game.add(this.scene, 'activeScene', Object.keys(this.scene.gameOrchestrator.sceneGraphs)).name('Theme').onChange(this.scene.updateScene.bind(this.scene));
         backgroundScene.setValue(currentScene);
     }
 

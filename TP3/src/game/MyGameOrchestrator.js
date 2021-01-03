@@ -9,6 +9,7 @@ const MOVIE = 6;
 class MyGameOrchestrator {
     constructor(scene){
         this.scene = scene;
+        this.scene.gameOrchestrator = this;
         this.gameboard = new MyGameBoard(this.scene, this);
         this.prolog = new MyPrologInterface(this);
         this.sequence = new MyGameSequence();
@@ -29,7 +30,7 @@ class MyGameOrchestrator {
         this.beforeMovie = [];
         this.movieCurrentPlayer = -1;
 
-        scene.sceneGraphs = {};
+        this.sceneGraphs = {};
         var filenames = {"Train Station" : 'train.xml', "Aztec Temple": 'Scene.xml'};
         for(let sceneName in filenames){
             //scene.sceneGraphs[scene.activeScene] = new MySceneGraph(filenames[sceneName], scene, sceneName);
@@ -369,9 +370,9 @@ class MyGameOrchestrator {
     }
 
     display() {
-        if(this.scene.sceneGraphs[this.scene.activeScene].loadedOk){
+        if(this.scene.gameOrchestrator.sceneGraphs[this.scene.activeScene].loadedOk){
 
-            this.scene.sceneGraphs[this.scene.activeScene].displayScene();
+            this.scene.gameOrchestrator.sceneGraphs[this.scene.activeScene].displayScene();
 
             this.scene.pushMatrix();
 

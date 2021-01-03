@@ -30,7 +30,7 @@ class MySceneGraph {
         this.name = name;
 
         this.nodes = [];
-        scene.sceneGraphs[name] = this;
+        scene.gameOrchestrator.sceneGraphs[name] = this;
 
         this.idRoot = null; // The id of the root element.
 
