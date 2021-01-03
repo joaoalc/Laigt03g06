@@ -18,6 +18,8 @@ class MyPiece extends CGFobject {
                 this.symbolRot = -Math.PI/6;
                 break;
             case "grey":
+                this.symbol = new MyCylinder(this.scene, 0.1, 0.3, 0.3, 20, 20);
+                this.symbolRot = 0;
                 break;
         }
         this.animation = null;
