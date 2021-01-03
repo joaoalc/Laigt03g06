@@ -463,7 +463,7 @@
             </transformations>
             <descendants>
                 <!--<leaf type="customobj" path="scenes/objects/test_object.obj" wireframe="1"/> -->
-                <leaf type="gameboard" x="5.2" y="-1.2" z="5.2" s="0.1" rx="0" ry="45" rz="0"/>
+                <leaf type="gameboard" x="5.2" y="-1.19" z="5.2" s="0.1" rx="0" ry="45" rz="0"/>
             </descendants>
         </node>
 

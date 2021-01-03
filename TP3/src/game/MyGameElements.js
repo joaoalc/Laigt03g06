@@ -3,8 +3,10 @@ class MyGameElements {
         this.scene = scene;
         this.orchestrator = orchestrator;
 
+        this.gameOverRect = new MyRectangle(this.scene, 4.5, 0.5, -4.5, -0.5, 4.5, 1);
         this.gameOver = new MySpriteText(this.scene, "Game Over", "./images/fonts/font5_2.png");
-        this.winner = new MySpriteText(this.scene, "", "./images/fonts/font5_2.png");
+        this.winnerText = new MySpriteText(this.scene, "Winner!", "./images/fonts/font5_3.png");
+        this.winner = -1;
 
         this.timerTime = 0;
         this.timerDisplay = new MySpriteText(this.scene, "00:00");
@@ -63,11 +65,13 @@ class MyGameElements {
     reset() {
         this.timerTime = 0;
         this.timerDisplay.setText("00:00");
+        this.winner = -1;
     }
 
     setWinner(winner) {
-        var text = "Player " + winner.toString() + " Wins!";
-        this.winner.setText(text);
+        // var text = "Player " + winner.toString() + " Wins!";
+        // this.winner.setText(text);
+        this.winner = winner;
     }
 
     setTimer(time) {
@@ -123,16 +127,32 @@ class MyGameElements {
         this.scene.rotate(-Math.PI/2.0, 1,0,0);
 
         if(this.orchestrator.state == END_GAME) {
+            this.playerTex.bind();
             this.scene.pushMatrix();
-            this.scene.translate(0, 1, 1);
-            this.gameOver.display();
-            this.scene.translate(0, -1.5, 0);
-            this.winner.display();
+            this.scene.translate(0, -6, -1.35);
+
+            this.scene.pushMatrix();
+            this.scene.translate(0, 0, -0.01);
+            //this.scene.scale(6,1,1);
+            this.gameOverRect.display();
             this.scene.popMatrix();
+
+            this.gameOver.display();
+
+            this.scene.popMatrix();
+
+            if(this.winner != -1) {
+                this.scene.pushMatrix();
+                this.scene.translate(this.winner == 2 ? 8.5 : -8.3, 4.2, -1.3);
+                this.scene.scale(0.7, 0.7, 0.7);
+                this.winnerText.display();
+                this.scene.popMatrix();
+            }
+            this.playerTex.unbind();
         }
         //timer
         this.scene.pushMatrix();
-        this.scene.translate(-9, 5, -1);
+        this.scene.translate(-9, 5.5, -1);
         this.scene.rotate(Math.PI/6, 0,0,1);
 
         this.scene.pushMatrix();
