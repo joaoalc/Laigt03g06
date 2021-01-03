@@ -67,9 +67,40 @@ class MySceneGraph {
 
         this.loadedOk = true;
 
+        this.initTextures();
+        this.initMaterials();
+
         if(this.name == this.scene.activeScene){
             // As the graph loaded ok, signal the scene so that any additional initialization depending on the graph can take place
             this.scene.onGraphLoaded();
+        }
+    }
+
+    initTextures(){
+        this.cgfTextures = [];
+        for(var key in this.textures){
+            var info = this.textures[key];
+            if(info != 0) {
+                var tex = new CGFtexture(this.scene, info);
+                this.cgfTextures[key] = tex;
+            }
+        }
+    }
+
+    initMaterials(){
+        this.cgfMaterials = [];
+        console.log(this.materials);
+        for(var key in this.materials) {
+            var info = this.materials[key];
+            console.log(info);
+            var mat = new CGFappearance(this.scene);
+            mat.setShininess(info[0]);
+            mat.setSpecular(info[1][0], info[1][1], info[1][2], 1);
+            mat.setDiffuse(info[2][0], info[2][1], info[2][2], 1);
+            mat.setAmbient(info[3][0], info[3][1], info[3][2], 1);
+            mat.setEmission(info[4][0], info[4][1], info[4][2], 1);
+
+            this.cgfMaterials[key] = mat;
         }
     }
 

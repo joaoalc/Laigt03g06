@@ -61,7 +61,9 @@ class XMLscene extends CGFscene {
 
     initMaterials(){
         this.materials = [];
+        this.materials = this.sceneGraphs[this.activeScene].cgfMaterials;
 
+        /*
         for(var key in this.sceneGraphs[this.activeScene].materials) {
             var info = this.sceneGraphs[this.activeScene].materials[key];
         
@@ -73,20 +75,22 @@ class XMLscene extends CGFscene {
             mat.setEmission(info[4][0], info[4][1], info[4][2], 1);
 
             this.materials[key] = mat;
-        }
+        }*/
     }
 
     initTextures(){
         this.textures = [];
+        this.textures = this.sceneGraphs[this.activeScene].cgfTextures;
 
-        
+        /*
+        this.textures = [];
         for(var key in this.sceneGraphs[this.activeScene].textures){
             var info = this.sceneGraphs[this.activeScene].textures[key];
             if(info != 0) {
                 var tex = new CGFtexture(this, info);
                 this.textures[key] = tex;
             }
-        }
+        }*/
     }
 
     /**

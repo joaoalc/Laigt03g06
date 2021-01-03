@@ -81,9 +81,6 @@ class MyInterface extends CGFinterface {
     }
 
     addCameraAndLightGUI(activeCamera){
-        console.log(this.cameras);
-        console.log(this.scene.cameras);
-        console.log(this.scene.cameraIds);
         if(this.cameras != null){
             this.gui.removeFolder(this.cameras);
         }
