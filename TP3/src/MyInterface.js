@@ -77,19 +77,35 @@ class MyInterface extends CGFinterface {
         game.add(this.scene.gameOrchestrator, 'startMovie').name('Play Game Movie');
         game.add(this.scene.gameOrchestrator, 'stopMovie').name('Stop Game Movie');
 
-        var backgroundScene = game.add(this.scene, 'activeScene', Object.keys(this.scene.gameOrchestrator.sceneGraphs)).name('Theme').onChange(this.scene.updateScene.bind(this.scene));
+        if(this.cameras == null){
+            this.cameras = this.gui.addFolder("Visualization");
+        }
+        var backgroundScene = this.cameras.add(this.scene, 'activeScene', Object.keys(this.scene.gameOrchestrator.sceneGraphs)).name('Theme').onChange(this.scene.updateScene.bind(this.scene));
         backgroundScene.setValue(currentScene);
+        this.backgroundScene = backgroundScene;
     }
 
     addCameraAndLightGUI(activeCamera){
-        if(this.cameras != null){
+        /*if(this.cameras != null){
             this.gui.removeFolder(this.cameras);
+        }*/
+        if(this.cameras == null){
+            this.cameras = this.gui.addFolder("Visualization");
         }
-        this.cameras = this.gui.addFolder("Visualization");
+        if(this.cameraInterface != null){
+            this.cameraInterface.remove();
+        }
+        //this.cameras = this.gui.addFolder("Visualization");
         this.cameras.closed = false;
+        
+        console.log(this.animateOnSceneChange);
+        if(this.animateOnSceneChange == null || this.animateOnSceneChange == undefined){
+            this.animateOnSceneChange = this.cameras.add(this.scene, 'animateOnSceneChange').name("Anim on scene change");
+        }
+        
         var camera = this.cameras.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));
         camera.setValue(activeCamera);
-        this.cameras.add(this.scene, 'animateOnSceneChange').name("Anim on scene change");
+        this.cameraInterface = camera;
 
         if(this.lights != null){
             this.gui.removeFolder(this.lights);
