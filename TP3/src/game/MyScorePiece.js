@@ -5,7 +5,10 @@ class MyScorePiece extends MyPiece {
 
     display(colours) {
         colours[this.colour].bind();
-        this.obj.display();
+        this.cylinder.display();
+        this.scene.translate(0, 0, 0.2);
+        this.scene.rotate(this.symbolRot, 0,0,1);
+        this.symbol.display();
         colours[this.colour].unbind();
     }
 }
