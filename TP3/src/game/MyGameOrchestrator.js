@@ -370,9 +370,9 @@ class MyGameOrchestrator {
     }
 
     display() {
-        if(this.scene.gameOrchestrator.sceneGraphs[this.scene.activeScene].loadedOk){
+        if(this.sceneGraphs[this.scene.activeScene].loadedOk){
 
-            this.scene.gameOrchestrator.sceneGraphs[this.scene.activeScene].displayScene();
+            this.sceneGraphs[this.scene.activeScene].displayScene();
 
             this.scene.pushMatrix();
 
