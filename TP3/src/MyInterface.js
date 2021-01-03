@@ -65,7 +65,8 @@ class MyInterface extends CGFinterface {
         var gameConfig = this.gui.addFolder("Game config");
         gameConfig.closed = false;
         gameConfig.add(this.scene.gameOrchestrator, 'chooseMode', this.scene.gameOrchestrator.modes).name('Game mode');
-        gameConfig.add(this.scene.gameOrchestrator, 'chooseLevel', this.scene.gameOrchestrator.levels).name('Difficulty');
+        gameConfig.add(this.scene.gameOrchestrator, 'chooseLevel1', this.scene.gameOrchestrator.levels).name('Difficulty C1');
+        gameConfig.add(this.scene.gameOrchestrator, 'chooseLevel2', this.scene.gameOrchestrator.levels).name('Difficulty C2');
         gameConfig.add(this.scene.gameOrchestrator, 'firstPlayer', this.scene.gameOrchestrator.players).name('Starting player');
         gameConfig.add(this.scene.gameOrchestrator, 'playTime', 0).name('Play Time (s)');
 

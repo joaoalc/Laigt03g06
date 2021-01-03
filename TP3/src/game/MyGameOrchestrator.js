@@ -40,7 +40,8 @@ class MyGameOrchestrator {
         this.firstPlayer = 1;
         this.players = {'Player 1' : 1, 'Player 2': 2};
 
-        this.chooseLevel = "random";
+        this.chooseLevel1 = "random";
+        this.chooseLevel2 = "random";
         this.levels = {'Easy' : "random", 'Medium' : "greedy", 'Hard' : "greedy_hard"};
 
         this.modes = {'Human/Human' : "HH", 'Human/Computer' : "HC", 'Computer/Human' : "CH", 'Computer/Computer' : "CC"};
@@ -62,7 +63,7 @@ class MyGameOrchestrator {
         this.interface.setColoursWon(this.coloursWon);
         this.currentPlayer = this.firstPlayer;
         this.mode = this.chooseMode;
-        this.level = this.chooseLevel;
+        this.level = [this.chooseLevel1, this.chooseLevel2];
         this.winner = 0;
         this.movieMove = [0, 0];
         this.stateMovie = PLAYING;
@@ -298,7 +299,7 @@ class MyGameOrchestrator {
         this.state = PLAY_BOT;
         var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
         this.prolog.makeRequest("botMove("+ gameState + "," + this.currentPlayer +","+
-            this.level+")", this.parseBotMove.bind(this));
+            this.level[this.currentPlayer - 1]+")", this.parseBotMove.bind(this));
     }
 
     parseBotMove(data) {
