@@ -56,5 +56,6 @@ class MyPieceBox extends CGFobject{
         this.boxText.bind();
         this.obj.display();
         this.scene.popMatrix();
+        this.scene.clearPickRegistration();
     } 
 }
