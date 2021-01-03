@@ -150,30 +150,74 @@
         </material>
     </materials>
     <animations>
-        <animation id="train_animation">
+        <animation id="wall_torch_anim" loop="1">
             <keyframe instant="0">
-                <translation x="-5" y="0" z="0"/>
-                <rotation axis="x" angle="0"/>
-                <rotation axis="y" angle="0"/>
-                <rotation axis="z" angle="0"/>
-                <scale sx="1" sy="1" sz="1"/>
-            </keyframe>
-            <keyframe instant="4">
                 <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
                 <rotation axis="z" angle="0"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
-            <keyframe instant="6.25">
-                <translation x="2.5" y="0" z="0"/>
+            <keyframe instant="4">
+                <translation x="0.025" y="0.025" z="0"/>
+                <rotation axis="x" angle="10"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="8">
+                <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
                 <rotation axis="z" angle="0"/>
                 <scale sx="1" sy="1" sz="1"/>
             </keyframe>
-            <keyframe instant="7">
-                <translation x="3" y="0" z="0"/>
+            <keyframe instant="12">
+                <translation x="-0.025" y="-0.025" z="0"/>
+                <rotation axis="x" angle="-10"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="16">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+        </animation>
+        <animation id="torch_anim" loop="1">
+            <keyframe instant="0">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="4">
+                <translation x="0" y="0.15" z="0"/>
+                <rotation axis="x" angle="15"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1.2" sz="1"/>
+            </keyframe>
+            <keyframe instant="8">
+                <translation x="0" y="0" z="0"/>
+                <rotation axis="x" angle="0"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1" sz="1"/>
+            </keyframe>
+            <keyframe instant="12">
+                <translation x="0" y="-0.15" z="0"/>
+                <rotation axis="x" angle="-15"/>
+                <rotation axis="y" angle="0"/>
+                <rotation axis="z" angle="0"/>
+                <scale sx="1" sy="1.2" sz="1"/>
+            </keyframe>
+            <keyframe instant="16">
+                <translation x="0" y="0" z="0"/>
                 <rotation axis="x" angle="0"/>
                 <rotation axis="y" angle="0"/>
                 <rotation axis="z" angle="0"/>
@@ -1019,6 +1063,7 @@
             <texture id="fire">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
+            <animationref id="wall_torch_anim"/>
             <transformations>
                 <translation x="1.6125" y="4.455" z="1.6125"/>
                 <rotation axis="x" angle="90"/>
@@ -1128,6 +1173,7 @@
             <texture id="fire">
                 <amplification afs="1.0" aft="1.0"/>
             </texture>
+            <animationref id="torch_anim"/>
             <transformations>
                 <translation x="0" y="1.75" z="0"/>
                 <rotation axis="x" angle="90"/>
