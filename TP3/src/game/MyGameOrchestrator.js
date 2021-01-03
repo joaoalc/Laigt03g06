@@ -246,6 +246,8 @@ class MyGameOrchestrator {
     undo() { 
         if(this.state != START && this.state != PLAY_HUMAN && this.sequence.moves.length > 0) {
             console.log("UNDO");
+            this.pickedColor = null;
+            this.pickedTile = null;
             if(this.state == PLAY_BOT)
                 this.prolog.stopRequest();
             var undoResult = this.animator.undo();
@@ -382,8 +384,8 @@ class MyGameOrchestrator {
             this.scene.rotate(this.gameboardPos[5], 0,0,1);
             this.scene.scale(this.gameboardPos[6],this.gameboardPos[6],this.gameboardPos[6]);
 
-            this.gameboard.display();
             this.interface.display();
+            this.gameboard.display();
 
             this.scene.popMatrix();
         }
