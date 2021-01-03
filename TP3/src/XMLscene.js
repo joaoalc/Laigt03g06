@@ -54,6 +54,7 @@ class XMLscene extends CGFscene {
         this.setPickEnabled(true);
 
         this.cameraAnimation = null;
+        this.animateOnSceneChange = true;
 
         new MyGameOrchestrator(this, this.gameboardPos);
     }
@@ -132,29 +133,36 @@ class XMLscene extends CGFscene {
     updateScene(){
         this.n++;
         let n = this.n;
-        if(n != 1){
-            var startCamPos = [this.camera.position[0], this.camera.position[1], this.camera.position[2]];
-            var startCamTarget = [this.camera.target[0], this.camera.target[1], this.camera.target[2]];
-            var startCamUp = [this.camera._up[0], this.camera._up[1], this.camera._up[2]];
-            var startCamAngle = this.camera.fov;
-            var startCamFar = this.camera.far;
-            var startCamNear = this.camera.near;
+        if(this.animateOnSceneChange){
+            if(n != 1){
+                var startCamPos = [this.camera.position[0], this.camera.position[1], this.camera.position[2]];
+                var startCamTarget = [this.camera.target[0], this.camera.target[1], this.camera.target[2]];
+                var startCamUp = [this.camera._up[0], this.camera._up[1], this.camera._up[2]];
+                var startCamAngle = this.camera.fov;
+                var startCamFar = this.camera.far;
+                var startCamNear = this.camera.near;
+            }
+        }
+        else{
+            this.cameraAnimation = null;
         }
         this.n = -1;
         this.onSceneSelect();
-        if(n != 1){
-            this.nextCamera = this.cameras[this.activeCamera];
-            this.nextCamera.resetCamera();
-            this.interface.setActiveCamera(this.camera);
-            let endCamPos = [this.nextCamera.position[0], this.nextCamera.position[1], this.nextCamera.position[2]];
-            let endCamTarget = [this.nextCamera.target[0], this.nextCamera.target[1], this.nextCamera.target[2]];
-            let endCamNear = this.nextCamera.near;
-            let endCamFar = this.nextCamera.far;
-            let endCamAngle = this.nextCamera.fov;
-            let endCamUp = [this.nextCamera._up[0], this.nextCamera._up[1], this.nextCamera._up[2]];
-            let positionTime =  Math.sqrt(Math.pow(endCamPos[0] - startCamPos[0], 2) + Math.pow(endCamPos[1] - startCamPos[1], 2) + Math.pow(endCamPos[2] - startCamPos[2], 2));
-            let targetTime = Math.sqrt(Math.pow(endCamTarget[0] - startCamTarget[0], 2) + Math.pow(endCamTarget[1] - startCamTarget[1], 2) + Math.pow(endCamTarget[2] - startCamTarget[2], 2));
-            this.cameraAnimation = new CameraInterpolator(startCamPos, endCamPos, startCamTarget, endCamTarget, startCamNear, endCamNear, startCamFar, endCamFar, startCamAngle, endCamAngle, startCamUp, endCamUp, (positionTime + targetTime) / 25 + 1);
+        if(this.animateOnSceneChange){
+            if(n != 1){
+                this.nextCamera = this.cameras[this.activeCamera];
+                this.nextCamera.resetCamera();
+                this.interface.setActiveCamera(this.camera);
+                let endCamPos = [this.nextCamera.position[0], this.nextCamera.position[1], this.nextCamera.position[2]];
+                let endCamTarget = [this.nextCamera.target[0], this.nextCamera.target[1], this.nextCamera.target[2]];
+                let endCamNear = this.nextCamera.near;
+                let endCamFar = this.nextCamera.far;
+                let endCamAngle = this.nextCamera.fov;
+                let endCamUp = [this.nextCamera._up[0], this.nextCamera._up[1], this.nextCamera._up[2]];
+                let positionTime =  Math.sqrt(Math.pow(endCamPos[0] - startCamPos[0], 2) + Math.pow(endCamPos[1] - startCamPos[1], 2) + Math.pow(endCamPos[2] - startCamPos[2], 2));
+                let targetTime = Math.sqrt(Math.pow(endCamTarget[0] - startCamTarget[0], 2) + Math.pow(endCamTarget[1] - startCamTarget[1], 2) + Math.pow(endCamTarget[2] - startCamTarget[2], 2));
+                this.cameraAnimation = new CameraInterpolator(startCamPos, endCamPos, startCamTarget, endCamTarget, startCamNear, endCamNear, startCamFar, endCamFar, startCamAngle, endCamAngle, startCamUp, endCamUp, (positionTime + targetTime) / 25 + 1);
+            }
         }
         this.interface.addCameraAndLightGUI(this.cameraIds[this.activeCamera]);
         this.n = 1;

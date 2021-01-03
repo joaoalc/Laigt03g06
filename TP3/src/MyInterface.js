@@ -85,10 +85,11 @@ class MyInterface extends CGFinterface {
         if(this.cameras != null){
             this.gui.removeFolder(this.cameras);
         }
-        this.cameras = this.gui.addFolder("Cameras");
+        this.cameras = this.gui.addFolder("Visualization");
         this.cameras.closed = false;
         var camera = this.cameras.add(this.scene, 'activeCamera', this.scene.cameraIds).name('Active Camera').onChange(this.scene.updateCamera.bind(this.scene));
         camera.setValue(activeCamera);
+        this.cameras.add(this.scene, 'animateOnSceneChange').name("Anim on scene change");
 
         if(this.lights != null){
             this.gui.removeFolder(this.lights);
