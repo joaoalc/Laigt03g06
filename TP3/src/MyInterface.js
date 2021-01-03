@@ -86,19 +86,14 @@ class MyInterface extends CGFinterface {
     }
 
     addCameraAndLightGUI(activeCamera){
-        /*if(this.cameras != null){
-            this.gui.removeFolder(this.cameras);
-        }*/
         if(this.cameras == null){
             this.cameras = this.gui.addFolder("Visualization");
         }
         if(this.cameraInterface != null){
             this.cameraInterface.remove();
         }
-        //this.cameras = this.gui.addFolder("Visualization");
         this.cameras.closed = false;
         
-        console.log(this.animateOnSceneChange);
         if(this.animateOnSceneChange == null || this.animateOnSceneChange == undefined){
             this.animateOnSceneChange = this.cameras.add(this.scene, 'animateOnSceneChange').name("Anim on scene change");
         }

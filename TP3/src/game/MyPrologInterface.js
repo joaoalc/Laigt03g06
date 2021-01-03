@@ -5,9 +5,6 @@ class MyPrologInterface {
     }
 
     onRequestLoad(onSuccess, requestI, data) {
-        // console.log(onSuccess);
-        // console.log(requestI);
-        // console.log(data.target.response);
         this.requests[requestI] = null;
         if(onSuccess)
             onSuccess(data);
@@ -43,7 +40,6 @@ class MyPrologInterface {
             this.requests[requestI].setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
             if(this.send) {
-                // console.log("sent " + requestString);
                 this.requests[requestI].send();
             } else this.requests[requestI] = null;
     }
@@ -53,7 +49,6 @@ class MyPrologInterface {
         this.send = true;
 
         // Make Request
-        // console.log("sending request " + requestString);
         await this.getPrologRequest(requestString, onSuccess, this.handleError);
     }
 

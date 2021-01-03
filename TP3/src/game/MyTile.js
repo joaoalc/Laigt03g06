@@ -21,9 +21,7 @@ class MyTile extends CGFobject {
     }
 
     display(line, diagonal) {
-        //if(this.piece == null){
-            this.scene.registerForPick(diagonal + line * 100, this);
-        //} else this.scene.clearPickRegistration();
+        this.scene.registerForPick(diagonal + line * 100, this);
         //display da tile e da peça(se existir)
         this.obj.display();
     }

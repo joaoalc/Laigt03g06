@@ -54,7 +54,7 @@ class CameraInterpolator{
         else if(time < this.firstTime + this.duration){
             let arr = [0, 0, 0];
             for(let i = 0; i < 3; i++){
-                arr[i] = this.startPos[i] + (this.endPos[i] - this.startPos[i]) * this.easingProgress;//(time - this.firstTime) / this.duration;
+                arr[i] = this.startPos[i] + (this.endPos[i] - this.startPos[i]) * this.easingProgress;//Eased version of: (time - this.firstTime) / this.duration;
             }
             return arr;
         }
@@ -69,7 +69,7 @@ class CameraInterpolator{
             return this.startNear;
         }
         else if(time < this.firstTime + this.duration){
-            return this.startNear + (this.endNear - this.startNear) * this.easingProgress;//* (time - this.firstTime) / this.duration;
+            return this.startNear + (this.endNear - this.startNear) * this.easingProgress;//Eased version of:  (time - this.firstTime) / this.duration;
         }
         else{
             return this.endNear;
@@ -82,7 +82,7 @@ class CameraInterpolator{
             return this.startFar;
         }
         else if(time < this.firstTime + this.duration){
-            return this.startFar + (this.endFar - this.startFar) * this.easingProgress;//* (time - this.firstTime) / this.duration;
+            return this.startFar + (this.endFar - this.startFar) * this.easingProgress;//Eased version of:  (time - this.firstTime) / this.duration;
         }
         else{
             return this.endFar;
@@ -95,7 +95,7 @@ class CameraInterpolator{
             return this.startAngle;
         }
         else if(time < this.firstTime + this.duration){
-            return this.startAngle + (this.endAngle - this.startAngle) * this.easingProgress;//* (time - this.firstTime) / this.duration;
+            return this.startAngle + (this.endAngle - this.startAngle) * this.easingProgress;//Eased version of:  (time - this.firstTime) / this.duration;
         }
         else{
             return this.endAngle;
@@ -110,7 +110,7 @@ class CameraInterpolator{
         else if(time < this.firstTime + this.duration){
             let arr = [0, 0, 0];
             for(let i = 0; i < 3; i++){
-                arr[i] = this.startUp[i] + (this.endUp[i] - this.startUp[i]) * this.easingProgress;//* (time - this.firstTime) / this.duration;
+                arr[i] = this.startUp[i] + (this.endUp[i] - this.startUp[i]) * this.easingProgress;//Eased version of:  (time - this.firstTime) / this.duration;
             }
             return arr;
         }
@@ -127,7 +127,7 @@ class CameraInterpolator{
         else if(time < this.firstTime + this.duration){
             let arr = [0, 0, 0];
             for(let i = 0; i < 3; i++){
-                arr[i] = this.startTarget[i] + (this.endTarget[i] - this.startTarget[i]) * this.easingProgress;//* (time - this.firstTime) / this.duration;
+                arr[i] = this.startTarget[i] + (this.endTarget[i] - this.startTarget[i]) * this.easingProgress;//Eased version of:  (time - this.firstTime) / this.duration;
             }
             return arr;
         }

@@ -20,7 +20,6 @@ class MyPieceBox extends CGFobject{
         else{
             console.log("Invalid color " + this.color); //Place somewhere else
         }
-        // this.findStyle();
         this.rectangle = new MyRectangle(this.scene, -0.5, -0.5, 0.5, 0.5, 1, 1);
 
         this.boxText = new CGFtexture(this.scene, "./assets/images/basket_text.jpg");
@@ -33,23 +32,6 @@ class MyPieceBox extends CGFobject{
         this.nPieces = 42;
     }
 
-    // findStyle(){
-    //     if(this.style == "regular"){
-    //         this.createBox();
-    //     }
-    //     else{
-    //         console.log("This box style " + this.style + " has not been implemented yet.");
-    //         this.createPlaceHolder();
-    //     }
-    // }
-
-    // createPlaceHolder(){
-    //     this.rectangle = new MyRectangle(this.scene, -0.5, -0.5, 0.5, 0.5, 1, 1);
-    // }
-
-    // createBox(){
-    //     this.rectangle = new MyRectangle(this.scene, -0.5, -0.5, 0.5, 0.5, 1, 1);
-    // }
 
     display(){
         
