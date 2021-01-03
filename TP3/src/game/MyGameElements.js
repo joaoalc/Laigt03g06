@@ -52,7 +52,8 @@ class MyGameElements {
         var grey = new CGFtexture(this.scene, "assets/images/grey.png");
 
         this.scoreColours = {"purple": purple, "orange": orange, "green": green, "grey": grey};
-        this.scorePiece = new MyCylinder(this.scene, 0.2, 0.4, 0.4, 20, 5);
+        this.scorePieces = {"purple": new MyScorePiece(this.scene, "purple"), "orange": new MyScorePiece(this.scene, "orange"), 
+            "green" : new MyScorePiece(this.scene, "green"), "grey" : new MyScorePiece(this.scene, "grey")};
 
         this.boardMat = new CGFappearance(this.scene);
         this.boardMat.setShininess(10.0);
@@ -258,8 +259,7 @@ class MyGameElements {
 
         for(var i = 0; i < this.colours1.length; ++i) {
             if(this.colours1[i] != null) {
-                this.scoreColours[this.colours1[i]].bind();
-                this.scorePiece.display();
+                this.scorePieces[this.colours1[i]].display(this.scoreColours);
             }
             this.scene.translate(0, 1.4, 0);
         } 
@@ -302,8 +302,7 @@ class MyGameElements {
 
         for(var i = 0; i < this.colours2.length; ++i) {
             if(this.colours2[i] != null) {
-                this.scoreColours[this.colours2[i]].bind();
-                this.scorePiece.display();
+                this.scorePieces[this.colours2[i]].display(this.scoreColours);
             }
             this.scene.translate(0, -1.4, 0);
         } 
