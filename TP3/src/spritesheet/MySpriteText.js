@@ -17,7 +17,7 @@ class MySpriteText {
         this.appearance = this.scene.defaultAppearance;
 
         var fontPath;
-        font == null ? fontPath = "images/fonts/font5_1.png" : fontPath = font;
+        font == null ? fontPath = "assets/images/fonts/font5_1.png" : fontPath = font;
         this.textSprite = new CGFtexture(this.scene, fontPath); //text sprite
 
         //this.spritesheet = new MySpriteSheet(this.scene, this.textSprite, 15, 8); // font sheet

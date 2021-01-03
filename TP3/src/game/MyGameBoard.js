@@ -9,15 +9,15 @@ class MyGameBoard extends CGFobject {
         this.horShift = 1.5;
         this.vertShift = Math.sin(Math.PI/3)/2;
 
-        var purple = new CGFtexture(this.scene, "images/purple.png");
-        var orange = new CGFtexture(this.scene, "images/orange.png");
-        var green = new CGFtexture(this.scene, "images/green.png");
+        var purple = new CGFtexture(this.scene, "assets/images/purple.png");
+        var orange = new CGFtexture(this.scene, "assets/images/orange.png");
+        var green = new CGFtexture(this.scene, "assets/images/green.png");
 
         this.colourTexts = {"purple": purple, "orange": orange, "green": green};
 
-        var purpleHighlight = new CGFtexture(this.scene, "images/purpleTile.png");
-        var orangeHighlight = new CGFtexture(this.scene, "images/orangeTile.png");
-        var greenHighlight = new CGFtexture(this.scene, "images/greenTile.png");
+        var purpleHighlight = new CGFtexture(this.scene, "assets/images/purpleTile.png");
+        var orangeHighlight = new CGFtexture(this.scene, "assets/images/orangeTile.png");
+        var greenHighlight = new CGFtexture(this.scene, "assets/images/greenTile.png");
 
         this.tileHighlight = {"purple": purpleHighlight, "orange": orangeHighlight, "green": greenHighlight};
 
@@ -35,9 +35,9 @@ class MyGameBoard extends CGFobject {
 
         this.boardPlane = new MyRectangle(this.scene, 0, -10.5, 12, 0, 12, 10.5);
         this.boardFrame = new MyTorus(this.scene, 0.1, 8.485, 4, 4);
-        this.boardTexture = new CGFtexture(this.scene, "images/board_clear3.png");
-        this.frameTexture = new CGFtexture(this.scene, "./images/golden.jpg");
-        this.tileTexture = new CGFtexture(this.scene, "images/tile.png");
+        this.boardTexture = new CGFtexture(this.scene, "assets/images/board_clear3.png");
+        this.frameTexture = new CGFtexture(this.scene, "assets/images/golden.jpg");
+        this.tileTexture = new CGFtexture(this.scene, "assets/images/tile.png");
 
         this.boardMat = new CGFappearance(this.scene);
         this.boardMat.setShininess(10.0);

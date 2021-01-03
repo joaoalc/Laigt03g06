@@ -72,7 +72,7 @@
         <texture id="wood_barrel" path="./scenes/textures_train/wood_planks.jpg"/>
         <texture id="wooden_planks" path="./scenes/textures_train/wooden_planks.png"/>
         <texture id="wood_planks" path="./scenes/textures_train/wood_planks.jpg"/>
-        <texture id="towel" path="./images/picnic2.jpg"/>
+        <texture id="towel" path="./scenes/textures_train/picnic2.jpg"/>
     </textures>
     <spritesheets>
         <!-- <spritesheet id="spriteanim_test" path="scenes/textures_train/train_spritesheet.png" sizeM="8" sizeN="4"/>
@@ -394,10 +394,6 @@
             </transformations>
             <descendants>
                 <noderef id="game_board"/>
-                <!--<leaf type="customobj" path="scenes/objects/test_object.obj" wireframe="0"/>-->
-                <!-- <noderef id="orange_box"/>
-                <noderef id="green_box"/>
-                <noderef id="purple_box"/> -->
                 <noderef id="train"/>
                 <noderef id="skybox"/>
                 <noderef id="trees"/>
@@ -435,7 +431,7 @@
                 <scale sx="0.8" sy="0.5" sz="0.5"/>
             </transformations>
             <descendants>
-                <leaf type="customobj" path="./images/table.obj" wireframe="0"/> 
+                <leaf type="customobj" path="./scenes/objects/table.obj" wireframe="0"/> 
             </descendants>
         </node>
 
@@ -448,7 +444,6 @@
             <transformations>
             </transformations>
             <descendants>
-                <!--<leaf type="customobj" path="scenes/objects/test_object.obj" wireframe="1"/> -->
                 <leaf type="gameboard" x="5.2" y="-1.19" z="5.2" s="0.1" rx="0" ry="45" rz="0"/>
             </descendants>
         </node>

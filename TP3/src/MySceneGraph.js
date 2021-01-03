@@ -89,10 +89,8 @@ class MySceneGraph {
 
     initMaterials(){
         this.cgfMaterials = [];
-        console.log(this.materials);
         for(var key in this.materials) {
             var info = this.materials[key];
-            console.log(info);
             var mat = new CGFappearance(this.scene);
             mat.setShininess(info[0]);
             mat.setSpecular(info[1][0], info[1][1], info[1][2], 1);

@@ -202,7 +202,7 @@ class MyGameElements {
         this.scene.popMatrix();
 
         this.scene.pushMatrix();
-        this.scene.translate(0, 0, -0.7);
+        this.scene.translate(0, 0, -0.8);
         this.timerBodyText2.bind();
         this.timerFace.display();
         this.scene.popMatrix();

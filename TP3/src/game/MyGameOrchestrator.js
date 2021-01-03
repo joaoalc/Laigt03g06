@@ -31,9 +31,8 @@ class MyGameOrchestrator {
         this.movieCurrentPlayer = -1;
 
         this.sceneGraphs = {};
-        var filenames = {"Train Station" : 'train.xml', "Aztec Temple": 'Scene.xml'};
+        var filenames = {"Train Station" : 'train.xml', "Aztec Temple": 'temple.xml'};
         for(let sceneName in filenames){
-            //scene.sceneGraphs[scene.activeScene] = new MySceneGraph(filenames[sceneName], scene, sceneName);
             new MySceneGraph(filenames[sceneName], scene, sceneName);
         }
 
@@ -78,7 +77,6 @@ class MyGameOrchestrator {
     }
 
     update(time) {
-        console.log(this.currentPlayer);
         time /= 1000;
         if(this.lastUpdate == -1)
             this.lastUpdate = time;
@@ -252,16 +250,11 @@ class MyGameOrchestrator {
                 this.prolog.stopRequest();
             var undoResult = this.animator.undo();
             if(undoResult != -1) {
-                // if(this.state == END_GAME) {
-                //     this.currentPlayer = this.currentPlayer % 2 + 1;
-                // }
                 this.resetTimer();
                 this.coloursWon = undoResult[0];
                 this.interface.setColoursWon(this.coloursWon);
 
                 this.setPlaying(undoResult[1]);
-                //var gameState = this.gameboard.boardString() + "-(" + this.coloursWonString() + ")";
-                //this.prolog.makeRequest("updateColours("+ gameState + "," + this.currentPlayer+")", this.parseUpdateColours.bind(this));
             }
         }
     }
@@ -275,7 +268,6 @@ class MyGameOrchestrator {
         this.onMoveRequest(coords, this.pickedColor);
         this.gameboard.getPieceBox(this.pickedColor).nPieces--;
         tile.setPiece(newPiece);
-        //this.gameboard.updateColoursWon(this.coloursWon);
         this.pickedColor = null;
         this.pickedTile = null;
     }
@@ -336,7 +328,7 @@ class MyGameOrchestrator {
     updateColours(coloursWon) {
         this.coloursWon = coloursWon;
         this.interface.setColoursWon(this.coloursWon);
-        console.log(this.coloursWon);
+        //console.log(this.coloursWon);
     }
 
     setPlaying(player) {

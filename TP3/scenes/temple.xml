@@ -88,20 +88,20 @@
         </light>
     </lights>
     <textures>
-        <texture id="skybox_left" path="./scenes/textures_Scene/skybox/png2jpg/skybox_left.jpg"/>
-        <texture id="skybox_right" path="./scenes/textures_Scene/skybox/png2jpg/skybox_right.jpg"/>
-        <texture id="skybox_front" path="./scenes/textures_Scene/skybox/png2jpg/skybox_front.jpg"/>
-        <texture id="skybox_top" path="./scenes/textures_Scene/skybox/png2jpg/skybox_top.jpg"/>
-        <texture id="skybox_back" path="./scenes/textures_Scene/skybox/png2jpg/skybox_back.jpg"/>
-        <texture id="grass" path="./scenes/textures_Scene/grass.jpg"/>
-        <texture id="pyramid_bricks" path="./scenes/textures_Scene/pyramid_base.png"/>
-        <texture id="pyramid_path" path="./scenes/textures_Scene/pyramid_path.png"/>
-        <texture id="tree_trunk" path="./scenes/textures_Scene/tree_trunk.png"/>
-        <texture id="tree_leaves" path="./scenes/textures_Scene/tree_leaves.jpg"/>
-        <texture id="wood_small" path="./scenes/textures_Scene/wood_small.png"/>
-        <texture id="metal_pillar" path="./scenes/textures_Scene/metal_pillar.png"/>
-        <texture id="fire" path="./scenes/textures_Scene/fire.png"/>
-        <texture id="carpet" path="./scenes/textures_Scene/carpet.jpg"/>
+        <texture id="skybox_left" path="./scenes/textures_temple/skybox/png2jpg/skybox_left.jpg"/>
+        <texture id="skybox_right" path="./scenes/textures_temple/skybox/png2jpg/skybox_right.jpg"/>
+        <texture id="skybox_front" path="./scenes/textures_temple/skybox/png2jpg/skybox_front.jpg"/>
+        <texture id="skybox_top" path="./scenes/textures_temple/skybox/png2jpg/skybox_top.jpg"/>
+        <texture id="skybox_back" path="./scenes/textures_temple/skybox/png2jpg/skybox_back.jpg"/>
+        <texture id="grass" path="./scenes/textures_temple/grass.jpg"/>
+        <texture id="pyramid_bricks" path="./scenes/textures_temple/pyramid_base.png"/>
+        <texture id="pyramid_path" path="./scenes/textures_temple/pyramid_path.png"/>
+        <texture id="tree_trunk" path="./scenes/textures_temple/tree_trunk.png"/>
+        <texture id="tree_leaves" path="./scenes/textures_temple/tree_leaves.jpg"/>
+        <texture id="wood_small" path="./scenes/textures_temple/wood_small.png"/>
+        <texture id="metal_pillar" path="./scenes/textures_temple/metal_pillar.png"/>
+        <texture id="fire" path="./scenes/textures_temple/fire.png"/>
+        <texture id="carpet" path="./scenes/textures_temple/carpet.jpg"/>
     </textures>
     <spritesheets>
     </spritesheets>
@@ -211,7 +211,6 @@
             </transformations>
             <descendants>
                 <noderef id="carpet"/>
-                <!--<leaf type="customobj" path="scenes/objects/test_object.obj" wireframe="1"/> -->
                 <leaf type="gameboard" x="0.0" y="3.15" z="0.0" s="0.1" rx="0" ry="-90" rz="0"/>
             </descendants>
         </node>
@@ -229,7 +228,6 @@
             </transformations>
             <descendants>
                 <leaf type="rectangle" x1="-0.75" y1="0.5" x2="0.75" y2="-0.5"/>
-                <!--<leaf type="customobj" path="scenes/objects/test_object.obj" wireframe="1"/> -->
                 <leaf type="gameboard" x="0.0" y="3.15" z="0.0" s="0.1" rx="0" ry="-90" rz="0"/>
             </descendants>
         </node>
@@ -263,7 +261,7 @@
             <descendants>
                 <noderef id="pyramid_top_supports"/>
                 <noderef id="pyramid_top_frame"/>
-                <leaf type="customobj" path="scenes/temple_top_structure.obj" wireframe="0"/>
+                <leaf type="customobj" path="scenes/objects/temple_top_structure.obj" wireframe="0"/>
             </descendants>
         </node>
         <node id="pyramid_top_supports">
@@ -274,7 +272,7 @@
             <transformations>
             </transformations>
             <descendants>
-                <leaf type="customobj" path="scenes/temple_top_supports.obj" wireframe="0"/>
+                <leaf type="customobj" path="scenes/objects/temple_top_supports.obj" wireframe="0"/>
             </descendants>
         </node>
         <node id="pyramid_top_frame">
@@ -285,7 +283,7 @@
             <transformations>
             </transformations>
             <descendants>
-                <leaf type="customobj" path="scenes/temple_top_frame.obj" wireframe="0"/>
+                <leaf type="customobj" path="scenes/objects/temple_top_frame.obj" wireframe="0"/>
             </descendants>
         </node>
 

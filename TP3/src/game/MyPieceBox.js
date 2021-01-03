@@ -7,15 +7,15 @@ class MyPieceBox extends CGFobject{
         this.nPieces = 42;
         if(this.color == "purple"){
             this.id = 1;
-            this.piecesText = new CGFtexture(this.scene, "./images/purple_pieces.png");
+            this.piecesText = new CGFtexture(this.scene, "./assets/images/purple_pieces.png");
         }
         else if(this.color == "orange"){
             this.id = 2;
-            this.piecesText = new CGFtexture(this.scene, "./images/orange_pieces.png");
+            this.piecesText = new CGFtexture(this.scene, "./assets/images/orange_pieces.png");
         }
         else if(this.color == "green"){
             this.id = 3;
-            this.piecesText = new CGFtexture(this.scene, "./images/green_pieces.png");
+            this.piecesText = new CGFtexture(this.scene, "./assets/images/green_pieces.png");
         }
         else{
             console.log("Invalid color " + this.color); //Place somewhere else
@@ -23,8 +23,8 @@ class MyPieceBox extends CGFobject{
         // this.findStyle();
         this.rectangle = new MyRectangle(this.scene, -0.5, -0.5, 0.5, 0.5, 1, 1);
 
-        this.boxText = new CGFtexture(this.scene, "./images/basket_text.jpg");
-        this.obj = new CGFOBJModel(this.scene, "./images/basket.obj", 0);
+        this.boxText = new CGFtexture(this.scene, "./assets/images/basket_text.jpg");
+        this.obj = new CGFOBJModel(this.scene, "./assets/objects/basket.obj", 0);
 
         
     }

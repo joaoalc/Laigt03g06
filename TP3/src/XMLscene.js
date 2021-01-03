@@ -55,43 +55,17 @@ class XMLscene extends CGFscene {
 
         this.cameraAnimation = null;
 
-        this.gameboardPos = [0,0,0]; //GAMEBOARD POSITION
         new MyGameOrchestrator(this, this.gameboardPos);
-        //this.gameOrchestrator = new MyGameOrchestrator(this, this.gameboardPos);
     }
 
     initMaterials(){
         this.materials = [];
         this.materials = this.gameOrchestrator.sceneGraphs[this.activeScene].cgfMaterials;
-
-        /*
-        for(var key in this.sceneGraphs[this.activeScene].materials) {
-            var info = this.sceneGraphs[this.activeScene].materials[key];
-        
-            var mat = new CGFappearance(this);
-            mat.setShininess(info[0]);
-            mat.setSpecular(info[1][0], info[1][1], info[1][2], 1);
-            mat.setDiffuse(info[2][0], info[2][1], info[2][2], 1);
-            mat.setAmbient(info[3][0], info[3][1], info[3][2], 1);
-            mat.setEmission(info[4][0], info[4][1], info[4][2], 1);
-
-            this.materials[key] = mat;
-        }*/
     }
 
     initTextures(){
         this.textures = [];
         this.textures = this.gameOrchestrator.sceneGraphs[this.activeScene].cgfTextures;
-
-        /*
-        this.textures = [];
-        for(var key in this.sceneGraphs[this.activeScene].textures){
-            var info = this.sceneGraphs[this.activeScene].textures[key];
-            if(info != 0) {
-                var tex = new CGFtexture(this, info);
-                this.textures[key] = tex;
-            }
-        }*/
     }
 
     /**
@@ -186,26 +160,6 @@ class XMLscene extends CGFscene {
         this.n = 1;
     }
 
-    // logPicking() {
-	// 	if (this.pickMode == false) {
-	// 		if (this.pickResults != null && this.pickResults.length > 0) {
-	// 			for (var i = 0; i < this.pickResults.length; i++) {
-	// 				var obj = this.pickResults[i][0];
-	// 				if (obj) {
-    //                     var customId = this.pickResults[i][1];
-    //                     if(customId > 100){
-	// 					    console.log("Picked tile at line" + Math.floor(customId / 100) + " and column " + customId % 100);						
-    //                     }
-    //                     else{
-    //                         console.log("Picked box with id = " + customId);
-    //                     }
-    //                 }
-	// 			}
-	// 			this.pickResults.splice(0, this.pickResults.length);
-	// 		}
-	// 	}
-	// }
-
     /**
      * Initializes the scene lights with the values read from the XML file.
      */
@@ -294,10 +248,6 @@ class XMLscene extends CGFscene {
         this.initTextures(); 
         this.sceneInited = true;
         this.initCameras(); 
-
-        
-        
-        
     }
 
     update(time) {
@@ -397,7 +347,7 @@ class XMLscene extends CGFscene {
 
             //this.testBoard.display();
 
-            // Displays the scene (MySceneGraph function).
+            // Displays the game
             this.gameOrchestrator.orchestrate();
             this.gameOrchestrator.display();
             
